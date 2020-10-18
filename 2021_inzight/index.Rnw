@@ -1,0 +1,25 @@
+\documentclass{article}
+
+<<setup, echo=FALSE>>=
+knitr::opts_knit$set(self.contained = FALSE)
+settings <- yaml::read_yaml('config.yaml')
+@
+
+\title{\Sexpr{settings$title}}
+\author{\Sexpr{settings$author}}
+
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\begin{document}
+
+\maketitle
+
+% this is where sections will be placed:
+%includes%
+
+\bibliographystyle{apalike}
+\bibliography{../references}
+
+\end{document}
