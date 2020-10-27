@@ -1,0 +1,14 @@
+---
+title: History
+---
+
+# A history of iNZight
+
+Lorem ipsum blah..
+
+Part of this involves writing the `tidyverse` code @citep:tidyverse; in the R script.
+
+Example:
+```
+library(iNZightTools)
+```

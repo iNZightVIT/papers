@@ -34,7 +34,7 @@ build_main <- function(file, include) {
     x <- x[!grepl("upquote.sty", x)]
 
     # add things
-    inc <- paste0("\\input{", include, "}", collapse = "\\n")
+    inc <- paste0("\\input{", include, "}", collapse = "")
     x <- gsub("%includes%", inc, x, fixed = TRUE)
 
     writeLines(x, out)
