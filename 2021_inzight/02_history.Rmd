@@ -4,11 +4,12 @@ title: History
 
 # A history of iNZight
 
-Lorem ipsum blah..
+* Originally a simple implementation experimenting with R @citep:rcore; and 'gWidgets' (now superceeded by 'gWidgets2', @citep:gWidgets2;) for making graphs which react to the type of data (i.e., the user doesn't have to choose the graph type)
+* Uses GTK @citep:gtk; to produce graphical interface, accessed via the 'RGtk2' R package @citep:RGtk2;
+* The software uses the variable types (numeric or categorical) to determine the type of graph or summary produced
+* Picked up by [...?] and rolled out for use in NCEA Level 3 statistics in New Zealand (final year of high school)
 
-Part of this involves writing the `tidyverse` code @citep:tidyverse; in the R script.
-
-Example:
-```
-library(iNZightTools)
-```
+* Redesigned in 2014 with gWidgets2 and reference classes (one of R's Object Oriented Programming approaches)
+* Additionally uses a suite of complimentary R packages to separate form (the UI) from function (data processing, graphics, etc)
+* Additionally modules for time series, model fitting, etc, and more recently added an add-on system
+* Most of the work has been student-driven: "By students, for students" (rather than being created by computer scientists)

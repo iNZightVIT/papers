@@ -1,0 +1,62 @@
+---
+title: History
+---
+
+# An overview of iNZight's structure
+
+* Many of the features come from design-flexibility
+* Separation of UI and data processing
+* Relies mainly on 'gWidgets2' and 'gWidgets2RGtk2' @citep:gWidgets2,gWidgets2RGtk2; to interface with the user, and reference classes to structure the code base
+* internally, each component of the UI is represented by a single class - this makes it easy to extend and modify iNZight
+* data/variable manipulation windows each are a single class, which connects to a helper function in another package (usually inside 'iNZightTools' @citep:iNZightTools;)
+* A key design feature is that the UI asks the users for inputs, which are passed to a single function as arguments - this allows not only separation, but also for other GUIs (for example iNZight Lite) to connect to the same functions
+* Additionally, those simple wrapper functions can be accessed by beginners not yet ready for the more complex coding required to do the same things
+
+\begin{lstlisting}[language=R,caption=A simple reference class window to filter a level of a factor.,label={lst:rc_filter_example}]
+# A simple window to filter a level of a categorical variable
+filterWin <- setRefClass('filterWin',
+    fields = list(
+        GUI = "ANY",
+        data = "data.frame",
+        variable = "ANY",
+        level = "ANY"
+    ),
+    methods = list(
+        initialize = function(gui) {
+            initFields(GUI = gui, data = gui$getActiveData())
+            win <- gwindow('Filter Level')
+            cont <- gvbox(container = win)
+            variable <<- gcombobox(names(data), container = cont)
+            level <<- gedit("", container = cont)
+            okbtn <- gbutton("Filter")
+            addHandlerClicked(okbtn, function(h, ...) filterData())
+        },
+        filterData = function() {
+            var <- svalue(variable)
+            level <- svalue(level)
+            newdata <- iNZightTools::filterLevels(data, var, level)
+            GUI$set_data(newdata)
+        }
+    )
+)
+\end{lstlisting}
+
+We see in \cref{lst:rc_filter_example} that ...
+
+
+```{r inzight_pkgs,echo=FALSE,results='asis'}
+library(magrittr)
+library(kableExtra)
+
+pkgs <- c(
+    "iNZight" = 'The main package for the GUI',
+    "iNZightPlots" = 'Provides plot function `inzplot()` along with `inzsummary()` for descriptive statistics and `inzinference()` for inference and hypothesis testing.',
+    "iNZightTools" = 'A suite of helper functions for data process and variable manipulation.'
+)
+tab <- data.frame(Package = names(pkgs), Description = as.character(pkgs))
+knitr::kable(tab, "latex", booktabs = TRUE,
+    caption = 'iNZight R package family',
+    label = 'tab:inzight_pkgs') %>%
+    column_spec(2, width = "8cm") %>%
+    kable_styling(font_size = 8)
+```
