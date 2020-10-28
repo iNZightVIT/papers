@@ -57,4 +57,10 @@ settings <- yaml::read_yaml('config.yaml')
 \bibliographystyle{apalike}
 \bibliography{../references}
 
+
+\section*{Acknowledgements}
+
+iNZight is a free to use, open source software. The work would not have been possible without the support of the University of Auckland, Census at School, ..., Statistics New Zealand, and the Australian Bureau of Statistics.
+
+
 \end{document}

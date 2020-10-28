@@ -1,0 +1,34 @@
+---
+title: Distribution
+---
+
+# Distributing and running iNZight
+
+* effectively just a collection of R packages (our own, plus many dependencies)
+* some on CRAN, others are self-hosted (so windows binaries *are* available)
+* most users are new to statistics/data science, most don't know much/anything about R/computing/programming -> we ship an *all-in-one* installer for Windows
+    * single directory containing R, iNZight library
+    * plus shortcuts to launch R and auto-start iNZight (using `.Rprofile`)
+* fully automated build:
+    * single repository and github actions
+    * builds source/binary files and uploads to our repository
+    * builds installer and uploads to website (uses NSIS)
+* CRAN release is manual (obviously)
+
+## A note for macOS and Linux users
+
+* GTK support for mac is dead - so we cannot support macOS any longer
+* Linux requires installation of some platform-specific packages (gtk, xorg, etc etc)
+* just like installing any other R package
+* but we do include a build tool to help install and set-up run/update scripts to make launching easier
+
+## Manual installation
+
+* install the packages
+* run
+\begin{lstlisting}[language=R]
+library(iNZight)
+iNZight()
+# optionally pass a dataset directly:
+iNZight(iris)
+\end{lstlisting}
