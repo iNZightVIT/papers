@@ -1,0 +1,93 @@
+---
+title: Features
+---
+
+# Features of iNZight
+
+* Several main groups of functionality:
+    * data manipulation (include specifying survey structure)
+    * variable manipulation
+    * plot control
+    * code history
+
+## Data wrangling
+
+* uses 'tidyverse' methods and workflows to perform some data transformation
+* all are calls to wrappers inside the 'iNZightTools' package
+* the interface allows users to manipulate arguments to the wrapper function - reactive in some cases (i.e., inputs appear/disappear or change values based on previous inputs)
+* in many cases, a preview is displayed to help with what can be complex actions, e.g.
+
+* no complex "data tidying" methods - i.e., iNZight expects data to be in rectangular form (but you can move between long/wide formats)
+
+
+## Graphics and simple data analyses
+
+* all powered by 'iNZightPlots' functions
+    * `inzplot()` for graphics
+    * `inzsummary()` for simple summary information
+    * `inzinference()` for inferencial information and hypothesis testing
+* uses the variable type(s) to choose the graph type. Figure x shows the available graph types
+* subsetting by 1 or 2 variables is possible/easy/emphasized
+    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; gapminder example? - great citation opportunity!!)
+* plot features: specific to plot type, users only see what's relevant
+* some features (such as colour by) might apply to different plot types (scatter and dot plot, for example) and so selection is retained when switching between these plot types
+
+* inferencial markup of plots
+    * normal theory error bars/curves
+    * or bootstrap alternative
+    * "Comparison intervals" are a way of visually assessing differences - only shown on differences *that should be compared* - bar plot example
+    * an approximate tukey thing? details needed here ('iNZightMR' package)
+
+* summary information
+    * a simple numeric summary *of the current plot* (philosophy: look first)
+* inference information
+    * again, default inferences *of the current plot*
+    * both normal and bootstrap options
+    * gives a list of relevant hypothesis tests (cf. other software which requires you to decide on hypothesis test first)
+
+
+## Saving code history
+
+* many functions (the wrappers) generate code and attach it to their result
+\begin{lstlisting}[language=R]
+data.filtered <- iNZightTools::filterData(iris, "Species", "Setosa")
+cat(code(data.filtered))
+# iris %>% dplyr::filter(Species == "Setosa")
+\end{lstlisting}
+
+* the iNZight GUI stores the attached code after each action and appends it to the R history 'script'
+* provides a record of what was done
+* helps students interested in continuing data science/statistics to get familiar with code before writing it themselves (can copy+paste and modify, for example)
+
+## Analysing surveys with iNZight
+
+* survey data:
+    * iNZight gets told once, and everything else 'just works'
+    * plots use survey methods and alternative plot types (histogram vs dotplot; hex bin plot vs scatter plot)
+    * summary/inference all use survey methods to obtain summaries/inferences/hypothesis tests
+
+* supports strata/cluster based survey designs, replicate weights, and post-stratification
+
+
+## Other modules
+
+* A suite of other (fixed) modules for analying/exploring special types of data
+    * time series
+    * multiple response
+    * maps
+* or for doing specific tasks
+    * model fitting
+
+* each is its own "reference class" object connecting to one (or more) functions in another package
+    * time series -> 'iNZightTS'
+    * multiple response -> 'iNZightMR'
+    * maps -> 'iNZightMaps'
+    * model fitting -> 'iNZightRegression'
+* these are mostly wrappers to other functions, or modified versions -> made to work as 'standalone' packages (i.e., without iNZight)
+* not fully implemented, but making progress towards modules also code-writing
+
+* also a newer add-on system allowing anyone to write new modules for iNZight (added manually or through our github-hosted repository)
+* easier/faster to maintain/update
+* useful for e.g., teachers of a specific course
+
+

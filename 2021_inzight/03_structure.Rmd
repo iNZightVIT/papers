@@ -41,8 +41,11 @@ filterWin <- setRefClass('filterWin',
 )
 \end{lstlisting}
 
-We see in \cref{lst:rc_filter_example} that ...
-
+* examples:
+    * `iNZightTools::smart_read()` imports a dataset based on its extension - user doesn't need to know `read_csv()`, `read_dta()`, etc
+    * `iNZightPlots::inplot()` is the main power-house function within iNZight - takes UI inputs and generates a graph based on the variable types (and other selections)
+    * both of these functions can be accessed directly from R
+    * most also return the 'tidyverse' code so learners can get a taste for the actual code necessary to do stuff (e.g., filtering data, etc)
 
 ```{r inzight_pkgs,echo=FALSE,results='asis'}
 library(magrittr)
