@@ -15,4 +15,5 @@ title: Discussion
 * better survey handling
 * filling the 'code writing' gaps
 * connecting to databases (and potentially processing as much as possible within the db)
+* Te Reo translation (and flexibility to add more)
 * ...

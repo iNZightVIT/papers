@@ -28,7 +28,7 @@ title: Features
     * `inzinference()` for inferencial information and hypothesis testing
 * uses the variable type(s) to choose the graph type. Figure x shows the available graph types
 * subsetting by 1 or 2 variables is possible/easy/emphasized
-    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; gapminder example? - great citation opportunity!!)
+    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; @citep:Rosling2010;)
 * plot features: specific to plot type, users only see what's relevant
 * some features (such as colour by) might apply to different plot types (scatter and dot plot, for example) and so selection is retained when switching between these plot types
 

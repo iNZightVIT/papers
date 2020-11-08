@@ -36,6 +36,7 @@ filterWin <- setRefClass('filterWin',
             level <- svalue(level)
             newdata <- iNZightTools::filterLevels(data, var, level)
             GUI$set_data(newdata)
+            dispose(win)
         }
     )
 )
