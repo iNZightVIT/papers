@@ -1,4 +1,5 @@
 # build files
+library(stringr)
 
 clean_tex <- function(f) {
     txt <- readLines(f)
@@ -49,8 +50,8 @@ build_tex_from_rmd <- function(file, extra_pkgs = NULL) {
     rmarkdown::render(file,
         output_format =
             rmarkdown::pdf_document(
-                    keep_tex = TRUE,
-                    extra_dependencies = extra_pkgs
+                keep_tex = TRUE,
+                extra_dependencies = extra_pkgs
             ),
         quiet = TRUE
     )
@@ -67,7 +68,11 @@ build <- function() {
     x <- readLines("index.Rnw")
     pkgs <- grep("\\usepackage", x, fixed = TRUE)
     if (length(pkgs)) {
-        pkgs <- gsub("\\\\usepackage\\{|\\}$", "", x[pkgs])
+        deps <- stringr::str_match(x[pkgs],
+            "\\\\usepackage\\[?([^\\]]*)\\]?\\{(.*)\\}"
+        )
+        pkgs <- lapply(deps[,2], function(x) if (x == "") NULL else x)
+        names(pkgs) <- deps[,3]
     } else {
         pkgs <- NULL
     }

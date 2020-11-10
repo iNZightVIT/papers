@@ -1,5 +1,5 @@
 ---
-title: Introduction XXXXX
+title: Introduction
 ---
 
 # Introduction
@@ -15,5 +15,3 @@ title: Introduction XXXXX
 * Other tools targeting students:
     * NZGrapher @citep:nzgrapher; uses PHP
 * No obvious---simple---point-and-click interfaces for simple data analysis/visualisation that also provide a pathway to more complex, code-driven analyses
-
-

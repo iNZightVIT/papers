@@ -8,6 +8,7 @@ settings <- yaml::read_yaml('config.yaml')
 \title{\Sexpr{settings$title}}
 \author{\Sexpr{settings$author}}
 
+\usepackage{amsmath}
 \usepackage{natbib}
 \usepackage{hyperref}
 \usepackage{cleveref}
@@ -16,7 +17,13 @@ settings <- yaml::read_yaml('config.yaml')
 \Crefname{lstlisting}{Listing}{Listings}
 \usepackage{xcolor}
 \usepackage{booktabs}
-\usepackage{array,multirow,calc}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{calc}
+
+\usepackage[acronym]{glossaries}
+% \makeglossaries
+% \input{../glossary.tex}
 
 
 \definecolor{codegreen}{rgb}{0,0.6,0}

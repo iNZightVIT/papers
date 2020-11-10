@@ -4,6 +4,9 @@ title: History
 
 # An overview of iNZight's structure
 
+Producing \\glspl{gui}
+
+
 * Many of the features come from design-flexibility
 * Separation of UI and data processing
 * Relies mainly on 'gWidgets2' and 'gWidgets2RGtk2' @citep:gWidgets2,gWidgets2RGtk2; to interface with the user, and reference classes to structure the code base
