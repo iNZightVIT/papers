@@ -65,6 +65,9 @@ settings <- yaml::read_yaml('config.yaml')
 % this is where sections will be placed:
 %includes%
 
+\printglossary[type=\acronymtype]
+
+
 \bibliographystyle{apalike}
 \bibliography{../references}
 
