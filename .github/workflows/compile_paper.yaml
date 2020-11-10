@@ -28,8 +28,8 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
-      # - name: Install dependencies
-      #   run: make -C new2020 install
+      - name: Install dependencies
+        run: Rscript get_deps.R
       - name: Build
         env:
           TZ: 'Pacific/Auckland'
