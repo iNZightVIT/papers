@@ -15,10 +15,10 @@ pkgs <- unique(pkgs[!is.na(pkgs)])
 pkgs <- pkgs[!pkgs %in% c("iNZight")]
 pkgs <- c(pkgs, "rmarkdown", "knitr")
 
-if (length(ca)) {
+if (length(ca))
     saveRDS(pkgs, file = ca[1], version = 2)
-} else {
-    pkgs <- pkgs[!sapply(pkgs, requireNamespace, quietly = TRUE)]
-    if (length(pkgs))
-        install.packages(pkgs)
-}
+
+pkgs <- pkgs[!sapply(pkgs, requireNamespace, quietly = TRUE)]
+if (length(pkgs))
+    install.packages(pkgs)
+
