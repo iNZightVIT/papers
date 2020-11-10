@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,latex,r
 
 *.tex
+!glossary.tex
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
@@ -18,6 +19,7 @@
 *.cb
 *.cb2
 .*.lb
+*.ist
 
 ## Intermediate documents:
 *.dvi

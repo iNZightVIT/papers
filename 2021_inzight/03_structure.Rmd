@@ -4,15 +4,19 @@ title: History
 
 # An overview of iNZight's structure
 
-Producing \\glspl{gui}
+Producing cross-platform @glspl:gui; has always been a difficult task as different @glspl:os; implement different display devices. Therefore many projects have been created in an attempt to make cross-platform applications a possibility. One such example is GTK+, which is implemented on Windows, macOS, and Linux systems, providing a single toolkit for creating @glspl:gui; for all major systems @citep:gtk;.
+
+Of course, interfacing with such a framework is in itself a difficult job, and requires some complex C++ coding. Fortunately, several interfacing packages have been written in R which prove a simple, platform (and indeed toolkit) independent @gls:api; for writing @glspl:gui; from R. The 'RGtk2' package @citep:RGtk2; provides an platform-independent interface between R and GTK+2, allowing access to most of the classes to construct a @gls:gui; that reacts to a user's input. Additionally, the 'gWidgets2' package @citep:gWidgets2; provides a framework-independent inteface between R and several other R packages responsible to creating @glspl:gui;, namely 'gWidgets2RGtk2' for communicating with 'RGtk2' @citep:gWidgets2RGtk2;. Together, these packages make it possible for any R programming to construct a graphical application without any knowledge of GTK or platform-specific development. Indeed, it is the combination of these tools which made it possible for statistics students to create and work on 'iNZight'.
+
+Given a platform- and framework-independent @gls:api;, the next critical step is planning the internal structure of the application, most importantly ensuring that future development will not become hindered by early decisions. The most foundational decision in the early development of 'iNZight' was to separate *form* from *function*: that is, the code the controls the interface should be, as far as possible, separate from the code that handles data processing, graphics, and so on. Further, we wanted the individual components of the @gls:gui; to be independent to ensure future development would be easier: for example, buttons can be moved and replaced, and new components can be added or old ones removed without affecting anything else. The necessity for @gls:oop; was clear, so that each individual component is represented by a single *class*, which could be modified independently of others, or modified ("inheritance") to make similar widgets with common behaviours but several unique features.
 
 
-* Many of the features come from design-flexibility
-* Separation of UI and data processing
-* Relies mainly on 'gWidgets2' and 'gWidgets2RGtk2' @citep:gWidgets2,gWidgets2RGtk2; to interface with the user, and reference classes to structure the code base
-* internally, each component of the UI is represented by a single class - this makes it easy to extend and modify iNZight
+* \checkmark Many of the features come from design-flexibility
+* \checkmark Separation of @gls:gui; and data processing
+* \checkmark Relies mainly on 'gWidgets2' and 'gWidgets2RGtk2' @citep:gWidgets2,gWidgets2RGtk2; to interface with the user, and reference classes to structure the code base
+* \checkmark internally, each component of the @gls:gui; is represented by a single class - this makes it easy to extend and modify iNZight
 * data/variable manipulation windows each are a single class, which connects to a helper function in another package (usually inside 'iNZightTools' @citep:iNZightTools;)
-* A key design feature is that the UI asks the users for inputs, which are passed to a single function as arguments - this allows not only separation, but also for other GUIs (for example iNZight Lite) to connect to the same functions
+* A key design feature is that the @gls:gui; asks the users for inputs, which are passed to a single function as arguments - this allows not only separation, but also for other @glspl:gui; (for example iNZight Lite) to connect to the same functions
 * Additionally, those simple wrapper functions can be accessed by beginners not yet ready for the more complex coding required to do the same things
 
 \begin{lstlisting}[language=R,caption=A simple reference class window to filter a level of a factor.,label={lst:rc_filter_example}]
