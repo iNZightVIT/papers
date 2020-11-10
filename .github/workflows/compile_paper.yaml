@@ -1,0 +1,51 @@
+on: push
+  # push:
+  #   branches:
+  #     - master
+  # pull_request:
+  #   branches:
+  #     - master
+
+name: Compile papers
+
+jobs:
+  compile-papers:
+    runs-on: ubuntu-20.04
+    env:
+      RSPM: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-tinytex@v1
+      - name: Query dependencies
+        run: Rscript get_deps.R ../.github/depends.Rds
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
+      # - name: Install dependencies
+      #   run: make -C new2020 install
+      - name: Build
+        env:
+          TZ: 'Pacific/Auckland'
+        run: |
+          d <- getwd()
+          dirs <- list.dirs(recursive = FALSE)
+          dirs <- dirs[grepl('^\\./[0-9]+.+', dirs)]
+          for (dir in dirs) {
+            setwd(dir)
+            source('build.R')
+            setwd(d)
+          }
+        shell: Rscript
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit **/*.pdf -m 'Compile PDFs || echo "No changes to commit"
+          git push origin || echo "No changes to push"
