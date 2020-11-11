@@ -65,6 +65,9 @@ build_tex_from_rmd <- function(file, extra_pkgs = NULL) {
 
 
 build <- function() {
+    # these pkgs are already in rmd->tex
+    skip_pkgs <- c("hyperref")
+
     x <- readLines("index.Rnw")
     pkgs <- grep("\\usepackage", x, fixed = TRUE)
     if (length(pkgs)) {
@@ -73,6 +76,7 @@ build <- function() {
         )
         pkgs <- lapply(deps[,2], function(x) if (x == "") NULL else x)
         names(pkgs) <- deps[,3]
+        pkgs <- pkgs[!names(pkgs) %in% skip_pkgs]
     } else {
         pkgs <- NULL
     }

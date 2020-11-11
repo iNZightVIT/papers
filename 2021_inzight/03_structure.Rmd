@@ -6,19 +6,27 @@ title: History
 
 Producing cross-platform @glspl:gui; has always been a difficult task as different @glspl:os; implement different display devices. Therefore many projects have been created in an attempt to make cross-platform applications a possibility. One such example is GTK+, which is implemented on Windows, macOS, and Linux systems, providing a single toolkit for creating @glspl:gui; for all major systems @citep:gtk;.
 
-Of course, interfacing with such a framework is in itself a difficult job, and requires some complex C++ coding. Fortunately, several interfacing packages have been written in R which prove a simple, platform (and indeed toolkit) independent @gls:api; for writing @glspl:gui; from R. The 'RGtk2' package @citep:RGtk2; provides an platform-independent interface between R and GTK+2, allowing access to most of the classes to construct a @gls:gui; that reacts to a user's input. Additionally, the 'gWidgets2' package @citep:gWidgets2; provides a framework-independent inteface between R and several other R packages responsible to creating @glspl:gui;, namely 'gWidgets2RGtk2' for communicating with 'RGtk2' @citep:gWidgets2RGtk2;. Together, these packages make it possible for any R programming to construct a graphical application without any knowledge of GTK or platform-specific development. Indeed, it is the combination of these tools which made it possible for statistics students to create and work on 'iNZight'.
+Of course, interfacing with such a framework is in itself a difficult job, and requires some complex C++ coding. Fortunately, several interfacing packages have been written in R @citep:rcore; which prove a simple, platform (and indeed toolkit) independent @gls:api; for writing @glspl:gui; from R. The 'RGtk2' package @citep:RGtk2; provides an platform-independent interface between R and GTK+2, allowing access to most of the classes to construct a @gls:gui; that reacts to a user's input. Additionally, the 'gWidgets2' package @citep:gWidgets2; provides a framework-independent inteface between R and several other R packages responsible to creating @glspl:gui;, namely 'gWidgets2RGtk2' for communicating with 'RGtk2' @citep:gWidgets2RGtk2;. Together, these packages make it possible for any R programming to construct a graphical application without any knowledge of GTK or platform-specific development. Indeed, it is the combination of these tools which made it possible for statistics students to create and work on 'iNZight'.
 
 Given a platform- and framework-independent @gls:api;, the next critical step is planning the internal structure of the application, most importantly ensuring that future development will not become hindered by early decisions. The most foundational decision in the early development of 'iNZight' was to separate *form* from *function*: that is, the code the controls the interface should be, as far as possible, separate from the code that handles data processing, graphics, and so on. Further, we wanted the individual components of the @gls:gui; to be independent to ensure future development would be easier: for example, buttons can be moved and replaced, and new components can be added or old ones removed without affecting anything else. The necessity for @gls:oop; was clear, so that each individual component is represented by a single *class*, which could be modified independently of others, or modified ("inheritance") to make similar widgets with common behaviours but several unique features.
 
+Within the R system there are several @gls:oop; implementations, however we chose to use *reference classes* as these are part of base R and also used by 'gWidgets2'. Each component of the 'iNZight' interface is defined using one or more reference class objects, each of which has a set of *fields* and *methods*. Fields describe properties associated with the objects, most importantly user-specified values (for example an Import window might have a field for the file name). Methods are functions which carry out actions, and have access to the object's fields (the Import window might have a method to load the data, for example).
 
+To separate form from function, methods that perform actions on the data or generate output for the user call functions in other packages. The interface allows users to specify values for the object's fields, and either automatically or by clicking a button call the methods which compile the fields and pass them to an external function. For example, an Import data window might take the file chosen by the user and pass it to `iNZightTools::smart_read()`, a function in the 'iNZightTools' package @citep:iNZightTools; which acts as a wrapper for several other data import functions. In this way, the interface does not need to know anything about the data type it is loading: it only collects information from the user and passes it to another function. An early advantage of this was the creation of 'iNZight Lite', an 'shiny'-based alternative to the desktop version of 'iNZight' which can run in a user's browser. In this case, both of the @glspl:gui; collect information from the user---potentially in a different way---and pass it to the external function. This way, the result returned (given the same input) will be the same across implementations of 'iNZight'.
+
+A further advantage of the code-separation is that it provides the opportunity of a "stepping stone" between using the @gls:gui; and coding directly in R using specialised packages and functions. Rather than learning all of the different data import functions in a range of packages (such as 'readr' @citep:readr;, 'readxl' @citep:readxl, or 'foreign' @citep:foreign;) they need only learn one function `smart_read()` to import CSV, Excel, SPSS, Stata, or SAS files.
+
+<!--
 * \checkmark Many of the features come from design-flexibility
 * \checkmark Separation of @gls:gui; and data processing
 * \checkmark Relies mainly on 'gWidgets2' and 'gWidgets2RGtk2' @citep:gWidgets2,gWidgets2RGtk2; to interface with the user, and reference classes to structure the code base
 * \checkmark internally, each component of the @gls:gui; is represented by a single class - this makes it easy to extend and modify iNZight
-* data/variable manipulation windows each are a single class, which connects to a helper function in another package (usually inside 'iNZightTools' @citep:iNZightTools;)
-* A key design feature is that the @gls:gui; asks the users for inputs, which are passed to a single function as arguments - this allows not only separation, but also for other @glspl:gui; (for example iNZight Lite) to connect to the same functions
-* Additionally, those simple wrapper functions can be accessed by beginners not yet ready for the more complex coding required to do the same things
+* \checkmark data/variable manipulation windows each are a single class, which connects to a helper function in another package (usually inside 'iNZightTools' @citep:iNZightTools;)
+* \checkmark A key design feature is that the @gls:gui; asks the users for inputs, which are passed to a single function as arguments - this allows not only separation, but also for other @glspl:gui; (for example iNZight Lite) to connect to the same functions
+* \checkmark Additionally, those simple wrapper functions can be accessed by beginners not yet ready for the more complex coding required to do the same things
+-->
 
+<!--
 \begin{lstlisting}[language=R,caption=A simple reference class window to filter a level of a factor.,label={lst:rc_filter_example}]
 # A simple window to filter a level of a categorical variable
 filterWin <- setRefClass('filterWin',
@@ -48,6 +56,7 @@ filterWin <- setRefClass('filterWin',
     )
 )
 \end{lstlisting}
+-->
 
 * examples:
     * `iNZightTools::smart_read()` imports a dataset based on its extension - user doesn't need to know `read_csv()`, `read_dta()`, etc
@@ -61,13 +70,23 @@ library(kableExtra)
 
 pkgs <- c(
     "iNZight" = 'The main package for the GUI',
-    "iNZightPlots" = 'Provides plot function `inzplot()` along with `inzsummary()` for descriptive statistics and `inzinference()` for inference and hypothesis testing.',
+    "iNZightModules" = "An additional GUI package providing additional modules for the main 'iNZight' program.",
+    "iNZightPlots" = "Provides plot function \\texttt{inzplot()} along with \\texttt{inzsummary()} for descriptive statistics and \\texttt{inzinference()} for inference and hypothesis testing.",
+    "iNZightRegression" = "Plots and summaries of regression models, including from \\texttt{lm}, \\texttt{glm}, and \\texttt{svyglm} objects.",
+    "iNZightTS" = "Time series visualisation, decomposition, and forecasting.",
+    "iNZightMR" = "Visualisation and estimation of multiple response data.",
     "iNZightTools" = 'A suite of helper functions for data process and variable manipulation.'
 )
 tab <- data.frame(Package = names(pkgs), Description = as.character(pkgs))
 knitr::kable(tab, "latex", booktabs = TRUE,
     caption = 'iNZight R package family',
-    label = 'tab:inzight_pkgs') %>%
+    label = 'inzight_pkgs',
+    escape = FALSE) %>%
     column_spec(2, width = "8cm") %>%
     kable_styling(font_size = 8)
 ```
+
+iNZight's code separation has led to an entire family of R packages, which are displayed in @cref:tab:inzight_pkgs;. Most of these packages can be used standalone, and provide simple wrappers for commonly used R workflows, replicating many of the behaviours in *R for Data Science* @citep:Hadley_2017;. Further, most of the functions return the 'tidyverse' @citep:tidyverse; code used behind-the-scences, providing a further stepping stone for users to learn these more complicated code workflows.
+
+
+Returning to the underlying structure, we now get a glimpse of the importance of those early decisions on the future development prospects of 'iNZight'. Using reference classes allows us to add and alter individual components without affecting others, and simultaneously providing a singular interface with an external function. Changes to those functions are automatically inherited by 'iNZight', such as storing of the underlying code. Since the data structure is also itself a reference class object, it can apply methods when a change to the data is triggered, namely looking for attached code and appending that to the code history widget.
