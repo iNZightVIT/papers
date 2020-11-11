@@ -4,28 +4,63 @@ title: Distribution
 
 # Distributing and running iNZight
 
-* effectively just a collection of R packages (our own, plus many dependencies)
-* some on CRAN, others are self-hosted (so windows binaries *are* available)
-* most users are new to statistics/data science, most don't know much/anything about R/computing/programming -> we ship an *all-in-one* installer for Windows
+Deploying software is a difficult process, particularly when your users use a range of operating systems. Fortunately, since iNZight is essentially just a collection of R packages, it's very simple to install since R itself is already distributed for the most popular operating systems. However, many of our users are students with little software knowledge, so a simpler method is necessary. Note also that some of our R packages are not available on CRAN, so we need a way for those to be available also.
+
+
+The first issue is to make the R packages we develop available online. The first choice would be CRAN, and at the time of writing we have [four or five] packages accepted. The main @gls:gui; packages 'iNZight' and 'iNZightModules', however, require a significant amount of work to ensure they adhere to the CRAN repository policies: they mostly center around reading and writing to the disk and saving of users' preferences. An alternative is to self-host the packages, which has two advantages:
+
+1. we can upload packages instantly, and
+2. updates and bug fixes can be released frequently, whereas CRAN suggests limiting updates to every 2--3 months.
+
+We have a cloud-based repository using @gls:aws; at \url{https://r.docker.stat.auckland.ac.nz}. The "docker" component of the URL is there only for historic reasons, and will one day be updated. 
+
+
+Given packages available (details later) we have a distribution system available for Windows allowing users to install iNZight as a standalone program. This works because, on Windows, R can be installed to any directory of choice, and runs without requiring access to any other part of the filesystem. Therefore we bundle the R program, the R package library (including iNZight R package and its dependencies) and several other files to make it possible to launch iNZight via R with a simple double-click.
+
+The build process requires compilation of all the package binaries for Windows, structuring of the iNZightVIT folder, building of the EXE installer, and finally deployment to the server for users to download. GitHub Actions (\url{https://github.com/features/actions}) is a useful automation framework which we now use to automate the entire build and deploy process for 'iNZight'. Using several individual *jobs*, the automation builds the latest package binaries and uploads them---along with the source files---to our R package repository. Then it builds the windows install directory with these binaries, and uses NSIS @citep:nsis; to create an executable windows installer, which is uploaded to the remote server.
+
+Obviously, the CRAN releases are managed manually and less frequently.
+
+<!--
+* \checkmark effectively just a collection of R packages (our own, plus many dependencies)
+* \checkmark some on CRAN, others are self-hosted (so windows binaries *are* available)
+* \checkmark most users are new to statistics/data science, most don't know much/anything about R/computing/programming -> we ship an *all-in-one* installer for Windows
     * single directory containing R, iNZight library
     * plus shortcuts to launch R and auto-start iNZight (using `.Rprofile`)
-* fully automated build:
+* \checkmark fully automated build:
     * single repository and github actions
     * builds source/binary files and uploads to our repository
     * builds installer and uploads to website (uses NSIS)
-* CRAN release is manual (obviously)
+* \checkmark CRAN release is manual (obviously)
+-->
+
 
 ## A note for macOS and Linux users
 
-* GTK support for mac is dead - so we cannot support macOS any longer
-* Linux requires installation of some platform-specific packages (gtk, xorg, etc etc)
-* just like installing any other R package
-* but we do include a build tool to help install and set-up run/update scripts to make launching easier
+iNZight uses GTK as the window management system, however in recent years support for GTK on macOS has been neglected, and so we can no longer provide an official release of iNZight for Mac users. It is, however, possible to compile the necessary package dependencies manually and get it running, but this is not something we expect our users to do.
+
+On Linux, support varies by distribution. Ubuntu, Debian, and Fedora-based systems natively support R, and GTK binaries are available, so it is easy enough to install the dependencies and R packages. However, to help, we provide a simple GNU Make script to install iNZight and create launch scripts, which may be installed onto the system to make `inzight` available from anywhere.
+
+We do provide an online version of iNZight, called iNZight Lite, that provides much of the same functionality but runs in the user's web browser and connects to a remote R server. 
+
+* \checkmark GTK support for mac is dead - so we cannot support macOS any longer
+* \checkmark Linux requires installation of some platform-specific packages (gtk, xorg, etc etc)
+* \checkmark just like installing any other R package
+* \checkmark but we do include a build tool to help install and set-up run/update scripts to make launching easier
 
 ## Manual installation
 
-* install the packages
-* run
+Installing iNZight manually is usually a simple process. On Windows, no dependencies are required beforehand; on macOS and Linux, users must first install GTK and various other platform-dependent dependencies. And R of course. Then it's a matter of starting R and installing from our repository:
+\begin{lstlisting}[language=R]
+install.packages('iNZight', 
+    dependencies = TRUE,
+    repos = c('https://r.docker.stat.auckland.ac.nz', 
+        'https://cran.rstudio.com'),
+    Ncpus = 4L # recommended on Linux
+)
+\end{lstlisting}
+
+Afterwards, iNZight can be run by loading the library and invoking the function of the same name:
 \begin{lstlisting}[language=R]
 library(iNZight)
 iNZight()
