@@ -61,7 +61,7 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
       - name: Install tools
-        run: apt-get install poppler-utils
+        run: sudo apt-get install poppler-utils
       - name: Make PNGs
         run: pdftoppm -png -singlefile 2021_inzight/index.pdf > 2021_inzight.png
       - name: Install rmarkdown, remotes, and the local package
