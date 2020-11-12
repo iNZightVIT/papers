@@ -30,25 +30,28 @@ jobs:
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
         run: Rscript get_deps.R
+      - name: Install pdf tools
+        run: sudo apt-get install poppler-utils
       - name: Build
         env:
           TZ: 'Pacific/Auckland'
         run: |
+          if (!dir.exists("figure")) dir.create("figure")
           d <- getwd()
           dirs <- list.dirs(recursive = FALSE)
           dirs <- dirs[grepl('^\\./[0-9]+.+', dirs)]
           for (dir in dirs) {
             setwd(dir)
             source('build.R')
+            # make png cover
+            cmd <- sprintf(
+              "pdftoppm -png -singlefile %s/index.pdf > figure/%s.png", 
+              dir
+            )
+            system(cmd)
             setwd(d)
           }
         shell: Rscript {0}
-      - name: Install tools
-        run: sudo apt-get install poppler-utils
-      - name: Make PNGs
-        run: |
-          mkdir -p figure
-          pdftoppm -png -singlefile 2021_inzight/index.pdf > figure/2021_inzight.png
       - name: Install rmarkdown
         run: |
           install.packages("remotes")
@@ -60,7 +63,8 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit **/*.pdf figure/** README.md -m "Compile PDFs and update README" || echo "No changes to commit"
+          git add **/*.pdf figure/** README.md
+          git commit -m "Compile PDFs and update README" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
 
