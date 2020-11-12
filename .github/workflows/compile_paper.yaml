@@ -46,7 +46,9 @@ jobs:
       - name: Install tools
         run: sudo apt-get install poppler-utils
       - name: Make PNGs
-        run: pdftoppm -png -singlefile 2021_inzight/index.pdf > 2021_inzight.png
+        run: |
+          mkdir -p figure
+          pdftoppm -png -singlefile 2021_inzight/index.pdf > figure/2021_inzight.png
       - name: Install rmarkdown
         run: |
           install.packages("remotes")
@@ -58,8 +60,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit **/*.pdf -m "Compile PDFs" || echo "No changes to commit"
-          git commit README.md -m 'Re-build README.Rmd' || echo "No changes to commit"
+          git commit **/*.pdf figure/** README.md -m "Compile PDFs and update README" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
 
