@@ -1,0 +1,19 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+# iNZight papers
+
+Code repository for iNZight articles.
+
+Automatic compilation on Github assumes there's a `build.R` script in each subdirectory.
+
+```{r echo=FALSE}
+# convert PDF first pages to PNG
+# list of papers with png + title + authors + abstract
+
+```
+
+![2021_inzight.png](iNZight paper)

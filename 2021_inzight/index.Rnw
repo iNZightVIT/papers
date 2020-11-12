@@ -62,6 +62,10 @@ settings <- yaml::read_yaml('config.yaml')
 
 \maketitle
 
+\begin{abstract}
+\Sexpr{settings$abstract}
+\end{abstract}
+
 % this is where sections will be placed:
 %includes%
 

@@ -49,3 +49,33 @@ jobs:
           git config --local user.name "GitHub Actions"
           git commit **/*.pdf -m "Compile PDFs" || echo "No changes to commit"
           git push origin || echo "No changes to push"
+
+  update_readme:
+    needs: compile-papers
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-tinytex@v1
+      - name: Install tools
+        run: apt-get install poppler-utils
+      - name: Make PNGs
+        run: pdftoppm -png -singlefile 2021_inzight/index.pdf > 2021_inzight.png
+      - name: Install rmarkdown, remotes, and the local package
+        run: |
+          install.packages("remotes")
+          remotes::install_local(".")
+          remotes::install_cran("rmarkdown")
+        shell: Rscript {0}
+      - name: Render README
+        run: Rscript -e 'rmarkdown::render("README.Rmd")'
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit README.md -m 'Re-build README.Rmd' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+
