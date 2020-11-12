@@ -46,7 +46,7 @@ jobs:
             # make png cover
             cmd <- sprintf(
               "pdftoppm -png -singlefile %s/index.pdf > figure/%s.png", 
-              dir
+              dir, dir
             )
             system(cmd)
             setwd(d)
