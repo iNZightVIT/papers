@@ -43,13 +43,13 @@ jobs:
           for (dir in dirs) {
             setwd(dir)
             source('build.R')
+            setwd(d)
             # make png cover
             cmd <- sprintf(
               "pdftoppm -png -singlefile %s/index.pdf > figure/%s.png", 
               dir, dir
             )
             system(cmd)
-            setwd(d)
           }
         shell: Rscript {0}
       - name: Install rmarkdown
@@ -63,9 +63,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add **/*.pdf || echo "No changes to PDF" 
-          git add figure/* || echo "No gigures"
-          git add README.md || echo "No changes to README"
+          git add **/*.pdf figure/* README.md
           git commit -m "Compile PDFs and update README" || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
