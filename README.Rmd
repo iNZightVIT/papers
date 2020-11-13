@@ -16,4 +16,4 @@ Automatic compilation on Github assumes there's a `build.R` script in each subdi
 
 ```
 
-![figure/2021_inzight.png](iNZight paper)
+![iNZight 2021 paper](figure/2021_inzight.png)

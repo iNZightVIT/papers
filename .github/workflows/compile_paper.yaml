@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: Rscript get_deps.R
       - name: Install pdf tools
-        run: sudo apt-get install poppler-utils
+        run: sudo apt-get install poppler-utils texlive-binaries
       - name: Build
         env:
           TZ: 'Pacific/Auckland'
