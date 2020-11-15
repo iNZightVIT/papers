@@ -32,7 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
         run: Rscript get_deps.R
-     - name: Build
+      - name: Build
         env:
           TZ: 'Pacific/Auckland'
         run: |
