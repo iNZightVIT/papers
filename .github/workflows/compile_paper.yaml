@@ -23,6 +23,7 @@ jobs:
       - name: Install system dependencies
         run: sudo apt-get install poppler-utils texlive-binaries scrot libgtk2.0-dev xorg-dev libxml2-dev libnlopt-dev libcurl4-openssl-dev
       - name: Query dependencies
+        uses: GabrielBB/xvfb-action@v1.0
         run: Rscript get_deps.R .github/depends.Rds
       - name: Cache R packages
         uses: actions/cache@v1
@@ -31,8 +32,10 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
+        uses: GabrielBB/xvfb-action@v1.0
         run: Rscript get_deps.R
       - name: Build
+        uses: GabrielBB/xvfb-action@v1.0
         env:
           TZ: 'Pacific/Auckland'
         run: |
@@ -58,6 +61,7 @@ jobs:
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}
       - name: Render README
+        uses: GabrielBB/xvfb-action@v1.0
         run: Rscript -e 'rmarkdown::render("README.Rmd")'
       - name: Commit results
         run: |
