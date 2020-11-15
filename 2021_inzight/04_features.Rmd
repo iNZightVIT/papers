@@ -15,7 +15,7 @@ The first thing most users will want to do is import their data. iNZight provide
 
 Once loaded, iNZight provides several important data operations, allowing users to reshape, filter, and otherwise transform their dataset. Many of these 'workflows' are taken from "R for Data Science" @citep:Wickham_2017;. These basic dataset operations are implemented using packages from the 'tidyverse' @citep:tidyverse;. For each, the @gls:gui; provides an interface with inputs corresponding to various arguments, generating an R code call which is evaluated and stored in the script. In some cases, a preview of the resulting dataset is provided, making it easier for users to investigate the result of different options. FIGUREX shows the reshape data window, allowing users to convert from wide format to long format, which is more useful for plotting.
 
-```{r screenshot-one}
+```{r screenshot-one,echo=FALSE}
 library(iNZight)
 ```
 
