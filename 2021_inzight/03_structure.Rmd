@@ -86,7 +86,7 @@ knitr::kable(tab, "latex", booktabs = TRUE,
     kable_styling(font_size = 8)
 ```
 
-iNZight's code separation has led to an entire family of R packages, which are displayed in @cref:tab:inzight_pkgs;. Most of these packages can be used standalone, and provide simple wrappers for commonly used R workflows, replicating many of the behaviours in *R for Data Science* @citep:Hadley_2017;. Further, most of the functions return the 'tidyverse' @citep:tidyverse; code used behind-the-scences, providing a further stepping stone for users to learn these more complicated code workflows.
+iNZight's code separation has led to an entire family of R packages, which are displayed in @cref:tab:inzight_pkgs;. Most of these packages can be used standalone, and provide simple wrappers for commonly used R workflows, replicating many of the behaviours in *R for Data Science* @citep:Wickham_2017;. Further, most of the functions return the 'tidyverse' @citep:tidyverse; code used behind-the-scences, providing a further stepping stone for users to learn these more complicated code workflows.
 
 
 Returning to the underlying structure, we now get a glimpse of the importance of those early decisions on the future development prospects of 'iNZight'. Using reference classes allows us to add and alter individual components without affecting others, and simultaneously providing a singular interface with an external function. Changes to those functions are automatically inherited by 'iNZight', such as storing of the underlying code. Since the data structure is also itself a reference class object, it can apply methods when a change to the data is triggered, namely looking for attached code and appending that to the code history widget.

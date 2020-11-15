@@ -12,7 +12,7 @@ pkgs <- c(
 pkgs <- unique(pkgs[!is.na(pkgs)])
 
 # ignore:
-pkgs <- pkgs[!pkgs %in% c("iNZight")]
+# pkgs <- pkgs[!pkgs %in% c("iNZight")]
 pkgs <- c(pkgs, "rmarkdown", "knitr")
 
 if (length(ca)) {
@@ -20,5 +20,10 @@ if (length(ca)) {
 } else {
     pkgs <- pkgs[!sapply(pkgs, requireNamespace, quietly = TRUE)]
     if (length(pkgs))
-        install.packages(pkgs)
+        install.packages(pkgs,
+            repos = c(
+                "https://r.docker.stat.auckland.ac.nz",
+                "https://cran.rstudio.com"
+            )
+        )
 }

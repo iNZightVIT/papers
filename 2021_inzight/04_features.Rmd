@@ -4,13 +4,20 @@ title: Features
 
 # Features of iNZight
 
-* Several main groups of functionality:
-    * data manipulation (include specifying survey structure)
-    * variable manipulation
-    * plot control
-    * code history
+At its heart, iNZight is a data visualisation and exploration tool for those users with little to no prior experience with data science or statistics, and who lack the programming demands of more mainstream tools such as Python @citep:python; and R @citep:rcore;. Therefore, many of the main features relate to exploring data through visualisation, with some data manipulation techniques built in, including specification of survey designs which are automatically incoporated into the rest of iNZight. Since many users will likely want to move on to coding, and since iNZight is built with R, we provide the code history for actions the user makes.
+
+
 
 ## Data wrangling
+
+The first thing most users will want to do is import their data. iNZight provides an easy to use *Import Data* window which uses the file extension to detect the file type and provide a preview of the data in the same window. This allows users to quickly see if everything is OK and, if necessary, adjust some of the type-specific options to get it correct. An example of this might be reading european CSV files, which use a semi-colon delimiter instead of a comma.
+
+
+Once loaded, iNZight provides several important data operations, allowing users to reshape, filter, and otherwise transform their dataset. Many of these 'workflows' are taken from "R for Data Science" @citep:Wickham_2017;. These basic dataset operations are implemented using packages from the 'tidyverse' @citep:tidyverse;. For each, the @gls:gui; provides an interface with inputs corresponding to various arguments, generating an R code call which is evaluated and stored in the script. In some cases, a preview of the resulting dataset is provided, making it easier for users to investigate the result of different options. FIGUREX shows the reshape data window, allowing users to convert from wide format to long format, which is more useful for plotting.
+
+```{r screenshot-one}
+library(iNZight)
+```
 
 * uses 'tidyverse' methods and workflows to perform some data transformation
 * all are calls to wrappers inside the 'iNZightTools' package
