@@ -24,7 +24,8 @@ jobs:
         run: sudo apt-get install poppler-utils texlive-binaries scrot libgtk2.0-dev xorg-dev libxml2-dev libnlopt-dev libcurl4-openssl-dev
       - name: Query dependencies
         uses: GabrielBB/xvfb-action@v1.0
-        run: Rscript get_deps.R .github/depends.Rds
+        with:
+          run: Rscript get_deps.R .github/depends.Rds
       - name: Cache R packages
         uses: actions/cache@v1
         with:
@@ -33,28 +34,14 @@ jobs:
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
         uses: GabrielBB/xvfb-action@v1.0
-        run: Rscript get_deps.R
+        with:
+          run: Rscript get_deps.R
       - name: Build
         uses: GabrielBB/xvfb-action@v1.0
         env:
           TZ: 'Pacific/Auckland'
-        run: |
-          if (!dir.exists("figure")) dir.create("figure")
-          d <- getwd()
-          dirs <- list.dirs(recursive = FALSE)
-          dirs <- dirs[grepl('^\\./[0-9]+.+', dirs)]
-          for (dir in dirs) {
-            setwd(dir)
-            source('build.R')
-            setwd(d)
-            # make png cover
-            cmd <- sprintf(
-              "pdftoppm -png -singlefile %s/index.pdf > figure/%s.png",
-              dir, dir
-            )
-            system(cmd)
-          }
-        shell: Rscript {0}
+        with:
+          run: Rscript -e build_papers.R
       - name: Install rmarkdown
         run: |
           install.packages("remotes")
@@ -62,7 +49,8 @@ jobs:
         shell: Rscript {0}
       - name: Render README
         uses: GabrielBB/xvfb-action@v1.0
-        run: Rscript -e 'rmarkdown::render("README.Rmd")'
+        with:
+          run: Rscript -e 'rmarkdown::render("README.Rmd")'
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
