@@ -41,7 +41,7 @@ jobs:
         env:
           TZ: 'Pacific/Auckland'
         with:
-          run: Rscript -e build_papers.R
+          run: Rscript build_papers.R
       - name: Install rmarkdown
         run: |
           install.packages("remotes")
