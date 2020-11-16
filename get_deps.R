@@ -24,6 +24,7 @@ if (length(ca)) {
             repos = c(
                 "https://r.docker.stat.auckland.ac.nz",
                 "https://cran.rstudio.com"
-            )
+            ),
+            dependencies = TRUE
         )
 }
