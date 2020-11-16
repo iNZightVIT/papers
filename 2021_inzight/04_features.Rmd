@@ -39,9 +39,9 @@ if (R.Version()$os == "linux-gnu") {
 * the interface allows users to manipulate arguments to the wrapper function - reactive in some cases (i.e., inputs appear/disappear or change values based on previous inputs)
 * in many cases, a preview is displayed to help with what can be complex actions, e.g.
 
-Complimentary to the dataset operations are *variable manipulations*, allowing users to modify individual variables in the data. For example, simple transformations (log, square-root) to renaming or reordering levels of a categorical variable, each has its own interface window that interfaces with 'tidyverse' code to perform the operations. And, if the operation you want is not available, you can specify a custom command to create a new variable.
+As well as the dataset operations are *variable manipulations*, allowing users to modify individual variables in the data. For example, simple transformations (log, square-root) to renaming or reordering levels of a categorical variable, each has its own interface window that interfaces with 'tidyverse' code to perform the operations. And, if the operation you want is not available, you can specify a custom command to create a new variable.
 
-
+The goal of these features is to allow users to import a range of data sets in a range of formats and convert them into a form useful for plotting---that is, *tidy format* @citep:Wickham_2017;, where each row contains a single set of observations about an individual.
 
 
 ## Graphics and simple data analyses
