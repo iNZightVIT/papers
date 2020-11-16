@@ -21,6 +21,13 @@ ui <- iNZGUI$new()
 ui$initializeGui(census.at.school.500)
 Sys.sleep(5) # wait for it to do its thing
 
+cmd <- sprintf(
+    "scrot --focused '%s' -e 'mv $f %s'",
+    "inzight_main.png",
+    "figure/"
+)
+system(cmd)
+
 ui$close()
 ```
 
