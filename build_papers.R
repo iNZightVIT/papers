@@ -6,7 +6,6 @@ for (dir in dirs) {
     setwd(dir)
     source("build.R")
     setwd(d)
-    if (!dir.exists("figure")) dir.create("figure")
     # make png cover
     cmd <- sprintf(
         "pdftoppm -png -singlefile %s/index.pdf > figure/%s.png",
