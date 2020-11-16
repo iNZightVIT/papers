@@ -66,7 +66,7 @@ build_tex_from_rmd <- function(file, extra_pkgs = NULL) {
 
 build <- function() {
     # these pkgs are already in rmd->tex
-    skip_pkgs <- c("hyperref")
+    skip_pkgs <- c("hyperref", "graphicx")
 
     x <- readLines("index.Rnw")
     pkgs <- grep("\\usepackage", x, fixed = TRUE)
