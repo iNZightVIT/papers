@@ -46,6 +46,12 @@ The goal of these features is to allow users to import a range of data sets in a
 
 ## Graphics and simple data analyses
 
+The foremost tool in iNZight's inventory is graphics, which are chosen automatically based on the users's chosen variables. For example, a numeric variable is displayed to the user as a dot plot or, if there are more than 5000~observations, a histogram, without the user needing to choose this first. A factor (refered to within iNZight as *categorical*) shows as a bar graph. This means the user focusses on exploring the data without the need to first *understand* the data.
+
+In many other data analysis programs, graphs are created by the user first selecting the *type* of graph to display, and then choosing the variable. In an explorative sense, this makes little sense, as for example a variable called "age" might be numeric *or* categorical (for example age groups).
+
+
+
 * all powered by 'iNZightPlots' functions
     * `inzplot()` for graphics
     * `inzsummary()` for simple summary information
@@ -113,5 +119,3 @@ cat(code(data.filtered))
 * also a newer add-on system allowing anyone to write new modules for iNZight (added manually or through our github-hosted repository)
 * easier/faster to maintain/update
 * useful for e.g., teachers of a specific course
-
-
