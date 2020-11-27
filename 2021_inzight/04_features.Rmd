@@ -48,7 +48,28 @@ The goal of these features is to allow users to import a range of data sets in a
 
 The foremost tool in iNZight's inventory is graphics, which are chosen automatically based on the users's chosen variables. For example, a numeric variable is displayed to the user as a dot plot or, if there are more than 5000~observations, a histogram, without the user needing to choose this first. A factor (refered to within iNZight as *categorical*) shows as a bar graph. This means the user focusses on exploring the data without the need to first *understand* the data.
 
-In many other data analysis programs, graphs are created by the user first selecting the *type* of graph to display, and then choosing the variable. In an explorative sense, this makes little sense, as for example a variable called "age" might be numeric *or* categorical (for example age groups).
+In many other data analysis programs, graphs are created by the user first selecting the *type* of graph to display, and then choosing the variable. In an explorative sense, this makes little sense, as for example a variable called "age" might be numeric *or* categorical (for example age groups). The basic types of graphs available in 'iNZight' are shown in TABLEX, in which "large sample" alternatives are used when sample sizes exceed `r iNZightPlots::inzpar()$large.sample.size - 1L`.
+
+```{r inz_plottypes,echo=FALSE}
+plot_types <- rbind(
+    c("Numeric", "", "dot plot", "histogram"),
+    c("Numeric", "Categorical", "dot plot", "histogram"),
+    c("Numeric", "Numeric", "scatter plot", "hexbin plot"),
+    c("Categorcal", "", "bar graph", "bar graph"),
+    c("Categorical", "Categorical", "bar graph", "two-way bar graph"),
+    c("Categorical", "Numeric", "dot plot", "histogram")
+)
+colnames(plot_types) <- c("Variable 1", "Variable 2", "Default plot", "Large-sample plot")
+
+library(kableExtra)
+knitr::kable(plot_types, "latex",
+    booktabs = TRUE,
+    caption = 'iNZight default plot types',
+    label = 'inz_plottypes',
+    escape = FALSE) %>%
+    # column_spec(2, width = "8cm") %>%
+    kable_styling(font_size = 8)
+```
 
 
 
