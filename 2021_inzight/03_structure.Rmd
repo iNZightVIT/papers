@@ -14,7 +14,7 @@ Within the R system there are several @gls:oop; implementations, however we chos
 
 To separate form from function, methods that perform actions on the data or generate output for the user call functions in other packages. The interface allows users to specify values for the object's fields, and either automatically or by clicking a button call the methods which compile the fields and pass them to an external function. For example, an Import data window might take the file chosen by the user and pass it to `iNZightTools::smart_read()`, a function in the 'iNZightTools' package @citep:iNZightTools; which acts as a wrapper for several other data import functions. In this way, the interface does not need to know anything about the data type it is loading: it only collects information from the user and passes it to another function. An early advantage of this was the creation of 'iNZight Lite', an 'shiny'-based alternative to the desktop version of 'iNZight' which can run in a user's browser. In this case, both of the @glspl:gui; collect information from the user---potentially in a different way---and pass it to the external function. This way, the result returned (given the same input) will be the same across implementations of 'iNZight'.
 
-A further advantage of the code-separation is that it provides the opportunity of a "stepping stone" between using the @gls:gui; and coding directly in R using specialised packages and functions. Rather than learning all of the different data import functions in a range of packages (such as 'readr' @citep:readr;, 'readxl' @citep:readxl, or 'foreign' @citep:foreign;) they need only learn one function `smart_read()` to import CSV, Excel, SPSS, Stata, or SAS files.
+A further advantage of the code-separation is that it provides the opportunity of a "stepping stone" between using the @gls:gui; and coding directly in R using specialised packages and functions. Rather than learning all of the different data import functions in a range of packages (such as 'readr' @citep:readr;, 'readxl' @citep:readxl;, or 'foreign' @citep:foreign;) they need only learn one function `smart_read()` to import CSV, Excel, SPSS, Stata, or SAS files.
 
 <!--
 * \checkmark Many of the features come from design-flexibility
@@ -70,7 +70,7 @@ library(kableExtra)
 
 pkgs <- c(
     "iNZight" = 'The main package for the GUI',
-    "iNZightModules" = "An additional GUI package providing additional modules for the main 'iNZight' program.",
+    "iNZightModules" = "An additional GUI package providing additional modules for the main `iNZight' program.",
     "iNZightPlots" = "Provides plot function \\texttt{inzplot()} along with \\texttt{inzsummary()} for descriptive statistics and \\texttt{inzinference()} for inference and hypothesis testing.",
     "iNZightRegression" = "Plots and summaries of regression models, including from \\texttt{lm}, \\texttt{glm}, and \\texttt{svyglm} objects.",
     "iNZightTS" = "Time series visualisation, decomposition, and forecasting.",

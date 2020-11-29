@@ -22,6 +22,7 @@ settings <- yaml::read_yaml('config.yaml')
 \usepackage{multirow}
 \usepackage{calc}
 \usepackage{graphicx}
+\usepackage[export]{adjustbox}
 
 \usepackage[acronym]{glossaries}
 \makeglossaries
