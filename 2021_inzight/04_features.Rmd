@@ -48,7 +48,7 @@ The goal of these features is to allow users to import a range of data sets in a
 
 The foremost tool in iNZight's inventory is graphics, which are chosen automatically based on the users's chosen variables. For example, a numeric variable is displayed to the user as a dot plot or, if there are more than 5000~observations, a histogram, without the user needing to choose this first. A factor (refered to within iNZight as *categorical*) shows as a bar graph. This means the user focusses on exploring the data without the need to first *understand* the data.
 
-In many other data analysis programs, graphs are created by the user first selecting the *type* of graph to display, and then choosing the variable. In an explorative sense, this makes little sense, as for example a variable called "age" might be numeric *or* categorical (for example age groups). The basic types of graphs available in 'iNZight' are shown in @cref:tab:inzplottypes;. \Cref:tab:inzplotlarge; shows "large sample" alternatives which are used when sample sizes exceed `r iNZightPlots::inzpar()$large.sample.size - 1L`.
+In many other data analysis programs, graphs are created by the user first selecting the *type* of graph to display, and then choosing the variable. In an explorative sense, this makes little sense, as for example a variable called "age" might be numeric *or* categorical (for example age groups). The basic types of graphs available in 'iNZight' are shown in @cref:tab:inzplottypes;. @Cref:tab:inzplotlarge; shows "large sample" alternatives which are used when sample sizes exceed `r iNZightPlots::inzpar()$large.sample.size - 1L`. The three basic plot types are *bar charts* for exploring categorical variables, *dot plots* for exploring a single numeric variable (and possibly its relationship with another categorical variable), and *scatter plots* for exploring the relationships between two numeric variables. *Histograms* are are more useful way of exploring the distribution of values a numeric variable takes when the sample size is large (that is, seeing individual points is no longer useful, nor aesthetically pleasing), while *hexagonally binned plots* are used to replace scatter plots in the same situation, allowing users to see where the bulk of points are located. Of course, this is not the only way to look at large data, which I will get to shortly.
 
 ```{r inzplottypes,echo=FALSE,message=FALSE,warning=FALSE,results='asis'}
 library(iNZightPlots)
@@ -131,21 +131,61 @@ knitr::kable(plot_large, "latex",
     escape = FALSE)
 ```
 
+Another way of exploring relationships is by *subsetting* or *faceting*, which is easily accessed and indeed encouraged from the iNZight interface. The two subsetting variable slots allow users to subset the plot, which presents a slider to look at individual levels of the chosen variable, as shown in @cref:fig:subsetslider;. This is particularly advantageous to exploring trends *over time*, as users can use the "Play" button and watch as iNZight automatically plays over the range of levels (which might be "years" in a longitudinal dataset). This use of motion to explore trends in the data over time was most famously demonstated by @citet:Rosling_2010; in his BBC documentary "The Joy of Stats". However, time is not the only useful subsetting variable: many other categorical variables are often important when exploring relationships in a dataset, for example age and ethnicity.
+
+
+Of course, there is only so much one can learn from subsetting, and often more advanced visualisation techniques are required. For this, iNZight provides the *Add to Plot* system, which displays a list of options for the user to adjust, and most importantly only those related to the current plot. The most notable feature is *colour*, which can either be set to a single colour or, more usefully, coded to another variable in the dataset. This panel is also reactive, so a user's choices will open up some new options (or remove others), allowing them to explore the possibilities offered without having problems (for example trying to colour a bar chart by a numeric variable). Other codable features include *point size* and *point shape* (useful for printed media or for colourblind audiences).
+
+Other options under the *Add to Plot* system include adjusting axes (by adding transformations or changing labels), adding additional information to specific plots (trend lines and smoothers to scatter plots, for example), and *locating points*. The last of these is an essential part of data exploration: often we want to explore outliers or else identify a specific point in the data. iNZight allows users to use a *point-and-click* identification method to highlight and label specific points, which are retained in future plots (so an individual can be tracked over different variables to explore them in detail), or points can be identified contextually, either by their specific value, or as an "extreme" value.
+
+Since switching variables often results in a change of plot, iNZight remembers most settings (for example *colour*) so those variables remain visible in the dataset. This makes it easy to explore, for example, the effect of ethnicity on other variable relationships. Since some plots do not handle all arguments, iNZight only uses those that do: for example, switching to a two-way bar plot, the "colour" variable would be ignored without being forgotten; changing back to, say, a scatter plot reactivates the colour variable.
+
+<!--
 * all powered by 'iNZightPlots' functions
     * `inzplot()` for graphics
     * `inzsummary()` for simple summary information
     * `inzinference()` for inferencial information and hypothesis testing
 * uses the variable type(s) to choose the graph type. Figure x shows the available graph types
 * subsetting by 1 or 2 variables is possible/easy/emphasized
-    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; @citep:Rosling2010;)
+    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; @citep:Rosling_2010;)
 * plot features: specific to plot type, users only see what's relevant
 * some features (such as colour by) might apply to different plot types (scatter and dot plot, for example) and so selection is retained when switching between these plot types
+-->
 
+
+Visually assessing relationships in the dataset is generally the first step in a more in-depth analysis, and often we find that what we thought was an effect is actually not significant. iNZight provides some simple *visual inferencial markup*
+to plots that provide a visual way of exploring if a particular relationship might actually be there, or is simply a function of randomness. For example, a bar chart often hides the underlying population size, so the significance of differences in bar height is not obvious. By adding error bars, however, we can begin to make inferential calls about those differences. Another example is the trend line on a scatter plot: the sample estimate might display an upwards trend, but this may be affected by just a few points. By adding a sample of *bootstrap trend curves*, as shown in @cref:fig:scatter_bs_trend;, we can assess how *real* this relationship might be.
+
+```{r scatter_bs_trend,echo=FALSE,fig.height=5,fig.width=6,out.width="0.8\\textwidth",fig.cap="A scatter plot with a linear trend, showing a bootstrap sample of trend curves.",fig.align="center"}
+inzplot(armspan ~ height, data = census.at.school.500, trend = "linear", bs.inference = TRUE)
+```
+
+Another type of *visual inference* iNZight offers is *comparison intervals*, estimated using the 'iNZightMR' package @citep:iNZightMR;. These intervals provide adjusted intervals designed primarily for visual comparison. In the two-way bar chart shown in @cref:fig:barchart_comp;, the *within group* comparison intervals can be interpreted as "if the intervals do not overlap, then for a particular level of 'travel' there may be a different between the proportions for each 'gender'"; in the figure, the appears to be a difference between the proportion of males and females who travel by bike, but otherwise the distribution of travel is the same. It is important to note that these *are not* confidence intervals: they account for multiple comparisons and the covariance between variables.
+
+```{r barchart_comp,echo=FALSE,fig.height=5,fig.width=6,out.width="0.8\\textwidth",fig.cap="A two-way bar chart with comparison intervals.",fig.align="center"}
+inzplot(travel ~ gender, data = census.at.school.500, inference.type = "comp")
+```
+
+<!--
 * inferencial markup of plots
     * normal theory error bars/curves
     * or bootstrap alternative
     * "Comparison intervals" are a way of visually assessing differences - only shown on differences *that should be compared* - bar plot example
     * an approximate tukey thing? details needed here ('iNZightMR' package)
+-->
+
+Having done as must visual exploration as iNZight provides, it is likely that some numerical information might be desired. For example, when discussing the data it is useful to have summary statistics, such as the mean or quantiles. iNZight provides a "Get Summary" button, which provides a simple summary of the currently displayed graph. Like the plots, the types of summaries depends on the chosen variable(s) and, in some cases, additional features (scatter plots provide extra information about the basic relationship of any fitted trend lines, for example). The primary use is to extract values from the graph, with a few extra variables (such as variance) which are considered simple summaries. The philosophy remains "look first". A simple summary of a dotplot is given in @cref:fig:dot_summary;.
+
+```{latex,results="asis"}
+\begin{figure}
+{\centering
+\includegraphics[width=0.8\textwidth]{figure/dot_summary.png}
+}
+\caption{The Get Summary window for a numeric variable ('height').}\label{fig:dot_summary}
+\end{figure}
+```
+
+Once visual and numeric exploration has been complete, we turn
 
 * summary information
     * a simple numeric summary *of the current plot* (philosophy: look first)
