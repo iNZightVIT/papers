@@ -176,16 +176,13 @@ inzplot(travel ~ gender, data = census.at.school.500, inference.type = "comp")
 
 Having done as must visual exploration as iNZight provides, it is likely that some numerical information might be desired. For example, when discussing the data it is useful to have summary statistics, such as the mean or quantiles. iNZight provides a "Get Summary" button, which provides a simple summary of the currently displayed graph. Like the plots, the types of summaries depends on the chosen variable(s) and, in some cases, additional features (scatter plots provide extra information about the basic relationship of any fitted trend lines, for example). The primary use is to extract values from the graph, with a few extra variables (such as variance) which are considered simple summaries. The philosophy remains "look first". A simple summary of a dotplot is given in @cref:fig:dot_summary;.
 
-```{latex,results="asis"}
 \begin{figure}
-{\centering
+\centering
 \includegraphics[width=0.8\textwidth]{figure/dot_summary.png}
-}
-\caption{The Get Summary window for a numeric variable ('height').}\label{fig:dot_summary}
+\caption{The ``Get Summary'' window for a numeric variable (`height').}\label{fig:dot_summary}
 \end{figure}
-```
 
-Once visual and numeric exploration has been complete, we turn
+Once visual and numeric exploration has been complete, the next step is often to pose and test hypotheses. Again, iNZight provides this functionality through the simple "Get Inference" button, and works similarly to "Get Summary", but with a few slight differences. The type of inference information and hypothesis tests available depend on the chosen variables, though users are also presented with some controls to specify information about their hypothesis. Additionally, *bootstrap inference* is provided which uses bootstrap sampling using the 'boot' package @citep:boot; to obtain inferences. The basic inferences include confidence intervals for most parameters, as well as $p$-values of differences (in a two-way table of counts, for example).
 
 * summary information
     * a simple numeric summary *of the current plot* (philosophy: look first)
