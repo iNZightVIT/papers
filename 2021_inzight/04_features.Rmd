@@ -221,6 +221,11 @@ This concludes the main functionality of iNZight for beginners: the ablity to lo
 
 ## Saving code history
 
+As a statistics and data science learning tool, iNZight not only provides a way to learn data explorationg and visualisation, but also has begun a process of teaching basic coding through provision of R code scripts and snippets. All of iNZight's functionality is driven by calls to R functions, for which we can save the code for users to view later. This provides two things: first, a 'transcript' of a user's session, which is an essential part of *reproducible research* and allows sharing of their results; second it provides them with a script they can copy, paste, and edit to run in their own R session.
+
+The code history script is a simple method of providing code, but it lacks *interactivity*. However, the latest version of iNZight (4.0.0) introduces a (developmental) "code widget" which gives the R code for the current plot. This has a bi-directional link with the @gls:gui;: when the user changes settings in the @gls:gui;, the code updates to reflect the change; but also if the user chooses to modify the *code* and run it, then the @gls:gui; controls are updated. This allows users to get a feel for writing code and setting how it affects the result.
+
+
 * many functions (the wrappers) generate code and attach it to their result
 \begin{lstlisting}[language=R]
 data.filtered <- iNZightTools::filterData(iris, "Species", "Setosa")
