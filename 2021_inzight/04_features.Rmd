@@ -184,12 +184,39 @@ Having done as must visual exploration as iNZight provides, it is likely that so
 
 Once visual and numeric exploration has been complete, the next step is often to pose and test hypotheses. Again, iNZight provides this functionality through the simple "Get Inference" button, and works similarly to "Get Summary", but with a few slight differences. The type of inference information and hypothesis tests available depend on the chosen variables, though users are also presented with some controls to specify information about their hypothesis. Additionally, *bootstrap inference* is provided which uses bootstrap sampling using the 'boot' package @citep:boot; to obtain inferences. The basic inferences include confidence intervals for most parameters, as well as $p$-values of differences (in a two-way table of counts, for example).
 
-* summary information
-    * a simple numeric summary *of the current plot* (philosophy: look first)
-* inference information
-    * again, default inferences *of the current plot*
-    * both normal and bootstrap options
-    * gives a list of relevant hypothesis tests (cf. other software which requires you to decide on hypothesis test first)
+The choices of hypothesis test depend also on the variable types. For a sole numeric variable, a one-sample *t*-test is available in which the hypothesis value can be specified, and either a one- or two-sided test carried out. \Cref{tab:hypothesis-tests} shows the types of hypothesis tests available from iNZight.
+
+```{r hypothesis-tests,echo=FALSE,results='asis',message=FALSE,warning=FALSE}
+tab <- cbind(
+    c('numeric', 'categorical', ''),
+    c('', '2 levels', '2+ levels'),
+    c('t-test$^1$', 'single proportion', '$\\chi^2$-test$^2$'),
+    c('--', 't-test$^3$', 'ANOVA'),
+    c('t-test$^3$', '$\\chi^2$-test$^{4,5}$', '$\\chi^2$-test$^4$'),
+    c('ANOVA', '$\\chi^2$-test$^{4,5}$', '$\\chi^2$-test$^4$')
+)
+kable(tab,
+    "latex",
+    booktabs = TRUE,
+    caption = 'iNZight hypothesis test options. ',
+    label = 'hypothesis-tests',
+    # align = "center",
+    escape = FALSE) %>%
+    add_header_above(c('', '', 'NULL', 'numeric', '2 level cat', '2+ level cat')) %>%
+    add_header_above(c("Variable 1" = 2L, "Variable 2" = 4L)) %>%
+    add_footnote(
+        c(
+            'One-sample',
+            'Equal proportions',
+            'Two-sample',
+            'Equal distributions',
+            'Additionally includes epidemiological output such as odds and risk ratios.'
+        ),
+        'number', threeparttable = TRUE) %>%
+    kable_styling(font_size = 8)
+```
+
+This concludes the main functionality of iNZight for beginners: the ablity to load a data set and instantly view graphs and summary information, and perform hypothesis tests without having to understand how these fit together. iNZight provides a platform with with learners can explore on their own, and learn as they go.
 
 
 ## Saving code history
