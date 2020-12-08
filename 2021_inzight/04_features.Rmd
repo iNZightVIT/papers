@@ -226,16 +226,34 @@ As a statistics and data science learning tool, iNZight not only provides a way 
 The code history script is a simple method of providing code, but it lacks *interactivity*. However, the latest version of iNZight (4.0.0) introduces a (developmental) "code widget" which gives the R code for the current plot. This has a bi-directional link with the @gls:gui;: when the user changes settings in the @gls:gui;, the code updates to reflect the change; but also if the user chooses to modify the *code* and run it, then the @gls:gui; controls are updated. This allows users to get a feel for writing code and setting how it affects the result.
 
 
-* many functions (the wrappers) generate code and attach it to their result
+### Saving an R script
+
+All of iNZight's methods call functions in other packages, many of which are themselves 'wrapper' functions. As an example, the Filter Data window in iNZight calls to the `filterData()` function in the 'iNZightTools' package @citep:iNZightTools;, which returns the 'tidyverse' @citep:tidyverse; code used to perform the filtering steps. The code is extracted as follows:
 \begin{lstlisting}[language=R]
 data.filtered <- iNZightTools::filterData(iris, "Species", "Setosa")
 cat(code(data.filtered))
 # iris %>% dplyr::filter(Species == "Setosa")
 \end{lstlisting}
 
-* the iNZight GUI stores the attached code after each action and appends it to the R history 'script'
-* provides a record of what was done
-* helps students interested in continuing data science/statistics to get familiar with code before writing it themselves (can copy+paste and modify, for example)
+The iNZight @gls:gui; simply fetches the code attached to each command it calls and appends it to the R history script. One main advantage of this, particularly using wrapper functions, is that the @gls:gui; does not need to know anything about the code---only that it exists. Therefore, improvements or changes could be made to the wrapper function, and these would be reflected in the resulting script without any changes to the @gls:gui;.
+
+
+### Live code editing
+
+A more complex relationship exists between the 'code panel' widget, visible by turning on developmental features from the preferences menu. This module is displayed at the bottom of the window, as shown in @cref:fig:code_panel;. Changing the configuration from the variables or the Add to Plot panel will update the code automatically, and vice verca.
+
+\begin{figure}
+\centering \includegraphics[width=\textwidth]{figure/code_panel.png}
+\caption{The code panel shown at the bottom of the iNZight window describes all of the user's chosen settings for the current graph.}
+\label{fig:code_panel}
+\end{figure}
+
+To make this work, iNZight stores all of its settings in a single `list()`, in which each item corresponds to an argument passed to the `inzplot()` function (in the 'iNZightPlots' package @citep:iNZightPlots;). From the `defaults()` function, we can obtain the list of 'default' values, and remove those settings that the user has not changed. These are then parsed together to construct the code call.
+
+The reverse involves a little more work, since the code call needs to be converted into a `list()` object first. Then, it is compared to the current list and any changes are converted into actions in the interface. For example, if the user changes the value of `g1.level` in @cref:fig:code_panel;, the value of the slider will be adjusted accordingly after comparing the change to the settings list.
+
+The limitation of this approach is that it only works for the `inzplot()` function, and only accepts arguments the @gls:gui; has been coded to handle (any extra arguments are simply ignored). However, it does provide a very simple, elegant interface for users already familiar with 'iNZight' to begin exploring how code works.
+
 
 ## Analysing surveys with iNZight
 
