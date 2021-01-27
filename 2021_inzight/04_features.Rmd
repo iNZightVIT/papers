@@ -257,12 +257,29 @@ The limitation of this approach is that it only works for the `inzplot()` functi
 
 ## Analysing surveys with iNZight
 
-* survey data:
-    * iNZight gets told once, and everything else 'just works'
-    * plots use survey methods and alternative plot types (histogram vs dotplot; hex bin plot vs scatter plot)
-    * summary/inference all use survey methods to obtain summaries/inferences/hypothesis tests
+Survey data is common in official statistics, and has been fully integrated into 'iNZight' to allow researchers to explore data from surveys with as much ease as they would standard data. To do so, 'iNZight' requires the survey information to be specified once, at which point all future actions will be performed using the survey design. This includes graphics, summaries and inference, data manipulation, and code writing. The most common survey structures are supported: stratified and cluster based surveys, replicate weights, as well as post-stratification or calibration of surveys using additional data.
 
-* supports strata/cluster based survey designs, replicate weights, and post-stratification
+
+There are three ways of specifying survey information to 'iNZight'. The first uses a simple dialog window asking the user to input the information manually, as shown in @cref:fig:survey_spec;. This allows users to specify the design of a survey if they already know it, and provides a straightforward interface to do so. However, it does make it difficult for learners and researchers not as familiar with the design to get started with their exploration. To get around this, we added two new methods for specifying survey information from a separate file.
+
+\begin{figure}
+\centering \includegraphics[width=0.6\textwidth]{figure/survey_spec.png}
+\caption{Specifying survey information in the survey specification window.}
+\label{fig:survey_spec}
+\end{figure}
+
+The first of the two methods again uses the survey specification window, but allows users to locate a pre-configured file containing the survey design information in a specific format. 'iNZight' reads this file and applies the information to the existing dataset. The last method makes it even simpler, and only requires users to import one single file: the survey design specification (so long as the data is in the same directory). This is imported through 'iNZight's standard "Import Data" interface, and automatically loads the data and sets up the design all in one single step.
+
+some stuff about the format of the survey spec file.
+
+
+Having specified survey design information, users will, in most situations, not have to worry about any other changes to their iNZight workflow. Graphs will automatically take into account the survey information, summaries and inferences will too. Even data manipulation switches over to survey-counterparts, and the code written to the R script remains valid.
+
+
+Behind the scenes, iNZight passes around a survey object, which external helper functions (in the 'iNZightTools' package, for example) can expect. Many of the manipulation methods use functionality from the 'srvyr' package @citep:srvyr; to provide 'dplyr'-like syntax @citep:dplyr;, and minimises special handling of survey data. In cases where the syntax is not possible, we simply use `update()` to add, manipulate, or remove variables within the survey design.
+
+When iNZight recieves a new survey design object, it extracts the data and displays this to the user. In this way, iNZight can natively pass survey objects around any displays the information accordingly.
+
 
 
 ## Other modules
