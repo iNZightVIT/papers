@@ -284,21 +284,20 @@ When iNZight recieves a new survey design object, it extracts the data and displ
 
 ## Other modules
 
-* A suite of other (fixed) modules for analying/exploring special types of data
-    * time series
-    * multiple response
-    * maps
-* or for doing specific tasks
-    * model fitting
+The main iNZight window focusses on simple exploration and analysis of a standard dataset. However, there are many situations where a dataset may have unique features (such as time series or map data) or a user might want to perform some more complex operations (model fitting, for example). Rather than attempting to integrate these into the main iNZight program---which would quickly become unwieldy---we created individual *modules*, accessible from the **Advanced** menu. Here, we overview the structure of these modules, and demonstrate a few of them.
 
-* each is its own "reference class" object connecting to one (or more) functions in another package
-    * time series -> 'iNZightTS'
-    * multiple response -> 'iNZightMR'
-    * maps -> 'iNZightMaps'
-    * model fitting -> 'iNZightRegression'
-* these are mostly wrappers to other functions, or modified versions -> made to work as 'standalone' packages (i.e., without iNZight)
-* not fully implemented, but making progress towards modules also code-writing
 
-* also a newer add-on system allowing anyone to write new modules for iNZight (added manually or through our github-hosted repository)
-* easier/faster to maintain/update
-* useful for e.g., teachers of a specific course
+### The structure of iNZight's modules
+
+Similarly to the components discussed in \cref{an-overview-of-inzights-structure}, each of the modules is itself a Reference Class object, contained within the 'iNZightModules' packages @citep:iNZightModules;. These modules are able to call a helper function of the main GUI object, allowing them to replace the left-hand-side control panel.
+
+Each module is designed with a singular data type or statistical method in mind. For example, the *Time Series* module requires time-based data, and provides functionality to draw, decompose, and forecast time series data. Being a *child* of the main GUI, these modules have access to the dataset imported by the user, as well as the ability to change the menu items and plot toolbar to add custom buttons.
+
+Module layout is typically constructed in the same way an analysis script might be, from top to bottom. The user starts out be choosing variables of interest, or providing necessary information (such as a time variable) to the module. Then, new options are activated, logically stepping the user through the process of exploring their data. In some, such a the Model Fitting module, various sections of the interface are containing within expandable frames to keep the interface uncluttered. However, firmly at the center of all the modules, is *graphics*: a plot is displayed as soon as possible, and updated as the user changes various inputs.
+
+Within each module, there are usually one or two calls to external 'wrapper functions', either other packages maintained by the 'iNZight' team (for example, the Time Series module calls functions in the 'iNZightTS' package), or elsewhere. These packages are, however, also designed to be standalone packages, once again in an attempt to bridge the gap between high- and low-level code. These packages provide simple wrappers for some complex actions, which are user-visible and may, in time, be accessible through the interface (similarly to the plot code in the main iNZight interface).
+
+
+Updating modules within a package is a drawn-out process, and requires the package maintainer to sort out updates and release. To this, we recently began trialing a new "Add-on" system, allowing individual modules (each a single R file containing a reference class object) to be added, updated, and removed as needed. In this way, individuals---be it members of the 'iNZight' team, teachers of various statistics courses, or researchers---can develop their own modules and install these into iNZight. By using Github pull requests, they may have their work integrated into the 'official' iNZight addon repository, or they can distribute a file to their users who can install the module from a local file. This kind of structure is seen in many other programs, for example Excel and Notepad++ @citep:cn;.
+
+One exciting new addon being developed is the 'Bayesian demographic modelling' module, which connects to a set of packages used to perform the type of analysis used by @cite:Zhang_2019;. This work will provide small communities, demographics, and nations to explore and analyse their own data using a tool with which they are either already familiar, or has a very easy learning curve: iNZight.
