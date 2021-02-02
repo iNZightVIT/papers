@@ -298,6 +298,66 @@ Module layout is typically constructed in the same way an analysis script might 
 Within each module, there are usually one or two calls to external 'wrapper functions', either other packages maintained by the 'iNZight' team (for example, the Time Series module calls functions in the 'iNZightTS' package), or elsewhere. These packages are, however, also designed to be standalone packages, once again in an attempt to bridge the gap between high- and low-level code. These packages provide simple wrappers for some complex actions, which are user-visible and may, in time, be accessible through the interface (similarly to the plot code in the main iNZight interface).
 
 
+### Built-in modules
+
+iNZight is shipped with several advanced modules, detailed below. These provide visualisation and analysis functionality for some common data types and processes(?). Here we give a quick overview of the functionality provided by each.
+
+
+#### Time Series
+
+A common type of data available, and of interested, to users is time series data, so of course iNZight provides a module dedicated to visualising these types of data. When loaded, the module attempts to detect a 'time' variable, and otherwise asks the user to provide one. Alternatively, users may manually provide time information, for example if the information is not available or formatted incorrectly. Once done, iNZight displays a graph of the first variable in the dataset over time, as shown using the "Quarterly New Zealand visitors" data in @cref:fig:ts_visitors;.
+
+\begin{figure}
+\centering \includegraphics[width=\textwidth]{figure/ts_visitors.png}
+\caption{Visitors data.}
+\label{fig:ts_visitors}
+\end{figure}
+
+Users can choose between multiplicative (the default) and additive models, and have prominent control over the 'smoothness' of the trend line. This allows users to see how results can change based on the level of smoothing. The available variables are presented, and can either be displayed one-at-a-time, or multiple-selected to compare series. The @gls:stl; algorithm @citep:Cleveland_1990; is used to provide the decomposition and seasonal graphs, and Holt-Winters' algorithm @citep:Holt_2004,Winters_1960; is used for forecasting.
+
+
+
+#### Multiple Response
+
+A seldom discussed data type is *multiple response*, which typically come from surveys with 'tick all that apply' type answers. The 'iNZightMR' package @citep:iNZightMR; provides methods for analysing these types of data, such as calculating the proportion of responses in each category with the correct standard errors. The *Multiple Response* module connects to the aforementioned package, and when loaded presents the user with a list of 'binary' variables in the dataset (that is, with a 0/1 or 'yes'/'no' value). These can be multiple-selected and a graph is displayed.
+
+In the example of @cref:fig:mr_tech;, the responses of students to a questionnaire about what technologies they have used is shown, subset by age and gender. The error bars account for multiple responses, and the horizontal yellow lines are 'comparison intervals', which indicate a difference between groups if they do not overlap. Another graph available is the "Combinations" plot, showing the frequency of various combinations of responses (@cref:fig:mr_comb;). This allows users to explore the frequency of response combinations.
+
+
+\begin{figure}
+\centering \includegraphics[width=\textwidth]{figure/mr_tech.png}
+\caption{Student responses to having using various technologies.}
+\label{fig:mr_tech}
+\end{figure}
+\begin{figure}
+\centering \includegraphics[width=\textwidth]{figure/mr_comb.png}
+\caption{Combinations of responses as to having used various technologies.}
+\label{fig:mr_comb}
+\end{figure}
+
+
+#### Maps
+
+A hugely popular type of data is geographical data in a huge variety of forms. iNZight's Map module allows users to plot location data (i..e, longitude/latitude coordinates on a map) or regional data (countries, regions, etc). For point-type data, these are effectively a scatter plot with a map underneath, and include much of the same functionality: subsetting, colour, resizing, and so on. Regions are different, however, in that they require *shape files*, which describe the boundaries of various regions. For example, the world shape file includes shapes of countries.
+
+The difficulty with shape data is merging the shapes to the original data, since some countries are commonly spelled differenctly or using a range of different country codes. The iNZight Maps module automatically tries to guess the best match, and allows users to override this to improve matches, or manually match unmatched countries. It also lets users choose between a variety of shape files, including world maps, region maps (europe, america, etc), and some other specialised maps (for example New Zealand electoral districts). User may also import their own shapefile, if desired.
+
+Once imported, variables can be chosen to graph on the map, in which case regions are coloured by the variable. Categorical variables are given one colour per category, while numeric are given a continuous colour palette and coloured accordingly. Additionally, a *time* variable can be included, in which case summaries can be graphed (e.g., mean, median, maximum, etc) or a mini time series "spark line" graph can be drawn on each region. This is demonstrated in @cref:fig:map_spark;.
+
+\begin{figure}
+\centering \includegraphics[width=\textwidth]{figure/map_spark.png}
+\caption{Sparklines on a map.}
+\label{fig:map_spark}
+\end{figure}
+
+
+#### Model Fitting
+
+The final module built in to iNZight provides arguably the most used methods of statistics: regression modelling. This module provides normal, binomial, and Poisson modelling of a single response variable, and users may add variables as predictors either by drag-and-drop or double-cliking. The residual plot and summary output are updated instantly, allowing users to build up a model interactively. Additional summary plots are available, such as Cooks' distance, QQ-plots, and histograms. iNZight Model Fitting uses graphs provided by the 'iNZightRegression' package @citep:iNZightRegression;. A novel contribution is the display of bootstrap smoothers on graphs, as well as *bootstrap QQ-plots* and a *boostrap array of histograms*, allowing users to visually compare what the residual distribution might look like (i.e., under small sample sizes, non-normality might be due to chance). Another feature of the Model Fitting module is saving and later comparing (either via AIC or BIC) alternative models.
+
+
+### Addon modules
+
 Updating modules within a package is a drawn-out process, and requires the package maintainer to sort out updates and release. To this, we recently began trialing a new "Add-on" system, allowing individual modules (each a single R file containing a reference class object) to be added, updated, and removed as needed. In this way, individuals---be it members of the 'iNZight' team, teachers of various statistics courses, or researchers---can develop their own modules and install these into iNZight. By using Github pull requests, they may have their work integrated into the 'official' iNZight addon repository, or they can distribute a file to their users who can install the module from a local file. This kind of structure is seen in many other programs, for example Excel and Notepad++ @citep:cn;.
 
 One exciting new addon being developed is the 'Bayesian demographic modelling' module, which connects to a set of packages used to perform the type of analysis used by @cite:Zhang_2019;. This work will provide small communities, demographics, and nations to explore and analyse their own data using a tool with which they are either already familiar, or has a very easy learning curve: iNZight.
