@@ -13,31 +13,14 @@ At its heart, iNZight is a data visualisation and exploration tool for those use
 The first thing most users will want to do is import their data. iNZight provides an easy to use *Import Data* window which uses the file extension to detect the file type and provide a preview of the data in the same window. This allows users to quickly see if everything is OK and, if necessary, adjust some of the type-specific options to get it correct. An example of this might be reading european CSV files, which use a semi-colon delimiter instead of a comma.
 
 
-Once loaded, iNZight provides several important data operations, allowing users to reshape, filter, and otherwise transform their dataset. Many of these 'workflows' are taken from "R for Data Science" @citep:Wickham_2017;. These basic dataset operations are implemented using packages from the 'tidyverse' @citep:tidyverse;. For each, the @gls:gui; provides an interface with inputs corresponding to various arguments, generating an R code call which is evaluated and stored in the script. In some cases, a preview of the resulting dataset is provided, making it easier for users to investigate the result of different options. FIGUREX shows the reshape data window, allowing users to convert from wide format to long format, which is more useful for plotting.
+Once loaded, iNZight provides several important data operations, allowing users to reshape, filter, and otherwise transform their dataset. Many of these 'workflows' are taken from "R for Data Science" @citep:Wickham_2017;. These basic dataset operations are implemented using packages from the 'tidyverse' @citep:tidyverse;. For each, the @gls:gui; provides an interface with inputs corresponding to various arguments, generating an R code call which is evaluated and stored in the script. In some cases, a preview of the resulting dataset is provided, making it easier for users to investigate the result of different options. @Cref:fig:data_reshape; shows the reshape data window, allowing users to convert from wide format to long format, which is more useful for plotting.
 
-```{r screenshot-one,eval=FALSE,echo=FALSE,message=FALSE,warning=FALSE}
-if (R.Version()$os == "linux-gnu") {
-
-    library(iNZight)
-    ui <- iNZGUI$new()
-    ui$initializeGui(census.at.school.500)
-    Sys.sleep(5) # wait for it to do its thing
-
-    cmd <- sprintf(
-        "scrot --focused '%s' -e 'mv $f %s'",
-        "inzight_main.png",
-        "figure/"
-    )
-    system(cmd)
-
-    ui$close()
-}
-```
-
-* uses 'tidyverse' methods and workflows to perform some data transformation
-* all are calls to wrappers inside the 'iNZightTools' package
-* the interface allows users to manipulate arguments to the wrapper function - reactive in some cases (i.e., inputs appear/disappear or change values based on previous inputs)
-* in many cases, a preview is displayed to help with what can be complex actions, e.g.
+**NOTE: find a better example of reshaping**
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{figure/data_reshape.png}
+\caption{Reshaping data is a confusing task for beginners, so iNZight's reshape window provides a simple breakdown of the steps, and importantly provides a preview of what the data will look like once reshaped.}\label{fig:data_reshape}
+\end{figure}
 
 As well as the dataset operations are *variable manipulations*, allowing users to modify individual variables in the data. For example, simple transformations (log, square-root) to renaming or reordering levels of a categorical variable, each has its own interface window that interfaces with 'tidyverse' code to perform the operations. And, if the operation you want is not available, you can specify a custom command to create a new variable.
 
@@ -133,24 +116,18 @@ knitr::kable(plot_large, "latex",
 
 Another way of exploring relationships is by *subsetting* or *faceting*, which is easily accessed and indeed encouraged from the iNZight interface. The two subsetting variable slots allow users to subset the plot, which presents a slider to look at individual levels of the chosen variable, as shown in @cref:fig:subsetslider;. This is particularly advantageous to exploring trends *over time*, as users can use the "Play" button and watch as iNZight automatically plays over the range of levels (which might be "years" in a longitudinal dataset). This use of motion to explore trends in the data over time was most famously demonstated by @citet:Rosling_2010; in his BBC documentary "The Joy of Stats". However, time is not the only useful subsetting variable: many other categorical variables are often important when exploring relationships in a dataset, for example age and ethnicity.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figure/subsetslider.png}
+\caption{The control panel's grouping variable slots display a slider, allowing users to easily navigate between plots of various subset.}
+\label{fig:subsetslider}
+\end{figure}
 
 Of course, there is only so much one can learn from subsetting, and often more advanced visualisation techniques are required. For this, iNZight provides the *Add to Plot* system, which displays a list of options for the user to adjust, and most importantly only those related to the current plot. The most notable feature is *colour*, which can either be set to a single colour or, more usefully, coded to another variable in the dataset. This panel is also reactive, so a user's choices will open up some new options (or remove others), allowing them to explore the possibilities offered without having problems (for example trying to colour a bar chart by a numeric variable). Other codable features include *point size* and *point shape* (useful for printed media or for colourblind audiences).
 
 Other options under the *Add to Plot* system include adjusting axes (by adding transformations or changing labels), adding additional information to specific plots (trend lines and smoothers to scatter plots, for example), and *locating points*. The last of these is an essential part of data exploration: often we want to explore outliers or else identify a specific point in the data. iNZight allows users to use a *point-and-click* identification method to highlight and label specific points, which are retained in future plots (so an individual can be tracked over different variables to explore them in detail), or points can be identified contextually, either by their specific value, or as an "extreme" value.
 
 Since switching variables often results in a change of plot, iNZight remembers most settings (for example *colour*) so those variables remain visible in the dataset. This makes it easy to explore, for example, the effect of ethnicity on other variable relationships. Since some plots do not handle all arguments, iNZight only uses those that do: for example, switching to a two-way bar plot, the "colour" variable would be ignored without being forgotten; changing back to, say, a scatter plot reactivates the colour variable.
-
-<!--
-* all powered by 'iNZightPlots' functions
-    * `inzplot()` for graphics
-    * `inzsummary()` for simple summary information
-    * `inzinference()` for inferencial information and hypothesis testing
-* uses the variable type(s) to choose the graph type. Figure x shows the available graph types
-* subsetting by 1 or 2 variables is possible/easy/emphasized
-    * includes a slider to cycle or 'step' between levels (can add 'motion' to graphs; @citep:Rosling_2010;)
-* plot features: specific to plot type, users only see what's relevant
-* some features (such as colour by) might apply to different plot types (scatter and dot plot, for example) and so selection is retained when switching between these plot types
--->
 
 
 Visually assessing relationships in the dataset is generally the first step in a more in-depth analysis, and often we find that what we thought was an effect is actually not significant. iNZight provides some simple *visual inferencial markup*
@@ -165,14 +142,6 @@ Another type of *visual inference* iNZight offers is *comparison intervals*, est
 ```{r barchart_comp,echo=FALSE,fig.height=5,fig.width=6,out.width="0.8\\textwidth",fig.cap="A two-way bar chart with comparison intervals.",fig.align="center"}
 inzplot(travel ~ gender, data = census.at.school.500, inference.type = "comp")
 ```
-
-<!--
-* inferencial markup of plots
-    * normal theory error bars/curves
-    * or bootstrap alternative
-    * "Comparison intervals" are a way of visually assessing differences - only shown on differences *that should be compared* - bar plot example
-    * an approximate tukey thing? details needed here ('iNZightMR' package)
--->
 
 Having done as must visual exploration as iNZight provides, it is likely that some numerical information might be desired. For example, when discussing the data it is useful to have summary statistics, such as the mean or quantiles. iNZight provides a "Get Summary" button, which provides a simple summary of the currently displayed graph. Like the plots, the types of summaries depends on the chosen variable(s) and, in some cases, additional features (scatter plots provide extra information about the basic relationship of any fitted trend lines, for example). The primary use is to extract values from the graph, with a few extra variables (such as variance) which are considered simple summaries. The philosophy remains "look first". A simple summary of a dotplot is given in @cref:fig:dot_summary;.
 
@@ -230,7 +199,10 @@ The code history script is a simple method of providing code, but it lacks *inte
 
 All of iNZight's methods call functions in other packages, many of which are themselves 'wrapper' functions. As an example, the Filter Data window in iNZight calls to the `filterData()` function in the 'iNZightTools' package @citep:iNZightTools;, which returns the 'tidyverse' @citep:tidyverse; code used to perform the filtering steps. The code is extracted as follows:
 \begin{lstlisting}[language=R]
-data.filtered <- iNZightTools::filterData(iris, "Species", "Setosa")
+library(iNZightTools)
+data.filtered <- filterLevels(iris,
+    var = "Species",
+    levels = "Setosa")
 cat(code(data.filtered))
 # iris %>% dplyr::filter(Species == "Setosa")
 \end{lstlisting}
