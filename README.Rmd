@@ -10,6 +10,7 @@ Code repository for iNZight articles.
 
 Automatic compilation on Github assumes there's a `build.R` script in each subdirectory.
 
+
 ```{r echo=FALSE,results='asis'}
 # convert PDF first pages to PNG
 # list of papers with png + title + authors + abstract
