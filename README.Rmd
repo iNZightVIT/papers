@@ -10,10 +10,10 @@ Code repository for iNZight articles.
 
 Automatic compilation on Github assumes there's a `build.R` script in each subdirectory.
 
-```{r echo=FALSE}
+```{r echo=FALSE,results='asis'}
 # convert PDF first pages to PNG
 # list of papers with png + title + authors + abstract
-
+figs <- list.files("figure")
+for (fig in figs)
+  cat("![", fig, "](figure/", fig, ")\n")
 ```
-
-![iNZight 2021 paper](figure/2021_inzight.png)
