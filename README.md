@@ -6,4 +6,24 @@ Code repository for iNZight articles.
 Automatic compilation on Github assumes there’s a `build.R` script in
 each subdirectory.
 
-[![2021\_jss.png](figure/2021_jss.png)](https://github.com/iNZightVIT/papers/raw/main/2021_jss/index.pdf)
+<table>
+
+<tr>
+
+<td>
+
+<img src='figure/2021_jss.png' width='100'>
+
+</td>
+
+<td>
+
+<strong>iNZight: a data visualisation and exploration GUI for
+R</strong><br>Tom Elliott and Chris Wild and Daniel Barnett and Andrew
+Sporle
+
+</td>
+
+</tr>
+
+</table>

@@ -2,6 +2,7 @@
 output:
   github_document:
     html_preview: false
+always_allow_html: true
 ---
 
 # iNZight papers
@@ -10,10 +11,24 @@ Code repository for iNZight articles.
 
 Automatic compilation on Github assumes there's a `build.R` script in each subdirectory.
 
-```{r echo=FALSE,results='asis'}
+```{r echo=FALSE,results='asis',warning=FALSE}
 # convert PDF first pages to PNG
 # list of papers with png + title + authors + abstract
 figs <- list.files("figure")
-for (fig in figs)
-  cat("[![", fig, "](figure/", fig, ")](https://github.com/iNZightVIT/papers/raw/main/", tools::file_path_sans_ext(fig), "/index.pdf)\n", sep = "")
+cat("<table>\n")
+for (fig in figs) {
+  dir <- tools::file_path_sans_ext(fig)
+  conf <- yaml::read_yaml(glue::glue("{dir}/config.yaml"))
+  conf$fig <- glue::glue("figure/{fig}")
+  txt <- glue::glue(
+"<tr>
+<td><img src='{conf$fig}' width='100'></td>
+<td><strong><a href='{dir}/index.pdf'>{conf$title}</a></strong><br>{conf$author}</td>
+</tr>
+"
+  )
+  cat(txt, "\n")
+}
+cat("</table>\n")
+
 ```
