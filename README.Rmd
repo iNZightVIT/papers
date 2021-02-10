@@ -16,5 +16,5 @@ Automatic compilation on Github assumes there's a `build.R` script in each subdi
 # list of papers with png + title + authors + abstract
 figs <- list.files("figure")
 for (fig in figs)
-  cat("[![", fig, "](figure/", fig, ")](https://github.com/iNZightVIT/papers/raw/main/", fig, "/index.pdf)\n", sep = "")
+  cat("[![", fig, "](figure/", fig, ")](https://github.com/iNZightVIT/papers/raw/main/", tools::file_path_sans_ext(fig), "/index.pdf)\n", sep = "")
 ```
