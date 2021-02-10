@@ -4,4 +4,25 @@ title: intro
 
 # Introduction {#intro}
 
+A brief, 2--3 paragraphs about what iNZight is, and the niche it fills, plus some of its key features. Perhaps also a discussion of other R GUIs, and what sets iNZight apart (otherwise, make that last bit a separate section...?).
+
+* getting started with statistics and data science is difficult due to the fairly steep learning curve for the necessary software
+* R provides a simple programming environment for exploring and visualising data, and is becoming the tool of choice for many data scientists
+* students/learners often have little or no programming experience: they just want to explore data, make charts, and do simple analyses *before learning all the technical stuff*
+* iNZight provides a simple GUI allowing users to import data, create graphs by simple drag-and-drop or picking variables from dropdowns; the software figures out what kind of variable is chosen and presents a useful graph
+* same idea carried through: users don't need to know what they want to do, they choose **variables** they are interested in, and the software guides them
+* since it's an R package, it can hook in to all the powerful packages that already exist: and writes a code history so users can (eventually) migrate from GUI to command line
+* graphics, data manipulation, hypothesis testing, survey design, time series, model fitting, maps, and more
+* used by NZ high schools, universities, and elsewhere ... ?
+
+
 There are other @glspl:gui; for R, namely 'R Commander' @citep:Rcommander; and 'Deducer' @citep:Deducer;. Both of these software provide a range of features, centered mostly around a window-based interface to a collection of R @citep:rcore; functions. Users decide the type of analysis or function they want to use, choose it, and then fill in the fields. 'iNZight' takes the opposite approach by providing an interface from which users choose *variables first*, and then processes are performed which differ based on the inputs.
+
+
+#### Paper plan:
+
+1. Introduction
+2. How-to-get-started guide (availability, installation, ...)
+3. Main features (a 'tour')
+4. Code writing: a stepping stone for learning 'top down'
+5. Discussion, future plans
