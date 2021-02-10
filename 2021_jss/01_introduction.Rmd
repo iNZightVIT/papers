@@ -1,0 +1,7 @@
+---
+title: intro
+---
+
+# Introduction {#intro}
+
+There are other @glspl:gui; for R, namely 'R Commander' @citep:Rcommander; and 'Deducer' @citep:Deducer;. Both of these software provide a range of features, centered mostly around a window-based interface to a collection of R @citep:rcore; functions. Users decide the type of analysis or function they want to use, choose it, and then fill in the fields. 'iNZight' takes the opposite approach by providing an interface from which users choose *variables first*, and then processes are performed which differ based on the inputs.

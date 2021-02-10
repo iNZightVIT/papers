@@ -12,7 +12,7 @@ settings <- yaml::read_yaml('config.yaml')
 \usepackage{amssymb}
 \usepackage{natbib}
 \usepackage[hidelinks]{hyperref}
-\usepackage{cleveref}
+\usepackage[noabbrev]{cleveref}
 \usepackage{listings}
 \crefname{lstlisting}{listing}{listings}
 \Crefname{lstlisting}{Listing}{Listings}
@@ -23,6 +23,7 @@ settings <- yaml::read_yaml('config.yaml')
 \usepackage{calc}
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
+\usepackage{threeparttable}
 
 \usepackage[acronym]{glossaries}
 \makeglossaries
