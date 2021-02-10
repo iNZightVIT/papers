@@ -1,4 +1,5 @@
 default: index.pdf
 
-index.pdf: index.Rmd
-	Rscript -e "rmarkdown::render('$^')"
+files := $(wildcard *.Rmd)
+index.pdf: index.Rnw $(files)
+	Rscript build.R

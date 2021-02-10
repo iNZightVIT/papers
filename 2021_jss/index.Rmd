@@ -1,9 +1,0 @@
----
-title: iNZight
-author: Tom Elliott et al
-date: 2021
-output:
-    pdf_document
----
-
-This is where the paper will go.
