@@ -1,5 +1,9 @@
-default: index.pdf
+default: article.pdf
 
-files := $(wildcard *.Rmd)
-index.pdf: index.Rnw $(files)
-	Rscript build.R
+index.pdf: article.pdf
+	cp $^ $@
+
+sfiles := $(wildcard *.Rnw)
+article.pdf: article.Rnw $(sfiles) config.yaml
+	Rscript -e "Sweave('$<')"
+	latexmk -pdf article

@@ -1,0 +1,164 @@
+\documentclass[article]{jss}
+
+%% -- LaTeX packages and custom commands ---------------------------------------
+
+%% recommended packages
+\usepackage{thumbpdf,lmodern}
+
+%% another package (only for this demo article)
+% \usepackage{framed}
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\input{../glossary.tex}
+
+
+%% new custom commands
+\newcommand{\class}[1]{`\code{#1}'}
+\newcommand{\fct}[1]{\code{#1()}}
+
+%% For Sweave-based articles about R packages:
+%% need no \usepackage{Sweave}
+\SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
+<<preliminaries, echo=FALSE, results=hide>>=
+options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+library("MASS")
+settings <- yaml::read_yaml('config.yaml')
+title <- gsub("\ R", "\ \\\\\\\\proglang{R}", settings$title)
+title_short <- settings$title_short
+title_plain <- settings$title
+affiliation <- strsplit(settings$affiliation, ",")[[1]]
+authors <- strsplit(settings$author, " and ")[[1]]
+authors_long <- paste(authors, affiliation, sep = "\\\\\\\\")
+authors_long <- matrix(authors_long, ncol = 2, byrow = TRUE)
+authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), collapse = " \\\\AND ")
+@
+
+%% -- Article metainformation (author, title, ...) -----------------------------
+
+%% - \author{} with primary affiliation
+%% - \Plainauthor{} without affiliations
+%% - Separate authors by \And or \AND (in \author) or by comma (in \Plainauthor).
+%% - \AND starts a new line, \And does not.
+\author{\Sexpr{authors_long}}
+\Plainauthor{\Sexpr{paste(authors, collapse = ", ")}}
+
+%% - \title{} in title case
+%% - \Plaintitle{} without LaTeX markup (if any)
+%% - \Shorttitle{} with LaTeX markup (if any), used as running title
+\title{\Sexpr{title}}
+\Plaintitle{\Sexpr{title_plain}}
+\Shorttitle{\Sexpr{title_short}}
+
+%% - \Abstract{} almost as usual
+\Abstract{
+  \Sexpr{gsub("\\", "\\\\", settings$abstract, fixed = TRUE)}
+}
+
+%% - \Keywords{} with LaTeX markup, at least one required
+%% - \Plainkeywords{} without LaTeX markup (if necessary)
+%% - Should be comma-separated and in sentence case.
+\Keywords{GUI, statistical software, statistical education, \proglang{R}}
+\Plainkeywords{GUI, statistical software, statistical education, R}
+
+%% - \Address{} of at least one author
+%% - May contain multiple affiliations for each author
+%%   (in extra lines, separated by \emph{and}\\).
+%% - May contain multiple authors for the same affiliation
+%%   (in the same first line, separated by comma).
+\Address{
+  Tom Elliott\\
+  School of Health\\
+  Victoria University of Wellington\\
+  Wellington, New Zealand\\
+  \emph{and}\\
+  Department of Statistics (Honorary)\\
+  University of Auckland\\
+  Auckland, New Zealand\\
+  E-mail: \email{tom.elliott@auckland.ac.nz}\\
+  URL: \url{https://people.wgtn.ac.nz/tom.elliott}
+}
+
+\begin{document}
+
+
+\glsresetall
+
+\SweaveInput{01_intro.Rnw}
+
+
+
+
+\section*{Acknowledgments}
+iNZight is a free to use, open source software. The work would not have been possible without the support of the University of Auckland, Census at School, ..., Statistics New Zealand, and the Australian Bureau of Statistics.
+
+
+%% -- Bibliography -------------------------------------------------------------
+%% - References need to be provided in a .bib BibTeX database.
+%% - All references should be made with \cite, \citet, \citep, \citealp etc.
+%%   (and never hard-coded). See the FAQ for details.
+%% - JSS-specific markup (\proglang, \pkg, \code) should be used in the .bib.
+%% - Titles in the .bib should be in title case.
+%% - DOIs should be included where available.
+
+\bibliography{../references}
+
+%% -- Appendix (if any) --------------------------------------------------------
+%% - After the bibliography with page break.
+%% - With proper section titles and _not_ just "Appendix".
+
+\newpage
+
+% \begin{appendix}
+
+% \section{More technical details} \label{app:technical}
+
+% \begin{leftbar}
+% Appendices can be included after the bibliography (with a page break). Each
+% section within the appendix should have a proper section title (rather than
+% just \emph{Appendix}).
+
+% For more technical style details, please check out JSS's style FAQ at
+% \url{https://www.jstatsoft.org/pages/view/style#frequently-asked-questions}
+% which includes the following topics:
+% \begin{itemize}
+%   \item Title vs.\ sentence case.
+%   \item Graphics formatting.
+%   \item Naming conventions.
+%   \item Turning JSS manuscripts into \proglang{R} package vignettes.
+%   \item Trouble shooting.
+%   \item Many other potentially helpful details\dots
+% \end{itemize}
+% \end{leftbar}
+
+
+% \section[Using BibTeX]{Using \textsc{Bib}{\TeX}} \label{app:bibtex}
+
+% \begin{leftbar}
+% References need to be provided in a \textsc{Bib}{\TeX} file (\code{.bib}). All
+% references should be made with \verb|\cite|, \verb|\citet|, \verb|\citep|,
+% \verb|\citealp| etc.\ (and never hard-coded). This commands yield different
+% formats of author-year citations and allow to include additional details (e.g.,
+% pages, chapters, \dots) in brackets. In case you are not familiar with these
+% commands see the JSS style FAQ for details.
+
+% Cleaning up \textsc{Bib}{\TeX} files is a somewhat tedious task -- especially
+% when acquiring the entries automatically from mixed online sources. However,
+% it is important that informations are complete and presented in a consistent
+% style to avoid confusions. JSS requires the following format.
+% \begin{itemize}
+%   \item JSS-specific markup (\verb|\proglang|, \verb|\pkg|, \verb|\code|) should
+%     be used in the references.
+%   \item Titles should be in title case.
+%   \item Journal titles should not be abbreviated and in title case.
+%   \item DOIs should be included where available.
+%   \item Software should be properly cited as well. For \proglang{R} packages
+%     \code{citation("pkgname")} typically provides a good starting point.
+% \end{itemize}
+% \end{leftbar}
+
+% \end{appendix}
+
+% %% -----------------------------------------------------------------------------
+
+
+\end{document}

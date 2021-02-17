@@ -26,3 +26,8 @@ There are other @glspl:gui; for R, namely 'R Commander' @citep:Rcommander; and '
 3. Main features (a 'tour')
 4. Code writing: a stepping stone for learning 'top down'
 5. Discussion, future plans
+
+<<r,eval=FALSE>>=
+library(iNZight)
+iNZight()
+@
