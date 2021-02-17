@@ -18,9 +18,9 @@ each subdirectory.
 
 <td>
 
-<strong><a href='2021_jss/index.pdf'>iNZight: a data visualisation and
-exploration GUI for R</a></strong><br>Tom Elliott and Chris Wild and
-Daniel Barnett and Andrew Sporle
+<strong><a href='2021_jss/index.pdf'>iNZight: a graphical user interface
+for visualisation and exploration of data with R</a></strong><br>Tom
+Elliott and Chris Wild and Daniel Barnett and Andrew Sporle
 
 </td>
 
