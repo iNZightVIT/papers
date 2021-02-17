@@ -21,7 +21,6 @@
 \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
 <<preliminaries, echo=FALSE, results=hide>>=
 options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
-library("MASS")
 settings <- yaml::read_yaml('config.yaml')
 title <- gsub("\ R", "\ \\\\\\\\proglang{R}", settings$title)
 title_short <- settings$title_short
