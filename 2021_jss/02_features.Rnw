@@ -1,0 +1,17 @@
+\section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
+
+\begin{itemize}
+    \item novice-oriented
+    \item attempt to make it intuitive (drag-and-drop, etc)
+    \item variable-first approach
+\end{itemize}
+
+
+\subsection{Loading data}\label{sec:loading-data}
+
+\begin{itemize}
+    \item \proglang{R} reads many file types---many different functions in a range of packages
+    \item often different syntax/arguments for each
+    \item \pkg{iNZight} uses file extension to guess file type and load it automatically
+    \item e.g., load data window in FIGURE (with data preview)
+\end{itemize}
