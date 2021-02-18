@@ -1,0 +1,48 @@
+\section{Installation and availability}\label{sec:installation}
+
+\begin{itemize}
+    \item can install as an \proglang{R} package from combination of our repository and CRAN (still working towards publishing final few packages to CRAN)
+\end{itemize}
+
+
+\subsection{Operating system specific requirements}\label{sec:os-reqs}
+
+\begin{itemize}
+    \item windows: will be prompted to install GTK binaries on first run
+    \item macOS: very difficult, need to install XQuartz, gtk2+ framework, and compile \pkg{RGtk2} manually \ldots
+    \item Linux: install system dependencies, then install as usual
+\end{itemize}
+
+
+\subsection{Windows installer}\label{sec:windows}
+
+\begin{itemize}
+    \item difficult to expect novice users/students to install \proglang{R}, etc
+    \item we have a bundled version which comes as a \code{.exe} installer, unpackaging into chosen directory (default \code{Documents\\iNZightVIT}) which includes a copy of \proglang{R} and package library
+    \item also some shortcuts to launch \proglang{R} in a subdirectory containing a \code{.Rprofile} which loads \pkg{iNZight} and launches the \gls{gui}
+\end{itemize}
+
+\subsubsection{Updating}\label{sec:updating}
+
+\begin{itemize}
+    \item updater included with installer: makes it easy for non-\proglang{R} users to update packages periodically
+\end{itemize}
+
+\subsection{Docker image}\label{sec:docker}
+
+\begin{itemize}
+    \item Docker \citep{docker} lets developers bundle apps for distribution
+    \item containiner based on Linux and works for Linux and macOS hosts
+    \item less speedy (performance) but doesn't require huge install; currently the only way to run \pkg{iNZight} on macOS without manually compiling lots of things
+    \item still requires a little work from the user to enable X11 forwarding (so the interface windows display on the host screen)
+\end{itemize}
+
+\subsection[Only shiny version iNZight Lite]%
+{Online shiny version \pkg{iNZight Lite}}\label{sec:online}
+
+\begin{itemize}
+    \item for users who can't install (e.g., macOS, tablet)
+    \item most of the same functionality, separate but parallel development
+    \item call to same packages: same results across systems
+    \item runs on \gls{aws} server: some performance issues
+\end{itemize}

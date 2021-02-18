@@ -5,7 +5,7 @@ The \proglang{R} programming environment \citep{rcore} is used throughout statis
     \item several \glspl{gui} have been developed over the years to ease access to advanced features of \proglang{R}: graphs, hypothesis tests, etc
     \item eg: \cite{Rcommander}, \cite{Deducer}
     \item these tend to work by asking users to first choose an action, then fill in the fields (including variable choice)
-    \item this requires some higher level of understanding to get useful information out (i.e., need to know what a "t-test" is)
+    \item this requires some higher level of understanding to get useful information out (i.e., need to know what a ``t-test'' is)
 \end{itemize}
 
 An alternative approach is to work variable-first, such that users choose variables they are interested in, and then choose from an automatically curated list of options to perform. \pkg{iNZight} uses this approach, and presents users with a exploration-focussed interface.

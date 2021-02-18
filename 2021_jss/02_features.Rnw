@@ -15,3 +15,67 @@
     \item \pkg{iNZight} uses file extension to guess file type and load it automatically
     \item e.g., load data window in FIGURE (with data preview)
 \end{itemize}
+
+
+\subsection{Creating graphs}\label{sec:creating-graphs}
+
+\begin{itemize}
+    \item plot: central to the interface -> \emph{look first}
+    \item drag and drop variable onto prominent boxes (or use dropdowns)
+    \item \pkg{iNZight} draws appropriate `default' graph based on variable type - TABLE
+    \item subsetting boxes allow easy faceting of 1 or 2 variables, slider to view specific subsets; numeric variables cut into 4
+    \item advanced modification avaialable from \menu{Add to Plot} menu -> colour/size/alternative graphs/lines/axes/labels/etc
+\end{itemize}
+
+\subsection{Summaries and inference}\label{sec:summaries-and-inference}
+
+\begin{itemize}
+    \item again: \emph{look first}
+    \item \menu{Get Summary} and \menu{Get Inference} buttons produce output based on chosen vars (in graph)
+    \item summary includes summary stats: mean, quantiles, variance, etc
+    \item inference provides inference information: confidence intervals for means/differences, etc
+    \item And hypothesis tests: shows a list of tests applicable to the chosen vars/graph
+    \item Normal theory and Bootstrap \citep[using the \pkg{boot} package,][]{boot} methods
+\end{itemize}
+
+\subsection{Data wrangling}\label{sec:data-wrangling}
+
+\begin{itemize}
+    \item often a simple exploration of raw data not enough
+    \item \pkg{iNZight} provides collection of data wrangling and variable manipulation methods \citep[including most from \emph{R for Data Science}, ][]{Wickham_2017} such as filtering, aggregating, stacking, reshaping, merging, changing variable types, relabelling factors, etc
+    \item each a separate \gls{gui} window with intuitive prompts for users to fill out, often with a preview
+\end{itemize}
+
+
+\subsection{Special data types}\label{sec:special-data}
+
+\subsubsection{Complex survey designs}\label{sec:surveys}
+
+\begin{itemize}
+    \item native handling of surveys: set and forget
+\end{itemize}
+
+\subsubsection{Time series}\label{sec:time-series}
+
+\subsubsection{Maps}\label{sec:maps}
+
+\subsubsection{Other types}\label{sec:other-data-types}
+
+\begin{itemize}
+    \item multiple response data
+    \item multivariate data (addon module, \cref{sec:addons})
+    \item frequencies
+    \item extensible to others too
+\end{itemize}
+
+
+\subsection[Code writing for getting started with R]{Code writing for getting started with \proglang{R}}\label{sec:code-writing}
+
+\begin{itemize}
+    \item displays code for current plot (if enabled)
+    \item can be edited -> \gls{gui} updates
+    \item can be saved to `script'
+    \item \pkg{iNZight} keeps history of all actions as \proglang{R} code -> can copy and paste into \proglang{R}, edit manually, share, etc
+\end{itemize}
+
+[[ show code history in Appendix for the demo session; note: plots not saved unless requested ]]

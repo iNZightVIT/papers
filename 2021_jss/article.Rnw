@@ -16,6 +16,9 @@
 \newcommand{\class}[1]{`\code{#1}'}
 \newcommand{\fct}[1]{\code{#1()}}
 
+\newcommand{\menu}[1]{\textsc{#1}}
+
+
 %% For Sweave-based articles about R packages:
 %% need no \usepackage{Sweave}
 \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
@@ -78,6 +81,9 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
   URL: \url{https://people.wgtn.ac.nz/tom.elliott}
 }
 
+\usepackage{cleveref}
+
+
 \begin{document}
 
 
@@ -85,12 +91,14 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 
 \SweaveInput{01_intro.Rnw}
 \SweaveInput{02_features.Rnw}
-
+\SweaveInput{03_technical.Rnw}
+\SweaveInput{04_addons.Rnw}
+\SweaveInput{05_installation.Rnw}
+\SweaveInput{06_summary.Rnw}
 
 
 \section*{Acknowledgments}
-\pkg{iNZight} is a free to use, open source software. The work would not have been possible without the support of the University of Auckland, Census at School, ..., Statistics New Zealand, and the Australian Bureau of Statistics.
-
+\pkg{iNZight} is a free to use, open source software. The work would not have been possible without the support of the University of Auckland, Census at School, ..., Statistics New Zealand, and the Australian Bureau of Statistics. We also thank the technical support of the University of Auckland IT services for providing hosting services for our repository and Lite servers.
 
 %% -- Bibliography -------------------------------------------------------------
 %% - References need to be provided in a .bib BibTeX database.

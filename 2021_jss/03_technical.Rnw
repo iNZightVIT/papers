@@ -1,0 +1,49 @@
+\section{Technical details}\label{sec:technical}
+
+\begin{itemize}
+    \item based on \pkg{gWidgets2} \citep{gWidgets2} and \pkg{gWidgets2RGtk2} \citep{gWidgets2RGtk2}, which call to \pkg{RGtk2} \citep{RGtk2}; cross-platform
+    \item like \pkg{gWidgets2}, we used reference classes to describe each component of the \gls{gui} [[FIGURE of GUI overlaid with object names?]]
+    \item \gls{oop} makes sense for a \gls{gui}
+    \begin{itemize}
+        \item panel has buttons, methods; belongs to another panel/window/GUI
+        \item inheritance: some windows have similar methods, just a few differences
+    \end{itemize}
+    \item each major panel calls a single function from another packages
+    \begin{itemize}
+        \item plots: \fct{iNZightPlots::inzplot}
+        \item import data: \fct{iNZightTools::smart\_read}
+        \item filter: \fct{iNZightTools::filterData}
+    \end{itemize}
+    \item wrappers: many custom-made packages in separate \pkg{iNZight*} packages; make easy interface between \gls{gui} and \proglang{R} (inputs = arguments)
+    \begin{itemize}
+        \item enables code-writing: wrapper includes \proglang{R} code for its call
+    \end{itemize}
+    \item describe sub-packages (TABLE: plots/regression/etc)
+    \item diving deeper: data stored in \emph{Documents}, each with a dataset/info about it; plots settings, variable choices, etc
+    \begin{itemize}
+        \item users can switch between documents (data sets)
+        \item or merge them
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Usage}\label{sec:usage}
+
+\begin{itemize}
+    \item its an \proglang{R} package
+    \item \gls{gui} is a single reference class object, \class{iNZGUI}
+<<manual_usage,eval=FALSE>>=
+library(iNZight)
+ui <- iNZGUI$new()
+ui$initializeGui()
+@
+    \item however, include a wrapper to make easier startup:
+<<manual_usage2,eval=FALSE>>=
+iNZight()
+@
+    \item For development, first option is better since it provides direct access to the objects:
+<<manual_usage,eval=FALSE>>=
+ui$getActiveData()
+ui$ctrlWidget$V1box$set_value("height")
+@
+\end{itemize}

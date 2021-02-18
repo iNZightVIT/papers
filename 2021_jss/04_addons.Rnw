@@ -1,0 +1,11 @@
+\section{The add-on system}\label{sec:addons}
+
+\begin{itemize}
+    \item \pkg{iNZight} comes with several ``advanced'' modules
+    \item also a (newer) add-on system allowing anyone to install new addons from a $3^\text{rd}$ party (or from our repo)
+    \item a single file (currently) with a single refernence class object inheriting from \class{CustomModule}
+    \item \pkg{iNZight} lists all modules installed to a specific modules directory on user's computer (either using manager or manually) in the \menu{Advanced} menu
+    \item when opened, shows up in the left-hand panel; has access to data, graphics device, menu items (can change these)
+    \item developer can use their own methods, controls, etc
+    \item Demo: Bayesian demographic modelling module (under development)
+\end{itemize}
