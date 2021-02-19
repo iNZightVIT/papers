@@ -1,31 +1,35 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
-\begin{itemize}
-    \item novice-oriented
-    \item attempt to make it intuitive (drag-and-drop, etc)
-    \item variable-first approach
-\end{itemize}
+The primary audience for \pkg{iNZight} are students of statistics and data science, but secondary groups include small research groups with small budgets and organisations which perform analyses infrequently. The simplicity of the interface means its easy to remember how to use the program after a period of non-use, unlike more specialised software which can cost time to relearn. We have done this by making the interface as intuitive as possible, with few self-explanatory controls using basic mechanisms such as drag-and-drop or selection from a drop-down box. \pkg{iNZight} also uses a \emph{variable first} approach, meaning users choose the variables they are interested in, and the software displays relevant actions. The easiest way to demonstrate \pkg{iNZight}'s features is by demonstration. In this section, we take a tour through the software from simple to complex.
 
 
 \subsection{Loading data}\label{sec:loading-data}
 
-\begin{itemize}
-    \item \proglang{R} reads many file types---many different functions in a range of packages
-    \item often different syntax/arguments for each
-    \item \pkg{iNZight} uses file extension to guess file type and load it automatically
-    \item e.g., load data window in FIGURE (with data preview)
-\end{itemize}
+Data comes in a wide range of formats, some of which are typically software-dependent \citep[such as \proglang{Excel} files,][]{msexcel}. Thanks to being open source, there are 1000's of \proglang{R} packages on CRAN, amongst which are some dedicated to reading specific file formats. However, users must still know the correct package and function for their files. \pkg{iNZight} provides a simple \menu{Load Data} window from which they can select a file to import. The software detects the file type from the file extension and attempts to read the file. If successfull, a preview is displayed for the user to check before proceeding to import the file. \Cref{fig:load_data} shows the \menu{Load Data} window, which has detected a \gls{csv} file and used the appropriate function in the background. Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure/inzight_load_data.png}
+    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
+\end{figure}
+
+In addition to the preview, \pkg{iNZight} also has an \emph{Advanced Options} section for some specific formats (currently only \gls{csv} files). Namely, this allows users to override the default delimiter, for example in European countries where the semi-colon (;) is used (the comma is reserved as the decimal separator), as well as different encoding formats. The preview is updated when these options are changed, meaning users do not have to know specifically what they need, and can quickly trial-and-error until the preview looks right.
 
 
 \subsection{Creating graphs}\label{sec:creating-graphs}
 
-\begin{itemize}
-    \item plot: central to the interface -> \emph{look first}
-    \item drag and drop variable onto prominent boxes (or use dropdowns)
-    \item \pkg{iNZight} draws appropriate `default' graph based on variable type - TABLE
-    \item subsetting boxes allow easy faceting of 1 or 2 variables, slider to view specific subsets; numeric variables cut into 4
-    \item advanced modification avaialable from \menu{Add to Plot} menu -> colour/size/alternative graphs/lines/axes/labels/etc
-\end{itemize}
+Within \pkg{iNZight}, graphics are at the core of the user experience. The very first prototype included a drag-and-drop of variables to create a plot, and that is how things have remained. Behind the scenes, \pkg{iNZight} detects the variable types (numeric, categorical, of a date-time) and draws an appropriate graph. For example, a single numeric variable produces a dot plot, while a categorical variable produces a bar chart. The user does not need to know what type of graph they want to create from a chosen variable, allowing them to freely explore the dataset by drag-and-drop of variables onto the \menu{Variable} boxes (or using the drop down menus).
+
+The first variable box is referred to as the \emph{Primary Variable of Interest}. That is, this is the variable we want to know about, and how it is influenced by other variables. For example, if `height' is chosen as Variable 1, and we want to know how `height' changes with ethnicity or age. In the latter case, the result will be a scatter plot \emph{with `height' on the $y$-axis}. In addition to the first two variable slots, \pkg{iNZight} includes two Subset variables to quickly and easily facet the plot and explore more complex relationships.
+
+Finally, there is an entire panel dedicated to plot modifications: \menu{Add to Plot}. This is accessed either from the \menu{Plot} menu, or from the button in the \menu{Plot Toolbar}. From here, users can choose from a selection of alternative plot types (limited by the types of variables), as well as choose a colour variable, sizing variable, plot symbols, trend lines, changing axis labels and limits, and much more. The options are presented in an interactive format such that the graph updates whenever the user changes values, allowing them to explore ``what happens if \ldots'', and ``what does this do?''. The goal is to allow beginners to explore a dataset without being limited by having to learn how to do a wide range of actions. \Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and GDP, region, population, and year.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\textwidth]{figure/inzight_infant_mortality.png}
+    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu.}
+\end{figure}
+
 
 \subsection{Summaries and inference}\label{sec:summaries-and-inference}
 

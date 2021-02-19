@@ -1,1 +1,19 @@
 \section{Summary and future work}\label{sec:summary}
+
+\begin{itemize}
+    \item \pkg{iNZight} provides an easy-to-use \gls{gui} to simple exploration and visualisation tasks for statistics and data science students/beginners
+    \item variable-first: doesn't require knowledge of techniques beforehand
+    \item data manipulation techniques and other advanced data-specific features (e.g., surveys)
+    \item code writing for those interested in migrating towards learning to code in \proglang{R}
+    \item add-on system for easy expansion by course coordinators/researchers/\proglang{R} package maintainers who want to provide a simple interface to their package
+    \item available on Windows and Linux
+\end{itemize}
+
+
+\subsection{Future Work}\label{sec:future-work}
+
+\begin{itemize}
+    \item database connections (for larger datasets, including surveys, with database calculations where possible)
+    \item translation system (flexible for any other languages)
+    \item exploration of alternative \gls{gui} frameworks (gtk alternative) with better cross-platform support (i.e., macOS)
+\end{itemize}
