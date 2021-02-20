@@ -33,14 +33,10 @@ Finally, there is an entire panel dedicated to plot modifications: \menu{Add to 
 
 \subsection{Summaries and inference}\label{sec:summaries-and-inference}
 
-\begin{itemize}
-    \item again: \emph{look first}
-    \item \menu{Get Summary} and \menu{Get Inference} buttons produce output based on chosen vars (in graph)
-    \item summary includes summary stats: mean, quantiles, variance, etc
-    \item inference provides inference information: confidence intervals for means/differences, etc
-    \item And hypothesis tests: shows a list of tests applicable to the chosen vars/graph
-    \item Normal theory and Bootstrap \citep[using the \pkg{boot} package,][]{boot} methods
-\end{itemize}
+To supplement the visual graphics, \pkg{iNZight} also provides two textual output modes: \emph{summaries} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons respectively. Summary information includes basic information about the chosen variables, including mean, standard deviation, quantiles, and so on, acting as a quick reference for values that are likely estimable from the graph itself.
+
+The inference information provides confidence intervals for quantities such as means and proportions, and additionally provides a simple interface for performing hypothesis tests. \pkg{iNZight} displays a selection of tests available for the chosen variable(s), as shown in TABLE. The inference information can either be calculated using Normal theory or bootstrap methods \citep[using the \pkg{boot} package,][]{boot}.
+
 
 \subsection{Data wrangling}\label{sec:data-wrangling}
 
