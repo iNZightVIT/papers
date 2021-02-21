@@ -6,6 +6,6 @@ index.pdf: article.pdf
 sfiles := $(wildcard *.Rnw)
 
 article: article.pdf
-article.pdf: article.Rnw $(sfiles) config.yaml
+article.pdf: article.Rnw $(sfiles) config.yaml ../references.bib
 	Rscript -e "Sweave('$<')"
 	latexmk -pdf article

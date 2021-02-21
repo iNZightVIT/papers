@@ -1,7 +1,7 @@
 \section{Installation and availability}\label{sec:installation}
 
 \begin{itemize}
-    \item can install as an \proglang{R} package from combination of our repository and CRAN (still working towards publishing final few packages to CRAN)
+    \item can install as an \proglang{R} package from combination of our repository and \gls{cran} (still working towards publishing final few packages to \gls{cran})
 \end{itemize}
 
 

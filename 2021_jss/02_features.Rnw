@@ -5,7 +5,7 @@ The primary audience for \pkg{iNZight} are students of statistics and data scien
 
 \subsection{Loading data}\label{sec:loading-data}
 
-Data comes in a wide range of formats, some of which are typically software-dependent \citep[such as \proglang{Excel} files,][]{msexcel}. Thanks to being open source, there are 1000's of \proglang{R} packages on CRAN, amongst which are some dedicated to reading specific file formats. However, users must still know the correct package and function for their files. \pkg{iNZight} provides a simple \menu{Load Data} window from which they can select a file to import. The software detects the file type from the file extension and attempts to read the file. If successfull, a preview is displayed for the user to check before proceeding to import the file. \Cref{fig:load_data} shows the \menu{Load Data} window, which has detected a \gls{csv} file and used the appropriate function in the background. Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
+Data comes in a wide range of formats, some of which are typically software-dependent \citep[such as \proglang{Excel} files,][]{msexcel}. Thanks to being open source, there are 1000's of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to reading specific file formats. However, users must still know the correct package and function for their files. \pkg{iNZight} provides a simple \menu{Load Data} window from which they can select a file to import. The software detects the file type from the file extension and attempts to read the file. If successfull, a preview is displayed for the user to check before proceeding to import the file. \Cref{fig:load_data} shows the \menu{Load Data} window, which has detected a \gls{csv} file and used the appropriate function in the background. Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
 
 \begin{figure}[t!]
     \centering
@@ -49,10 +49,19 @@ Supplementary to the dataset operations, the \menu{Variable} menu provides a sel
 
 \subsection{Special data types}\label{sec:special-data}
 
+\begin{itemize}
+    \item a lot of data is simple rows of individual observations
+    \item most standard graph types offered by \pkg{iNZight} can cover the basic explorations
+    \item some cases where either the data has unique features that \emph{must} be incorporated (e.g., surveys) \emph{or} the data has unique constructs and needs a specific exploration techniques (time series, multiple response)
+    \item \pkg{iNZight} provides capabilities for some of each (plus extensibility for more)
+\end{itemize}
+
 \subsubsection{Complex survey designs}\label{sec:surveys}
 
 \begin{itemize}
     \item native handling of surveys: set and forget
+    \item stratified/cluster surveys; replicate weight surveys; post-stratification/calibration
+    \item design stored and used in place of dataset: graphs, summaries, transformations all use survey-specific functions from the \pkg{survey} package \citep{survey}.
 \end{itemize}
 
 \subsubsection{Time series}\label{sec:time-series}
