@@ -31,11 +31,12 @@ Docker \citep{docker} is a development and deployment solution for developers to
 
 
 \subsection[Only shiny version iNZight Lite]%
-{Online shiny version \pkg{iNZight Lite}}\label{sec:online}
+{Online shiny version \pkg{iNZight} \emph{Lite}}\label{sec:online}
 
-\begin{itemize}
-    \item for users who can't install (e.g., macOS, tablet)
-    \item most of the same functionality, separate but parallel development
-    \item call to same packages: same results across systems
-    \item runs on \gls{aws} server: some performance issues
-\end{itemize}
+In recent years, many schools have adopted tablets or Chromebooks instead of Windows laptops, neither of which are capable of running \proglang{R} and, therefore, \pkg{iNZight}. To provide these students with the same tools as others, we created an online version of \pkg{iNZight} that uses \pkg{shiny} \citep{shiny} as the \gls{gui} framework instead of GTK, named \pkg{iNZight} \emph{Lite}.
+
+Since most of the data-logic occurs in separate packages, porting \pkg{iNZight} to was simply a case of coding the interface elements and passing user inputs to the wrapper functions. This also means that the underlying code is the same between programs, so the \emph{output} is the same in both cases, making it easier for teachers and researchers to use one or the other. We attempted to keep the interfaces as similar as possible, but there are obvious differences in the capabilities of the \gls{gui} toolkits.
+
+The online version runs inside its own docker container on a remote \gls{aws} server. Interested users could run the container locally by installing docker. Most users, however, will simply access the web interface by heading to \url{https://lite.docker.stat.auckland.ac.nz} in a browser, including on a tablet. There are also a set of URL parameters which can be passed to the \pkg{iNZight} \emph{Lite} instance, including a URL for a dataset to automatically load.
+
+Within the container, shiny is used to create the visual controls and perform reactivity events. A users data is stored on the server temporarily, and is only accessible from that user's session: it cannot be shared or access by other users. However, we still would not recommend users upload confidential or otherwise sensitive data; this would be better explored using either the desktop version or by running \pkg{iNZight} \emph{Lite} locally.
