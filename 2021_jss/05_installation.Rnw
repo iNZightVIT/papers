@@ -2,42 +2,33 @@
 
 As an \proglang{R} package, \pkg{iNZight} may be installed manually from the \proglang{R} console like any other package. We have an \proglang{R} repository available at \url{https://r.docker.stat.auckland.ac.nz} which hosts the most up-to-date versions of our packages. Most of these are now on \gls{cran}, and work continues to publish the remainder. Since \pkg{iNZight} is a \gls{gui}, there are one or two additional system dependencies that need to be installed, with variations between operating systems, as discussed below.
 
-\begin{itemize}
-    \item can install as an \proglang{R} package from combination of our repository and \gls{cran} (still working towards publishing final few packages to \gls{cran})
-\end{itemize}
-
 
 \subsection{Operating system specific requirements}\label{sec:os-reqs}
 
-\begin{itemize}
-    \item windows: will be prompted to install GTK binaries on first run
-    \item macOS: very difficult, need to install XQuartz, gtk2+ framework, and compile \pkg{RGtk2} manually \ldots
-    \item Linux: install system dependencies, then install as usual
-\end{itemize}
+The GTK windowing system is a cross-platform project with libraries available on Windows, macOS, and Linux. However, the install process varies between operating system in both steps and complexity. On Windows, the necessary files are available in binary form, and can be installed \emph{after} installing \pkg{iNZight}: the \pkg{RGtk2} package will prompt the user to download and install these binaries on the first run.
+
+On macOS, users are required to install XQuartz and the GTK+ framework before manually compiling \pkg{RGtk2} themselves as, unfortunately, the binaries are no longer supported on \gls{cran}. The complexity of this setup, and the lack of backwards compatibility of the macOS operating system, means we cannot officially support \pkg{iNZight} on macOS.
+
+Finally, Linux comes in many flavours, each with different collections and names of libraries. However, the two dependencies are \code{xorg} and \code{gtk}, which are typically installed using the system package manager. For example, on the latest Ubuntu, users can install the libraries thus:
+\begin{Code}
+apt-get install xorg-dev libgtk2.0-dev
+\end{Code}
+Users of other operating systems should use the search functionality of their package manager to find the requisite libraries.
 
 
 \subsection{Windows installer}\label{sec:windows}
 
-\begin{itemize}
-    \item difficult to expect novice users/students to install \proglang{R}, etc
-    \item we have a bundled version which comes as a \code{.exe} installer, unpackaging into chosen directory (default \code{Documents\\iNZightVIT}) which includes a copy of \proglang{R} and package library
-    \item also some shortcuts to launch \proglang{R} in a subdirectory containing a \code{.Rprofile} which loads \pkg{iNZight} and launches the \gls{gui}
-\end{itemize}
+The primary audience for \pkg{iNZight} is students new to statistics and likely computing too, and likely do not have advanced computer literacy that might be required by other \glspl{gui} to install and run the software (including \proglang{R}). To future improve the accessibility of \pkg{iNZight}, we have built a custom installer that is effectively a self-extracting \code{.exe} file which includes a copy of \proglang{R} and the package library, so once installed \pkg{iNZight} is ready to go. This is by default installed into the user's \code{Documents\\iNZightVIT} directory.
 
-\subsubsection{Updating}\label{sec:updating}
+In addition to the binaries and packages, the installer includes several shortcuts which can be double-clicked to launch \proglang{R} in a specific directory. This directory contains a \code{.Rprofile} file which automatically loads the \pkg{iNZight} package and launches the \gls{gui}. It also hides the \proglang{R} console, so users are presented with just the \gls{gui} which is more familiar to them. When started from the script, \proglang{R} is passed a command to terminate the \proglang{R} session once the user has finished using \pkg{iNZight}.
 
-\begin{itemize}
-    \item updater included with installer: makes it easy for non-\proglang{R} users to update packages periodically
-\end{itemize}
+The \pkg{iNZight} installer also includes an Update script, which when launched triggers an update to the \proglang{R} packages. This allows novice users to update to the latest version without needing to use \proglang{R} or re-download the entire installer. Additionally we include an Uninstaller which removes \pkg{iNZight} from the user's system if they so desire.
+
 
 \subsection{Docker image}\label{sec:docker}
 
-\begin{itemize}
-    \item Docker \citep{docker} lets developers bundle apps for distribution
-    \item containiner based on Linux and works for Linux and macOS hosts
-    \item less speedy (performance) but doesn't require huge install; currently the only way to run \pkg{iNZight} on macOS without manually compiling lots of things
-    \item still requires a little work from the user to enable X11 forwarding (so the interface windows display on the host screen)
-\end{itemize}
+Docker \citep{docker} is a development and deployment solution for developers to build, test, and share their projects. It allows developers to construct build chains with all dependencies included within a single image file which can be downloaded by users to run the program without installing a large set of dependencies. We have built a docker image for \pkg{iNZight}, allowing users on macOS and Linux to run the software without installing the system dependencies. The downside of this approach is that the result is not as smooth as a native application, and also, as a \gls{gui}, requires a little more work from the user (particularly on macOS) to set up the necessary conditions for the app running in the container to project the \gls{gui} onto the host's screen. More information can be found at \url{https://github.com/iNZightVIT/docker-inzight}.
+
 
 \subsection[Only shiny version iNZight Lite]%
 {Online shiny version \pkg{iNZight Lite}}\label{sec:online}
