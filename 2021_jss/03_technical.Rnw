@@ -46,19 +46,22 @@ Each major component has a similiar structure, and calls to various functions, m
 
 <<quick_hack,echo=FALSE>>=
 code <- function(x) tidy_all_code(iNZightTools::code(x))
+url <- "https://www.stat.auckland.ac.nz/~wild/data/test/nls.dta"
+if (!file.exists("nls.dta"))
+    download.file(url, "nls.dta")
 @
 A second advantage is that the individual wrapper functions can be designed to include the lower-level \proglang{R} code used to generate the result, which the \gls{gui} can fetch from the returned data and attach to the script. Here is an example of the result returned by \fct{iNZightTools::smart\_read} (which can read from a remote URL):
 <<code_from_result>>=
 library("iNZightTools")
-url <- paste0("https://www.stat.auckland.ac.nz/~wild/data/data_from_iNZight/",
-    "Census%20at%20School-500.csv")
-data <- smart_read(url)
+data <- smart_read("nls.dta")
 cat(code(data), sep = "\n")
 @
+The \fct{iNZightTools::code} function returns the \proglang{R} code attached to the resulting object, allowing a user to see that the \pkg{haven} package \citep{haven} was used to read this \proglang{Stata} file (\code{.dta}).
+
+While the \gls{gui} packages provide the structure of the visual \gls{gui}, it's the collection of \proglang{R} packages developed alongside \pkg{iNZight} that are the powerhouses of the program. The main reason for creating separate packages was to force the separation of interface and data logic, but also to allow the parallel development of a separate interface (\cref{sec:online}) using the same wrapper functions. The collection of packages within the \pkg{iNZight} project are described in TABLE.
 
 \begin{itemize}
-    \item describe sub-packages (TABLE: plots/regression/etc)
-    \item diving deeper: data stored in \emph{Documents}, each with a dataset/info about it; plots settings, variable choices, etc
+    \item (not sure where to put this) diving deeper: data stored in \emph{Documents}, each with a dataset/info about it; plots settings, variable choices, etc
     \begin{itemize}
         \item users can switch between documents (data sets)
         \item or merge them
