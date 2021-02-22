@@ -8,7 +8,7 @@
 %% another package (only for this demo article)
 % \usepackage{framed}
 \usepackage[acronym]{glossaries}
-\makeglossaries
+% \makeglossaries
 \input{../glossary.tex}
 
 
