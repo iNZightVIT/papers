@@ -8,4 +8,5 @@ sfiles := $(wildcard *.Rnw)
 article: article.pdf
 article.pdf: article.Rnw $(sfiles) config.yaml ../references.bib
 	Rscript -e "Sweave('$<')"
-	latexmk -pdf -interaction=nonstopmode -f article
+	Rscript -e "tinytex::latexmk('article.tex')"
+	#latexmk -pdf -interaction=nonstopmode -f article
