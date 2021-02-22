@@ -1,5 +1,7 @@
 \section{Installation and availability}\label{sec:installation}
 
+As an \proglang{R} package, \pkg{iNZight} may be installed manually from the \proglang{R} console like any other package. We have an \proglang{R} repository available at \url{https://r.docker.stat.auckland.ac.nz} which hosts the most up-to-date versions of our packages. Most of these are now on \gls{cran}, and work continues to publish the remainder. Since \pkg{iNZight} is a \gls{gui}, there are one or two additional system dependencies that need to be installed, with variations between operating systems, as discussed below.
+
 \begin{itemize}
     \item can install as an \proglang{R} package from combination of our repository and \gls{cran} (still working towards publishing final few packages to \gls{cran})
 \end{itemize}
