@@ -71,21 +71,16 @@ While the \gls{gui} packages provide the structure of the visual \gls{gui}, it's
 
 \subsection{Usage}\label{sec:usage}
 
-\begin{itemize}
-    \item its an \proglang{R} package
-    \item \gls{gui} is a single reference class object, \class{iNZGUI}
+At its core, \pkg{iNZight} is simply an \proglang{R} package that can be installed and run like any other, which is covered in \cref{sec:installation}. Once installed, the main program can be started by creating a new instance of the main \gls{gui} class \class{iNZGUI}, as demonstrated below.
 <<manual_usage,eval=FALSE>>=
-library(iNZight)
+library("iNZight")
 ui <- iNZGUI$new()
 ui$initializeGui()
 @
-    \item however, include a wrapper to make easier startup:
-<<manual_usage2,eval=FALSE>>=
-iNZight()
-@
-    \item For development, first option is better since it provides direct access to the objects:
+For most users, however, the simpler wrapper function \fct{iNZight} can be called instead. This can optionally take a \code{data} argument, which will launch \pkg{iNZight} with the data loaded and ready to explore.
+
+For development purposes, the former startup method is recommended, as this provides access to the \class{iNZGUI} object created to explore states and trigger actions for easier testing. In these two lines, the first returns the current data, while the second sets the first variable drop down value to \code{height}.
 <<manual_usage,eval=FALSE>>=
 ui$getActiveData()
 ui$ctrlWidget$V1box$set_value("height")
 @
-\end{itemize}
