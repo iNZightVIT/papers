@@ -1,11 +1,9 @@
 \section{The add-on system}\label{sec:addons}
 
-\begin{itemize}
-    \item \pkg{iNZight} comes with several ``advanced'' modules
-    \item also a (newer) add-on system allowing anyone to install new addons from a $3^\text{rd}$ party (or from our repo)
-    \item a single file (currently) with a single refernence class object inheriting from \class{CustomModule}
-    \item \pkg{iNZight} lists all modules installed to a specific modules directory on user's computer (either using manager or manually) in the \menu{Advanced} menu
-    \item when opened, shows up in the left-hand panel; has access to data, graphics device, menu items (can change these)
-    \item developer can use their own methods, controls, etc
-    \item Demo: Bayesian demographic modelling module (under development)
-\end{itemize}
+Most users will likely find all they need with the main \pkg{iNZight} interface, able to explore and visualise their data quickly and easily. However, there are cases where, as mentioned earlier, specific types of analyses and graphics are required for some data types (time series and maps, as examples). Of course, the total range of data types available is close to limitless, and there are increasingly more \proglang{R} packages on \gls{cran} every day providing new opportunities. Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we have crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules.
+
+Installing existing add-ons is easy. Users can either use the \menu{Module manager} to add, update, and remove modules from our add-on repository, or from a custom URL or file. In all cases, the file is placed in the \code{modules} directory, which users (and developers) can also place files manually. All files in this directory are then displayed in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the current data and other aspects of the interface.
+
+The module files themselves describe a single class object which inherits from \class{CustomModule}. This parent class provides several methods, including the initialization of the module panel in the left-hand-side of the \pkg{iNZight} interface. Additional properties and methods can be written by the developers of individual modules. This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules and distribute them to their desired audience.
+
+As an example, FIGURE shows a prototype of an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by small \glspl{ngo} to do small-area estimation. For example, estimation of life expectancy in small ethnic groups. This opens up advanced methods that were previously only available to proficient coders, who may now perform complex modelling procedures themselves.
