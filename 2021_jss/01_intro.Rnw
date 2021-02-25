@@ -1,19 +1,18 @@
 \section{Introduction}\label{sec:intro}
 
-The \proglang{R} programming environment \citep{rcore} is used throughout statistics and data science due to it being open source, easy to learn, and backed by a huge package repository to solve even the most unique of problems.
-\begin{itemize}
-    \item several \glspl{gui} have been developed over the years to ease access to advanced features of \proglang{R}: graphs, hypothesis tests, etc
-    \item eg: \cite{Rcommander}, \cite{Deducer}
-    \item these tend to work by asking users to first choose an action, then fill in the fields (including variable choice)
-    \item this requires some higher level of understanding to get useful information out (i.e., need to know what a ``t-test'' is)
-\end{itemize}
+The \proglang{R} programming environment \citep{rcore} is used throughout statistics and data science due to it being open source, easy to learn, and backed by a huge package repository to solve even the most unique of problems. Included in these packages are several \glspl{gui} providing point-and-click methods for creating graphs, performing hypothesis tests, and a range of other actions, with two prominent examples being \proglang{R} Commander \citep{Rcommander} and \pkg{Deducer} \citep{Deducer}. These tools work by providing \emph{additional functionality} to \proglang{R}, namely with menus allowing users to choose and use methods without remember the indivual function name and argument order. However, this requires a certain level of understanding of what these tests are for, excluding many beginners to statistics and data science.
 
-An alternative approach is to work variable-first, such that users choose variables they are interested in, and then choose from an automatically curated list of options to perform. \pkg{iNZight} uses this approach, and presents users with a exploration-focussed interface.
-\begin{itemize}
-    \item focus is on visualising, removing the need for any basic understanding of statistical procedures to get started with data visualisation
-    \item like other \glspl{gui}, there's a code component: however, \pkg{iNZight}'s is more \emph{behind-the-scenes}; useful for seeing a history of what you've done, with a little emphasis on editing a command to see how it changes things
-    \item goal is to develop data exploration skills before moving them on to coding (high-level to low-level)
-\end{itemize}
+
+An alternative approach is to work variable-first, such that users choose variables they are interested in, and then choose from an automatically curated list of options to perform. \pkg{iNZight} uses this approach, and presents users with an exploration-focussed interface, with the primary emphasis on graphics which is at the core of exploratative data analysis. Once basic visual exploration has taken place, obtaining simple summary information is as simple as clicking a button, as are inference statistics, including hypothesis testing, for which the user can choose from a small selection based on the chosen variables. This makes \pkg{iNZight} ideal for users who are completely new to statistics and data science, as well as those users who seldom perform these tasks and might otherwise struggle to remember the terminology required if using alternative software.
+
+
+Like other \glspl{gui}, there is a code component. \proglang{R} Commander provides a place for users to enter \proglang{R} code, while \pkg{Deducer} sits on top of the \proglang{R} console, and using the environment as-is. With \pkg{iNZight}, however, code happens ``behind the scenes'', and is not directly editable by users. A code history is stored with every action the user makes, allowing those interested to see what the code looks like, and to begin bridging the gap between learning to explore data and learning to code. [[ any references about learning to code using a GUI ?]]
+
+% \begin{itemize}
+%     \item like other \glspl{gui}, there's a code component: however, \pkg{iNZight}'s is more \emph{behind-the-scenes}; useful for seeing a history of what you've done, with a little emphasis on editing a command to see how it changes things
+%     \item goal is to develop data exploration skills before moving them on to coding (high-level to low-level)
+%     \item also as a research tool: no need to remember how to use complex software, great for infrequent but repetitive jobs (i.e., something a reseach group/organisation might need to do quarterly/yearly/etc)
+% \end{itemize}
 
 Due in part to its ease of use, \pkg{iNZight} has been adopted throughout New Zealand's statistical education program. Final year high school students are introduced to basic statistical concepts using \pkg{iNZight}, including a foray into time series analysis. Universities accross the country have also begun to use \pkg{iNZight} in both introductory and some advanced statistics courses. This paper provides an overview of some of the main features of \pkg{iNZight}, along with technical details, an introduction to its \emph{Add-on} system, and description of the install process.
 
