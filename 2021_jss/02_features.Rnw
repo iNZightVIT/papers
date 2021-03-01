@@ -49,20 +49,16 @@ Supplementary to the dataset operations, the \menu{Variable} menu provides a sel
 
 \subsection{Special data types}\label{sec:special-data}
 
-\begin{itemize}
-    \item a lot of data is simple rows of individual observations
-    \item most standard graph types offered by \pkg{iNZight} can cover the basic explorations
-    \item some cases where either the data has unique features that \emph{must} be incorporated (e.g., surveys) \emph{or} the data has unique constructs and needs a specific exploration techniques (time series, multiple response)
-    \item \pkg{iNZight} provides capabilities for some of each (plus extensibility for more)
-\end{itemize}
+Many data sets that our users will be exploring will be in `tidy' format \citep{Wickham_2017} (check citation), meaning rows are individual records and columns observations. However, there are some unique data types that are common for beginners to encounter, or form a core aspect of statistical education. These data sets require unique graphics to explore correctly, a task which \pkg{iNZight} has been extended to perform. Some of these are described here.
+
 
 \subsubsection{Complex survey designs}\label{sec:surveys}
 
-\begin{itemize}
-    \item native handling of surveys: set and forget
-    \item stratified/cluster surveys; replicate weight surveys; post-stratification/calibration
-    \item design stored and used in place of dataset: graphs, summaries, transformations all use survey-specific functions from the \pkg{survey} package \citep{survey}.
-\end{itemize}
+One of the most important data types for official statistics and research groups are complex surveys, and require information about the survey's structure to provide valid graphs, summaries, and inferences. \pkg{iNZight} handles survey designs behind the scenes, and only requires the user to specify the structure either manually, or by importing a special \emph{survey design} file. Once specified, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights will be incorporated correctly into graphs and summaries, as well as data manipulation functions, using the \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} packages behind the scenes.
+
+\pkg{iNZight} handles two types of designs: stratified or cluster surveys, and replicate weight designs. In the former, information about the strata and clusters is contained within the dataset. However, in the interest of confidentiality, some survey datasets use \emph{replicate weights}, allowing variance estimates without exposing strata and cluster information \citep{Lumley_2010}. In addition to these, \pkg{iNZight} also provides functionality to calibrate surveys with data from other sources to reduce the estimation variances. Once again, this is performed once by the user and the used continually throughout the rest of \pkg{iNZight}.
+
+
 
 \subsubsection{Time series}\label{sec:time-series}
 
