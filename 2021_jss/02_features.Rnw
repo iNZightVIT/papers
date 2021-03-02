@@ -33,7 +33,7 @@ Finally, there is an entire panel dedicated to plot modifications: \menu{Add to 
 \begin{figure}[t!]
     \centering
     \includegraphics[width=\textwidth]{figure/inzight_infant_mortality.png}
-    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu.}
+    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more.}
 \end{figure}
 
 
@@ -45,7 +45,7 @@ The inference information provides confidence intervals for quantities such as m
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_inference.png}
+    \includegraphics[width=0.8\textwidth]{figure/inzight_inference.png}
     \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_inference} The \menu{Inference} window provides a selection of hypothesis tests for the chosen variables. In this case, these are \code{Infantmortality} and \code{Region}, so \pkg{iNZight} provides an ANOVA test.}
 \end{figure}
 
@@ -93,7 +93,7 @@ In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describ
 \begin{figure}[t!]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/inzight_data_mod.png}
-    \caption{\label{fig:data_mod_preview} Here, the user is uniting two columns to create a new variable, with the preview displayed in the bottom-right. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
+    \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variable, with the preview displayed in the bottom-right. The relevent column names are underlined in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
 \end{figure}
 
 Supplementary to the dataset operations, the \menu{Variable} menu provides a selection of variable transformation and modification actions. For example, numeric variables can be converted to categorical (a common example is \code{Year}), or categoric variable levels can be renamed, reordered, and combined. Users also have the option of creating custom variables using \proglang{R} code, as well as renaming and deleting entire variables. In most cases, \pkg{iNZight} creates a \emph{new} variable, for example converting \code{Year} to categorical might yield the variable \code{Year.cat}, which makes the experience more exploration-friendly.
