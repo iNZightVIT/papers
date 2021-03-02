@@ -118,55 +118,10 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 
 \newpage
 
-% \begin{appendix}
+\begin{appendix}
+\SweaveInput{appendix_01.Rnw}
+\end{appendix}
 
-% \section{More technical details} \label{app:technical}
-
-% \begin{leftbar}
-% Appendices can be included after the bibliography (with a page break). Each
-% section within the appendix should have a proper section title (rather than
-% just \emph{Appendix}).
-
-% For more technical style details, please check out JSS's style FAQ at
-% \url{https://www.jstatsoft.org/pages/view/style#frequently-asked-questions}
-% which includes the following topics:
-% \begin{itemize}
-%   \item Title vs.\ sentence case.
-%   \item Graphics formatting.
-%   \item Naming conventions.
-%   \item Turning JSS manuscripts into \proglang{R} package vignettes.
-%   \item Trouble shooting.
-%   \item Many other potentially helpful details\dots
-% \end{itemize}
-% \end{leftbar}
-
-
-% \section[Using BibTeX]{Using \textsc{Bib}{\TeX}} \label{app:bibtex}
-
-% \begin{leftbar}
-% References need to be provided in a \textsc{Bib}{\TeX} file (\code{.bib}). All
-% references should be made with \verb|\cite|, \verb|\citet|, \verb|\citep|,
-% \verb|\citealp| etc.\ (and never hard-coded). This commands yield different
-% formats of author-year citations and allow to include additional details (e.g.,
-% pages, chapters, \dots) in brackets. In case you are not familiar with these
-% commands see the JSS style FAQ for details.
-
-% Cleaning up \textsc{Bib}{\TeX} files is a somewhat tedious task -- especially
-% when acquiring the entries automatically from mixed online sources. However,
-% it is important that informations are complete and presented in a consistent
-% style to avoid confusions. JSS requires the following format.
-% \begin{itemize}
-%   \item JSS-specific markup (\verb|\proglang|, \verb|\pkg|, \verb|\code|) should
-%     be used in the references.
-%   \item Titles should be in title case.
-%   \item Journal titles should not be abbreviated and in title case.
-%   \item DOIs should be included where available.
-%   \item Software should be properly cited as well. For \proglang{R} packages
-%     \code{citation("pkgname")} typically provides a good starting point.
-% \end{itemize}
-% \end{leftbar}
-
-% \end{appendix}
 
 % %% -----------------------------------------------------------------------------
 
