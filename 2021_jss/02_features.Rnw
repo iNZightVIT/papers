@@ -2,7 +2,7 @@
 
 The primary audience for \pkg{iNZight} are students of statistics and data science, but secondary groups include small research groups with small budgets and organisations which perform analyses infrequently. The simplicity of the interface, shown in \cref{fig:inzight_main}, means its easy to remember how to use the program after a period of non-use, unlike more specialised software which can cost time to relearn. We have done this by making the interface as intuitive as possible, with few self-explanatory controls using basic mechanisms such as drag-and-drop or selection from a drop-down box. \pkg{iNZight} also uses a \emph{variable first} approach, meaning users choose the variables they are interested in, and the software displays relevant actions. The easiest way to demonstrate \pkg{iNZight}'s features is by demonstration. In this section, we take a tour through the software from simple to complex.
 
-\begin{figure}[t!]
+\begin{figure}[tp]
     \centering
     \includegraphics[width=\textwidth]{figure/inzight_main.png}
     \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The screen will update once data has been loaded.}
@@ -13,7 +13,7 @@ The primary audience for \pkg{iNZight} are students of statistics and data scien
 
 Data comes in a wide range of formats, some of which are typically software-dependent \citep[such as \proglang{Excel} files,][]{msexcel}. Thanks to being open source, there are 1000's of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to reading specific file formats. However, users must still know the correct package and function for their files. \pkg{iNZight} provides a simple \menu{Load Data} window from which they can select a file to import. The software detects the file type from the file extension and attempts to read the file. If successfull, a preview is displayed for the user to check before proceeding to import the file. \Cref{fig:load_data} shows the \menu{Load Data} window, which has detected a \gls{csv} file and used the appropriate function in the background. Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
 
-\begin{figure}[t!]
+\begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/inzight_load_data.png}
     \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
@@ -30,7 +30,7 @@ The first variable box is referred to as the \emph{Primary Variable of Interest}
 
 Finally, there is an entire panel dedicated to plot modifications: \menu{Add to Plot}. This is accessed either from the \menu{Plot} menu, or from the button in the \menu{Plot Toolbar}. From here, users can choose from a selection of alternative plot types (limited by the types of variables), as well as choose a colour variable, sizing variable, plot symbols, trend lines, changing axis labels and limits, and much more. The options are presented in an interactive format such that the graph updates whenever the user changes values, allowing them to explore ``what happens if \ldots'', and ``what does this do?''. The goal is to allow beginners to explore a dataset without being limited by having to learn how to do a wide range of actions. \Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and GDP, region, population, and year.
 
-\begin{figure}[t!]
+\begin{figure}[tp]
     \centering
     \includegraphics[width=\textwidth]{figure/inzight_infant_mortality.png}
     \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more.}
@@ -43,7 +43,7 @@ To supplement the visual graphics, \pkg{iNZight} also provides two textual outpu
 
 The inference information provides confidence intervals for quantities such as means and proportions, and additionally provides a simple interface for performing hypothesis tests. \pkg{iNZight} displays a selection of tests available for the chosen variable(s), as shown in \cref{fig:inzight_inference}. The full list of tests available are given in \cref{tab:hypothesis-tests}. The inference information can either be calculated using Normal theory or bootstrap methods \citep[using the \pkg{boot} package,][]{boot}.
 
-\begin{figure}[t!]
+\begin{figure}[tp]
     \centering
     \includegraphics[width=0.8\textwidth]{figure/inzight_inference.png}
     \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_inference} The \menu{Inference} window provides a selection of hypothesis tests for the chosen variables. In this case, these are \code{Infantmortality} and \code{Region}, so \pkg{iNZight} provides an ANOVA test.}
@@ -90,7 +90,7 @@ Usually the first thing researchers want to do when they first begin exploring a
 
 In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describe many data manipulation methods including filtering, aggregation, and reshaping. They provide the \pkg{tidyverse} \citep{tidyverse} code for these actions, which \pkg{iNZight} uses behind-the-scenes to implement the behaviours. However, \pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods, allowing users to quickly and easily filter by value, convert from \emph{wide} to \emph{long} form, or merge two related datasets together. In most cases, the interface allows users to fill out the fields which change according to previous selections, and at the bottom is a preview of what the data will look like, as demonstrated in \cref{fig:data_mod_preview}.
 
-\begin{figure}[t!]
+\begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/inzight_data_mod.png}
     \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variable, with the preview displayed in the bottom-right. The relevent column names are underlined in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
