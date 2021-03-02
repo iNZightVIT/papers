@@ -11,6 +11,8 @@
 % \makeglossaries
 \input{../glossary.tex}
 
+\usepackage{booktabs}
+\usepackage{threeparttable}
 
 %% new custom commands
 \newcommand{\class}[1]{`\code{#1}'}
