@@ -106,11 +106,23 @@ Many data sets that our users will be exploring will be in `tidy' format \citep{
 
 \subsubsection{Complex survey designs}\label{sec:surveys}
 
-One of the most important data types for official statistics and research groups are complex surveys, and require information about the survey's structure to provide valid graphs, summaries, and inferences. \pkg{iNZight} handles survey designs behind the scenes, and only requires the user to specify the structure either manually, or by importing a special \emph{survey design} file. Once specified, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights will be incorporated correctly into graphs and summaries, as well as data manipulation functions, using the \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} packages behind the scenes.
+One of the most important data types for official statistics and research groups are complex surveys, and require information about the survey's structure to provide valid graphs, summaries, and inferences. \pkg{iNZight} handles survey designs behind the scenes, and only requires the user to specify the structure either manually (\cref{fig:inzight_survey_spec}), or by importing a special \emph{survey design} file. Once specified, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights will be incorporated correctly into graphs and summaries, as well as data manipulation functions, using the \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} packages behind the scenes.
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure/inzight_survey_spec.png}
+    \caption{\label{fig:inzight_survey_spec} Users can specify survey design information manually by filling in the fields. These will then be used throughout the session.}
+\end{figure}
 
 \pkg{iNZight} handles two types of designs: stratified or cluster surveys, and replicate weight designs. In the former, information about the strata and clusters is contained within the dataset. However, in the interest of confidentiality, some survey datasets use \emph{replicate weights}, allowing variance estimates without exposing strata and cluster information \citep{Lumley_2010}. In addition to these, \pkg{iNZight} also provides functionality to calibrate surveys with data from other sources to reduce the estimation variances. Once again, this is performed once by the user and the used continually throughout the rest of \pkg{iNZight}.
 
 The types of graphs available different for survey data. For a single numeric variable, a \emph{histogram} is displayed instead of a dotplot. For two numeric variables, a \emph{bubble plot} is used, which is effectively a scatter plot with points sized by the respective weights of observations. Alternatively, this can be displayed as a \emph{hex} plot also. Bar plots remain the same. Summaries accessed from the \menu{Get Summary} button display the same information, but are summaries of the population values, and are given along with the standard errors of the estimates, as shown in FIGURE.
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure/inzight_survey_summary.png}
+    \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_survey_summary} The \menu{Summary} window window provides simple summary statistics and, in the case of survey data, standard errors of these population estimates.}
+\end{figure}
 
 
 
