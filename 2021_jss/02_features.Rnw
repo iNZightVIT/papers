@@ -1,6 +1,12 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
-The primary audience for \pkg{iNZight} are students of statistics and data science, but secondary groups include small research groups with small budgets and organisations which perform analyses infrequently. The simplicity of the interface means its easy to remember how to use the program after a period of non-use, unlike more specialised software which can cost time to relearn. We have done this by making the interface as intuitive as possible, with few self-explanatory controls using basic mechanisms such as drag-and-drop or selection from a drop-down box. \pkg{iNZight} also uses a \emph{variable first} approach, meaning users choose the variables they are interested in, and the software displays relevant actions. The easiest way to demonstrate \pkg{iNZight}'s features is by demonstration. In this section, we take a tour through the software from simple to complex.
+The primary audience for \pkg{iNZight} are students of statistics and data science, but secondary groups include small research groups with small budgets and organisations which perform analyses infrequently. The simplicity of the interface, shown in \cref{fig:inzight_main}, means its easy to remember how to use the program after a period of non-use, unlike more specialised software which can cost time to relearn. We have done this by making the interface as intuitive as possible, with few self-explanatory controls using basic mechanisms such as drag-and-drop or selection from a drop-down box. \pkg{iNZight} also uses a \emph{variable first} approach, meaning users choose the variables they are interested in, and the software displays relevant actions. The easiest way to demonstrate \pkg{iNZight}'s features is by demonstration. In this section, we take a tour through the software from simple to complex.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure/inzight_main.png}
+    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The screen will update once data has been loaded.}
+\end{figure}
 
 
 \subsection{Loading data}\label{sec:loading-data}
