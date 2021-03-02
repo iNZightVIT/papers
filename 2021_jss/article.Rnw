@@ -11,6 +11,8 @@
 % \makeglossaries
 \input{../glossary.tex}
 
+\usepackage{upquote}
+
 \usepackage{booktabs}
 \usepackage{threeparttable}
 
