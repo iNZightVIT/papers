@@ -41,7 +41,13 @@ Finally, there is an entire panel dedicated to plot modifications: \menu{Add to 
 
 To supplement the visual graphics, \pkg{iNZight} also provides two textual output modes: \emph{summaries} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons respectively. Summary information includes basic information about the chosen variables, including mean, standard deviation, quantiles, and so on, acting as a quick reference for values that are likely estimable from the graph itself.
 
-The inference information provides confidence intervals for quantities such as means and proportions, and additionally provides a simple interface for performing hypothesis tests. \pkg{iNZight} displays a selection of tests available for the chosen variable(s), as shown in \cref{tab:hypothesis-tests}. The inference information can either be calculated using Normal theory or bootstrap methods \citep[using the \pkg{boot} package,][]{boot}.
+The inference information provides confidence intervals for quantities such as means and proportions, and additionally provides a simple interface for performing hypothesis tests. \pkg{iNZight} displays a selection of tests available for the chosen variable(s), as shown in \cref{fig:inzight_inference}. The full list of tests available are given in \cref{tab:hypothesis-tests}. The inference information can either be calculated using Normal theory or bootstrap methods \citep[using the \pkg{boot} package,][]{boot}.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\textwidth]{figure/inzight_inference.png}
+    \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_inference} The \menu{Inference} window provides a selection of hypothesis tests for the chosen variables. In this case, these are \code{Infantmortality} and \code{Region}, so \pkg{iNZight} provides an ANOVA test.}
+\end{figure}
 
 
 <<hypothesis_tests,results=tex,echo=FALSE>>=
@@ -86,7 +92,7 @@ In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describ
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=0.6\textwidth]{figure/data-mod-preview.png}
+    \includegraphics[width=0.6\textwidth]{figure/inzight_data_mod.png}
     \caption{\label{fig:data_mod_preview} Here, the user is uniting two columns to create a new variable, with the preview displayed in the bottom-right. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
 \end{figure}
 
