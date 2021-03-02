@@ -4,7 +4,7 @@ The primary audience for \pkg{iNZight} are students of statistics and data scien
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=0.6\textwidth]{figure/inzight_main.png}
+    \includegraphics[width=\textwidth]{figure/inzight_main.png}
     \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The screen will update once data has been loaded.}
 \end{figure}
 
