@@ -20,14 +20,14 @@ The \proglang{R} code history generated during the demonstration in \cref{sec:fe
 ## This script assumes you have various iNZight packages installed.
 ## Uncomment the following lines if you don't:
 
-# install.packages(c('iNZightPlots',
-#                    'magrittr',
-#                    'readr:',
-#                    'dplyr:',
-#                    'tidyr:',
-#                    'survey:'), 
-#     repos = c('https://r.docker.stat.auckland.ac.nz',
-#               'https://cran.rstudio.com'))
+# install.packages(c(`iNZightPlots',
+#                    `magrittr',
+#                    `readr:',
+#                    `dplyr:',
+#                    `tidyr:',
+#                    `survey:'), 
+#     repos = c(`https://r.docker.stat.auckland.ac.nz',
+#               `https://cran.rstudio.com'))
 
 ## -------------------------------------------------------------------------- ##
 
@@ -35,7 +35,7 @@ library(magrittr)  # enables the pipe (%>%) operator
 library(iNZightPlots)
 
 Gapminder <-
-    readr::read_csv("C:UsersTomDownloadsGapminder.csv",
+    readr::read_csv("C:\Users\Tom\Downloads\Gapminder.csv",
         comment = "#",
         col_types = readr::cols(
             BodyMassIndex_M = "c",
@@ -66,12 +66,12 @@ Gapminder <-
     ) %>%
     dplyr::mutate(
         "Country" = as.factor(Country),
-        "Region-Geo" = as.factor(`Region-Geo`),
+        "Region-Geo" = as.factor(\textasciigrave Region-Geo\textasciigrave),
         "Continent" = as.factor(Continent),
         "Region" = as.factor(Region),
-        "Year_cat" = as.factor(`Year_cat`),
-        "BodyMassIndex_M" = as.factor(`BodyMassIndex_M`),
-        "BodyMassIndex_F" = as.factor(`BodyMassIndex_F`),
+        "Year_cat" = as.factor(\textasciigrave Year_cat\textasciigrave),
+        "BodyMassIndex_M" = as.factor(\textasciigrave BodyMassIndex_M\textasciigrave),
+        "BodyMassIndex_F" = as.factor(\textasciigrave BodyMassIndex_F\textasciigrave),
         "Cellphones" = as.factor(Cellphones),
         "Femalesaged25to54labourforceparticipationrate" = as.factor(Femalesaged25to54labourforceparticipationrate),
         "Forestarea" = as.factor(Forestarea),
@@ -143,7 +143,7 @@ Gapminder.filtered.separated <-
 data(apiclus2, package = 'survey')
 
 ## -------------------------------------------------------------------------- ##
-## Exploring the 'apiclus1_ex' dataset
+## Exploring the `apiclus1_ex' dataset
 
 apiclus1_ex <- apiclus1
 
@@ -156,10 +156,10 @@ inzsummary(~stype,
 )
 
 ## Load example data set
-data(visitorsQ, package = 'iNZightTS')
+data(visitorsQ, package = `iNZightTS')
 
 ## -------------------------------------------------------------------------- ##
-## Exploring the 'visitorsQ_ex' dataset
+## Exploring the `visitorsQ_ex' dataset
 
 visitorsQ_ex <- visitorsQ
 
