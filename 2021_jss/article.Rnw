@@ -12,7 +12,7 @@
 \input{../glossary.tex}
 
 \usepackage{upquote}
-
+\usepackage{array}
 \usepackage{booktabs}
 \usepackage{threeparttable}
 
