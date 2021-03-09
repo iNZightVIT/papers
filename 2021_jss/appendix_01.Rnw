@@ -128,6 +128,12 @@ inzplot(Infantmortality ~ GDPpercapita | Year_cat,
     main = "Infant Mortality Over Time"
 )
 
+inzinference(Infantmortality ~ Region | Year_cat,
+    g1.level = "[2004]",
+    data = Gapminder.filtered,
+    hypothesis.test = "anova"
+)
+
 Gapminder.filtered.separated <-
     data %>% tidyr::separate(
         col = "Region.Geo",
