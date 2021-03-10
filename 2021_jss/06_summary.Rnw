@@ -1,19 +1,14 @@
 \section{Summary and future work}\label{sec:summary}
 
-\begin{itemize}
-    \item \pkg{iNZight} provides an easy-to-use \gls{gui} to simple exploration and visualisation tasks for statistics and data science students/beginners
-    \item variable-first: doesn't require knowledge of techniques beforehand
-    \item data manipulation techniques and other advanced data-specific features (e.g., surveys)
-    \item code writing for those interested in migrating towards learning to code in \proglang{R}
-    \item add-on system for easy expansion by course coordinators/researchers/\proglang{R} package maintainers who want to provide a simple interface to their package
-    \item available on Windows and Linux
-\end{itemize}
+Newcomers to statistics often need to learn both how to code using \proglang{R} whilst simultaneously learning the basic skills for data exploration. By providing an easy-to-use \gls{gui}, \pkg{iNZight} allows beginners to focus on the fun part of exploring and analysing data, developing these essential skills before embarking on the more challenging part of learning to code. The software is \emph{variable first}, meaning users do not need to first know complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable choice.
+
+Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, is all presented in simple, step-by-step windows, many of which provide previews that help users to tweak the inputs to get the desired output. As mentioned above, many users will eventually need to learn to code with \proglang{R}, so \pkg{iNZight} includes some simple tools for helping that migration: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
+
+Statistics and data science is an ever expanding field, with new \proglang{R} packages added to CRAN daily. \pkg{iNZight} includes an add-on system which allows other developers outside of the development team to create and share modules which \pkg{iNZight} users can install and use on top of \pkg{iNZight}'s existing feature set. Since \pkg{iNZight} is available as a standalong program on Windows, package developers have an opportunity to reach audiences they might not previously have been able to.
 
 
 \subsection{Future Work}\label{sec:future-work}
 
-\begin{itemize}
-    \item database connections (for larger datasets, including surveys, with database calculations where possible)
-    \item translation system (flexible for any other languages)
-    \item exploration of alternative \gls{gui} frameworks (gtk alternative) with better cross-platform support (i.e., macOS)
-\end{itemize}
+Much is planned for the future of \pkg{iNZight}, the foremost being the ability to interact with more complex datasets, particularly those saved within a database, which as much processing done within the database as possible to speed up the interface for possibly large datasets. This, along with other advances, will make \pkg{iNZight} a useful tool for not only learners but researchers and organisations alike, including capabilities for the software to connect to secure databases behind a firewall and allow researchers without coding skills access to it.
+
+The main mark against \pkg{iNZight} at present is its reliance on GTK, which has been discontinued on macOS. Exploration into possible alternative frameworks is ongoing, with desire to develop a fully cross-platform application to users from all backgrounds can make use of the software.
