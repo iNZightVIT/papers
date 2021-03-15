@@ -15,7 +15,13 @@ This parent class provides several methods, including the initialization of the 
 Additional properties and methods can be written by the developers of individual modules.
 This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules and distribute them to their desired audience.
 
-As an example, FIGURE shows a prototype of an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by researchers and offical(?) organisations to do small-area demography.
+As an example, \cref{fig:inzight_demest} shows a prototype of an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by researchers and offical(?) organisations to do small-area demography.
 For example, estimation of life expectancy in small ethnic groups.
 This opens up advanced methods that were previously only available to proficient coders, who may now perform complex modelling procedures themselves.
 \textbf{This last para needs work}.
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=\textwidth]{figure/inzight_demest.png}
+    \caption[The prototype for a new Bayesian demographic modelling module for iNZight.]{\label{fig:inzight_demest} The prototype for a new Bayesian demographic modelling module for \pkg{iNZight}. In this example, life expectancy is estimated from death data.}
+\end{figure}

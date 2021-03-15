@@ -52,7 +52,7 @@ The actual class for the \menu{Filter Data} method is much more complicated, and
                 initFields(GUI = gui, data = gui$getActiveData())
                 # ... construct GUI inputs ...
                 # e.g.,
-                type <<- gradio(c('Numeric value', 'Factor levels', 'Random'))
+                type <<- gradio(c("Numeric value", "Factor levels", "Random"))
                 variable <<- gcombobox(colnames(data))
                 okbtn <- gbutton("Filter", handler = function(h, ...) filter_data())
             },

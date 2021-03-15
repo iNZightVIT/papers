@@ -203,23 +203,45 @@ From the \menu{Select Variable} list, one or more variables may be chosen, while
 
 \subsubsection{Maps}\label{sec:maps}
 
-\begin{itemize}
-    \item another commonly seen data type
-    \item either points on a map (e.g., a specialised scatter plot) or areas on a map, colour coded by variables
-    \item \pkg{iNZight} can do both; regions requires data with location labels (countries, counties, regions, etc); points just a longitude and latitude variable
-    \item lots of map-specific features: colour by region; aggregate time variable; plot mini plots over regions (e.g., barchart of categorical variable by region)
-    \item the hard part is often figuring out shapefiles: \pkg{iNZight} lets user pick the type of map, and \pkg{iNZight} does the rest (with previews to help fine-tune)
-\end{itemize}
+Geographical data is commonplace, and is often of interest to researchers but can be complex to create the appropriate graphics.
+\pkg{iNZight} includes a \emph{Maps} module for exploring two types of geographical data: point-based data, in which observations are associated with latitude and longitudinal locations (for example earthquakes); and regional maps, which include data for specific regions which may be countries or areas within countries (regions, states, and so on).
+The functionality within the maps module call wrapper functions from the \pkg{iNZightMaps} package \citep{iNZightMaps}.
+
+
+For point-based observations, the simplest visualisation tool is to overlay the points on a map using functionality from, for which \pkg{iNZightMaps} uses the \pkg{ggmap} package \citep{ggmap}.
+The maps module in \pkg{iNZight} provides users with the ability to explore other variables in the dataset using size, colour, and transparency, as well as through faceting.
+A demonstration of this using New Zealand earthquake data is shown in \cref{fig:inzight_quakes}.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figure/inzight_quakes.png}
+    \caption{\label{fig:inzight_quakes} The maps module showing New Zealand earthquakes sized by magnitude, coloured by depth, and subset by whether or not they were felt.}
+\end{figure}
+
+More complicated is region-type data, which require the added complexity of \emph{shape files} which describe the boundaries of areas.
+An example of this is country data, which requires shape files for countries in the dataset describing the world map.
+\pkg{iNZight}'s maps module lets users choose the type of map they need for the data, and proceeds to match labels between the two datasets using several matching techniques since, for example, countries may be coded using full names or a code (``New Zealand'' versus ``NZ'' versus ``NZL'').
+Once done, users are free to pick variables to graph, and regions of the maps are coloured by this variable.
+Alternatively, if longitudinal data is available, \emph{spark lines} can be drawn showing how the value of a variable changes over time.
+
+% \begin{figure}[p]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figure/inzight_quakes.png}
+%     \caption{\label{fig:inzight_sparklines} Maps module showing changes in X over time.}
+% \end{figure}
+
 
 \subsubsection{Other data types and features}\label{sec:other-data-types}
 
-\begin{itemize}
-    \item multiple response data
-    \item multivariate data (addon module, \cref{sec:addons})
-    \item model fitting
-    \item frequencies
-    \item extensible to others too
-\end{itemize}
+Besides these few examples, \pkg{iNZight} supports several other unique data types.
+Multiple response data arrises from ``Choose all that apply'' type survey questions, and need their own method of graphics to explore adequately.
+There is also a multivariate data add-on module allowing for principle components analysis and related graphs.
+Even more useful is the model fitting module, which allows users to fit complex linear and generalised linear regression models to data, including survey design data.
+In some cases, data may be frequency counts, which require some different handling also and can be specifed from the \menu{Data} menu.
+
+Besides those examples listed above, \pkg{iNZight} has an add-on system \cref{sec:addons} that allows developers to extend the interface to suit various type of data, or to perform specific types of analyses.
+The development means individual package developers, or researchs groups, can create custom modules that are shared either publically or privately with others.
+
 
 
 \subsection[Code writing for getting started with R]{Code writing for getting started with \proglang{R}}\label{sec:code-writing}
