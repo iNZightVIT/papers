@@ -8,7 +8,7 @@ The easiest way to explore \pkg{iNZight}'s features is by demonstration.
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_main.png}
+    \includegraphics[width=0.9\textwidth]{figure/inzight_main.png}
     \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The screen will update once data has been loaded.}
 \end{figure}
 
@@ -37,18 +37,18 @@ The preview is updated when these options are changed, so users do not have to k
 
 \subsection{Creating graphs}\label{sec:creating-graphs}
 
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{figure/inzight_infant_mortality.png}
-    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more.}
-\end{figure}
-
-
 Within \pkg{iNZight}, graphics are at the core of the user experience: the first prototype included a drag-and-drop of variables to create a plot, and that is how things have remained.
 Behind the scenes, \pkg{iNZight} detects the variable types (numeric, categorical, or a date-time) and draws an appropriate graph.
 For example, a single numeric variable produces a dot plot, while a categorical variable produces a bar chart.
 The user does not need to know what type of graph they want to create from a chosen variable, allowing them to freely explore the dataset by drag-and-drop of variables onto the \menu{Variable} boxes (or using the drop down menus).
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figure/inzight_infant_mortality.png}
+    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more.}
+\end{figure}
+
 
 The first variable box is referred to as the \emph{Primary Variable of Interest}.
 That is, this is the variable we want to know about, and how it is influenced by other variables.
@@ -197,7 +197,7 @@ From the \menu{Select Variable} list, one or more variables may be chosen, while
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_time_series.png}
+    \includegraphics[width=0.9\textwidth]{figure/inzight_time_series.png}
     \caption{\label{fig:inzight_ts} The time series module.}
 \end{figure}
 
@@ -214,7 +214,7 @@ A demonstration of this using New Zealand earthquake data is shown in \cref{fig:
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_quakes.png}
+    \includegraphics[width=0.9\textwidth]{figure/inzight_quakes.png}
     \caption{\label{fig:inzight_quakes} The maps module showing New Zealand earthquakes sized by magnitude, coloured by depth, and subset by whether or not they were felt.}
 \end{figure}
 

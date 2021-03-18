@@ -13,7 +13,7 @@ Each `panel' is a \emph{class}, with individual buttons, methods (actions), and 
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_main_widgets.png}
+    \includegraphics[width=0.9\textwidth]{figure/inzight_main_widgets.png}
     \caption[The reference class components of the iNZight interface.]{\label{fig:inzight_main_widgets} The reference class components of the \pkg{iNZight} interface, some of which are themselves made from several child objects.}
 \end{figure}
 

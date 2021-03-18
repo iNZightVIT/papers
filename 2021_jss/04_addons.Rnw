@@ -22,6 +22,6 @@ This opens up advanced methods that were previously only available to proficient
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=\textwidth]{figure/inzight_demest.png}
+    \includegraphics[width=0.9\textwidth]{figure/inzight_demest.png}
     \caption[The prototype for a new Bayesian demographic modelling module for iNZight.]{\label{fig:inzight_demest} The prototype for a new Bayesian demographic modelling module for \pkg{iNZight}. In this example, life expectancy is estimated from death data.}
 \end{figure}
