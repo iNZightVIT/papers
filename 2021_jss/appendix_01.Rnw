@@ -55,31 +55,39 @@ Gapminder <-
             grouping_mark = ""
         )
     ) %>%
-    dplyr::mutate(
-        "Country" = as.factor(Country),
-        "Region-Geo" = as.factor(`Region-Geo`),
-        "Continent" = as.factor(Continent),
-        "Region" = as.factor(Region),
-        "Year_cat" = as.factor(`Year_cat`),
-        "BodyMassIndex_M" = as.factor(`BodyMassIndex_M`),
-        "BodyMassIndex_F" = as.factor(`BodyMassIndex_F`),
-        "Cellphones" = as.factor(Cellphones),
-        "Femalesaged25to54labourforceparticipationrate" = as.factor(Femalesaged25to54labourforceparticipationrate),
-        "Forestarea" = as.factor(Forestarea),
-        "Governmenthealthspendingperpersontotal" = as.factor(Governmenthealthspendingperpersontotal),
-        "Hightotechnologyexports" = as.factor(Hightotechnologyexports),
-        "Hourlycompensation" = as.factor(Hourlycompensation),
-        "Incomeshareofpoorest10pct" = as.factor(Incomeshareofpoorest10pct),
-        "Incomeshareofrichest10pct" = as.factor(Incomeshareofrichest10pct),
-        "Internetusers" = as.factor(Internetusers),
-        "Literacyrateadulttotal" = as.factor(Literacyrateadulttotal),
-        "Literacyrateyouthtotal" = as.factor(Literacyrateyouthtotal),
-        "Longtermunemploymentrate" = as.factor(Longtermunemploymentrate),
-        "Poverty" = as.factor(Poverty),
-        "Ratioofgirlstoboysinprimaryandsecondaryeducation" = as.factor(Ratioofgirlstoboysinprimaryandsecondaryeducation),
-        "Renewablewater" = as.factor(Renewablewater),
-        "Taxrevenue" = as.factor(Taxrevenue),
-        "TotalhealthspendingperpersonUS" = as.factor(TotalhealthspendingperpersonUS)
+    dplyr::mutate_at(
+        c(
+            "Country",
+            "Region-Geo",
+            "Continent",
+            "Region",
+            "Year_cat"
+        ),
+        as.factor
+    ) %>%
+    dplyr::mutate_at(
+        c(
+            "BodyMassIndex_M",
+            "BodyMassIndex_F",
+            "Cellphones",
+            "Femalesaged25to54labourforceparticipationrate",
+            "Forestarea",
+            "Governmenthealthspendingperpersontotal",
+            "Hightotechnologyexports",
+            "Hourlycompensation",
+            "Incomeshareofpoorest10pct",
+            "Incomeshareofrichest10pct",
+            "Internetusers",
+            "Literacyrateadulttotal",
+            "Literacyrateyouthtotal",
+            "Longtermunemploymentrate",
+            "Poverty",
+            "Ratioofgirlstoboysinprimaryandsecondaryeducation",
+            "Renewablewater",
+            "Taxrevenue",
+            "TotalhealthspendingperpersonUS"
+        ),
+        as.numeric
     ) %>%
     dplyr::rename(Region.Geo = "Region-Geo")
 
