@@ -1,8 +1,8 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
-The primary audience for \pkg{iNZight} is students of statistics and data science, but secondary groups include small research groups and organisations with small budgets who may perform commonplace statistical analyses infrequently.
-The interface's simplicity, shown in \cref{fig:inzight_main}, makes it easy to learn initially and re-learn after a period of non-use unlike more complex alternatives.
-To achieve this, we made the interface as intuitive as possible, with self-explanatory controls using basic simple drag-and-drop or drop-down selection mechanisms.
+\pkg{iNZight} was originally designed as a tool for teaching statistics to students, but has found a dual-purpose in research groups as an in-house tool for rapid research development.\footnote{make nicer}
+By making the interface simple, as shown in \cref{fig:inzight_main}, \pkg{iNZight} is very easy to learn initially and, unlike more complicated alternatives, \emph{re-learning} the software is equally simple, making it ideal for beginners and researchers who might infrequently need to perform analyses.
+The intuitive interface is achieved by using familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
 \pkg{iNZight} also uses a \emph{variable-first} approach, allowing users to choose the variables they are interested in and let the software display the relevant actions.
 The easiest way to explore \pkg{iNZight}'s features is by demonstration.
 
@@ -67,6 +67,7 @@ The goal is to let beginners explore a dataset without being limited by a lack o
 
 To supplement the visual graphics, \pkg{iNZight} also provides two textual output modes: \emph{summaries} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons, respectively, at the bottom-left of the interface.
 Summary information includes basic information about the chosen variables, including mean, standard deviation, quantiles, and so on, acting as a quick reference for values that are likely estimable from the graph itself.
+Often researchers are interested in a table of counts, which can be accessed here.
 
 The inference information provides estimated, confidence intervals, and any applicable $p$-values, for quantities such as means and proportions, and a simple interface for performing hypothesis tests.
 \pkg{iNZight} displays a selection of tests available for the chosen variable(s), as shown in \cref{fig:inzight_inference}.
