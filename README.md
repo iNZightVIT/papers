@@ -19,7 +19,7 @@ each subdirectory.
 <td>
 
 <strong><a href='2021_jss/index.pdf'>iNZight: A Graphical User Interface
-for Visualisation and Exploration of Data with R</a></strong><br>Tom
+for Data Visualisation and Analysis through R</a></strong><br>Tom
 Elliott and Chris Wild and Daniel Barnett and Andrew Sporle
 
 </td>
