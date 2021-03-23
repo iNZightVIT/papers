@@ -1,7 +1,7 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
 \pkg{iNZight} was originally designed as a tool for teaching statistics to students, but has found a dual-purpose in research groups as an in-house tool for rapid research development.\footnote{make nicer}
-By making the interface simple, as shown in \cref{fig:inzight_main}, \pkg{iNZight} is very easy to learn initially and, unlike more complicated alternatives, \emph{re-learning} the software is equally simple, making it ideal for beginners and researchers who might infrequently need to perform analyses.
+The simplified interface shown in \cref{fig:inzight_main} makes \pkg{iNZight} very easy to learn and, unlike more complicated alternatives, can be picked up after a period of non-use with little effort, making it ideal for infrequent but critical tasks within organisations.
 The intuitive interface is achieved by using familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
 \pkg{iNZight} also uses a \emph{variable-first} approach, allowing users to choose the variables they are interested in and let the software display the relevant actions.
 The easiest way to explore \pkg{iNZight}'s features is by demonstration.
