@@ -1,20 +1,21 @@
 \section{Summary and future work}\label{sec:summary}
 
-Newcomers to statistics often need to learn both how to code using \proglang{R} whilst simultaneously learning the basic skills for data exploration.
-By providing an easy-to-use \gls{gui}, \pkg{iNZight} allows beginners to focus on the fun part of exploring and analysing data, developing these essential skills before embarking on the more challenging part of learning to code.
-The software is \emph{variable first}, meaning users do not need to first know complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable choice.
+Newcomers to statistics often need to learn both how to code using \proglang{R} whilst simultaneously learning the basic skills for data exploration, while many researchers need quick, easy methods to develop their projects.
+By providing an easy-to-use \gls{gui}, \pkg{iNZight} lets users focus on exploring and analysing data.
+Beginners can develop analysis skills before embarking on the more challenging part of learning to code.
+The software is \emph{variable first}, meaning users do not need to first know or remember complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable choice.
 
-Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, is all presented in simple, step-by-step windows, many of which provide previews that help users to tweak the inputs to get the desired output.
-As mentioned above, many users will eventually need to learn to code with \proglang{R}, so \pkg{iNZight} includes some simple tools for helping that migration: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
+Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, is all presented in simple step-by-step windows, many of which provide previews that help users to tweak the inputs to get the desired output.
+Many users may want to learn to code with \proglang{R}, and \pkg{iNZight} includes some simple tools for helping that migration: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
 
 Statistics and data science is an ever expanding field, with new \proglang{R} packages added to CRAN daily.
-\pkg{iNZight} includes an add-on system which allows other developers outside of the development team to create and share modules which \pkg{iNZight} users can install and use on top of \pkg{iNZight}'s existing feature set.
-Since \pkg{iNZight} is available as a standalone program on Windows, package developers have an opportunity to reach audiences they might not previously have been able to.
+\pkg{iNZight} has an add-on system that developers outside of the development team can use to create and share modules for users to install and use on top of \pkg{iNZight}'s existing feature set.
+Since \pkg{iNZight} is available as a standalone program on Windows, package developers have an opportunity to engage previously unreachable audiences.
 
 
 \subsection{Future Work}\label{sec:future-work}
 
-A lot of new features and functionality are planned for the future of \pkg{iNZight}, the foremost being the ability to interact with more complex datasets, particularly those saved within a database, with as much processing done within the database as possible to speed up the interface for possibly large datasets.
+Many new features and functionality are planned for the future of \pkg{iNZight}, the foremost being the ability to interact with more complex datasets, particularly those saved within a database, with as much processing done within the database as possible to speed up the interface for possibly large datasets.
 This, along with other advances, will make \pkg{iNZight} a useful tool for not only learners but researchers and organisations alike, including capabilities for the software to connect to secure databases behind a firewall and allowing researchers without coding skills access to it.
 
 The main issue with \pkg{iNZight} at present is its reliance on GTK, which has been discontinued on macOS.

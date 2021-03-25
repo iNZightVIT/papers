@@ -1,12 +1,12 @@
 \section{The add-on system}\label{sec:addons}
 
 Most users will likely find all they need within the main \pkg{iNZight} interface, able to explore and visualise their data quickly and easily.
-However, there are cases where, as mentioned earlier, specific types of analyses and graphics are required for special data types (time series and maps, as examples).
-Of course, the total range of data types available is close to limitless, and there are increasingly more \proglang{R} packages on \gls{cran} every day providing new opportunities.
-Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we have crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules.
+However, there are cases where, as mentioned earlier, specific types of analyses and graphics are required for certain data types.
+Of course, the total range of data types available is close to limitless, and there are increasingly more \proglang{R} packages on \gls{cran} every day providing new methods.
+Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules.
 
 Installing existing add-ons is easy.
-Users can either use the \menu{Module manager} to add, update, and remove modules from our add-on repository, or from a custom URL or file.
+Users can use the \menu{Module manager} to add, update, and remove modules from our add-on repository, a custom URL, or a local file.
 In all cases, the file is placed in the \code{modules} directory, which users (and developers) can also place files manually.
 All files in this directory are then displayed in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the current data and other aspects of the interface.
 
@@ -15,10 +15,10 @@ This parent class provides several methods, including the initialization of the 
 Additional properties and methods can be written by the developers of individual modules.
 This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules and distribute them to their desired audience.
 
-As an example, \cref{fig:inzight_demest} shows a prototype of an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by researchers and offical(?) organisations to do small-area demography.
-For example, estimation of life expectancy in small ethnic groups.
+As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by demographers to do small-area estimation,
+for example the estimation of death rates or life expectancy in small ethnic groups.
 This opens up advanced methods that were previously only available to proficient coders, who may now perform complex modelling procedures themselves.
-\textbf{This last para needs work}.
+\footnote{Still need to rework this last paragraph.}
 
 \begin{figure}[tp]
     \centering
