@@ -9,7 +9,7 @@ The best way to explore \pkg{iNZight}'s features is by demonstration.
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/inzight_main.png}
-    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The screen will update once data has been loaded.}
+    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) the active data set is displayed prominently; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
 \end{figure}
 
 
