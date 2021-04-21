@@ -87,5 +87,31 @@ Based on Figure 1
 click Home to exit module
 
 Figure 11:
+download data from: https://raw.githubusercontent.com/terourou/small-area-estimation/master/inzight-module/DemestModule.R
+save to Downloads/mortality.rda
 click Advanced > Manage modules
-## UNFINSIHED
+click Install modules ... button
+enter: https://raw.githubusercontent.com/terourou/small-area-estimation/master/inzight-module/DemestModule.R
+click Install
+click Close
+click File > Import data ...
+click Browse > search for mortality.rda file downloaded earlier
+click Import
+click Advanced > Demographic modelling module
+select "deaths" as the response
+select "total" as the Exposure
+click "Save"
+click "Save"
+type "age * sex + Year" as the model
+click "Save"
+for "age" prior, choose "DLM" and tick "Trend"
+for "year" prior, choose "DLM" and tick "Trend"
+for "age:sex" prior, choose "DLM"
+click "Save"
+for "Iterations" enter 10000
+for "Burn in" enter 10000
+for "Thinning interval" enter 40
+for "CPU cores" slide to desired value
+click "Fit model"
+expand "Prediction / forecasting" section
+select "Life expectancy" from "Forecast type" dropdown
