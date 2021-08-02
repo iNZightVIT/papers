@@ -35,6 +35,19 @@ Currently only delimited files have advanced options, where users can override t
 The preview is updated when these options are changed, so users do not have to know specifically what they need, and can use trial-and-error to get the preview looking right before importing the data into \pkg{iNZight}.
 This is particularly useful for encoding, which is difficult to find out manually.
 
+\subsubsection{Metadata for delimited files}\label{sec:metadata}
+
+One issue with delimited data formats (for example \gls{csv}) is lack of coding information about variables. For example, a vector with values 1, 2, 3, and 4 might be an integer, however it may also be a coded \emph{factor} variable. Typically, users would have to convert this variable to a factor (``categorical'' in \pkg{iNZight}) and then label the levels, which would be found in additional documentation supplied with the data. However, this is a lot to ask of novice users, and when there are 10s or even 100s of coded factor variables in a dataset, it becomes very tedious in a \gls{gui} system.
+
+
+To work around this problem, we have developed a \emph{metadata} system for supplying and implementing additional information. Currently, this comes in a very na\"ive format where information is added to the top of a file, but future endeavours will allow \pkg{iNZight} to read metadata from a separate file. As an example, say a variable called \code{var1} contains coded levels 1--4, with labels `a', `b', `c', and `d'. The metadata line below is added to the top of the \gls{csv} file:
+\begin{verbatim}
+#' @factor var1[a,b,c,d]
+\end{verbatim}
+When the file is read in, \pkg{iNZight} automatically parses this metadata and imports the variable called \code{var1} as a factor with the appropriate labels.
+
+The metadata support goes further, allowing renaming of levels, variable names, and even supplying missing-value codes in numeric-variables. The latter is common in surveys, in which `missing value' responses may be coded with values such as 88 for ``Don't know'' and 99 for ``Refused to answer''. By providing this information in the metadata, users avoid producing graphs and summaries of the numeric variable including the coding missing values in the results.
+
 
 \subsection{Creating graphs}\label{sec:creating-graphs}
 

@@ -1,4 +1,4 @@
-\documentclass[article,shortnames]{jss}
+\documentclass[article,shortnames,draft]{jss}
 
 %% -- LaTeX packages and custom commands ---------------------------------------
 
@@ -10,6 +10,9 @@
 \usepackage[acronym]{glossaries}
 % \makeglossaries
 \input{../glossary.tex}
+
+\usepackage{setspace}
+\doublespacing
 
 \usepackage{upquote}
 \usepackage{array}
