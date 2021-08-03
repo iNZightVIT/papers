@@ -1,4 +1,4 @@
-\documentclass[article,shortnames,draft]{jss}
+\documentclass[article,shortnames]{jss}
 
 %% -- LaTeX packages and custom commands ---------------------------------------
 
@@ -88,7 +88,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
   Department of Statistics (Honorary)\\
   University of Auckland\\
   Auckland, New Zealand\\
-  E-mail: \email{tom.elliott@auckland.ac.nz}\\
+  E-mail: \email{tom.elliott@vuw.ac.nz}\\
   URL: \url{https://people.wgtn.ac.nz/tom.elliott}
 }
 

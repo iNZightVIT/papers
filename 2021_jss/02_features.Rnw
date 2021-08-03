@@ -1,9 +1,10 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
-\pkg{iNZight} was originally designed as a tool for teaching statistics to students, but is equally suited to research groups as an in-house tool for rapid research development.
-The intuitive interface, shown in \cref{fig:inzight_main}, makes \pkg{iNZight} very easy to learn and, unlike more complicated alternatives, can be picked up after a period of non-use with little effort, making it ideal for infrequent but critical tasks within organisations.
-The interface uses familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
-\pkg{iNZight} uses a \emph{variable-first} approach, where users choose the variables they are interested in and let the software display the relevant actions.
+Originally designed as a tool for teaching statistical concepts to students, \pkg{iNZight} lends itself well to use as an  rapid research development tool for community and government research groups.
+The interface is designed to be minimal and provide instant feedback from user actions, meaning there is little reliance on memory to use it.
+Not only does this benefit learning new statistical concepts, but more so when re-visiting the software after a period of non-use, making it ideal for infrequent, critical tasks within organisations.
+This ease-of-use is achieved by building the interface with familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
+Additionally, \pkg{iNZight} uses a \emph{variable-first} approach, where users choose the variables they are interested in and let the software display the relevant actions.
 The best way to explore \pkg{iNZight}'s features is by demonstration.
 
 \begin{figure}[tp]
@@ -23,30 +24,17 @@ The best way to explore \pkg{iNZight}'s features is by demonstration.
 
 Data comes in a wide range of formats, some of which are typically software-dependent \citep[for example \proglang{Excel} files,][]{msexcel}.
 Due in part to being open source, there are 1000's of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to reading specific file formats.
-However, users must still know the correct package and function for their files, and argument names and order.
-\pkg{iNZight} provides a simple \menu{Load Data} window from which users can select a file to import, at which point the software detects the file type from the file extension and attempts to read the file.
-If successful, a preview is displayed for the user to check before proceeding with the import.
-\Cref{fig:load_data} shows the \menu{Load Data} window, which has detected a \gls{csv} file and used the appropriate function in the background.
+Usually, \proglang{R} users would need to first recognise or look up the file extension and a relevant package, then recall the function name and arguments (often by reading the documentation) to import an unusual file.
+Conversely, \pkg{iNZight} provides a simple \menu{Load Data} window from which users only need select the file to import: the software detects the file type from the file extension and reads the file if the format is supported.
 Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
+If the file is readable by \pkg{iNZight}, a preview is displayed for the user to check before proceeding with the import, as demonstrated in \cref{fig:load_data} which shows the \menu{Load Data} window for a \gls{csv} file.
+
 
 
 In addition to the preview, \pkg{iNZight} also has an \menu{Advanced Options} section for some specific formats.
 Currently only delimited files have advanced options, where users can override the default delimiter, for example in European countries where the semi-colon (;) is used (the comma is reserved as the decimal separator), or to choose between different encoding formats.
-The preview is updated when these options are changed, so users do not have to know specifically what they need, and can use trial-and-error to get the preview looking right before importing the data into \pkg{iNZight}.
+The preview is updated when these options are changed, allowing users to use trial-and-error if they are not sure what the necessary inputs are.
 This is particularly useful for encoding, which is difficult to find out manually.
-
-\subsubsection{Metadata for delimited files}\label{sec:metadata}
-
-One issue with delimited data formats (for example \gls{csv}) is lack of coding information about variables. For example, a vector with values 1, 2, 3, and 4 might be an integer, however it may also be a coded \emph{factor} variable. Typically, users would have to convert this variable to a factor (``categorical'' in \pkg{iNZight}) and then label the levels, which would be found in additional documentation supplied with the data. However, this is a lot to ask of novice users, and when there are 10s or even 100s of coded factor variables in a dataset, it becomes very tedious in a \gls{gui} system.
-
-
-To work around this problem, we have developed a \emph{metadata} system for supplying and implementing additional information. Currently, this comes in a very na\"ive format where information is added to the top of a file, but future endeavours will allow \pkg{iNZight} to read metadata from a separate file. As an example, say a variable called \code{var1} contains coded levels 1--4, with labels `a', `b', `c', and `d'. The metadata line below is added to the top of the \gls{csv} file:
-\begin{verbatim}
-#' @factor var1[a,b,c,d]
-\end{verbatim}
-When the file is read in, \pkg{iNZight} automatically parses this metadata and imports the variable called \code{var1} as a factor with the appropriate labels.
-
-The metadata support goes further, allowing renaming of levels, variable names, and even supplying missing-value codes in numeric-variables. The latter is common in surveys, in which `missing value' responses may be coded with values such as 88 for ``Don't know'' and 99 for ``Refused to answer''. By providing this information in the metadata, users avoid producing graphs and summaries of the numeric variable including the coding missing values in the results.
 
 
 \subsection{Creating graphs}\label{sec:creating-graphs}
