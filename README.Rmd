@@ -9,7 +9,7 @@ always_allow_html: true
 
 Code repository for iNZight articles.
 
-Automatic compilation on Github assumes there's a `build.R` script in each subdirectory.
+Automatic compilation on Github assumes there's a `Makefile` in each subdirectory.
 
 ```{r echo=FALSE,results='asis',warning=FALSE}
 # convert PDF first pages to PNG
