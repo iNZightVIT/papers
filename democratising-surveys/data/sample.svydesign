@@ -1,4 +1,0 @@
-ids = "cluster"
-weights = "wt"
-strata = "strata"
-data = "sample_meta.csv"

@@ -2,7 +2,7 @@ if (!dir.exists("figure")) dir.create("figure")
 unlink("figure/*.png")
 d <- getwd()
 dirs <- list.dirs(recursive = FALSE, full.names = TRUE)
-dirs <- dirs[grepl("^\\./_?[0-9]+.+", dirs)]
+dirs <- dirs[grepl("^\\./_?.+", dirs)]
 for (dir in dirs) {
     setwd(d)
     setwd(dir)
