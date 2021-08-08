@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{authblk}
+\usepackage[authoryear,round]{natbib}
+\usepackage{color}
+\bibliographystyle{abbrvnat}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{hyperref}
+
+% commands
+\newcommand{\proglang}[1]{\textsf{#1}}
+\newcommand{\pkg}[1]{\textbf{#1}}
+
+\newcommand{\R}{\proglang{R}}
+\newcommand{\inzight}{\pkg{iNZight}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\usepackage[acronym]{glossaries}
+\input{../glossary.tex}
+\makeglossaries
+
+\title{Democratising survey data with iNZight}
+
+\author{Tom Elliott}
+\affil{Te Rourou T\=ataritanga, Victoria University of Wellington}
+\date{August 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Survey data is often full of unique and complex features that must be dealt with before the data can be analysed. This adds many additional levels of complexity to a valuable data resource. By providing a set of processes for describing complex survey designs and metadata about variables, \inzight{}
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\inzight{} \citep{Elliott_2021} is \ldots
+\begin{itemize}
+    \item GUI for data analysis and visualisation
+    \item for learning, and lowering barrier to entry
+    \item can be used by researchers low on money/time/skill
+    \item however still issues around survey data - complex sampling design, additional caveats with coding, etc
+\end{itemize}
+
+
+\section{Importing complex survey designs}
+\label{sec:survey-designs}
+
+\begin{itemize}
+    \item complex survey designs with stratification/clustering - users need to know/remember design structure
+    \item replicate weight designs - users need to specify all (sometimes 100) weights, know/remember the replicate weight method (BRR, JKN, ...)
+    \item also post-stratification (calibration by known values)
+    \item \inzight{} features way of importing this information from a \emph{survey specification} file, distributed with the survey data
+    \item novice users (population researchers, etc) can easily import the survey without worrying about getting the design wrong - then ``business as usual'' for making graphs and tables
+\end{itemize}
+
+
+\section{Coded variables in surveys}
+\label{sec:coded-vars}
+
+\begin{itemize}
+    \item another common feature is coded variables - often the decoding is held separately in a ``metadata'' file
+    \item users need to first convert integer variables to factors, and then specify the levels
+    \item for \R{} users, this can typically be coded and run easily
+    \item in a \gls{gui} like \inzight{}, it's a time-consuming, repetitive process
+    \item however, \inzight{} understands its own ``metadata'' format (prepended to \gls{csv} files) describing variables in the data
+    \item e.g., 1=Male, 2=Female
+    \item this is common enough - but in some surveys there are additional problems
+    \item missing-value codes in a numeric variables (e.g., refused to answer vs don't know)
+    \item often coded with values higher than the data (e.g., if variable takes values 0-20, missing values might be coded with 88, 99)
+    \item this skews the results if not accounted for - so \inzight{} metadata can specify these values, and when the data loads they are automatically converted to \code{NA}
+    \item if labels are specified (`Don't Know' vs `Refused to answer') a new variable is created to keep this info
+    \item finally, some survey questions can take multiple responses (e.g., `What heating methods do you have in your home?')
+    \item typically, all answers would be coded in individual binary variables
+    \item however, it is also common enough practice to record all responses in a single field, using a delimiter: e.g., \code{1;2;5;8}
+    \item not only do these need decoding, but also splitting into a binary response variable so they can be visualised using existing software \citep[e.g., iNZightMR, ][]{iNZightMR}.
+\end{itemize}
+
+
+\section{Reading survey data into iNZight}
+\label{sec:reading-data}
+
+\begin{itemize}
+    \item here's a demo survey dataset
+    \item to read this into \R{}, we'd need to do the following:
+\end{itemize}
+
+<<message=FALSE>>=
+library(survey)
+sample_data <- read.csv('data/sample.csv')
+sample_data$sex <- factor(sample_data$sex, labels = c('male', 'female'))
+sample_svy <- svydesign(~cluster, weights = ~wt,
+    strata = ~strata, data = sample_data)
+svyby(~height, ~sex, sample_svy, svymean)
+@
+
+
+\inzight{} uses the \code{smart\_read()} function from the \pkg{iNZightTools} \citep{iNZightTools} package to import data, which detects file type and parses metadata automatically at the top of a file.
+
+<<message=FALSE>>=
+library(iNZightTools)
+sample_svy <- import_survey('data/sample.svydesign')
+@
+
+So we'll need to fall back on using non-overleaf for this one :)
+
+
+From other paper:
+
+
+\subsubsection{Metadata for delimited files}\label{sec:metadata}
+
+One issue with delimited data formats (for example \gls{csv}) is lack of coding information about variables. For example, a vector with values 1, 2, 3, and 4 might be an integer, however it may also be a coded \emph{factor} variable. Typically, users would have to convert this variable to a factor (``categorical'' in \pkg{iNZight}) and then label the levels, which would be found in additional documentation supplied with the data. However, this is a lot to ask of novice users, and when there are 10s or even 100s of coded factor variables in a dataset, it becomes very tedious in a \gls{gui} system.
+
+
+To work around this problem, we have developed a \emph{metadata} system for supplying and implementing additional information. Currently, this comes in a very na\"ive format where information is added to the top of a file, but future endeavours will allow \pkg{iNZight} to read metadata from a separate file. As an example, say a variable called \code{var1} contains coded levels 1--4, with labels `a', `b', `c', and `d'. The metadata line below is added to the top of the \gls{csv} file:
+\begin{verbatim}
+#' @factor var1[a,b,c,d]
+\end{verbatim}
+When the file is read in, \pkg{iNZight} automatically parses this metadata and imports the variable called \code{var1} as a factor with the appropriate labels.
+
+The metadata support goes further, allowing renaming of levels, variable names, and even supplying missing-value codes in numeric-variables. The latter is common in surveys, in which `missing value' responses may be coded with values such as 88 for ``Don't know'' and 99 for ``Refused to answer''. By providing this information in the metadata, users avoid producing graphs and summaries of the numeric variable including the coding missing values in the results.
+
+
+\section*{Acknowledgements}
+This work was conducted by Te Rourou Tātaritanga (\url{https://terourou.org)}, a research group at Victoria University of Wellington funded by an MBIE Endeavour Grant, ref 62506 ENDRP. Recent \inzight{} development has also been supported by iNZight Analytics.
+
+
+\printglossary[type=\acronymtype]
+
+\bibliography{../references.bib}
+
+
+\end{document}
