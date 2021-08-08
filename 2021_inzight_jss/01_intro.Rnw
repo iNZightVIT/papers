@@ -1,0 +1,26 @@
+\section{Introduction}\label{sec:intro}
+
+The \proglang{R} programming environment \citep{rcore} is an open source statistical programming environment used throughout statistics and data science and backed by a repository of thousands of packages covering even the most unique of problems.
+Amongst these packages are several \glspl{gui} providing point-and-click methods for creating graphs, performing hypothesis tests, and a range of other statistical methods, with two prominent examples: \proglang{R} Commander \citep{Rcommander} and \pkg{Deducer} \citep{Deducer}.
+\proglang{R} Commander includes a full interface which displays, writes, and runs \proglang{R}~code, while \pkg{Deducer} extends the \proglang{R} console with additional menus to open window interfaces to access a range of methods.
+These tools allow users to perform known procedures using point-and-click interfaces without needing to remember function and argument names.
+This does, however, require that users not only install \proglang{R} and the necessary packages, but also know in advance what thay want to achieve, excluding those new to statistics who are yet to learn these technical terms.
+
+A preferable approach is to let users choose the variables first, and let the software present a selection of applicable methods.
+\pkg{iNZight} uses this ``variable-first'' approach, presenting users with an exploration-focussed interface emphasising graphics, which are at the core of exploratative data analysis.
+After visually exploring their data, users can produce summary statistics and inference information with the click of a button---\pkg{iNZight} simply presents information relevant to the chosen variables. For hypothesis testing, users choose from a list of tests applicable to the variables displayed in the graph without having to recall specific names.
+This not only makes \pkg{iNZight} ideal for users new to statistics and data science, but also as a rapid research development tool for organisations performing repetitive data analysis tasks that might otherwise require using tools that require special training or hiring specialised programmers.
+\footnote{Better wording.}
+
+
+Like other \glspl{gui}, there is a code component. \proglang{R} Commander provides a place for users to enter \proglang{R} code, while \pkg{Deducer} sits on top of the \proglang{R} console using the environment as-is.
+With \pkg{iNZight}, however, code is evaluated ``behind the scenes'', and is not directly editable by users.
+Every action the user makes calls one or more \proglang{R} functions, and the code is added to the \emph{code history} for users to review, save, and share.
+Users can generate an \proglang{R} script unique to their data and later edit and run the code manually in \proglang{R}, quickly generating a reproducible methodology for research oganisations.
+Additionally, the script can be used as a stepping stone for learning to code in \proglang{R}.
+\footnote{Drop this paragraph in favour of one for student vs research?}
+
+
+Not only has \pkg{iNZight} been adopted throughout New Zealand's statistical education program, the combination of \pkg{iNZight}'s simplicity and powerful tool set make it a popular choice for research (and other)\footnote{some examples from Andrew?} organisations.
+Students are introduced to basic statistical concepts using \pkg{iNZight} in their final year of high school, and thus as future researchers will be familiar with it for their professional projects.
+This paper provides an overview of \pkg{iNZight}'s main features, technical details of its development, an introduction to the \emph{add-on} system, and a description of the install process.

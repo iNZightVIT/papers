@@ -1,0 +1,139 @@
+\documentclass[article,shortnames]{jss}
+
+%% -- LaTeX packages and custom commands ---------------------------------------
+
+%% recommended packages
+\usepackage{thumbpdf,lmodern}
+
+%% another package (only for this demo article)
+% \usepackage{framed}
+\usepackage[acronym]{glossaries}
+% \makeglossaries
+\input{../glossary.tex}
+
+\usepackage{setspace}
+\doublespacing
+
+\usepackage{upquote}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{float}
+\newfloat{lstfloat}{htbp}{lop}
+\floatname{lstfloat}{Listing}
+\def\lstfloatautorefname{Listing} % needed for hyperref/auroref
+
+%% new custom commands
+\newcommand{\class}[1]{`\code{#1}'}
+\newcommand{\fct}[1]{\code{#1()}}
+
+\newcommand{\menu}[1]{\textsc{#1}}
+
+
+%% For Sweave-based articles about R packages:
+%% need no \usepackage{Sweave}
+\SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
+<<preliminaries, echo=FALSE, results=hide>>=
+options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+settings <- yaml::read_yaml('config.yaml')
+title <- gsub("\ R", "\ \\\\\\\\proglang{R}", settings$title)
+title <- gsub("iNZight", "\\\\\\\\pkg{iNZight}", title)
+title_short <- settings$title_short
+title_plain <- settings$title
+affiliation <- strsplit(settings$affiliation, ",")[[1]]
+authors <- strsplit(settings$author, " and ")[[1]]
+authors_long <- paste(authors, affiliation, sep = "\\\\\\\\")
+authors_long <- matrix(authors_long, ncol = 2, byrow = TRUE)
+authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), collapse = " \\\\AND ")
+@
+
+%% -- Article metainformation (author, title, ...) -----------------------------
+
+%% - \author{} with primary affiliation
+%% - \Plainauthor{} without affiliations
+%% - Separate authors by \And or \AND (in \author) or by comma (in \Plainauthor).
+%% - \AND starts a new line, \And does not.
+\author{\Sexpr{authors_long}}
+\Plainauthor{\Sexpr{paste(authors, collapse = ", ")}}
+
+%% - \title{} in title case
+%% - \Plaintitle{} without LaTeX markup (if any)
+%% - \Shorttitle{} with LaTeX markup (if any), used as running title
+\title{\Sexpr{title}}
+\Plaintitle{\Sexpr{title_plain}}
+\Shorttitle{\Sexpr{title_short}}
+
+%% - \Abstract{} almost as usual
+\Abstract{
+  \Sexpr{gsub("\\", "\\\\", settings$abstract, fixed = TRUE)}
+}
+
+%% - \Keywords{} with LaTeX markup, at least one required
+%% - \Plainkeywords{} without LaTeX markup (if necessary)
+%% - Should be comma-separated and in sentence case.
+\Keywords{GUI, statistical software, statistical education, \proglang{R}}
+\Plainkeywords{GUI, statistical software, statistical education, R}
+
+%% - \Address{} of at least one author
+%% - May contain multiple affiliations for each author
+%%   (in extra lines, separated by \emph{and}\\).
+%% - May contain multiple authors for the same affiliation
+%%   (in the same first line, separated by comma).
+\Address{
+  Tom Elliott\\
+  School of Health\\
+  Victoria University of Wellington\\
+  Wellington, New Zealand\\
+  \emph{and}\\
+  Department of Statistics (Honorary)\\
+  University of Auckland\\
+  Auckland, New Zealand\\
+  E-mail: \email{tom.elliott@vuw.ac.nz}\\
+  URL: \url{https://people.wgtn.ac.nz/tom.elliott}
+}
+
+\usepackage[capitalize,noabbrev]{cleveref}
+\crefalias{lstfloat}{listing}
+
+
+\begin{document}
+
+
+\glsresetall
+
+\SweaveInput{01_intro.Rnw}
+\SweaveInput{02_features.Rnw}
+\SweaveInput{03_technical.Rnw}
+\SweaveInput{04_addons.Rnw}
+\SweaveInput{05_installation.Rnw}
+\SweaveInput{06_summary.Rnw}
+
+
+\section*{Acknowledgments}
+\pkg{iNZight} is a free to use, open source software. The work would not have been possible without the support of: The University of Auckland; Census at School; Ministry of Business, Innovation, and Employment;  Te Rourou T\=ataritanga; Statistics New Zealand; and the Australian Bureau of Statistics. We also thank the technical support of the University of Auckland IT services for providing hosting services for our repository and Lite servers.
+
+%% -- Bibliography -------------------------------------------------------------
+%% - References need to be provided in a .bib BibTeX database.
+%% - All references should be made with \cite, \citet, \citep, \citealp etc.
+%%   (and never hard-coded). See the FAQ for details.
+%% - JSS-specific markup (\proglang, \pkg, \code) should be used in the .bib.
+%% - Titles in the .bib should be in title case.
+%% - DOIs should be included where available.
+
+\bibliography{../references}
+
+%% -- Appendix (if any) --------------------------------------------------------
+%% - After the bibliography with page break.
+%% - With proper section titles and _not_ just "Appendix".
+
+\newpage
+
+\begin{appendix}
+\SweaveInput{appendix_01.Rnw}
+\end{appendix}
+
+
+% %% -----------------------------------------------------------------------------
+
+
+\end{document}

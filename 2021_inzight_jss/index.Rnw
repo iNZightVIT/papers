@@ -1,0 +1,87 @@
+\documentclass{article}
+
+<<setup, echo=FALSE>>=
+knitr::opts_knit$set(self.contained = FALSE)
+settings <- yaml::read_yaml('config.yaml')
+@
+
+\title{\Sexpr{settings$title}}
+\author{\Sexpr{settings$author}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[noabbrev]{cleveref}
+\usepackage{listings}
+\crefname{lstlisting}{listing}{listings}
+\Crefname{lstlisting}{Listing}{Listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{threeparttable}
+
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\input{../glossary.tex}
+
+\usepackage{setspace}
+\doublespacing
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+
+\def\tightlist{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\Sexpr{settings$abstract}
+\end{abstract}
+
+% this is where sections will be placed:
+%includes%
+
+\printglossary[type=\acronymtype]
+
+
+\bibliographystyle{apalike}
+\bibliography{../references}
+
+
+\section*{Acknowledgements}
+
+iNZight is a free to use, open source software. The work would not have been possible without the support of the University of Auckland, Census at School, ..., Statistics New Zealand, and the Australian Bureau of Statistics.
+
+
+\end{document}

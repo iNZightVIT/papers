@@ -1,0 +1,117 @@
+Figure 1:
+R> library(iNZight)
+R> iNZight()
+
+Figure 2:
+download gapminder data from https://www.stat.auckland.ac.nz/~wild/data/FutureLearn/Gapminder.csv
+click File > Import data ... > Browse
+search for gapminder.csv file downloaded
+
+(click Import to load data for next figure)
+
+Figure 3:
+click Dataset > Filter
+for Variable, choose Year_cat
+select (using CTRL+click) years from 1960-2008 (inclusive)
+click Filter
+select Infantmortality from Variable 1 dropdown box
+select GDPpercapita from Variable 2 dropdown box
+select Year_cat from Subset Variable 1 dropdown box
+click Add to Plot button in toolbar, OR click Plot > Add to Plot
+select Populationtotal from 'Resize points by' dropdown
+select Region from 'Colour by' dropdown
+drag Transparency slider to 60
+click 'Customize Plot Appearance' dropdown box and choose Axes and Labels
+type 'Infant Mortality Over Time' in the Title field
+type 'GDP per Capita (log scale)' in the x-axis field
+type 'Infant Mortality' in the y-axis field
+tick checkbox for Log transformation of GDPpercapita
+click Home
+
+Figure 4:
+select Region from Variable 2 dropdown box
+drag Subset 1 slider to [2004]
+click Get Inference
+select ANOVA from Hypothesis test options
+
+Figure 5:
+click Dataset > Dataset operation > Separate column
+choose 'Separate into several columns' from 'Select separate mode' dropdown
+choose 'Region.Geo' from 'Select column to separate out' dropdown
+type '-' into 'Value separator' field
+type 'main_region' and 'part_region' into 'Separated column names' fields, respectively
+
+Figure 6:
+click File > Example data
+choose Survey from Module (package) dropdown
+choose 'apiclus1 (api)' from Dataset dropdown
+click Ok
+click Dataset > Survey design > Specify design
+choose dnum from '1st stage clustering variable' dropdown
+choose pw from 'Weighting variable' dropdown
+choose fpc from 'Finite population correction' dropdown
+
+(click OK to import for next figure)
+
+Figure 7:
+select 'stype' from Variable 1 dropdown
+click 'Get Summary'
+
+Figure 8:
+click File > Example data
+choose Time Series from Module (package) dropdown
+choose 'visitorsQ' from Dataset dropdown
+click Ok
+click Advanced > Time Series
+
+Figure 9:
+click Home to close Time Series module
+click File > Example data
+choose Maps from Module (package) dropdown
+choose 'nzquakes' from Dataset dropdown
+click Ok
+click Advanced > Maps
+click OK
+under Colour, choose Depth for Colour by
+for Palette, choose 'heat'
+tick 'Reverse palette' checkbox
+under Size, choose Magnitude for Size by
+for Resize method, choose emphasize
+set Overall to 1.5
+under Transparency, set Overall slider to 50
+choose Felt from 'Select Subset Variable 1' dropdown
+
+Figure 10:
+Based on Figure 1
+
+click Home to exit module
+
+Figure 11:
+download data from: https://raw.githubusercontent.com/terourou/small-area-estimation/master/inzight-module/DemestModule.R
+save to Downloads/mortality.rda
+click Advanced > Manage modules
+click Install modules ... button
+enter: https://raw.githubusercontent.com/terourou/small-area-estimation/master/inzight-module/DemestModule.R
+click Install
+click Close
+click File > Import data ...
+click Browse > search for mortality.rda file downloaded earlier
+click Import
+click Advanced > Demographic modelling module
+select "deaths" as the response
+select "total" as the Exposure
+click "Save"
+click "Save"
+type "age * sex + Year" as the model
+click "Save"
+for "age" prior, choose "DLM" and tick "Trend"
+for "year" prior, choose "DLM" and tick "Trend"
+for "age:sex" prior, choose "DLM"
+click "Save"
+for "Iterations" enter 10000
+for "Burn in" enter 10000
+for "Thinning interval" enter 40
+for "CPU cores" slide to desired value
+click "Fit model"
+expand "Prediction / forecasting" section
+select "Life expectancy" from "Forecast type" dropdown
