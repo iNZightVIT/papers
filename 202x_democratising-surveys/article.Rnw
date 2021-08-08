@@ -24,18 +24,25 @@
 \input{../glossary.tex}
 \makeglossaries
 
-\title{Democratising survey data with iNZight}
+%% need no
+\usepackage{Sweave}
+\SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
+<<setupdoc, echo=FALSE, results=hide>>=
+source('../setup_doc.R')
+@
 
-\author{Tom Elliott}
+\title{\Sexpr{title}}
+
+\author{\Sexpr{authors}}
 \affil{Te Rourou T\=ataritanga, Victoria University of Wellington}
-\date{August 2021}
+\date{}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-    Survey data is often full of unique and complex features that must be dealt with before the data can be analysed. This adds many additional levels of complexity to a valuable data resource. By providing a set of processes for describing complex survey designs and metadata about variables, \inzight{}
+\Sexpr{abstract}
 \end{abstract}
 
 \section{Introduction}
