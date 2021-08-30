@@ -37,8 +37,9 @@ Andrew Sporle
 
 <td>
 
-<strong><a href='202x_democratising-surveys/index.pdf'>Title Goes
-Here</a></strong><br>Author One, Author Two
+<strong><a href='202x_democratising-surveys/index.pdf'>Democratising
+Survey Data with iNZight</a></strong><br>Tom Elliott and Chris Wild and
+Andrew Sporle
 
 </td>
 
