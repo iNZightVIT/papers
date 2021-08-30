@@ -1,0 +1,12 @@
+\section{Data wrangling methods}\label{app:data-wrangling}
+
+\pkg{iNZight} features the following methods for transforming and manipulating data.
+
+\subsection{Dataset}\label{app:data-methods}
+
+Transform, mutate, etc.
+
+
+\subsection{Variables}\label{app:variable-methods}
+
+Create, rename, change, etc.

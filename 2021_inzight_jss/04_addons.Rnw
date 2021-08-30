@@ -1,24 +1,23 @@
 \section{The add-on system}\label{sec:addons}
 
-Most users will likely find all they need within the main \pkg{iNZight} interface, able to explore and visualise their data quickly and easily.
-However, there are cases where, as mentioned earlier, specific types of analyses and graphics are required for certain data types.
-Of course, the total range of data types available is close to limitless, and there are increasingly more \proglang{R} packages on \gls{cran} every day providing new methods.
-Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules.
+For most users, the main \pkg{iNZight} program will have all they need to explore, visualise, and perform simple analyses on their data.
+Some, however, may require access to special analyses not built in to the base program.
+Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules that can connect to new or existing \proglang{R} packages available on \gls{cran} or elsewhere.
+
 
 Installing existing add-ons is easy.
-Users can use the \menu{Module manager} to add, update, and remove modules from our add-on repository, a custom URL, or a local file.
-In all cases, the file is placed in the \code{modules} directory, which users (and developers) can also place files manually.
-All files in this directory are then displayed in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the current data and other aspects of the interface.
+From the \menu{Module manager} users can add, update, and remove modules from our add-on repository,\footnote{https://github.com/iNZightVIT/addons} a custom URL, or a local file.
+In all cases, the file is downloaded to the \code{modules} directory; users can also place files there manually, if desired.
+All files in this directory are displayed in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the \pkg{iNZight} interface, including the dataset imported by the user.
 
 The module files themselves describe a single class object which inherits from \class{CustomModule}.
 This parent class provides several methods, including the initialization of the module panel in the left-hand-side of the \pkg{iNZight} interface.
 Additional properties and methods can be written by the developers of individual modules.
-This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules and distribute them to their desired audience.
+This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules to distribute to their desired audience.
 
-As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by demographers to do small-area estimation,
-for example the estimation of death rates or life expectancy in small ethnic groups.
-This opens up advanced methods that were previously only available to proficient coders, who may now perform complex modelling procedures themselves.
-\footnote{Still need to rework this last paragraph.}
+As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by demographers to do small-area estimation.
+In the example, we have estimated life expectancies from death count data, which is traditionally a complicated \ldots [grab quote from other report].
+Full details for this module will be published once the full version is complete.
 
 \begin{figure}[tp]
     \centering

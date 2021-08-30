@@ -110,7 +110,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 
 
 \section*{Acknowledgments}
-\pkg{iNZight} is a free to use, open source software. The work would not have been possible without the support of: The University of Auckland; Census at School; Ministry of Business, Innovation, and Employment;  Te Rourou T\=ataritanga; Statistics New Zealand; and the Australian Bureau of Statistics. We also thank the technical support of the University of Auckland IT services for providing hosting services for our repository and Lite servers.
+\pkg{iNZight} is a free to use, open source software. The work would not have been possible without the support of: The University of Auckland; Census at School; Ministry of Business, Innovation, and Employment;  Te Rourou T\=ataritanga; Statistics New Zealand; and the Australian Bureau of Statistics. We also thank the technical support of the University of Auckland's Digital Solutions group for providing hosting services for our repository and Lite servers.
 
 %% -- Bibliography -------------------------------------------------------------
 %% - References need to be provided in a .bib BibTeX database.
@@ -130,6 +130,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 
 \begin{appendix}
 \SweaveInput{appendix_01.Rnw}
+\SweaveInput{appendix_02.Rnw}
 \end{appendix}
 
 

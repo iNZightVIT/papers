@@ -9,19 +9,21 @@ Since \pkg{iNZight} is a \gls{gui}, there are one or two additional system depen
 \subsection{Operating system-specific requirements}\label{sec:os-reqs}
 
 The GTK windowing system is a cross-platform project with libraries available on Windows, macOS, and Linux.
-However, the install process varies between operating system in both steps and complexity.
+However, the install process varies between operating systems in both steps and complexity.
 On Windows, the necessary files are available in binary form, and can be installed \emph{after} installing \pkg{iNZight}: the \pkg{RGtk2} package will prompt the user to download and install these binaries on the first run.
 
 On macOS, users are required to install XQuartz and the GTK+ framework before manually compiling \pkg{RGtk2} themselves as, unfortunately, the binaries are no longer supported on \gls{cran}.
 The complexity of this setup, and the lack of backwards compatibility of the macOS operating system, means we cannot officially support \pkg{iNZight} on macOS.
 
 Finally, Linux comes in many flavours, each with different package managers and library names.
-However, the two dependencies are \code{xorg} and \code{gtk}, which are typically installed using the system package manager.
+However, the two main dependencies are \code{xorg} and \code{gtk}, which are typically installed using the system package manager.
 For example, on Ubuntu~20.04, users can install the libraries thus:
-\begin{Code}
+\begin{verbatim}
 $ apt-get install xorg-dev libgtk2.0-dev
-\end{Code}
+\end{verbatim}
 Users of other operating systems should use the search functionality of their package manager to find the requisite libraries, or compile them themselves.
+There are several other system dependencies which need to be installed for some features of \pkg{iNZight}. For the latest list, check \url{inzight.nz/install}.
+
 
 <<eval=FALSE,echo=FALSE>>=
 iris$Species
@@ -35,11 +37,12 @@ This is by default installed into the user's \code{Documents\textbackslash\textb
 
 In addition to the binaries and packages, the installer includes several shortcuts which can be double-clicked to launch \proglang{R} in a specific directory.
 This directory contains a \code{.Rprofile} file which automatically loads the \pkg{iNZight} package and launches the interface.
-It also hides the \proglang{R} console, so users are presented with just the \gls{gui} which is more familiar to them. When started from the script, \proglang{R} is passed a command to terminate the \proglang{R} session once the user has finished using \pkg{iNZight}.
+It also hides the \proglang{R} console, so users are presented with just a \gls{gui}, as they will be most familiar with.
+When started from the script, \proglang{R} is passed a command to terminate the \proglang{R} session once the user has finished using \pkg{iNZight}.
 
 The \pkg{iNZight} installer also includes an Update script to allow easy updating of the \proglang{R} packages.
 This allows novice users to update to the latest version without needing to use \proglang{R} or re-download the entire installer.
-Additionally we include an Uninstaller which removes \pkg{iNZight} from the user's system if they so desire.
+Additionally, we include an Uninstaller which removes \pkg{iNZight} from the user's system if they so desire---since \pkg{iNZight} is standalone, this just deletes the folder and shortcuts.
 
 
 \subsection{Docker image}\label{sec:docker}
@@ -59,12 +62,14 @@ To provide these students with equal opportunity, we created an online version o
 
 Since most of the data-logic occurs in separate packages, porting \pkg{iNZight} to the web was simply a case of coding the interface elements and passing user inputs to the wrapper functions.
 This also means that the underlying code is the same between programs, so the \emph{output} is the same in both cases, making it easier for teachers and researchers to use one or the other.
-We attempted to keep the interfaces as similar as possible, but there are obvious differences in the capabilities of the \gls{gui} toolkits.
+We attempted to keep the interfaces as similar as possible, but some differences are unavoidable due to the constraints of the individual \gls{gui} toolkits.
 
 The online version runs inside its own docker container on a remote \acrlong{aws} server.
 Interested users could run the container locally by installing docker.
-Most users, however, will simply access the web interface by heading to \url{https://lite.docker.stat.auckland.ac.nz} in a browser, including on a tablet.
-There are also a set of URL parameters which can be passed to the \pkg{iNZight} \emph{Lite} instance, including a URL for a dataset to automatically load.
+Most users, however, can access the web interface by heading to \url{https://lite.docker.stat.auckland.ac.nz} in a browser on a computer or tablet.
+There is a set of URL parameters which can be passed to the \pkg{iNZight} \emph{Lite} instance, including a URL for a dataset to automatically load, so for examples it's possible to store datasets on a server with a list of URLs to launch Lite with the chosen data loaded.
+For example, \url{https://lite.docker.stat.auckland.ac.nz/?url=https://inzight.nz/testdata/nhanes.csv&land=visualize}.
+An example is this dataset index, \url{https://www.stat.auckland.ac.nz/~wild/data/Rdatasets/}.
 
 Within the container, \pkg{shiny} \citep{shiny} is used to create the visual controls and perform reactivity events.
 A user's data is stored on the server temporarily, and is only accessible from that user's session: it cannot be shared or accessed by other users.
