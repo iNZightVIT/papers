@@ -18,10 +18,63 @@ subdirectory.
 
 <td>
 
-<strong><a href='2021_inzight_jss/index.pdf'>iNZight: A Graphical User
+<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
 Interface for Data Visualisation and Analysis through
-R</a></strong><br>Tom Elliott and Chris Wild and Daniel Barnett and
-Andrew Sporle
+</a></strong><br>Tom Elliott \[1,2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/2021_inzight_jss.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
+Interface for Data Visualisation and Analysis through
+</a></strong><br>Chris Wild \[2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/2021_inzight_jss.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
+Interface for Data Visualisation and Analysis through
+</a></strong><br>Daniel Barnett \[2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/2021_inzight_jss.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
+Interface for Data Visualisation and Analysis through
+</a></strong><br>Andrew Sporle \[3,2\]
 
 </td>
 
@@ -38,8 +91,58 @@ Andrew Sporle
 <td>
 
 <strong><a href='202x_democratising-surveys/index.pdf'>Democratising
-Survey Data with iNZight</a></strong><br>Tom Elliott and Chris Wild and
-Andrew Sporle
+Survey Data with </a></strong><br>Tom Elliott \[1,2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/202x_democratising-surveys.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='202x_democratising-surveys/index.pdf'>Democratising
+Survey Data with </a></strong><br>Chris Wild \[2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/202x_democratising-surveys.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='202x_democratising-surveys/index.pdf'>Democratising
+Survey Data with </a></strong><br>Andrew Sporle \[3,2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<img src='figure/202x_iNZightTools.png' width='100'>
+
+</td>
+
+<td>
+
+<strong><a href='202x_iNZightTools/index.pdf'>: Tools for
+</a></strong><br>Tom Elliott \[1,2\]
 
 </td>
 
