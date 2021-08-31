@@ -21,6 +21,7 @@ for (fig in figs) {
   setwd(dir)
   e <- new.env()
   source('../setup_doc.R', local = e)
+  setwd("../")
   conf <- list(
     title = e$title_plain,
     authors = paste(e$authors, collapse = ", "),
