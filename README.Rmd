@@ -18,12 +18,18 @@ figs <- list.files("figure")
 cat("<table>\n")
 for (fig in figs) {
   dir <- tools::file_path_sans_ext(fig)
-  conf <- yaml::read_yaml(glue::glue("{dir}/config.yaml"))
-  conf$fig <- glue::glue("figure/{fig}")
+  setwd(dir)
+  e <- new.env()
+  source('../setup_doc.R', local = e)
+  conf <- list(
+    title = e$title_plain,
+    authors = paste(e$authors, collapse = ", "),
+    fig = glue::glue("figure/{fig}")
+  )
   txt <- glue::glue(
 "<tr>
 <td><img src='{conf$fig}' width='100'></td>
-<td><strong><a href='{dir}/index.pdf'>{conf$title}</a></strong><br>{conf$author}</td>
+<td><strong><a href='{dir}/index.pdf'>{conf$title}</a></strong><br>{conf$authors}</td>
 </tr>
 "
   )
