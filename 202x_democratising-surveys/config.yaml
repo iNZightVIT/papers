@@ -1,5 +1,10 @@
-title: "Democratising Survey Data with iNZight"
-title_short: "Democratising Survey Data with iNZight"
-author: "Tom Elliott and Chris Wild and Andrew Sporle"
-affiliation: "Victoria University of Auckland, University of Auckland, iNZight Analytics"
+title: "Democratising Survey Data with \\pkg{iNZight}"
+authors:
+- "Tom Elliott [1,2]"
+- "Chris Wild [2]"
+- "Andrew Sporle [3,2]"
+affiliations:
+- "Te Rourou T\\=ataritanga, Victoria University of Auckland"
+- "Department of Statistics, University of Auckland"
+- "iNZight Analytics"
 abstract: "Survey data is often full of unique and complex features that must be dealt with before the data can be analysed. This adds many additional levels of complexity to a valuable data resource. By providing a set of processes for describing complex survey designs and metadata about variables, \\inzight{}"

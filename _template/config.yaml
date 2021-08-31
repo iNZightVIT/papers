@@ -1,5 +1,9 @@
-title: "Title Goes Here"
-title_short: "Short Title Goes Here"
-author: "Author One, Author Two"
-affiliation: "Author 1 Affiliation, Author 2 Affiliation"
+title: "Long Title Goes Here"
+title_short: "Short Title"
+authors:
+- "Author One [1]"
+- "Author Two [1,2]"
+affiliations:
+- "Affiliation 1"
+- "Affiliation 2"
 abstract: "Abstract"

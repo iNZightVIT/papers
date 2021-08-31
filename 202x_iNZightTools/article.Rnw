@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{authblk}
+\usepackage[authoryear,round]{natbib}
+\usepackage{color}
+\bibliographystyle{abbrvnat}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{hyperref}
+
+% commands
+\newcommand{\proglang}[1]{\textsf{#1}}
+\newcommand{\pkg}[1]{\textbf{#1}}
+
+\newcommand{\R}{\proglang{R}}
+\newcommand{\inzight}{\pkg{iNZight}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\usepackage[acronym]{glossaries}
+\input{../glossary.tex}
+\makeglossaries
+
+%% need no
+\usepackage{Sweave}
+\SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
+<<setupdoc, echo=FALSE, results=hide>>=
+source('../setup_doc.R')
+authors <- paste(authors, collapse = ", ")
+affils <- paste(affiliations, collapse = "\\\\\\\\ ")
+@
+
+\title{\Sexpr{title}}
+
+\author{\Sexpr{authors}}
+\affil{\Sexpr{affils}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\Sexpr{abstract}
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\inzight{} \citep{Elliott_2021} is a \gls{gui} for easy data exploration and visualisation. As part of its development, we needed wrapper packages to translate between the user interface and \R{} functions.
+\begin{itemize}
+    \item \gls{gui} has input fields user can population, equivalent to function arguments
+    \item generally, one window talks to one function (but not always)
+    \item often some complicated manipulation to go from user input values to valid function arguments
+    \item doing this in a \gls{gui} is bad practice
+    \item instead developed intermediary package that takes simple inputs and produces a \code{data.frame} output
+    \item overtime this developed to also attach the \pkg{tidyverse} \citep{tidyverse} code used to perform the action
+    \item simple function/argument interface makes it easier for beginners
+\end{itemize}
+
+There are a range of different classes of methods in \pkg{iNZightTools}. Many are data manipulation functions linking to \pkg{dplyr} \citep{dplyr} or similar. However there are others that are `clever' helper functions for choosing the correct function for a given situation.
+\begin{itemize}
+    \item import data from a range of file formats with \code{smart\_read()}
+    \item import a survey design from a specification file format with \code{import\_survey()}
+\end{itemize}
+
+
+\section{Designing code-writing functions}\label{sec:code-writing-funs}
+
+\begin{itemize}
+    \item a core part of \pkg{iNZightTools} is the implementation of `code-writing' in almost all of the functions
+    \item there might now be better ways of doing this
+    \item consists of putting together expressions (using \code{~})
+    \item arguments are manipulated into the correct form and pasted into the function expression
+    \item finally, `iNZightTools:::interpolate()' is used to parse the expression and attach the code as an attribute (\code{code})
+    \item almost all functions return a \code{data.frame}
+    \item the \inzight{} \gls{gui} can pull the resulting \code{data.frame} and strip off the code, adding it to the script
+    \item \R{} users could also run the functions and then look at the underlying code used in the background---a great way of getting familiar with the \pkg{tidyverse}
+\end{itemize}
+
+
+\section{Importing Data}\label{sec:import-data}
+
+\begin{itemize}
+    \item import data with the \code{smart\_read()} function
+    \item uses file extension to guess best package and function to use, e.g., \code{.xlsx} uses \code{haven::read\_excel()} \citep{haven}
+    \item also handles metadata parsing for \gls{csv}
+\end{itemize}
+
+\subsection{Parsing Metadata for Easier Data Distribution}\label{sec:metadata}
+
+\begin{itemize}
+    \item often data coded (factors as numbers instead of labels)
+    \item users need to refer to information (often external) to first set-up the variables correctly before they can get started with visualisation
+    \item this is hard/not feasible for novice users
+    \item metadata can be included in/distributed with the raw data
+    \item \code{smart\_read()} will parse the metadata and apply transformations
+    \item here are some examples
+\end{itemize}
+
+
+\section[Data wrangling with iNZightTools]{Data wrangling with \pkg{iNZightTools}}\label{sec:data-wrangling}
+
+\begin{itemize}
+    \item a bunch of methods: filter, sort, aggregate, join
+    \item here are some examples
+    \item and accessing the code
+\end{itemize}
+
+
+\section{Working with Complex Survey Designs}\label{sec:surveys}
+
+\begin{itemize}
+    \item a hugely important data type
+    \item can be problematic if misspecified
+    \item two helpers: using \pkg{srvyr} \citep{srvyr} to handle survey objects the same as \code{data.frame}s
+    \item second, can parse survey specification file format distributed with the raw survey data and automatically build a survey object
+    \item here's some examples \ldots
+\end{itemize}
+
+
+\section*{Acknowledgements}
+\inzight{} is free software developed by students of the Department of Statistics, University of Auckland. Recent funding has been received by Te Rourou Tātaritanga (\url{https://terourou.org)}, a research group at Victoria University of Wellington funded by an MBIE Endeavour Grant, ref 62506 ENDRP, with additional funding from iNZight Analytics.
+
+
+\printglossary[type=\acronymtype]
+
+\bibliography{../references.bib}
+
+
+\end{document}

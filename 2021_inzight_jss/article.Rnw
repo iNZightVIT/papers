@@ -34,15 +34,10 @@
 %% need no \usepackage{Sweave}
 \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
 <<preliminaries, echo=FALSE, results=hide>>=
-options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
-settings <- yaml::read_yaml('config.yaml')
-title <- gsub("\ R", "\ \\\\\\\\proglang{R}", settings$title)
-title <- gsub("iNZight", "\\\\\\\\pkg{iNZight}", title)
-title_short <- settings$title_short
-title_plain <- settings$title
-affiliation <- strsplit(settings$affiliation, ",")[[1]]
-authors <- strsplit(settings$author, " and ")[[1]]
-authors_long <- paste(authors, affiliation, sep = "\\\\\\\\")
+source("../setup_doc.R")
+authors <- sapply(author_affiliations, function(x) x$author)
+affiliations <- sapply(author_affiliations, function(x) as.character(x$affiliation[1]))
+authors_long <- paste(authors, affiliations, sep = "\\\\\\\\")
 authors_long <- matrix(authors_long, ncol = 2, byrow = TRUE)
 authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), collapse = " \\\\AND ")
 @
@@ -64,9 +59,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 \Shorttitle{\Sexpr{title_short}}
 
 %% - \Abstract{} almost as usual
-\Abstract{
-  \Sexpr{gsub("\\", "\\\\", settings$abstract, fixed = TRUE)}
-}
+\Abstract{\Sexpr{abstract}}
 
 %% - \Keywords{} with LaTeX markup, at least one required
 %% - \Plainkeywords{} without LaTeX markup (if necessary)

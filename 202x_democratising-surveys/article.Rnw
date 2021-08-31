@@ -29,12 +29,14 @@
 \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
 <<setupdoc, echo=FALSE, results=hide>>=
 source('../setup_doc.R')
+authors <- authors_with_affil_nums(author_affiliations)
+affil_num <- numbered_affilations(affiliations)
 @
 
 \title{\Sexpr{title}}
 
 \author{\Sexpr{authors}}
-\affil{Te Rourou T\=ataritanga, Victoria University of Wellington}
+\affil{\scriptsize\Sexpr{affil_num}}
 \date{}
 
 \begin{document}
