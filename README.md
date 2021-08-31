@@ -18,63 +18,9 @@ subdirectory.
 
 <td>
 
-<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
+<strong><a href='2021_inzight_jss/index.pdf'>‘iNZight’: A Graphical User
 Interface for Data Visualisation and Analysis through
-</a></strong><br>Tom Elliott \[1,2\]
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src='figure/2021_inzight_jss.png' width='100'>
-
-</td>
-
-<td>
-
-<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
-Interface for Data Visualisation and Analysis through
-</a></strong><br>Chris Wild \[2\]
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src='figure/2021_inzight_jss.png' width='100'>
-
-</td>
-
-<td>
-
-<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
-Interface for Data Visualisation and Analysis through
-</a></strong><br>Daniel Barnett \[2\]
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src='figure/2021_inzight_jss.png' width='100'>
-
-</td>
-
-<td>
-
-<strong><a href='2021_inzight_jss/index.pdf'>: A Graphical User
-Interface for Data Visualisation and Analysis through
-</a></strong><br>Andrew Sporle \[3,2\]
+R</a></strong><br>Tom Elliott, Chris Wild, Daniel Barnett, Andrew Sporle
 
 </td>
 
@@ -91,41 +37,8 @@ Interface for Data Visualisation and Analysis through
 <td>
 
 <strong><a href='202x_democratising-surveys/index.pdf'>Democratising
-Survey Data with </a></strong><br>Tom Elliott \[1,2\]
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src='figure/202x_democratising-surveys.png' width='100'>
-
-</td>
-
-<td>
-
-<strong><a href='202x_democratising-surveys/index.pdf'>Democratising
-Survey Data with </a></strong><br>Chris Wild \[2\]
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src='figure/202x_democratising-surveys.png' width='100'>
-
-</td>
-
-<td>
-
-<strong><a href='202x_democratising-surveys/index.pdf'>Democratising
-Survey Data with </a></strong><br>Andrew Sporle \[3,2\]
+Survey Data with ‘iNZight’</a></strong><br>Tom Elliott, Chris Wild,
+Andrew Sporle
 
 </td>
 
@@ -141,8 +54,8 @@ Survey Data with </a></strong><br>Andrew Sporle \[3,2\]
 
 <td>
 
-<strong><a href='202x_iNZightTools/index.pdf'>: Tools for
-</a></strong><br>Tom Elliott \[1,2\]
+<strong><a href='202x_iNZightTools/index.pdf'>‘iNZightTools’: Tools for
+‘iNZight’</a></strong><br>Tom Elliott
 
 </td>
 
