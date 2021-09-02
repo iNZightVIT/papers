@@ -13,11 +13,12 @@ All files in this directory are displayed in the \menu{Advanced} menu of \pkg{iN
 The module files themselves describe a single class object which inherits from \class{CustomModule}.
 This parent class provides several methods, including the initialization of the module panel in the left-hand-side of the \pkg{iNZight} interface.
 Additional properties and methods can be written by the developers of individual modules.
-This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules to distribute to their desired audience.
+This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules to distribute to their audiences.
 
 As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by demographers to do small-area estimation.
-In the example, we have estimated life expectancies from death count data, which is traditionally a complicated \ldots [grab quote from other report].
+In the example, we have estimated life expectancies from death count data, which is traditionally a complicated \ldots
 Full details for this module will be published once the full version is complete.
+\textbf{Pull some more details from dedicated report.}
 
 \begin{figure}[tp]
     \centering

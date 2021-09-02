@@ -1,16 +1,16 @@
 \section{Technical details}\label{sec:technical}
 
-\pkg{iNZight}'s interface is written with \proglang{R} using three main packages.
-\pkg{gWidgets2} \citep{gWidgets2} provide a simple widget-based \gls{api} to building a cross-platform interface with \proglang{R}, with wrappers for Tcltk, Qt, and GTK2.
-We choose GTK2, as it was the most feature rich and---at the time---had the best cross-platform support (see \cref{sec:os-reqs}).
-The GTK2 binaries are access through \proglang{R} using the \pkg{RGtk2} package \citep{RGtk2}, and is translated from simple \pkg{gWidgets2} calls using the \pkg{gWidgest2RGtk2} package \citep{gWidgets2RGtk2}.
-Together, these packages provide a platform- and library-independent \gls{api} for creating a \gls{gui} with \proglang{R}.
+\pkg{iNZight}'s interface is written with \proglang{R} using three main supporting packages.
+\pkg{gWidgets2} \citep{gWidgets2} provides a simple widget-based \gls{api} to building a cross-platform interface with \proglang{R}, with wrappers for Tcltk, Qt, and GTK2.\footnote{citations? URLs? styling? check R Command + Deducer papers.}
+We chose GTK2, as it was the most feature rich and---at the time---had the best cross-platform support (see \cref{sec:os-reqs}).
+The GTK2 binaries are accessed through \proglang{R} using the \pkg{RGtk2} package \citep{RGtk2}, with commands translated from \pkg{gWidgets2} using the \pkg{gWidgest2RGtk2} package \citep{gWidgets2RGtk2}.
+Together, these packages provide a platform-independent \gls{api} for creating a \gls{gui} with \proglang{R}.
 
 
 The \gls{gui} for \pkg{iNZight} uses an \gls{oop} framework in \proglang{R} called \emph{reference classes} (from the \pkg{methods} packages included with the base \proglang{R} distribution).
 The same framework is used by \pkg{gWidgets2} to describe individual components of the interface.
 Each piece of the \gls{gui} is a \emph{class}, with individual buttons, methods (actions), and even smaller sub-components.
-\Gls{oop} allows for \emph{inheritance}, so developers can describe a general class which can be shared to several related components, but which may have different layouts or methods;
+\Gls{oop} allows for \emph{inheritance}, so developers can describe a general class which can be shared by several related `child' components, but which may have different layouts or methods;
 this is what drives the add-on system (\cref{sec:addons}).
 \Cref{fig:inzight_main_widgets} shows the \pkg{iNZight} \gls{gui} with some of the major class components annotated.
 
@@ -20,22 +20,20 @@ this is what drives the add-on system (\cref{sec:addons}).
     \caption[The reference class components of the iNZight interface.]{\label{fig:inzight_main_widgets} The reference class components of the \pkg{iNZight} interface, some of which are themselves made from several child objects.}
 \end{figure}
 
-In addition to these ``visible'' class components, others exist behind-the-scenes.
-The prominent one is the \class{iNZDocument} class which stores the state of the application, including the data set, variable selection, any survey design information, and plot settings.
-The \class{iNZDataNameWidget} component visible in the top-left of \cref{fig:inzight_main_widgets} displays a list of documents the user can switch between.
-From the \menu{Data} menu, several loaded datasets can be merged together.
+In addition to the ``visible'' class components, others exist behind-the-scenes, the main one being the \class{iNZDocument} class which stores the state of the application, including the data set, variable selection, any survey design information, and plot settings.
+The \class{iNZDataNameWidget} component visible in the top-left of \cref{fig:inzight_main_widgets} displays a list of documents, allowing the user to switch between them,
+from the \menu{Data} menu, several loaded datasets can be merged together.
 
 
 The structure of each class is, in most cases, a set of attributes that the user can control, stored as \emph{properties} of the class.
 There is also a set of \emph{methods} which can be used by the class to react to user input or perform actions.
-Most components have a main \emph{action}\footnote{Find a better word.} method, which performs the primary function of the component.
-For example, the \class{iNZFilterData} class contains a \fct{filter\_data} method which takes the user's input and passes it to an appropriate \emph{wrapper} functions.
+Most components have a main method which performs the primary function of the component.
+For example, the \class{iNZFilterData} class contains a \fct{filter\_data} method which takes the user's input and passes it to an appropriate \emph{wrapper} function.
 A skeleton example of the \menu{Filter Data} window class is shown in \cref{lst:filter}.
-\footnote{Include a figure of this window, too?}
 In this oversimplified example, the user is given a drop-down \fct{gcombobox} to choose a variable to filter on.
 When they click the \menu{Filter} button, the data is filtered and passed back to the main \gls{gui}.
-Here, the method uses a \fct{switch} function to select the appropriate wrapper function within the \pkg{iNZightTools} package based on the user's chosen value of ``type''.
-The actual class for the \menu{Filter Data} method is much more complicated, and includes reactive components so only the relevant inputs are displayed to the user.
+The method uses \fct{switch} to select the appropriate wrapper function within the \pkg{iNZightTools} package based on the user's chosen value of ``type''.
+The actual class for the \menu{Filter Data} method is more complicated, and includes reactive components so only the relevant inputs are displayed to the user.
 
 \begin{lstfloat}[tp]
     \caption{Reference class definition for filter window example.}
@@ -43,7 +41,7 @@ The actual class for the \menu{Filter Data} method is much more complicated, and
     \begin{Code}
     iNZFilterData <- setRefClass(
         "iNZFilterData",
-        propoerties = list(
+        fields = list(
             GUI = "ANY",
             data = "data.frame",
             type = "ANY",
@@ -80,7 +78,6 @@ The actual class for the \menu{Filter Data} method is much more complicated, and
 
 Each major component has a similiar structure to \cref{lst:filter}, with calls to various functions, many of which come from other \pkg{iNZight*} packages.
 Plots are generated by calls to \fct{iNZightPlots::inzplot}, while data import is handled by \fct{iNZightTools::smart\_read}.
-This import function uses the file extension to guess the file type and load the data using the appropriate methods.
 The wrappers enforce separation of the interface and data logic so that the \gls{gui} is only concerned with the input values.
 
 <<quick_hack,echo=FALSE>>=
@@ -89,7 +86,7 @@ url <- "https://www.stat.auckland.ac.nz/~wild/data/test/nls.dta"
 if (!file.exists("nls.dta"))
     download.file(url, "nls.dta")
 @
-A second advantage of having components calling external functions is that the wrapper functions can include the lower-level \proglang{R} code used to generate the result, which the \gls{gui} can fetch from the returned data and attach to the script described in \cref{sec:code-writing}.
+Another advantage of having components calling external functions is that the wrapper functions can include the lower-level \proglang{R} code used to generate the result, which the \gls{gui} can fetch from the returned data and attach to the script described in \cref{sec:code-writing} all while keeping the \gls{gui} and data-oriented code separate.
 Here is an example using \fct{iNZightTools::smart\_read}:
 <<code_from_result>>=
 library("iNZightTools")
@@ -155,7 +152,7 @@ For development purposes, it is preferable to initialize the \gls{gui} object ma
 ui <- iNZGUI$new()
 ui$initializeGui()
 \end{CodeInput}
-Users now have access to the \class{iNZGUI} object to explore states and trigger actions for easier testing.
+This way users have access to the \class{iNZGUI} object and can explore states and trigger actions for easier testing.
 In these next two commands, the first returns the dimensions of current data, while the second sets the first variable drop-down value to \code{height}.
 \begin{CodeChunk}
 \begin{CodeInput}

@@ -1,5 +1,4 @@
-title: "\\pkg{iNZight}: A Graphical User Interface for Data Visualisation and Analysis through \\proglang{R}"
-title_short: "\\pkg{iNZight}: A GUI for Data Visualisation and Analysis through R"
+title: "\\pkg{iNZight}: A Graphical User Interface for Data Visualisation, Exploration, and Analysis"
 authors:
 - "Tom Elliott [1,2]"
 - "Chris Wild [2]"
