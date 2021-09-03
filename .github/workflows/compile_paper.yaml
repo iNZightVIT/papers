@@ -21,7 +21,9 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
       - name: Install system dependencies
-        run: sudo apt-get install poppler-utils texlive-binaries libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
+        run: sudo apt-get install poppler-utils texlive-binaries  libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
+      - name: Update texlive
+        run: sudo mktexlsr
       - name: Query dependencies
         # uses: GabrielBB/xvfb-action@v1.0
         # with:
@@ -48,8 +50,6 @@ jobs:
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}
       - name: Render README
-        # uses: GabrielBB/xvfb-action@v1.0
-        # with:
         run: Rscript -e "rmarkdown::render('README.Rmd')"
       - name: Commit results
         run: |
