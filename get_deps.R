@@ -7,8 +7,8 @@ if (!requireNamespace("stringr", quietly = TRUE))
     install.packages("stringr")
 
 pkgs <- c(
-    stringr::str_match(text, "library\\(\"?([a-zA-Z0-9]+)\"?\\)")[,2],
-    stringr::str_match(text, "([a-zA-Z0-9]+)::")[,2]
+    stringr::str_match(text, "library\\(\"?([a-zA-Z0-9]+)\"?\\)")[,2]
+    # stringr::str_match(text, "([a-zA-Z0-9]+)::")[,2]
 )
 pkgs <- unique(pkgs[!is.na(pkgs)])
 
@@ -25,7 +25,6 @@ if (length(ca)) {
             repos = c(
                 "https://r.docker.stat.auckland.ac.nz",
                 "https://cran.rstudio.com"
-            ),
-            dependencies = TRUE
+            )
         )
 }
