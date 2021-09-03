@@ -13,7 +13,7 @@ pkgs <- c(
 pkgs <- unique(pkgs[!is.na(pkgs)])
 
 # ignore:
-pkgs <- pkgs[!pkgs %in% c("iNZight")]
+pkgs <- pkgs[!pkgs %in% c("iNZight", "iNZightMaps", "iNZightModules")]
 pkgs <- c(pkgs, "rmarkdown", "knitr")
 
 if (length(ca)) {

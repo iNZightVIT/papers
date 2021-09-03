@@ -22,11 +22,7 @@ jobs:
       - uses: r-lib/actions/setup-tinytex@v1
       - name: Install system dependencies
         run: sudo apt-get install poppler-utils texlive-binaries  libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
-      - name: Update texlive
-        run: sudo mktexlsr
       - name: Query dependencies
-        # uses: GabrielBB/xvfb-action@v1.0
-        # with:
         run: Rscript get_deps.R .github/depends.Rds
       - name: Cache R packages
         uses: actions/cache@v1
@@ -35,14 +31,10 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
-        # uses: GabrielBB/xvfb-action@v1.0
-        # with:
         run: Rscript get_deps.R
       - name: Build
-        # uses: GabrielBB/xvfb-action@v1.0
         env:
           TZ: 'Pacific/Auckland'
-        # with:
         run: Rscript build_papers.R
       - name: Install rmarkdown
         run: |
