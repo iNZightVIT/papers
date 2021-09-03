@@ -24,8 +24,8 @@
 \input{../glossary.tex}
 \makeglossaries
 
-%% need no
-\usepackage{Sweave}
+%% For Sweave-based articles about R packages:
+%% need no \usepackage{Sweave}
 \SweaveOpts{engine=R, eps=FALSE, keep.source = TRUE}
 <<setupdoc, echo=FALSE, results=hide>>=
 source('../setup_doc.R')
