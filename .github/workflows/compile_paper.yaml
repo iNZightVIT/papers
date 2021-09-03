@@ -20,16 +20,16 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
-      - name: Install system dependencies
-        run: sudo apt-get install poppler-utils texlive-binaries  libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
+      # - name: Install system dependencies
+      #   run: sudo apt-get install poppler-utils texlive-binaries  libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
       - name: Query dependencies
         run: Rscript get_deps.R .github/depends.Rds
-      - name: Cache R packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
+      # - name: Cache R packages
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ${{ env.R_LIBS_USER }}
+      #     key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
+      #     restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
       - name: Install dependencies
         run: Rscript get_deps.R
       - name: Build
