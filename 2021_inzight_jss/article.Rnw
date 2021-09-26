@@ -23,6 +23,8 @@
 \floatname{lstfloat}{Listing}
 \def\lstfloatautorefname{Listing} % needed for hyperref/auroref
 
+\usepackage{framed}
+
 %% new custom commands
 \newcommand{\class}[1]{`\code{#1}'}
 \newcommand{\fct}[1]{\code{#1()}}
