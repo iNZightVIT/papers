@@ -19,7 +19,7 @@ subdirectory.
 <td>
 
 <strong><a href='2021_inzight_jss/index.pdf'>‘iNZight’: A Graphical User
-Interface for Data Visualisation, Exploration, and
+Interface for Democratising Data Visualisation, Exploration, and
 Analysis</a></strong><br>Tom Elliott, Chris Wild, Daniel Barnett, Andrew
 Sporle
 
