@@ -2,7 +2,7 @@
 
 \pkg{iNZight} was originally built as a tool for high school statistics students, and later incorporated into introductory statistics courses in New Zealand, however it has since matured and is now useful as a rapid research development tool for community and government research groups.
 The interface is minimal and provides instant feedback from user actions, making it intuitive to use so users can easily start exploring their data.
-The \emph{variable-fist} paradygm makes it easy to learn new statistical concepts---such as hypothesis testing---by focusing on the output first, and consequently makes it very easy to pick up after a period of non-use, typical of critical but seldomly performed tasks within organisations.
+The \emph{variable-first} paradigm makes it easy to learn new statistical concepts---such as hypothesis testing---by focusing on the output first, and consequently makes it very easy to pick up after a period of non-use, typical of critical but seldom performed tasks within organisations.
 Ease-of-use is achieved through familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
 \pkg{iNZight}'s variable-first approach lets users choose the variables they are interested in and the software decides on the best action to take (or provides a small set of choices).
 The simplest way to explore \pkg{iNZight}'s features is by demonstration.
@@ -14,7 +14,7 @@ The simplest way to explore \pkg{iNZight}'s features is by demonstration.
 \end{figure}
 
 
-\subsection{Loading data}\label{sec:loading-data}
+\subsection{Importing data}\label{sec:loading-data}
 
 \begin{figure}[tp]
     \centering
@@ -23,15 +23,16 @@ The simplest way to explore \pkg{iNZight}'s features is by demonstration.
 \end{figure}
 
 Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
-Fortuately, there are 1000's of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to importing most of the common (and indeed many uncommon) file formats.
+Fortuately, there are thousands of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to importing most of the common (and indeed many uncommon) file formats.
 Usually, \proglang{R} users would need to first recognise or look up the file extension, find an appropriate package, then decipher the documentation to import an unusual file.
-\pkg{iNZight} provides a simple \menu{Load Data} window from which users only need select the file to import: the software detects the file type from the file extension and reads the file if the format is supported.
-Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
-If the file is readable by \pkg{iNZight}, a preview is displayed for the user to check before proceeding with the import, as demonstrated in \cref{fig:load_data} which shows the \menu{Load Data} window for a \gls{csv} file.
+\pkg{iNZight} provides a simple \menu{Import Data} window from which users need only select a file to import: by default the software detects the file type from the filename extension and reads the file if the format is supported.
+If a dataset is available publically on the internet, users can also provide a URL from which \pkg{iNZight} will import the data instead.
 
 
-In addition to the preview, \pkg{iNZight} also has an \menu{Advanced Options} section for some specific formats.
-Currently only delimited files have advanced options, where users can override the default delimiter, for example in European countries where the semi-colon (;) is used (the comma is reserved as the decimal separator), or to choose between different encoding formats.
+Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited text, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
+If the file is readable by \pkg{iNZight}, a preview is displayed for the user to check before proceeding with the import, as demonstrated in \cref{fig:load_data} which shows the \menu{Import Data} window for a \gls{csv} file.
+The \menu{Import Data} window has an \menu{Advanced Options} section, expanded in \cref{fig:load_data}, for some specific formats only,
+currently just \gls{csv} and delimited-text files, where users can override the default delimiter---for example in European countries where the semi-colon (;) is used (the comma is reserved as the decimal separator), or to choose between different encoding formats.
 The preview is updated when these options are changed, so users can use trial-and-error if they are not sure what the necessary inputs are.
 This is particularly useful for encoding, which is difficult to find out manually.
 
@@ -39,55 +40,59 @@ Lastly, the data preview allows users to override the default variable types.
 This is particularly useful when importing a dataset with coded factors (e.g., values $1,2,3$ instead of \mbox{``A'', ``B'', ``C''}).
 At the time of writing, \pkg{iNZight} handles numeric, categorical, and date-time formats---with more on the way.
 
+\pkg{iNZight} also supports copying and pasting data from a spreadsheet to make things even easier for beginners.
+
 
 \subsection{Creating graphs}\label{sec:creating-graphs}
 
 Graphics provide the core of \pkg{iNZight}'s user experience; indeed, the very first prototype of \pkg{iNZight} was simply a drag-and-drop of variables onto slots to create a graph---everything else came later.
 Behind the scenes, \pkg{iNZight} uses variable types (numeric, categorical, or date-time) to determine the appropriate graph.
-For example, a single numeric variable are visualised with a dot plot, while a categorical variable uses a bar chart.
+For example, a single numeric variable from a small-to-moderate sized dataset is visualised by default with a dot plot, while a single categorical variable default to a bar chart.
 While this may seem obvious to experienced statisticians, beginners cannot be expected to immediately grasp the concept of a ``numeric'' variable, and why a dot plot is used instead of a bar chart.
-By removing this step, teaching and learning can focus on questions such as \emph{``why does this variable produce this graph?''}.
-It also means experienced users can very quickly look at range of graphs without needing to account for different data types.
+By removing this step, teaching and learning can focus on questions such as \emph{``why does this variable produce this graph?''} and \emph{``what is it telling us?''}.
+This, together with the abilty to scroll quickly through a set of alternative appliable graphs,
+also means experienced users can very quickly look at a variety of variables and graphs without needing to account for different data types.
 
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/inzight_infant_mortality.png}
-    \caption[Demonstration of plot modifcations available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
+    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
 \end{figure}
 
 
 The control panel (\textbf{B} in \cref{fig:inzight_main}) lets users choose up to four variables: the first of these (\emph{Variable 1}) specifies the \emph{Primary Variable of Interest} (or \emph{Outcome Variable}).
-The remaining three variable boxes are for exploring what variables influence the first.
+The remaining three variable boxes are for exploring relationships between those variables and the first.
 For example, `height' might be the primary variable, so selecting it will produce a \emph{dot plot} of height.
-If a second variable chosen is categorical, for example `ethnicity', then we are shown a dot plot of height for each ethnicity, stacked vertically.
+If a second variable chosen is categorical, for example `ethnicity', then by default we are shown a dot plot of height for each ethnicity, stacked vertically.
 If \emph{Variable 2} is \emph{numeric}, such as `age', we see a graph of height versus age: \emph{Variable 1} (height) becomes the $y$-variable in the scatter plot.
-The last two variable slots are subset variables that quickly and easily facet the plot, allowing users to explore more complex relationships and interactions.
+The last two variable slots are subset variables that quickly and easily facet the plot (seen in \cref{fig:plot_modifcation}), allowing users to explore more complex relationships and interactions.
 Any numeric variables used for either of the subsetting variables are automatically cut into four class intervals.
 
-For a deeper exploration of variable relationships, there is an entire panel dedicated to plot modifications: \menu{Add to Plot}.
+For a deeper exploration of variable relationships, there is an entire panel dedicated to plot modifications, namely, \menu{Add to Plot}.
 This is accessed either from the \menu{Plot} menu, or from the button in the \menu{Plot Toolbar} (boxed in red in \cref{fig:plot_modifcation}).
-Users can choose from a selection of alternative plot typesbased on the variable(s) selected, as well as choose a colour variable, sizing variable, plot symbols, trend lines, change axis labels and limits, and much more.
+Users can choose from a selection of alternative plot types based on the variable(s) selected, as well as choose a colour variable, sizing variable, plot symbols, trend lines, change axis labels and limits, and much more.
 The possible choices are presented in an interactive format such that the graph updates whenever the user changes input values, allowing them to explore ``what happens if \ldots'', and ``what does this do?''.
-This way, beginners can learn about the software while they explore the data:
+This way, beginners can learn more about what the software can do while they explore the data:
 they are not limited by a lack of knowledge or coding skill, while researchers can quickly generate visualisations before starting their analysis.
-\Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and (log) GDP, region (colour), population (point size), and year (faceting).
+\Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and (log) GDP, region (colour), population (point size), and year (subsetting/faceting).
 
 
 \subsection{Summaries and inference}\label{sec:summaries-and-inference}
 
 To supplement the graphical display, \pkg{iNZight} provides two textual output modes: \emph{summary} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons, respectively, below the control panel.
+As previously noted, the underlying metaphor for both is, \emph{``give me the typoes of information analysts generally want to see in a situation like this''}.
 Summary information includes basic statistics about variable(s) in the graph.
 Dot plots are summarised by means, standard deviations, and quantiles.
 Bar chart summaries display a table of counts and percentages.
 Scatter plots provide the formula for any fitted trend lines, along with the correlation between the variables.
-If subset variables are present, then individual summaries for each subset is provided.
+If subset variables are present, then individual summaries for each subset are provided.
 
 
-The inference information includes estimates, confidence intervals, and any applicable $p$-values for quantities such as means and proportions.
-For performing hypothesis testsing,
+The inference information includes estimates, confidence intervals, and any applicable $p$-values for quantities such as means, proportions, and their differences.
+For performing hypothesis testing,
 \pkg{iNZight} displays a set of tests applicable to the chosen variable(s), as shown in \cref{fig:inzight_inference}
-(the full list of tests available are given in \cref{tab:hypothesis-tests}).
+(the full list of tests currently available in \pkg{iNZight}'s basic mode are given in \cref{tab:hypothesis-tests}).
 Inference information is either calculated using Normal theory or Bootstrap methods \citep[using the \pkg{boot} package,][]{boot}, as chosen by the user, with work on-going to add Bayesian inference methods.
 
 \begin{figure}[tp]
@@ -122,7 +127,7 @@ kable(tab,
             'One-sample',
             'Equal proportions',
             'Two-sample',
-            'Equal distributions',
+            'Equal distributions/independence',
             'Additionally includes epidemiological output such as odds and risk ratios.'
         ),
         'number', threeparttable = TRUE) %>%
@@ -140,55 +145,56 @@ Often, data transformations are required before any useful analysis can begin (f
 
 In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describe many data manipulation methods including \emph{filtering}, \emph{aggregation}, and \emph{reshaping}.
 They demonstrate the \pkg{tidyverse} \citep{tidyverse} code for these actions, which \pkg{iNZight} uses behind-the-scenes to implement users' chosen actions.
-\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods, enabling users to quickly and easily filter by value, convert from \emph{wide} to \emph{long} form, or join two datasets together.
-In most cases, the interface evolves from top-to-bottom as the users first chooses, for example, the variable, with subsequent inputs tailored to previous choices, and so guiding users through the action.
+\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods, enabling users to quickly and easily do things like filtering by value, converting from \emph{wide} to \emph{long} form, or joining two datasets together.
+In most cases, the interface evolves from top-to-bottom as the user first chooses, for example, the variable to be worked on, with subsequent inputs tailored to previous choices, thus guiding users through the action logically.
 At the bottom of many data manipulation windows is a preview of the data after transformation, as demonstrated in \cref{fig:data_mod_preview}.
 A full list of available methods is provided in \cref{app:data-methods}.
 
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/inzight_data_mod.png}
-    \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variable, with the preview displayed in the bottom-right. The relevent column names are underlined in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
+    \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variables, with the preview displayed in the bottom-right. The relevant column names are underlined in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
 \end{figure}
 
 The \menu{Variable} menu gives users access to a range of variable transformation and modification actions.
 For example, numeric variables can be converted to categorical (a common example is \code{Year}), or categorical variable levels can be renamed, reordered, or combined.
-Users can also creating new variables based on existing ones, as well as rename or deleting existing ones.
-\pkg{iNZight} creates a \emph{new} variable for each action---converting \code{Year} to categorical yields the variable \code{Year\_cat} for example---which makes the experience more exploration-friendly.
+Users can also create new variables based on others in the dataset, as well as rename or delete existing variables.
+\pkg{iNZight} creates a \emph{new} variable for each action---for example, converting \code{Year} to categorical yields a new variable named \code{Year\_cat} by default---which makes the experience more transparent and more exploration-friendly.
 \Cref{app:variable-methods} gives a list of available variable manipulation methods.
 
 
-\subsection{Special data types}\label{sec:special-data}
+\subsection{Special facilities for special data types}\label{sec:special-data}
 
-Many data sets that beginners are exposed to are in `tidy' format \citep[chapter~12]{Wickham_2017}, such that rows are individual records and columns observations.
-However, there are some data types that beginners may encounter, or form a core component of statistical anlysis.
+Many data sets that beginners are exposed to are in `tidy' format \citep[chapter~12]{Wickham_2017}, such that rows are individual records and columns variables.
+However, there are some other data types that beginners may encounter, or make up a core component of statistical analysis.\footnote{Sentence not quite working.}
 These data sets require special graphics and different handling to explore correctly, a task which \pkg{iNZight} has been extended to perform.
-Some examples are described here.
+Some examples are described in the following sections.
 
 
 \subsubsection{Complex survey designs}\label{sec:surveys}
 
-One of the more important data types for official statistics and population researchers are complex surveys, which require information about the survey's structure to provide valid graphs, summaries, and inferences.
-\pkg{iNZight} handles survey designs behind the scenes, requiring the user to specify the structure either manually (\cref{fig:inzight_survey_spec}) or by importing a special \emph{survey design} file which can be distributed with the data.
-Once specified, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights are incorporated correctly into graphs, summaries, and data manipulation functions using the \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} packages behind the scenes.
+One of the more important data types demographers and researchers using official statistics encounter is data from complex surveys, which requires information about the survey's structure to provide valid graphs, summaries, and inferences.
+\pkg{iNZight} handles survey designs behind the scenes, requiring the user to specify the structure either manually (\cref{fig:inzight_survey_spec}) or by importing a special \emph{survey design} file.
+Data producers can distribute the design file with their datasets to ensure that users conduct valid analyses of their data.
+Once specified to \pkg{iNZight}, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights and other design information is incorporated correctly into graphs, summaries, and data manipulation functions using the \proglang{R} packages \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} behind the scenes.
+The \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design is included in \pkg{iNZight}'s code history.
 
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/inzight_survey_spec.png}
-    \caption{\label{fig:inzight_survey_spec} Users can specify survey design information manually by filling in the fields. These will then be used throughout the session.}
+    \caption{\label{fig:inzight_survey_spec} Users can specify survey design information manually by filling in the fields. These will then be used throughout the session thereafter where appropriate.}
 \end{figure}
 
-\pkg{iNZight} handles stratified, one- and two-stage cluster surveys,
-along with  \emph{replicate weight} designs, a format common in demographic surveys where clustering information is not included in the data, while still allowing variance estimation \citep{Lumley_2010};\footnote{I don't like this sentence}.
-\pkg{iNZight} provides an interface for specifying replicate weight designs in that case.
-\pkg{iNZight} can also calibrate surveys with data from other sources to reduce the estimated variances \citep{cn}.
-Once again, this is performed once by the user and is used continually throughout the rest of \pkg{iNZight}.
+\pkg{iNZight} handles stratified, one- and two-stage cluster surveys.
+It also handles so-called \emph{replicate weight} designs, an alternative format for data distribution in common use by producers of survey data in situations in which the actual information on clusters cannot be distributed to researchers for privacy/security reasons.
+Instead, sets of ``replicate weights'' are added, a mechanism that sill permits valid variance estimation \citep{Lumley_2010}.\pkg{iNZight} can also calibrate surveys with population data from other sources to reduce the variances of estimates.
+Once again, this information is specified once, either by the user or a survey design file, and is subsequently used throughout the rest of the analysis.
 
-The types of graphs available differ for survey data.
+The types of graphs available differ for survey data, as they now represent a picture of the \emph{population}, and not simply a sample.
 For a single numeric variable, a \emph{histogram} is displayed by default instead of a dot plot.
-For two numeric variables, a \emph{bubble plot} is used, which is effectively a scatter plot with points sized by the weights of respective observations;
-alternatively, this can be displayed as a \emph{hex-bin} plot, particularly when there are many observations.
-Bar plots are still used for surveys.
+For two numeric variables, a \emph{bubble plot} is used, which is a scatter plot with points sized by the weights of respective observations;
+alternatively, this can be displayed as a \emph{hex-bin} plot, which can be particularly effective when there are large numbers of observations.
+Bar plots are still used by default for categorical variables in surveys.
 Summaries display the same information as before (\cref{sec:summaries-and-inference}), but provide estimates and standard errors of the population values, as shown in \cref{fig:inzight_survey_summary}.
 Similarly, inferences and hypothesis tests are performed for the population, and thus include additional uncertainties from the survey design.
 
@@ -196,7 +202,7 @@ Similarly, inferences and hypothesis tests are performed for the population, and
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.8\textwidth]{figure/inzight_survey_summary.png}
-    \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_survey_summary} The \menu{Summary} window window provides simple summary statistics and, in the case of survey data, standard errors of these population estimates.}
+    \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_survey_summary} The \menu{Summary} window provides simple summary statistics and, in the case of survey data, standard errors of these population estimates.}
 \end{figure}
 
 
@@ -205,16 +211,16 @@ Similarly, inferences and hypothesis tests are performed for the population, and
 
 Another important data type is \emph{time series} in which the variable of interest is observed changing over time.
 Time information can be specified to \pkg{iNZight} in its dedicated \emph{Time Series} module, either in a specially formatted column in the data, or manually by the user within the module itself.
-Currently \pkg{iNZight} only supports time series with equally spaced and non-missing values.
+Currently \pkg{iNZight} only supports time series with equally spaced intervals and non-missing values.
 
-\pkg{iNZight}'s time series module provides capabilities for users to graph one or more time series on a graph to see how values change over time, and automatically overlays a smoother (controlled by a slider) on each.
-Additionally, the series can be decomposed to show the trend, seasonal, and residual components (using \gls{stl}).
+\pkg{iNZight}'s time series module provides capabilities for users to graph one or more time series on a graph to see how values change over time, and automatically overlays a smoother on each.
+Additionally, the series can be decomposed into trend, seasonal, and residual components (using \acrlong{stl}).
 Animations are available to help with understanding how the various components combine to form the final series, and a Holt-Winters' forecast can be obtained by choosing the \emph{Forecast} plot type \citep{Holt_2004,Winters_1960}.
 
 \Cref{fig:inzight_ts} shows the time series module with quarterly visitor arrivals data for several countries.
 The software automatically detects the \code{Time} column (``Date'') when loaded, and draws the displayed graph without any user interaction.
 Users have a choice between \emph{additive} and \emph{multiplicative} models, and a slider to control the smoothness of the LOESS smoother (in red).
-From the \menu{Select Variable} list, one or more variables may be chosen, while the graph type is selected from the list on the right (`Plot type Options').
+From the \menu{Select Variable} list, one or more time-series variables to be displayed on the graph can be chosen, while the graph type is selected from the list on the right (`Plot Type Options').
 
 \begin{figure}[t!]
     \centering
@@ -225,13 +231,13 @@ From the \menu{Select Variable} list, one or more variables may be chosen, while
 \subsubsection{Maps}\label{sec:maps}
 
 Geographical data is particularly important for looking at regional effects, or the distribution of location-based events; however, it can be difficult to create appropriate graphs which often require sourcing maps or shape files.
-\pkg{iNZight} features a \emph{Maps} module for exploring two types of geographical data: point-based data, in which observations are associated with latitude and longitude locations (for example earthquakes); and regional maps for exploring data related to fixed regions which may be countries or areas within countries (regions, states, and so on).
+\pkg{iNZight} features a \emph{Maps} module for exploring two types of geographical data: point-based data, in which observations are associated with latitude and longitude locations (for example earthquakes); and regional maps for exploring data related to fixed regions (for example: countries, provinces, states).
 The functionality within the maps module calls wrapper functions from the \pkg{iNZightMaps} package \citep{iNZightMaps}.
 
 
-For point-based observations, the points are overlayed on a map obtained using the \pkg{ggmap} package \citep{ggmap}.
+For point-based observations, points are overlaid using the \pkg{ggmap} package \citep{ggmap}.
 The maps module in \pkg{iNZight} lets users explore other variables in the dataset using the same techniques used for scatter plots:
-size, colour, and transparency, and faceting, all using interface controls very similar to the base program.
+size, colour, transparency, and faceting, all using interface controls very similar to the base program.
 A demonstration of this module using New Zealand earthquake data is shown in \cref{fig:inzight_quakes},\footnote{Sourced from \url{https://www.geonet.org.nz/}}
 where points are coloured by depth, sized by magnitude, and faceted by whether or not they were felt.
 
@@ -241,12 +247,12 @@ where points are coloured by depth, sized by magnitude, and faceted by whether o
     \caption{\label{fig:inzight_quakes} The maps module showing New Zealand earthquakes sized by magnitude, coloured by depth, and subset by whether or not they were felt.}
 \end{figure}
 
-Regional data has the added complexity of requiring \emph{shape files} to describe the boundaries of areas.
-For example, New Zealand can be divided into regions (Auckland, Otago, etc), which have physical boundaries that can be described by an external shape file, allowing data relating to New Zealand's regions to be shown on a map.
-\pkg{iNZight}'s maps module lets users choose the type of map they need for the data, and proceeds to match labels between the two datasets using several matching techniques:
-countries may be coded using full names or a code (``New Zealand'' versus ``NZ'' versus ``NZL'').
-Once initial set-up is complete, users are free to pick variables to graph, and regions of the map are coloured appropriately.
-Alternatively, if longitudinal data is provided, \emph{spark lines} can be drawn showing how the value of a variable changes over time in various regions.
+Regional data has the added complexity of requiring a definition of the boundaries of the areas contained in the data.
+For example, New Zealand can be divided into regional councils (Auckland, Otago, etc), which have physical boundaries that can be described by an external shape file.
+The Maps module in \pkg{iNZight} lets users choose the type of regions contained in the data, and proceeds to match labels between the dataset and map using several matching techniques:
+for example, countries may be coded using their conventional names, official names, or three-letter codes (``New Zealand'' versus ``NZ'' versus ``NZL'').
+Once the initial set-up is complete, users can choose variables to graph, which are then visualized on the map using colour, points, and other techniques.
+Often users are interested in regional trends over time, so \pkg{iNZight} automatically detects this and can animate maps over time or display trends as spark lines.
 
 % \begin{figure}[p]
 %     \centering
@@ -257,14 +263,14 @@ Alternatively, if longitudinal data is provided, \emph{spark lines} can be drawn
 
 \subsubsection{Other data types and features}\label{sec:other-data-types}
 
-Besides these few examples, \pkg{iNZight} supports several other special data types.
+Besides these examples, \pkg{iNZight} has several other modules that allow more complex statistical methodology or support other special data types.
 \emph{Multiple response} data arises from ``Choose all that apply'' type survey questions, and need their own method of graphics to explore adequately.
-There is also a multivariate data add-on module for performing principle components analysis and generating the appropriate graphs (e.g., a principle components plot).
+There is also a multivariate data add-on module that can perform and visualise multivariate statistical methods such as principal components analysis and non-metric multidimensional scaling.
 The model fitting module allows users to fit complex linear and generalised linear regression models to data (including complex survey designs).
-The regression model output is provided reactively as users add and remove variables, and a range of residual plots are available to explore and help users to quickly fit a model with any necessary transformations.
+The regression model output is updated automatically as users add and remove explanatory variables, and a range of residual plots are available to explore and help users to quickly fit a model with any necessary transformations.
 
-Besides those examples listed above, \pkg{iNZight} has an add-on system (\cref{sec:addons}) that allows developers to extend the interface to suit various types of data or to perform specific analyses.
-Individual package developers or research groups can create modules that can be shared publically (or privately).
+Besides the examples listed above, \pkg{iNZight} has an add-on system (\cref{sec:addons}) that allows developers to extend the interface to suit various types of data or to perform specific analyses.
+Individual package developers or research groups can create modules that can be shared publicly or privately.
 
 
 
