@@ -2,14 +2,15 @@
 
 Newcomers to statistics often need to learn both how to code using \proglang{R} whilst simultaneously learning the basic skills for data exploration, while many researchers need quick, easy tools to get new projects started.
 By providing an easy-to-use \gls{gui}, \pkg{iNZight} lets users focus on exploring and analysing data, and beginners can develop interpretation skills before embarking on the more challenging part of learning to code.
-The software is \emph{variable first}, so users do not need to first know or remember complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable selection(s), and effecitvely helps to guide them through the analysis.
+By taking a \emph{variable first} approach, users do not need to know or remember complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable selection(s), and effectively helps to guide them through the analysis.
 
 Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, are all presented in simple step-by-step windows, many of which provide previews, helping users to tweak the input controls to get the correct output.
-Many users may want to learn to code with \proglang{R}, and \pkg{iNZight} includes some simple tools for helping that migration: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
+Many users may want to learn to code with \proglang{R}, and \pkg{iNZight} includes some simple tools for helping that transition: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
 
 Statistics and data science is an ever expanding field, with new \proglang{R} packages added to CRAN daily.
-\pkg{iNZight} has an add-on system that developers outside of the development team can use to create and share modules for users to install and use on top of \pkg{iNZight}'s existing feature set.
+\pkg{iNZight} has an add-on system that developers outside of the development team can use to create and share modules for users to install and use in addition to \pkg{iNZight}'s existing feature set.
 Since \pkg{iNZight} is available as a standalone program on Windows, package developers have an opportunity to engage previously unreachable audiences.
+These audiences, in return, gain access to methods previously inaccessible to anyone not well-versed in \proglang{R} coding, thereby democratising complex but crucial methods such as Bayesian demography.
 
 
 \subsection{Future Work}\label{sec:future-work}

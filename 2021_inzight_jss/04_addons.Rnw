@@ -1,24 +1,26 @@
 \section{The add-on system}\label{sec:addons}
 
 For most users, the main \pkg{iNZight} program will have all they need to explore, visualise, and perform simple analyses on their data.
-Some, however, may require access to special analyses not built in to the base program.
+Some, however, may require access to special analyses not built into the base program.
 Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules that can connect to new or existing \proglang{R} packages available on \gls{cran} or elsewhere.
 
 
 Installing existing add-ons is easy.
 From the \menu{Module manager} users can add, update, and remove modules from our add-on repository,\footnote{https://github.com/iNZightVIT/addons} a custom URL, or a local file.
-In all cases, the file is downloaded to the \code{modules} directory; users can also place files there manually, if desired.
-All files in this directory are displayed in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the \pkg{iNZight} interface, including the dataset imported by the user.
+In all cases, the file is downloaded to the \code{modules} directory contained in the base \pkg{iNZight} installation folder, although users can also place files in this directory manually.
+All valid files in this directory are displayed as menu items in the \menu{Advanced} menu of \pkg{iNZight}, and when opened have access to the \pkg{iNZight} interface, including the dataset imported by the user.
 
 The module files themselves describe a single class object which inherits from \class{CustomModule}.
 This parent class provides several methods, including the initialization of the module panel in the left-hand-side of the \pkg{iNZight} interface.
 Additional properties and methods can be written by the developers of individual modules.
 This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules to distribute to their audiences.
 
-As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling \citep{Zhang_2019} module which will be used by demographers to do small-area estimation.
+As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling module based on \cite{Zhang_2019}, which will be used by demographers to do small-area estimation.
 In the example, we have estimated life expectancies from death count data, which is traditionally a complicated \ldots
 Full details for this module will be published once the full version is complete.
-\textbf{Pull some more details from dedicated report.}
+\begin{leftbar}
+    Pull some more details from dedicated report.
+\end{leftbar}
 
 \begin{figure}[tp]
     \centering
