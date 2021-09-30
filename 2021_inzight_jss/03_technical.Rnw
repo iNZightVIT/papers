@@ -4,7 +4,7 @@
     Query use of `user' in this section (of code tools, or GUI?).
 \end{leftbar}
 \pkg{iNZight}'s interface is written with \proglang{R} using three main supporting packages.
-\pkg{gWidgets2} \citep{gWidgets2} provides a simple widget-based \gls{api} to building a cross-platform interface with \proglang{R}, with wrappers for Tcltk, Qt, and GTK2.\footnote{citations? URLs? styling? check R Command + Deducer papers.}
+\pkg{gWidgets2} \citep{gWidgets2} provides a simple widget-based \gls{api} to building a cross-platform interface with \proglang{R}, with support for \pkg{Tcl/Tk} \citep{tcltk}, \pkg{Qt} \cite{qt}, and \pkg{GTK+ 2.0} \citep{gtk}.
 We chose GTK2, as it was the most feature rich and---at the time---had the best cross-platform support (see \cref{sec:os-reqs}).
 The GTK2 binaries are accessed through \proglang{R} using the \pkg{RGtk2} package \citep{RGtk2}, with commands translated from \pkg{gWidgets2} using the \pkg{gWidgest2RGtk2} package \citep{gWidgets2RGtk2}.
 Together, these packages provide a platform-independent \gls{api} for creating a \gls{gui} with \proglang{R}.
