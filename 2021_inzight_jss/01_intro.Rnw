@@ -1,12 +1,6 @@
 \section{Introduction}\label{sec:intro}
 
-\begin{leftbar}
-    \textsc{Merge this in somewhere}
-
-    The name \pkg{iNZight} is a play-on-words blending "insight" with the initials of our home country of New Zealand. It is a \gls{gui} system written in \proglang{R} and a collection of associated \proglang{R} packages.
-\end{leftbar}
-
-The open source statistical programming environment \proglang{R} \citep{rcore},used throughout statistics and data science, is supported by a repository of thousands of free packages providing access to the latest statistical techniques and graphics, plus a wide range of other tasks.
+The open source statistical programming environment \proglang{R} \citep{rcore}, used throughout statistics and data science, is supported by a repository of thousands of free packages providing access to the latest statistical techniques and graphics, plus a wide range of other tasks.
 Among these packages are several \glspl{gui} providing point-and-click methods for interacting with \proglang{R} to create graphs, test hypotheses, and access a range of other statistical methods without any need to grapple with \proglang{R} code (but with opportunities to do so if desired).
 Two prominent examples are \proglang{R} Commander \citep{Rcommander,Fox_2016} and \pkg{Deducer} \citep{Deducer}.
 \proglang{R} Commander includes a full interface which displays, writes, and runs user-editable \proglang{R}~code, while \pkg{Deducer} extends the \proglang{R} console with menus from which users can access \gls{gui} interfaces for a range of methods.
@@ -14,10 +8,42 @@ Two prominent examples are \proglang{R} Commander \citep{Rcommander,Fox_2016} an
 Each of these \glspl{gui} provide point-and-click interfaces that let users perform a set of procedures without the need to remember the \proglang{R} function and argument names.
 However, they do require prior knowledge of the names of the underlying statistical procedures they want to invoke, what they do, and how to use them.
 
+This paper introduces \pkg{iNZight}, a \gls{gui} system written in \proglang{R} through a collection of \proglang{R} pacakges, designed to bring data visualisation and analysis to a wider audience.
+The name \pkg{iNZight} is a play-on-words blending the word ``insight'' with the initials of our home country of New~Zealand.
 The ability to explore, visualize, and analyse data without prior knowledge of statistical procedures is \pkg{iNZight}'s foundational design principle and the major point of difference from other \proglang{R} \gls{gui} interfaces.
 This approach has been applied to \pkg{iNZight}'s capability to appropriately, and seamlessly, handle data from complex survey designs, which other \proglang{R} \gls{gui} interfaces are not able to do (see \cref{sec:surveys}).
 
-\begin{leftbar}
+A key difference between \pkg{iNZight} and these other \proglang{R} \glspl{gui} is our much broader and less technically-skilled audience, ranging from education through to analysts and researchers in community groups and government agencies.
+To engage such audiences, we have designed \pkg{iNZight} in such a was as to minimise demands for up-front knowledge (such as the names of test or procedures) and provide just-in-time information.
+This led to \pkg{iNZight} taking on a ''variable first'' approach, where users only need to select the variables they are interested in and let the software automatically produce outputs based on a set of defaults.
+In this way, we facilitate and encourage rapid data exploration.
+Further details on the design pricipals of \pkg{iNZight} are given in \cref{sec:why}.
+
+% Designed with ``variable-first'' concepts, \pkg{iNZight} is more approachable that other similar interfaces, and has a focus on exploration, with a special emphasis on graphics.
+% The software encourages users to explore the variables in their dataset using automated plots, with summary statistics and inference information accessed via designated buttons.
+% These summaries and inferences display information relevant to the chosen variables, so users do not need to know in advance that the test used to compare the means of two groups is a $t$-test:
+% the software provides a list of applicable tests.
+% This concept is used throughout \pkg{iNZight}, making it ideal for not only beginners new to statistics, but to researchers who may need to perform simple tasks on an infrequent basis as well.
+% Additionally, it makes performing some data analysis tasks more accessible to organisations who would otherwise need to train individuals within their organisation, or hire specialists---both of which require time and money.
+% Since \pkg{iNZight} is more approachable and easier to use, it makes several data analysis tasks more accessible, so organisations can use \pkg{iNZight} as an in-house research tool rather than training researchers to use more complex systems or contracting out these tasks, both of which cost time, money, or both.
+% The philosophical underpinnings of \pkg{iNZight}, together with the main metaphors underlying its interface, are described in \cite{Wild_2021} and \cite{Wild_2022}.\footnote{Q: do this, or bring things from that paper?}
+
+
+Like other \proglang{R} \glspl{gui}, there is a code component to \pkg{iNZight}.
+\proglang{R} Commander includes a dedicated code box, while \pkg{Deducer} runs on top of the \proglang{R} console using the existing environment.
+With \pkg{iNZight}, however, code is evaluated ``behind the scenes'', and is not directly editable by users.
+Every action the user makes calls one or more \proglang{R} functions, and the code is added to the \emph{code history} for users to review, save, and share.
+Users can generate an \proglang{R} script unique to their data and later edit and run the code manually in \proglang{R}, allowing researchers to quickly develop a scripted, reproducible workflow for working with data that can easily be modified as needed.
+The script can also be used as a stepping stone for learning to code in \proglang{R}, particularly useful for students and other users needing to reproduce results or automate workflows.
+
+
+The \pkg{iNZight} package has been adopted throughout New Zealand's statistical education programs from the year~9 school curriculum to postgraduate statistics courses.
+In addition, the combination of \pkg{iNZight}'s simplicity and powerful tool set make it a popular choice for research organisations and national statistics offices, including the Australian Bureau of Statistics and Statistics New Zealand.
+So the same statistical freeware can be used from high school to research environments, creating a simplified pathway for the development of future statistical analysts.
+This paper provides an overview of \pkg{iNZight}'s main features, technical details of its development, an introduction to the \emph{add-on} system, and a description of the install process.\footnote{Move to end of abstract?}
+
+
+\section{Why do we need another GUI?}\label{sec:why}
 
 As we have noted in \cite{Wild_2021}, co-author Andrew Sporle is involved with statistical and health agencies in several small nations in the Pacific.
 Overwhelmed by the information needs of their own societies and by the reporting demands of key international agencies such as the United Nations, they face the triple burden of distance, small workforces and insufficient funding.
@@ -63,28 +89,3 @@ Options for plot enhancements are extensive including: overriding small-data/lar
 
 \pkg{iNZight}'s high-level, variable-driven, requests accompanied by instant results facilitates and encourages rapid data exploration.
 It also makes performing data-analysis tasks more accessible to a much broader range of individuals and organisations.
-
-\end{leftbar}
-
-Designed with ``variable-first'' concepts, \pkg{iNZight} is more approachable and has a focus on exploration, with a special emphasis on graphics.
-The software encourages users to explore the variables in their dataset using automated plots, with summary statistics and inference information accessed via designated buttons.
-These summaries and inferences display information relevant to the chosen variables, so users do not need to know in advance that the test used to compare the means of two groups is a $t$-test:
-the software provides a list of applicable tests.
-This concept is used throughout \pkg{iNZight}, making it ideal for not only beginners new to statistics, but to researchers who may need to perform simple tasks on an infrequent basis as well.
-Additionally, it makes performing some data analysis tasks more accessible to organisations who would otherwise need to train individuals within their organisation, or hire specialists---both of which require time and money.
-Since \pkg{iNZight} is more approachable and easier to use, it makes several data analysis tasks more accessible, so organisations can use \pkg{iNZight} as an in-house research tool rather than training researchers to use more complex systems or contracting out these tasks, both of which cost time, money, or both.
-The philosophical underpinnings of \pkg{iNZight}, together with the main metaphors underlying its interface, are described in \cite{Wild_2021} and \cite{Wild_2022}.\footnote{Q: do this, or bring things from that paper?}
-
-
-Like other \proglang{R} \glspl{gui}, there is a code component to \pkg{iNZight}.
-\proglang{R} Commander includes a dedicated code box, while \pkg{Deducer} runs on top of the \proglang{R} console using the existing environment.
-With \pkg{iNZight}, however, code is evaluated ``behind the scenes'', and is not directly editable by users.
-Every action the user makes calls one or more \proglang{R} functions, and the code is added to the \emph{code history} for users to review, save, and share.
-Users can generate an \proglang{R} script unique to their data and later edit and run the code manually in \proglang{R}, allowing researchers to quickly develop a scripted, reproducible workflow for working with data that can easily be modified as needed.
-The script can also be used as a stepping stone for learning to code in \proglang{R}, particularly useful for students and other users needing to reproduce results or auomate workflows.
-
-
-The \pkg{iNZight} pacakge has been adopted throughout New Zealand's statistical education programs from the year~9 school curriculum to postgraduate statistics courses.
-In addition, the combination of \pkg{iNZight}'s simplicity and powerful tool set make it a popular choice for research organisations and national statistics offices, including the Australian Bureau of Statistics and Statistics New Zealand.
-So the same statistical freeware can be used from high school to research environments, creating a simplified pathway for the development of futre statistical analysts.
-This paper provides an overview of \pkg{iNZight}'s main features, technical details of its development, an introduction to the \emph{add-on} system, and a description of the install process.\footnote{Move to end of abstract?}

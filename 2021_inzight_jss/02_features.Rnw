@@ -23,7 +23,7 @@ The simplest way to explore \pkg{iNZight}'s features is by demonstration.
 \end{figure}
 
 Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
-Fortuately, there are thousands of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to importing most of the common (and indeed many uncommon) file formats.
+Fortunately, there are thousands of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to importing most of the common (and indeed many uncommon) file formats.
 Usually, \proglang{R} users would need to first recognise or look up the file extension, find an appropriate package, then decipher the documentation to import an unusual file.
 \pkg{iNZight} provides a simple \menu{Import Data} window from which users need only select a file to import: by default the software detects the file type from the filename extension and reads the file if the format is supported.
 If a dataset is available publically on the internet, users can also provide a URL from which \pkg{iNZight} will import the data instead.
@@ -47,17 +47,17 @@ At the time of writing, \pkg{iNZight} handles numeric, categorical, and date-tim
 
 Graphics provide the core of \pkg{iNZight}'s user experience; indeed, the very first prototype of \pkg{iNZight} was simply a drag-and-drop of variables onto slots to create a graph---everything else came later.
 Behind the scenes, \pkg{iNZight} uses variable types (numeric, categorical, or date-time) to determine the appropriate graph.
-For example, a single numeric variable from a small-to-moderate sized dataset is visualised by default with a dot plot, while a single categorical variable default to a bar chart.
+For example, a single numeric variable from a small-to-moderate sized dataset is visualised by default with a dot plot, while a single categorical variable defaults to a bar chart.
 While this may seem obvious to experienced statisticians, beginners cannot be expected to immediately grasp the concept of a ``numeric'' variable, and why a dot plot is used instead of a bar chart.
 By removing this step, teaching and learning can focus on questions such as \emph{``why does this variable produce this graph?''} and \emph{``what is it telling us?''}.
-This, together with the abilty to scroll quickly through a set of alternative appliable graphs,
+This, together with the ability to scroll quickly through a set of alternative applicable graphs,
 also means experienced users can very quickly look at a variety of variables and graphs without needing to account for different data types.
 
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/inzight_infant_mortality.png}
-    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifcations available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
+    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
 \end{figure}
 
 
@@ -81,7 +81,7 @@ they are not limited by a lack of knowledge or coding skill, while researchers c
 \subsection{Summaries and inference}\label{sec:summaries-and-inference}
 
 To supplement the graphical display, \pkg{iNZight} provides two textual output modes: \emph{summary} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons, respectively, below the control panel.
-As previously noted, the underlying metaphor for both is, \emph{``give me the typoes of information analysts generally want to see in a situation like this''}.
+As previously noted, the underlying metaphor for both is, \emph{``give me the types of information analysts generally want to see in a situation like this''}.
 Summary information includes basic statistics about variable(s) in the graph.
 Dot plots are summarised by means, standard deviations, and quantiles.
 Bar chart summaries display a table of counts and percentages.
@@ -187,7 +187,8 @@ The \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design
 
 \pkg{iNZight} handles stratified, one- and two-stage cluster surveys.
 It also handles so-called \emph{replicate weight} designs, an alternative format for data distribution in common use by producers of survey data in situations in which the actual information on clusters cannot be distributed to researchers for privacy/security reasons.
-Instead, sets of ``replicate weights'' are added, a mechanism that sill permits valid variance estimation \citep{Lumley_2010}.\pkg{iNZight} can also calibrate surveys with population data from other sources to reduce the variances of estimates.
+Instead, sets of ``replicate weights'' are added, a mechanism that still permits valid variance estimation \citep{Lumley_2010}.
+\pkg{iNZight} can also calibrate surveys with population data from other sources to reduce the variances of estimates.
 Once again, this information is specified once, either by the user or a survey design file, and is subsequently used throughout the rest of the analysis.
 
 The types of graphs available differ for survey data, as they now represent a picture of the \emph{population}, and not simply a sample.
@@ -252,7 +253,7 @@ For example, New Zealand can be divided into regional councils (Auckland, Otago,
 The Maps module in \pkg{iNZight} lets users choose the type of regions contained in the data, and proceeds to match labels between the dataset and map using several matching techniques:
 for example, countries may be coded using their conventional names, official names, or three-letter codes (``New Zealand'' versus ``NZ'' versus ``NZL'').
 Once the initial set-up is complete, users can choose variables to graph, which are then visualized on the map using colour, points, and other techniques.
-Often users are interested in regional trends over time, so \pkg{iNZight} automatically detects this and can animate maps over time or display trends as spark lines.
+Often users are interested in regional trends over time, so \pkg{iNZight} automatically detects this and can animate maps over time or display trends as \emph{sparklines}.
 
 % \begin{figure}[p]
 %     \centering

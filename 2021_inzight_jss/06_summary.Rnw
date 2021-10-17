@@ -19,4 +19,4 @@ Many new features and functionality are planned for \pkg{iNZight}, the foremost 
 This, along with other advances, will make \pkg{iNZight} a useful tool for not only learners but researchers and organisations alike, including capabilities for the software to connect to secure databases behind a firewall and allowing researchers without coding skills access to it.
 
 The main issue with \pkg{iNZight} at present is its reliance on GTK, which has been discontinued on macOS.
-Exploration into possible alternative frameworks is ongoing, with desire to develop a fully cross-platform application so users from all backgrounds can make use of the software.
+Exploration into possible alternative frameworks is ongoing, with a desire to develop a fully cross-platform application so users from all backgrounds can make use of the software.
