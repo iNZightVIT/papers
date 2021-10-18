@@ -1,4 +1,5 @@
-on: push
+on:
+  push
   # push:
   #   branches:
   #     - master
@@ -21,7 +22,12 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
       - name: Install system dependencies
-        run: sudo apt-get install poppler-utils libxml2-dev libnlopt-dev libcurl4-openssl-dev libmagick++-dev libudunits2-dev
+        run: |
+          sudo add-apt-repository ppa:marutter/c2d4u
+          sudo apt-get update
+          sudo apt-get install \
+            poppler-utils libxml2-dev libnlopt-dev libcurl4-openssl-dev \
+            libmagick++-dev libudunits2-dev r-cran-bspm
       - name: Query dependencies
         run: Rscript get_deps.R .github/depends.Rds
       - name: Cache R packages
@@ -34,7 +40,7 @@ jobs:
         run: Rscript get_deps.R
       - name: Build
         env:
-          TZ: 'Pacific/Auckland'
+          TZ: "Pacific/Auckland"
         run: Rscript build_papers.R
       - name: Render README
         run: Rscript -e "rmarkdown::render('README.Rmd')"

@@ -1,3 +1,5 @@
+bspm::enable()
+
 ca <- commandArgs(TRUE)
 files <- list.files(pattern = ".R[a-z]*", full.names = TRUE, recursive = TRUE)
 files <- files[!grepl("jss-rnw", files)]
