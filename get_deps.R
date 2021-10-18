@@ -1,3 +1,4 @@
+install.packages("bspm", respo = "https://cran.rstudio.com")
 bspm::enable()
 
 ca <- commandArgs(TRUE)

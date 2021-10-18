@@ -27,7 +27,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install \
             poppler-utils libxml2-dev libnlopt-dev libcurl4-openssl-dev \
-            libmagick++-dev libudunits2-dev r-cran-bspm
+            libmagick++-dev libudunits2-dev
       - name: Query dependencies
         run: Rscript get_deps.R .github/depends.Rds
       - name: Cache R packages
