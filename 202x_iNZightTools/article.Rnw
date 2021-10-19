@@ -70,16 +70,49 @@ There are a range of different classes of methods in \pkg{iNZightTools}. Many ar
 
 \section{Designing code-writing functions}\label{sec:code-writing-funs}
 
-\begin{itemize}
-    \item a core part of \pkg{iNZightTools} is the implementation of `code-writing' in almost all of the functions
-    \item there might now be better ways of doing this
-    \item consists of putting together expressions (using \code{~})
-    \item arguments are manipulated into the correct form and pasted into the function expression
-    \item finally, `iNZightTools:::interpolate()' is used to parse the expression and attach the code as an attribute (\code{code})
-    \item almost all functions return a \code{data.frame}
-    \item the \inzight{} \gls{gui} can pull the resulting \code{data.frame} and strip off the code, adding it to the script
-    \item \R{} users could also run the functions and then look at the underlying code used in the background---a great way of getting familiar with the \pkg{tidyverse}
-\end{itemize}
+Unlike the majority of \R{} packages, \pkg{iNZightTools} provides little new functionality to users, but instead wraps existing functionality from a range of other packages in an attempt to provide a simple, stable \gls{api} for both users new to \R{}, but more importantly the \gls{gui} software package \inzight{}.
+These \emph{wrapper functions} need to simplify the inputs to many more complex methods in such as way as to provide arguments that can be connected to graphical inputs such as dropdown boxes and sliders.
+Second, they must compile and execute the necessary code to perform the required action(s).
+A side-effect of this step is that the function generates code---in our case typically creating calls to \pkg{tidyverse} packages---which can be attached to the result and allow users to inspect the code required to perform the chosen action.
+This produces a system by which users new to \R{} can begin exploring more complicated functions by modifying existing code.
+
+
+\subsection{Choosing function arguments}\label{sec:arguments}
+
+Arguably the most important part of designing a wrapper function is the choice of arguments.
+By design, these methods are not supposed to provide the full set of functionality available from the underlying packages, but instead should provide a simple subset of features that are easy to access with minimal effort.
+An important part of \inzight{} is the use of \emph{smart defaults}, and this starts off by specifying good defaults for as many arguments as possible.
+Take, for example, a function for creating class intervals from a numeric variable.
+The minimum information required would be the variable name, and everything else can provide ``good defaults'', for example the number of intervals.
+In this way, \R{} users can call the function on a variable in a dataset and get a result instantly, and build up from there by specifying additional arguments.
+
+Within \pkg{iNZightTools}, most of the argument choice has been decided by the requirements of the \gls{gui}, though in most cases this is a reasonable set of features for beginners to familiarize themselves with.
+However, not all arguments are equal, and often some are dependent on others, while in other scenarios some arguments are needed only when another is ignored.
+In these situations, we rely on \R{}'s lazy-evaluation to ignore unused arguments (which may depend on variables not defined).
+
+
+\subsection{Constructing calls}\label{sec:constructing}
+
+The basic framework \pkg{iNZightTools} uses to construct calls using \R{}'s \emph{expression} syntax, prefixing the call with \texttt{\~{}}.
+The basic form of the call is then written out using placeholder variables in the parts that will be modified by the users.
+In simple expressions, one single call is required, while in more complex methods several steps are often required, including context-specific steps (within \code{if-else} or \code{switch} statements).
+
+Once the main structure of the call is complete, the individual arguments must be put together.
+In some situations this is as simple as passing the argument from the function call, while in others it requires preparing data structures (such as a named vector or list), as required by the underlying function.
+Details for some specific cases are given in the following sections.
+
+\subsection{Evaluating calls and returning results}\label{sec:evaluate}
+
+Once the components are ready, we pass the function through two methods: \code{replaceVars()} and \code{interpolate}.
+The first, \code{replaceVars()}, substitutes placeholder variables with the names of created structures (named vectors and lists) which we wish to appear in the final code statement.
+Secondly, \code{interpolate()} evaluates the expression in the current environment, but can accept additional arguments specifying the values of additional arguments (notably character values).
+Not only does \code{interpolate()} evaluate the expression and return the result, but additionally attaches the expression to the objected, stored as a \code{"code"} attribute.
+In all(?) cases, the result returned is a \code{data.frame} or \code{tibble}.
+
+To extract the code from the returned object, there is the \code{iNZightTools::code()} function.
+\glspl{gui} can use this to extract code from returned objects and stored it in code history, while users can examine the code used and modify it to access more advanced aspects of the underlying methods.
+
+In the following sections, I will describe some specific implementations for three important components of the \pkg{iNZightTools} package.
 
 
 \section{Importing Data}\label{sec:import-data}
