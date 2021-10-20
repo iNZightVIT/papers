@@ -52,12 +52,12 @@ This resolves issues of data sovereignty, which is particularly troublesome in i
 The situation is very similar for subject-matter researchers from many areas who have projects with potential societal value, but who lack funds or access to technical skills.
 The unmet data-science needs of those lacking in money and data-education can be every bit as real and important as those who have more.
 Since there will never be enough altruistic, skilled volunteers to meet all these needs, it is important to empower more people to do more for themselves.
-And while all of the \proglang{R} \glspl{gui} do this at some level, we will now highlight some key elements that have been overlooked.
+And while the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some level, we will now highlight some key elements that have been overlooked.
 
 
-For groups like those we have described, generalists need to be empowered to do things that currently only specialists can do.
+For groups like those we have described above, generalists need to be empowered to do things that currently only specialists can do.
 Typically, these generalists are already busy---and thus time-poor---and they have very little data-related education.
-Addressing the lack-of-knowledge problem with up-front education runs smack into the lack-of-time problem.
+Addressing the lack-of-knowledge problem with up-front education runs smack into the lack-of-time problem.\footnote{REPHRASE}
 Additionally, generalists tend to do many different things and to work in specific processes only infrequently.
 So working around the rapid fading of memories of how to do things and what they mean is also a major factor.
 This collides with ``the problem of names'' alluded to above.
@@ -73,25 +73,27 @@ The \pkg{iNZight} project is addressing these problems through some simple desig
 \item \ldots anything else \ldots ?
 \end{enumerate}
 
+TODO: add some mention of ``rapid research development tool''
 
 The basic mode of \pkg{iNZight} provides visualizations and analysis for data in standard units/cases-by-variables format.
 It has a ``variable-first'' design.
 In basic mode, the program is driven by assigning roles to variables with immediate responses determined by variable-type and defaults (variable-types currently recognized are: categorical, numeric and date-time).
-The underlying metaphor is, ``Tell me about \ldots'', so tell me about a variable, or a relationship between two variables---either alone or subsetted/facetted by other variables.
-Here, ``Tell me about'' is really shorthand for ``Show and Tell'' because what is delivered instantly is graphics because we believe graphics are the most accessible artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.
+The underlying metaphor is, \emph{``Tell me about \ldots''}, so tell me about a variable, or a relationship between two variables---either alone or subsetted/facetted by other variables.
+Here, \emph{``Tell me about''} is really shorthand for \emph{``Show and Tell''} because what is delivered instantly is graphics because we believe graphics are the most accessible artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.
 
 To obtain numeric information, you explicitly ask for it by clicking \menu{Get Summary} or \menu{Get Inference}.
-The underlying metaphor for both is, ``give me the types of information analysts generally want to see in a situation like this''.
-So Get Inference gives users their analyses of variance, chi-squared tests, regression panels, etc., in situations where they are appropriate, accompanied by sets of relevant confidence intervals.
+The underlying metaphor for both is, \emph{``give me the types of information analysts generally want to see in a situation like this''}.
+So \menu{Get Inference} gives users their analyses of variance, chi-squared tests, regression panels, etc., in situations where they are appropriate, accompanied by sets of relevant confidence intervals.
 But users don't have to know/remember what to ask for and how to ask for it, thus reducing the barriers to entry and to re-entry after a time gap.
-After-the-fact information concerning ``how can I read this and what does it mean?'' has compelling relevance when you have output in front of you.
-The up-front knowledge required by \pkg{iNZight} in its basic mode is simply some high-level familiarity with rectangular data, variables and the ability to identify situations where they might want to override a variable-type default (e.g., numeric codes used as group labels).
+After-the-fact information concerning \emph{``how can I read this and what does it mean?''} has compelling relevance when you have output in front of you.
+The up-front knowledge required by \pkg{iNZight} in its basic mode is simply some high-level familiarity with rectangular data, variables, and the ability to identify situations where they might want to override a variable-type default (e.g., numeric codes used as group labels).
 
 In the above we have automated everything using defaults and delivered immediate results.
-This, however, begs the question, ``How else can I look at this?'' A plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph-types in the Financial Times Visual Vocabulary\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
-Use of defaults also begs, ``How else can I do this?'', i.e., making available applicable alternatives to default methods.
-Inferences, for example, may be based on normal theory or bootstrapping and a switch can turn on epidemiological versions of outputs (odds-ratios, risk-ratios, etc).
+This, however, begs the question, \emph{``How else can I look at this?''} A plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph-types in the Financial Times Visual Vocabulary,\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
+Use of defaults also begs, \emph{``How else can I do this?''}, i.e., making available applicable alternatives to default methods.
+Inferences, for example, may be based on normal theory or bootstrapping and a switch can turn on epidemiological versions of outputs (odds-ratios, risk-ratios, etc) when appropriate.
 Options for plot enhancements are extensive including: overriding small-data/large-data defaults for graphics; information-adding mechanisms like coloring and sizing by further variables (also plotting symbol by variable); adding trends and other inferential mark-up; identification and labelling of points; motion (playing through a set of faceted graphs); interactivity; and also many additional modifications that might be desired for aesthetic reasons.
 
 \pkg{iNZight}'s high-level, variable-driven, requests accompanied by instant results facilitates and encourages rapid data exploration.
 It also makes performing data-analysis tasks more accessible to a much broader range of individuals and organisations.
+The barriers to access are significantly reduced, \ldots [end with something strong!]
