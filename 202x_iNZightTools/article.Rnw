@@ -112,7 +112,8 @@ In all(?) cases, the result returned is a \code{data.frame} or \code{tibble}.
 To extract the code from the returned object, there is the \code{iNZightTools::code()} function.
 \glspl{gui} can use this to extract code from returned objects and stored it in code history, while users can examine the code used and modify it to access more advanced aspects of the underlying methods.
 
-In the following sections, I will describe some specific implementations for three important components of the \pkg{iNZightTools} package.
+In the following sections, I will describe some specific implementations for three important components of the \pkg{iNZightTools} package: \emph{data import}, \emph{data wrangling}, and \emph{variable manipulation}.
+
 
 
 \section{Importing Data}\label{sec:import-data}
@@ -121,9 +122,10 @@ In the following sections, I will describe some specific implementations for thr
     \item import data with the \code{smart\_read()} function
     \item uses file extension to guess best package and function to use, e.g., \code{.xlsx} uses \code{haven::read\_excel()} \citep{haven}
     \item also handles metadata parsing for \gls{csv}
+    \item subsection about datatypes (numeric, factor/categorical, and date-time), with links to subsections with details
 \end{itemize}
 
-\subsection{Parsing Metadata for Easier Data Distribution}\label{sec:metadata}
+\subsection{Parsing Metadata for Easier Data Distribution and Import}\label{sec:metadata}
 
 \begin{itemize}
     \item often data coded (factors as numbers instead of labels)
@@ -141,22 +143,27 @@ In the following sections, I will describe some specific implementations for thr
     \item a bunch of methods: filter, sort, aggregate, join
     \item here are some examples
     \item and accessing the code
+    \item dataset validation
+\end{itemize}
+
+\section{Variable manipulation methods}\label{sec:variable-manipulation}
+
+\begin{itemize}
+    \item renaming, releveling, reordering, transforming
+    \item some date-time specific operations
 \end{itemize}
 
 
-\section{Working with Complex Survey Designs}\label{sec:surveys}
+\section{Conclusion}\label{sec:conclusion}
 
 \begin{itemize}
-    \item a hugely important data type
-    \item can be problematic if misspecified
-    \item two helpers: using \pkg{srvyr} \citep{srvyr} to handle survey objects the same as \code{data.frame}s
-    \item second, can parse survey specification file format distributed with the raw survey data and automatically build a survey object
-    \item here's some examples \ldots
+    \item summarize
+    \item what's next (plots, GUI, etc? maybe?)
 \end{itemize}
 
 
 \section*{Acknowledgements}
-\inzight{} is free software developed by students of the Department of Statistics, University of Auckland. Recent funding has been received by Te Rourou Tātaritanga (\url{https://terourou.org)}, a research group at Victoria University of Wellington funded by an MBIE Endeavour Grant, ref 62506 ENDRP, with additional funding from iNZight Analytics.
+\inzight{} is free software developed by students of the Department of Statistics, University of Auckland. Recent work has been made possible by Te Rourou Tātaritanga (\url{https://terourou.org)}, a research group at Victoria University of Wellington funded by an MBIE Endeavour Grant, ref 62506 ENDRP, with additional funding from iNZight Analytics.
 
 
 \printglossary[type=\acronymtype]
