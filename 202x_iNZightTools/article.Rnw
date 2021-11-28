@@ -15,14 +15,18 @@
 % commands
 \newcommand{\proglang}[1]{\textsf{#1}}
 \newcommand{\pkg}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\fn}[1]{\code{#1()}}
 
 \newcommand{\R}{\proglang{R}}
 \newcommand{\inzight}{\pkg{iNZight}}
-\newcommand{\code}[1]{\texttt{#1}}
+
 
 \usepackage[acronym]{glossaries}
 \input{../glossary.tex}
 \makeglossaries
+
+\usepackage{cleveref}
 
 %% For Sweave-based articles about R packages:
 %% need no \usepackage{Sweave}
@@ -125,6 +129,15 @@ In the following sections, I will describe some specific implementations for thr
     \item subsection about datatypes (numeric, factor/categorical, and date-time), with links to subsections with details
 \end{itemize}
 
+Before any kind of analysis can be undertaken, users mustfirst import their dataset into \R{}.
+This can be an arduos process for novices, especially if the data is not in a \gls{csv} format and thus requires use of an additional \R{} package to import.
+Similarly, trying to design an \R{} \gls{gui} module to import data in a wide range of formats would become quite complicated as the number of formats increase.
+Our solution was to create a single function, \fn{smart\_read}, that takes a file path or URL as the only required argument and imports the data using the file extension (.csv, .xlsx, etc) to figure out the appropriate package and function to use to import it.
+At the time of writing, \fn{smart\_read} can read files in N formats, listed in Table X.
+
+When combined with the code writing functionality from section 2, this provides a powerful way for beginners and non-beginners alike to quickly import a dataset without first figuring out what function to use.
+Once the initial read has been performed, it can be examined and if changes are needed, these can either be made to the call to \fn{smart\_read}, or by checking the code and modifying it as needed.
+
 \subsection{Parsing Metadata for Easier Data Distribution and Import}\label{sec:metadata}
 
 \begin{itemize}
@@ -136,6 +149,24 @@ In the following sections, I will describe some specific implementations for thr
     \item here are some examples
 \end{itemize}
 
+On top of the standard data import possibilities, \pkg{iNZightTools} also includes its own ``metadata'' specification, allowing data distributers to specify information about the variables in the dataset.
+This format will be familiar to users acquainted with \pkg{roxygen2} \cite{}.
+Some key features include automatically coding integer values as factors, which can greatly reduce the size of a \gls{csv} file but skip a painful step (particularly for \gls{gui} users).
+
+The \fn{smart\_read} function automatically checks for metadata at the top of a \gls{csv} file, and parses it if present.
+This triggers modification of function arguments, for example \fn{readr::read\_csv}, where possible (for example when parsing integers as a factor variable), and in other cases uses \fn{dplyr::mutate} to modify the data object returned, for example if factor levels are renamed or combined.
+
+\subsection{Data types}\label{sec:data-types}
+
+There are many data types understood by \R{}, however for most data analysis situations these can be condensed into numeric, factors/categorical, and date-times.
+\pkg{iNZightTools} automatically coerces all variables to one of these (characters to factors for historic reasons, and restricts the values a variable can take, particularly useful for novice users interfacing through a \gls{gui}).
+Of course, the code used to do this is all generated using the principles of \cref{sec:code-writing-funs}, so can be viewed by the user and modified as needed.
+
+Date-time variables are read automatically if the package supports it (e.g., \fn{readr::read\_csv}).
+The format depends on whether the value is a date, a datetime, or a time (``duration'').
+Table X shows which value types are used, and the package used to support this.
+Working with these types of variables is facilitated by some variable manipulation methods, which are described in \cref{sec:variable-manipulation}.
+
 
 \section[Data wrangling with iNZightTools]{Data wrangling with \pkg{iNZightTools}}\label{sec:data-wrangling}
 
@@ -145,6 +176,8 @@ In the following sections, I will describe some specific implementations for thr
     \item and accessing the code
     \item dataset validation
 \end{itemize}
+
+
 
 \section{Variable manipulation methods}\label{sec:variable-manipulation}
 
