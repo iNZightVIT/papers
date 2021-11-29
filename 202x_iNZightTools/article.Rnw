@@ -3,6 +3,7 @@
 
 \usepackage{authblk}
 \usepackage[authoryear,round]{natbib}
+\usepackage{booktabs}
 \usepackage{color}
 \bibliographystyle{abbrvnat}
 
@@ -129,11 +130,36 @@ In the following sections, I will describe some specific implementations for thr
     \item subsection about datatypes (numeric, factor/categorical, and date-time), with links to subsections with details
 \end{itemize}
 
+
+<<filetypes,echo=FALSE,results=tex>>=
+types_df <- tibble::tribble(
+    ~"Extension", ~"Format", ~"Function(s)", ~"Package",
+    "txt", "Tab Delimited File", "read_text/read_delim", "readr",
+    "csv", "Comma Separated Values File", "read_csv/read_delim", "readr",
+    "sav", "SPSS Save File", "read_sav", "haven",
+    "sas7bdat, xpt", "SAS Data Files, SAS XPORT Files", "read_sas, read_xpt", "haven",
+    "xls, xlsx", "Excel Files", "read_excel", "readxl",
+    "dta", "STATA Files", "read_dta", "haven",
+    "json", "JSON Data", "fromJSON", "jsonlite",
+    "rds", "Serialized R Object", "readRDS", "base",
+    "svydesign", "Survey Design File", "import_survey", "surveyspec"
+)
+Ntypes <- types_df$Extension |>
+    stringr::str_split(", ") |> unlist() |> length()
+knitr::kable(types_df, "latex",
+    caption = "File types supported by smart\\_read().",
+    label = "file-types",
+    booktabs = TRUE,
+    linesep = ""
+) |> kableExtra::kable_styling(font_size = 7)
+@
+
 Before any kind of analysis can be undertaken, users mustfirst import their dataset into \R{}.
 This can be an arduos process for novices, especially if the data is not in a \gls{csv} format and thus requires use of an additional \R{} package to import.
 Similarly, trying to design an \R{} \gls{gui} module to import data in a wide range of formats would become quite complicated as the number of formats increase.
 Our solution was to create a single function, \fn{smart\_read}, that takes a file path or URL as the only required argument and imports the data using the file extension (.csv, .xlsx, etc) to figure out the appropriate package and function to use to import it.
-At the time of writing, \fn{smart\_read} can read files in N formats, listed in Table X.
+At the time of writing, \fn{smart\_read} can read \Sexpr{Ntypes} file extensions, listed in \cref{tab:file-types}.
+
 
 When combined with the code writing functionality from section 2, this provides a powerful way for beginners and non-beginners alike to quickly import a dataset without first figuring out what function to use.
 Once the initial read has been performed, it can be examined and if changes are needed, these can either be made to the call to \fn{smart\_read}, or by checking the code and modifying it as needed.
