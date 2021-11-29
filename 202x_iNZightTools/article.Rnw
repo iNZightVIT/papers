@@ -190,8 +190,23 @@ Of course, the code used to do this is all generated using the principles of \cr
 
 Date-time variables are read automatically if the package supports it (e.g., \fn{readr::read\_csv}).
 The format depends on whether the value is a date, a datetime, or a time (``duration'').
-Table X shows which value types are used, and the package used to support this.
+\Cref{tab:dt-types} shows which value types are used, and the package used to support this.
 Working with these types of variables is facilitated by some variable manipulation methods, which are described in \cref{sec:variable-manipulation}.
+
+<<filetypes,echo=FALSE,results=tex>>=
+types_df <- tibble::tribble(
+    ~"Type", ~"Examples", ~"Constructor function", ~"Package",
+    "Date", "2021-08-14", "as.Date()", "base",
+    "Datetime", "2021-08-14 13:04:35", "as.POSIXct()", "base",
+    "Time/Duration", "13:04:35", "as_hms()", "hms"
+)
+knitr::kable(types_df, "latex",
+    caption = "Date-time formats supported.",
+    label = "dt-types",
+    booktabs = TRUE,
+    linesep = ""
+) |> kableExtra::kable_styling(font_size = 7)
+@
 
 
 \section[Data wrangling with iNZightTools]{Data wrangling with \pkg{iNZightTools}}\label{sec:data-wrangling}
