@@ -50,11 +50,11 @@ And while the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at 
 
 For groups like those described above, generalists need to be empowered to do things that currently only specialists can do.
 Typically, these generalists are already busy---and thus time-poor---and they have very little data-related education.
-Addressing the lack-of-knowledge problem with up-front education runs smack into the lack-of-time problem.\footnote{REPHRASE}
+Addressing the lack-of-knowledge problem with up-front education runs straight into the lack-of-time problem.
 Additionally, generalists tend to do many different things and to work in specific processes only infrequently,
 so working around the rapid fading of memories of how to do things and what they mean is also a major factor.
-This collides with ``the problem of names'' alluded to above.\footnote{where?}
-With programming and most \gls{gui} systems, you basically cannot do anything until you know what you want to do and know/remember its name.
+This collides with the ``problem of names'':
+with programming and most of the existing data analysis \gls{gui} systems, you basically cannot do anything until you know what you want to do and know/remember its name.
 This is a significant barrier to getting started and also results in significant time-losses getting back up to speed after a period of inactivity and a loss of familiarity.
 Even students taking service courses in statistics and data science, particularly those majoring in other subjects, experience long time delays between what they learn in class and almost anything they end up applying in real life.
 To circumvent these difficulties and seriously empower these groups, we need tools that reduce the demands for up-front knowledge and place much less reliance on leaky memories.
@@ -66,18 +66,11 @@ The \pkg{iNZight} project is addressing these problems through some simple desig
 \item display alternative options only when applicable to the data type or task.
 \end{enumerate}
 
-The basic mode of \pkg{iNZight} provides visualizations and analysis for data in standard units/cases-by-variables format.\footnote{better word/phrase here... ``tidy'' format?}
-\pkg{iNZight} uses a ``variable-first'' design in which users drive the software by choosing variables rather than procedures.
-In basic mode, the program is driven by assigning roles to variables with immediate responses determined by variable-type and defaults (variable-types currently recognized are: categorical, numeric, and date-time).
+The basic mode of \pkg{iNZight} provides visualizations and analysis for rectangular data with variables in columns and observations in rows.
+\pkg{iNZight} uses a ``variable-first'' design in which users drive the software by first choosing variables rather than procedures.
+Users assign roles to variables with immediate responses determined by variable-type and defaults (variable-types currently recognized are: categorical, numeric, and date-time).
 The underlying metaphor is, \emph{``Tell me about \ldots''}, so tell me about a variable, or a relationship between two variables---either alone or subsetted/facetted by other variables.
-Here, \emph{``Tell me about''} is really shorthand\footnote{??} for \emph{``Show and Tell''} because what is delivered instantly is graphics because we believe graphics are the most accessible information-rich artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.\footnote{Can we find a citation for this?}
-
-\begin{leftbar}
-    \begin{itemize}
-        \item add something about non-modifiable graphics
-        \item avoiding issues of misleading graphs, as described by Alberto Cairo in ``How Charts Lie''
-    \end{itemize}
-\end{leftbar}
+Here, \emph{``Tell me about''} is really \emph{``Show and Tell''} because what is delivered instantly is graphics because we believe graphics are the most accessible information-rich artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.
 
 To obtain numeric information, you explicitly ask for it by clicking \menu{Get Summary} or \menu{Get Inference}.
 The underlying metaphor for both is, \emph{``give me the types of information analysts generally want to see in a situation like this''}.
@@ -98,20 +91,11 @@ identification and labelling of points; motion (playing through a set of faceted
 interactivity;
 and also many additional modifications that might be desired for aesthetic reasons.
 
-\begin{leftbar}
-    \textbf{Anything in this para needs to be included in the following??}
-
-    Like other \proglang{R} \glspl{gui}, there is a code component to \pkg{iNZight}.
-    \proglang{R} Commander includes a dedicated code box, while \pkg{Deducer} runs on top of the \proglang{R} console using the existing environment.
-    With \pkg{iNZight}, however, code is evaluated ``behind the scenes'', and is not directly editable by users.
-    Every action the user makes calls one or more \proglang{R} functions, and the code is added to the \emph{code history} for users to review, save, and share.
-    Users can generate an \proglang{R} script unique to their data and later edit and run the code manually in \proglang{R}, allowing researchers to quickly develop a scripted, reproducible workflow for working with data that can easily be modified as needed.
-    The script can also be used as a stepping stone for learning to code in \proglang{R}, particularly useful for students and other users needing to reproduce results or automate workflows.
-\end{leftbar}
-
-Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui} but executes in a different way.
-Originally this was developed as a way for students to begin to learn how to code with \proglang{R} after aalready becoming familiar with the skills of data visualisation, exploration, and analysis.
-However, the code-writing feature also makes \pkg{iNZight} a powerful research development tool by allowing users to quickly explore a dataset while simultaneously creating an \proglang{R} script that can form the basis of a robust, reproducible workflow in a research setting.
+Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui}, but in a less prominent manner.
+Each action invoked by the user runs some \proglang{R} code, which is appended to the \proglang{R} script, with some select instances of live-code display and editing available (more details on this in \cref{sec:code-writing}).
+Originally the code-writing functinality was developed as a way for students to begin to learn how to code with \proglang{R} after already becoming familiar with the skills of data visualisation, exploration, and analysis:
+they use the tool as normal, but can now obtain the \proglang{R} code used to perform the analysis, and begin editing and running the code themselves in \proglang{R} rather than having to start from a blank script.
+However, the feature also makes \pkg{iNZight} a powerful research development tool by allowing users to quickly explore a dataset while simultaneously creating an \proglang{R} script that can form the basis of a robust, reproducible workflow in a research setting.
 \pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitates and encourages rapid data exploration.
 By significantly reducing the barriers to access, performing data-analysis tasks become accessible to a much broader range of individuals and organisations.
 In doing so, \pkg{iNZight} is democratising data, a highly valuable resource in our modern digital world.
