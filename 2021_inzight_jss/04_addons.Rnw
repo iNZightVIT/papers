@@ -2,7 +2,7 @@
 
 For most users, the main \pkg{iNZight} program will have all they need to explore, visualise, and perform simple analyses on their data.
 Some, however, may require access to special analyses not built into the base program.
-Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add on} system allowing anyone to create their own \pkg{iNZight} modules that can connect to new or existing \proglang{R} packages available on \gls{cran} or elsewhere.
+Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add-on} system allowing anyone to create their own \pkg{iNZight} modules that can connect to new or existing \proglang{R} packages available on \gls{cran} or elsewhere.
 
 
 Installing existing add-ons is easy.
@@ -15,7 +15,7 @@ This parent class provides several methods, including the initialization of the 
 Additional properties and methods can be written by the developers of individual modules.
 This opens up possibilities for teachers, research groups, or even \proglang{R} package developers themselves to write custom modules to distribute to their audiences.
 
-As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling module based on \cite{Zhang_2019}, which will be used by demographers to do small-area estimation.
+As an example, \cref{fig:inzight_demest} shows a prototype for an upcoming Bayesian demographic modelling module based on the work by \cite{Zhang_2019}, used by demographers to do small-area estimation.
 In the example, we have estimated life expectancies from death count data, which is traditionally a complicated \ldots
 Full details for this module will be published once the full version is complete.
 \begin{leftbar}

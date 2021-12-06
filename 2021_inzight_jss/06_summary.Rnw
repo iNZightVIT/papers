@@ -4,7 +4,7 @@ Newcomers to statistics often need to learn both how to code using \proglang{R} 
 By providing an easy-to-use \gls{gui}, \pkg{iNZight} lets users focus on exploring and analysing data, and beginners can develop interpretation skills before embarking on the more challenging part of learning to code.
 By taking a \emph{variable first} approach, users do not need to know or remember complicated statistical terminology to get the most from their data: the software provides a list of applicable methods given their current variable selection(s), and effectively helps to guide them through the analysis.
 
-Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, are all presented in simple step-by-step windows, many of which provide previews, helping users to tweak the input controls to get the correct output.
+Similarly, data manipulation techniques such as filtering, renaming levels of factors, and even specifying survey designs, are all presented in simple step-by-step windows---many of which provide previews---helping users to tweak the input controls and get the output they are after.
 Many users may want to learn to code with \proglang{R}, and \pkg{iNZight} includes some simple tools for helping that transition: code writing to a session script, and a reactive code panel for modifying and running code for the current plot.
 
 Statistics and data science is an ever expanding field, with new \proglang{R} packages added to CRAN daily.
@@ -19,4 +19,4 @@ Many new features and functionality are planned for \pkg{iNZight}, the foremost 
 This, along with other advances, will make \pkg{iNZight} a useful tool for not only learners but researchers and organisations alike, including capabilities for the software to connect to secure databases behind a firewall and allowing researchers without coding skills access to it.
 
 The main issue with \pkg{iNZight} at present is its reliance on GTK, which has been discontinued on macOS.
-Exploration into possible alternative frameworks is ongoing, with a desire to develop a fully cross-platform application so users from all backgrounds can make use of the software.
+Exploration into possible alternative frameworks is ongoing, with a desire to develop a fully cross-platform application so users from all backgrounds can take advantage of \pkg{iNZight} to explore their data.

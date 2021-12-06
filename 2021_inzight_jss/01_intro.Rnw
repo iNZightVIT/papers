@@ -14,38 +14,38 @@ The ability to explore, visualize, and analyse data without prior knowledge of s
 This principle has been applied to \pkg{iNZight}'s capability to appropriately, and seamlessly, handle data from complex survey designs, which other \proglang{R} \gls{gui} interfaces are not able to do (see \cref{sec:surveys}).
 
 A key difference between \pkg{iNZight} and other \proglang{R} \glspl{gui} available is its much broader and less technically-skilled audience, ranging from students through to analysts and researchers in community groups and government agencies, bringing with them a range of requirements and skill levels.
-To engage such audiences and democratise data analysis skills, we have designed \pkg{iNZight} in such a way as to minimise demands for up-front knowledge (such as the names of tests or procedures) and provide just-in-time information.
-This led to \pkg{iNZight} taking on a ``variable first'' approach, where users only need to select the variables they are interested in and let the software automatically produce outputs based on a set of defaults.
+To engage such audiences and democratise data analysis skills, we have designed \pkg{iNZight} in such a way as to minimise demands for up-front knowledge (such as the names of tests or procedures) by providing just-in-time information using contextual dialogs.\footnote{Some work on this phrase.}
+This led to \pkg{iNZight} taking on a ``variable first'' approach, in which users select the variables they are interested in and let the software automatically produce outputs based on a set of defaults.
 In this way, we facilitate and encourage rapid data exploration.
 Further details on the design principles of \pkg{iNZight} are given in \cref{sec:design-principles}.
 
 The \pkg{iNZight} package has been adopted throughout New Zealand's statistical education programs from the year~9 school curriculum to postgraduate statistics courses.
-In addition, the combination of \pkg{iNZight}'s simplicity and powerful toolset make it a popular choice for research organisations and national statistics offices, including the Australian Bureau of Statistics and StatsNZ.
-So the same statistical freeware can be used from high school to research environments, creating a simplified pathway for the development of future statistical analysts.
-This paper provides an overview of \pkg{iNZight}'s design principles, main features, technical details of its development, an introduction to the \emph{add-on} system, and a description of the install process.\footnote{QUESTION: Move/add to end of abstract?}
+In addition, the combination of \pkg{iNZight}'s simplicity and powerful toolset make it a popular choice for research organisations and national statistics offices,\footnote{ANDREW: any island nation examples?} including the Australian Bureau of Statistics and StatsNZ.
+So the same free statistical software can be used from high school through to research environments, creating a simplified pathway for the development of future statistical analysts.
+This paper provides an overview of \pkg{iNZight}'s design principles (\cref{sec:design-principles}), main features (\cref{sec:features}), technical details of its development (\cref{sec:technical}), an introduction to the \emph{add-on} system (\cref{sec:addons}), and a description of the install process (\cref{sec:installation}).
 
 
-\section[How iNZight is democratising data]{Our design principles for democratising data}\label{sec:design-principles}
+\section[Design principles for iNZight]{Design principles for \pkg{iNZight}}\label{sec:design-principles}
 
 
-The goal of democratisation is to make data usable in accessible ways to a wider audience by removing barriers and restrictions to the access as well as analysis of data, and therefore the ability to apply the information contained within the data.
-The reasons for barriers to access and analyse data often come down to the availability of time, funding and the required skills.
+The goal of democratisation is to make data accessible to a wider audience by removing barriers and restrictions to its access and use, thereby unlocking the ability to discover and apply the information contained within data.
+The existence of these barriers often comes down to the availability of time, funding, and the required skills.
 As we have noted in \cite{Wild_2021}, co-author Andrew Sporle is involved with statistical and health agencies in several small Pacific nations.
-Overwhelmed by the information needs of their own countries combined with the reporting demands of key international agencies such as the United Nations, they face the triple burden of distance, small workforces, and insufficient funding.
-As a result, the national statistics offices in these countries find it difficult to recruit and retain people with good data science skills or afford to contract external expertise.
+Overwhelmed by the information needs of their own countries, combined with the reporting demands of key international agencies such as the United Nations, they face the triple burden of distance, small workforces, and insufficient funding.
+As a result, the national statistics offices in these countries find it difficult to recruit and retain people with good data science skills or afford to contract external expertise.\footnote{A citation for this? Andrew?}
 
 
 Accessibility issues reach beyond national statistics offices.
-Indigenous nations and communities, such as those associated with the Global Indigenous Data Alliance\footnote{\url{https://www.gida-global.org/}} seek to own, govern and apply data for the self-determined well-being of Indigenous Peoples \citep{Walter_2020}.
-Indigenous nations and governance groups not only face resource and skill constraints but indigenous data sovereignty and governance requires maintaining control over indigenous data resources.
-\pkg{iNZight} not only provides an accessible data analysis and graphics tool, but also does it without the need to upload data beyond their own data environment---%
-possession and control over the data can be maintained.
+Indigenous nations and communities, such as those associated with the Global Indigenous Data Alliance,\footnote{\url{https://www.gida-global.org/}} seek to own, govern, and apply data for the self-determined well-being of Indigenous Peoples \citep{Walter_2020}.
+Indigenous nations and governance groups not only face resource and skill constraints, but indigenous data sovereignty and governance requires maintaining control over indigenous data resources.
+\pkg{iNZight} not only provides an accessible data analysis and graphics tool, but does so without the need to upload data beyond a user's own data environment---%
+possession and control over the data are maintained.
 
 
 The situation is very similar for subject-matter researchers from many areas who have projects with potential societal value, but who lack funds or access to technical skills.
 The unmet data-science needs of those lacking in money and data-education can be every bit as real and important as those who have more.
 Since there will never be enough altruistic, skilled volunteers to meet all these needs, it is important to enable more people to do more for themselves in statistically robust ways.
-And while the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some level, some key elements have been overlooked that iNZIght can now address.
+And while the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some level, some key elements have been overlooked that \pkg{iNZight} can now address.
 
 
 For groups like those described above, generalists need to be empowered to do things that currently only specialists can do.
@@ -55,47 +55,49 @@ Additionally, generalists tend to do many different things and to work in specif
 so working around the rapid fading of memories of how to do things and what they mean is also a major factor.
 This collides with the ``problem of names'':
 with programming and most of the existing data analysis \gls{gui} systems, you basically cannot do anything until you know what you want to do and know/remember its name.
-This is a significant barrier to getting started and also results in significant time-losses getting back up to speed after a period of inactivity and a loss of familiarity.
+This is a significant barrier to getting started and also results in significant time-losses getting back up to speed after a period of inactivity and a subsequent loss of familiarity.
 Even students taking service courses in statistics and data science, particularly those majoring in other subjects, experience long time delays between what they learn in class and almost anything they end up applying in real life.
 To circumvent these difficulties and seriously empower these groups, we need tools that reduce the demands for up-front knowledge and place much less reliance on leaky memories.
 The \pkg{iNZight} project is addressing these problems through some simple design principles:
 \begin{enumerate}
 \item require as little user input as possible through automation and defaults;
-\item use context to display relevant options based on user choices and reduce dependence on up-front knowledge;
+\item use context to display relevant options based on user choices to reduce dependence on up-front knowledge;
 \item guide users through complicated procedures by asking for one piece of information at a time;
 \item display alternative options only when applicable to the data type or task.
 \end{enumerate}
 
-The basic mode of \pkg{iNZight} provides visualizations and analysis for rectangular data with variables in columns and observations in rows.
+The basic mode of \pkg{iNZight} provides visualizations and analyses for rectangular data with variables in columns and observations in rows.
 \pkg{iNZight} uses a ``variable-first'' design in which users drive the software by first choosing variables rather than procedures.
 Users assign roles to variables with immediate responses determined by variable-type and defaults (variable-types currently recognized are: categorical, numeric, and date-time).
-The underlying metaphor is, \emph{``Tell me about \ldots''}, so tell me about a variable, or a relationship between two variables---either alone or subsetted/facetted by other variables.
-Here, \emph{``Tell me about''} is really \emph{``Show and Tell''} because what is delivered instantly is graphics because we believe graphics are the most accessible information-rich artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.
+The underlying metaphor is, \emph{``Tell me about \ldots''}, so tell me about a variable---or a relationship between two variables---either alone or subsetted/facetted by other variables.
+Here, \emph{``Tell me about''} is really \emph{``Show and Tell''} because what is delivered instantly is graphics because we believe graphics are the most accessible, information-rich artefacts for broad audiences, and also that people are less likely to do silly things when they look at their data first.
 
 To obtain numeric information, you explicitly ask for it by clicking \menu{Get Summary} or \menu{Get Inference}.
-The underlying metaphor for both is, \emph{``give me the types of information analysts generally want to see in a situation like this''}.
+The underlying metaphor for both is, \emph{``Give me the types of information analysts generally want to see in a situation like this''}.
 So \menu{Get Inference} gives users their analyses of variance, chi-squared tests, regression panels, and other available tests in situations where they are appropriate, accompanied by sets of relevant confidence intervals.
 Users do not have to know or remember what to ask for or how to ask for it, demonstrating one of the many barriers knocked down by \pkg{iNZight}---that of entry for beginners and re-entry for users returning after a period of non-use.
-After-the-fact information concerning \emph{``how can I read this and what does it mean?''} has compelling relevance when you have output in front of you.
+After-the-fact information concerning \emph{``How can I read this and what does it mean?''} has compelling relevance when you have output in front of you.
 The up-front knowledge required by \pkg{iNZight} in its basic mode is simply some high-level familiarity with rectangular data, variables, and the ability to identify situations where users might want to override a variable-type default (e.g., numeric codes used as group labels).
 
 In the basic mode described above we have automated everything by using defaults and delivering immediate results.
 This, however, begs the question, \emph{``How else can I look at this?''} A plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph-types in the Financial Times Visual Vocabulary,\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
-Use of defaults also begs, \emph{``How else can I do this?''}, i.e., making available applicable alternatives to default methods.
-Inferences, for example, may be based on normal theory or bootstrapping and a switch can turn on epidemiological versions of outputs (for example odds- and risk-ratios) when appropriate.
+Use of defaults also begs, \emph{``How else can I do this?''}, i.e., making available applicable alternatives to default methods.\footnote{Clarify.}
+Inferences, for example, may be based on normal theory or bootstrapping, and a switch can turn on epidemiological versions of outputs (for example odds- and risk-ratios) when appropriate.
 Options for plot enhancements are extensive including:
-overriding small-data/large-data defaults for graphics;
+% overriding small-data/large-data defaults for graphics;
 information-adding mechanisms like coding of additional variables using colour, size, and symbol;
 adding trend lines and other inferential mark-up;
 identification and labelling of points; motion (playing through a set of faceted graphs);
 interactivity;
-and also many additional modifications that might be desired for aesthetic reasons.
+and many additional modifications that might be desired for aesthetic reasons.
 
 Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui}, but in a less prominent manner.
-Each action invoked by the user runs some \proglang{R} code, which is appended to the \proglang{R} script, with some select instances of live-code display and editing available (more details on this in \cref{sec:code-writing}).
-Originally the code-writing functinality was developed as a way for students to begin to learn how to code with \proglang{R} after already becoming familiar with the skills of data visualisation, exploration, and analysis:
+For most users, no \proglang{R} code is ever seen;
+however, each action invoked by the user runs some \proglang{R} code, which is appended to the \proglang{R} script, with some select instances of live-code display and editing available (more details on this in \cref{sec:code-writing}).
+Originally the code-writing functionality was developed as a way for students to become familiar with \proglang{R} code after already developing basic data visualisation, exploration, and analysis skills:
 they use the tool as normal, but can now obtain the \proglang{R} code used to perform the analysis, and begin editing and running the code themselves in \proglang{R} rather than having to start from a blank script.
-However, the feature also makes \pkg{iNZight} a powerful research development tool by allowing users to quickly explore a dataset while simultaneously creating an \proglang{R} script that can form the basis of a robust, reproducible workflow in a research setting.
+Furthermore, this same feature makes \pkg{iNZight} a powerful research development tool by allowing users to quickly explore a dataset while simultaneously creating an \proglang{R} script that can form the basis of a robust, reproducible workflow in a research setting.
+
 \pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitates and encourages rapid data exploration.
-By significantly reducing the barriers to access, performing data-analysis tasks become accessible to a much broader range of individuals and organisations.
+By significantly reducing the barriers to access, performing data-analysis tasks become accessible to a diverse range of individuals and organisations.
 In doing so, \pkg{iNZight} is democratising data, a highly valuable resource in our modern digital world.
