@@ -168,9 +168,9 @@ Users can also create new variables based on others in the dataset, and rename o
 \subsection{Additional facilities for special data types}\label{sec:special-data}
 
 Many data sets that beginners are exposed to are in `tidy' format \citep[chapter~12]{Wickham_2017}, such that rows are individual records and columns variables.
-However, there are some other data types that beginners may encounter, or make up a core component of statistical analysis.\footnote{Sentence not quite working.}
-These data sets require special graphics and different handling to explore correctly, a task which \pkg{iNZight} has been extended to perform.
-Some examples are described in the following sections.\footnote{Something about this not really comparsh(????) correctly.}
+There are, of course, several types of data that are an important component of statistical analysis, or are commonly encountered by those new to the field.
+These types of data often require specialist graphics or handling---often both using specialist software or \proglang{R} packages.
+Here we provide several examples of alternative data types that \pkg{iNZight} can handle.
 
 
 \subsubsection{Complex survey designs}\label{sec:surveys}
@@ -188,7 +188,7 @@ The \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design
 \end{figure}
 
 \pkg{iNZight} handles stratified as well as one- and two-stage cluster surveys.
-It also handles so-called \emph{replicate weight} designs, an alternative format for data distribution in common use by producers of survey data in situations in which the actual information on clusters cannot be distributed to researchers for privacy/security reasons.\footnote{Wordy - fix up!}
+Additionally, \pkg{iNZight} supports \emph{replicate weight designs} in which survey design information is replaced by a set of replicate weights that allow surveys to be analysed correctly without exposing confidential or private information contained within the design variables (for example, clusters).
 Instead, sets of ``replicate weights'' are provided, a mechanism that still permits valid variance estimation \citep{Lumley_2010}.
 \pkg{iNZight} can also calibrate surveys with population data from other sources to reduce the variances of estimates.
 Once again, this information is specified once, either by the user or a survey design file, and is subsequently used throughout the rest of the analysis.
