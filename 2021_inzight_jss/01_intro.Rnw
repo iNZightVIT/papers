@@ -26,8 +26,8 @@ In this way, we facilitate and encourage rapid data exploration.
 \Cref{sec:design-principles} includes further details on the design principles of \pkg{iNZight}.
 
 \pkg{iNZight} has been adopted throughout New Zealand's statistical education programs, from the year~9 (age 13) school curriculum to postgraduate statistics courses in teaching institutions around the country.
-In addition, the combination of \pkg{iNZight}'s simplicity and powerful toolset make it a popular choice for research organisations and national statistics offices,\footnote{ANDREW: any island nation examples?} including the Australian Bureau of Statistics\footnote{\url{https://www.abs.gov.au/}} and Statistics NZ.\footnote{\url{https://www.stats.govt.nz/}}
-So the same free statistical software can be used from high school through to research environments, creating a simplified pathway for the development of future statistical analysts.
+In addition, the combination of \pkg{iNZight}'s simplicity and powerful toolset make it a popular choice for research organisations and national statistics offices, including the Australian Bureau of Statistics\footnote{\url{https://www.abs.gov.au/}} and Statistics NZ.\footnote{\url{https://www.stats.govt.nz/}}
+The same free statistical software can be used from high school through to research environments, creating a simplified pathway for the development of future statistical analysts.
 This paper provides an overview of \pkg{iNZight}'s design principles (\cref{sec:design-principles}), main features (\cref{sec:features}), technical details of its development (\cref{sec:technical}), an introduction to the \emph{add-on} system (\cref{sec:addons}), and a description of the installation process (\cref{sec:installation}).
 
 
