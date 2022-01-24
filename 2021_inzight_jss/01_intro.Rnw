@@ -108,25 +108,17 @@ Options for plot enhancements are extensive, including:
 \item and many additional modifications users might desire for aesthetic reasons.
 \end{itemize}
 
-In the basic mode described above we have automated everything by using defaults and delivering immediate results.
-This, however, begs the question, \emph{``How else can I look at this?''} A plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph-types in the Financial Times Visual Vocabulary,\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
-Use of defaults also begs, \emph{``How else can I do this?''}, for example by making applicable alternatives available (through dropdowns or other controls) in place of the defaults provided.
-Inferences, for example, may be based on normal theory or bootstrapping, and a switch can turn on epidemiological versions of outputs (for example odds- and risk-ratios) when appropriate.
-Options for plot enhancements are extensive including:
-% overriding small-data/large-data defaults for graphics;
-information-adding mechanisms like coding of additional variables using colour, size, and symbol;
-adding trend lines and other inferential mark-up;
-identification and labelling of points; motion (playing through a set of faceted graphs);
-interactivity;
-and many additional modifications that might be desired for aesthetic reasons.
 
-Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui}, but in a less prominent manner.
-For most users, no \proglang{R} code is ever seen;
-however, each action invoked by the user runs some \proglang{R} code, which is appended to the \proglang{R} script, with some select instances of live-code display and editing available (more details on this in \cref{sec:code-writing}).
-Originally the code-writing functionality was developed as a way for students to become familiar with \proglang{R} code after already developing basic data visualisation, exploration, and analysis skills:
-they use the tool as normal, but can now obtain the \proglang{R} code used to perform the analysis, and begin editing and running the code themselves in \proglang{R} rather than having to start from a blank script.
-Furthermore, this same feature makes \pkg{iNZight} a powerful research development tool by allowing users to quickly explore a dataset while simultaneously creating an \proglang{R} script that can form the basis of a robust, reproducible workflow in a research setting.
+Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui}, but less prominently.
+Most users will not need to see any \proglang{R} code, but for those who do, all actions within \pkg{iNZight} run \proglang{R} code, which gets saved in an \proglang{R} script.
+In several places, live-code is displayed in an editable box for interactive use (more details in \cref{sec:code-writing}).
+Initially, the code-writing functionality was developed as a way for students to become familiar with \proglang{R} code after already developing basic data visualisation, exploration, and analysis skills.
+Users use \pkg{iNZight} as usual but can obtain the \proglang{R} code used to perform the analysis they have just done.
+This way, \proglang{R} learners can begin editing and running \proglang{R} code themselves without starting from a blank script.
+This same feature also makes \pkg{iNZight} a powerful research development tool.
+Researchers can quickly explore a dataset and then generate an \proglang{R} script to form the basis of a robust, reproducible workflow in a research setting.
 
-\pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitates and encourages rapid data exploration.
-By significantly reducing the barriers to access, performing data-analysis tasks become accessible to a diverse range of individuals and organisations.
-In doing so, \pkg{iNZight} is democratising data, a highly valuable resource in our modern digital world.
+
+\pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitate and encourage rapid data exploration.
+By significantly reducing the barriers to access, data analysis becomes a skill available to a more diverse range of individuals and organisations.
+In doing so, \pkg{iNZight} is democratising data, a precious resource in our modern digital world.
