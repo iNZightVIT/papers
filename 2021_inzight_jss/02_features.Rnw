@@ -1,12 +1,10 @@
 \section[A tour of iNZight's features]{A tour of \pkg{iNZight}'s features}\label{sec:features}
 
-\pkg{iNZight} was originally built as a tool for high school statistics students, and was later incorporated into introductory statistics courses in New Zealand.
-It has since matured and can now function as a rapid research development tool for community and government research groups.
-The minimal interface provides instant feedback to user actions, allowing users to intuitively explore their data.
-The \emph{variable first} paradigm makes it easy to learn new statistical concepts---such as hypothesis testing---by focusing on the output first, and consequently makes it very easy to pick up after a period of non-use, a typical scenario for generalists within organisations.
-Ease-of-use is achieved through familiar controls such as \emph{drag-and-drop}, \emph{drop-down} selection, and \emph{slider bars}.
-Using these controls, users select the variables they are interested in and the software reacts instantly based on variable type and defaults.
-The simplest way to explore \pkg{iNZight}'s features is by demonstration.
+\pkg{iNZight}'s ease-of-use has enabled us to broaden our audience from high school students to tertiary institutions, community groups, and government researchers.
+We achieved an intuitive and familiar interface using standard \gls{gui} controls such as \emph{drag-and-drop}, \emph{drow-down} selection, and \emph{slider bars}.
+Users can select variables to explore and drive the software, which reacts instantly to each action using variable type and intelligent defaults to choose the best output.
+The simplest way to explore \pkg{iNZight}'s functionality and illustrate the concepts introduced in \cref{sec:design-principles} is by demonstration.
+
 
 \begin{figure}[tp]
     \centering
@@ -23,36 +21,39 @@ The simplest way to explore \pkg{iNZight}'s features is by demonstration.
     \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
 \end{figure}
 
-Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
-Fortunately, there are thousands of \proglang{R} packages on \gls{cran}, amongst which are some dedicated to importing most of the common (and indeed many uncommon) file formats.
-Usually, \proglang{R} users would need to first recognise or look up the file extension, find an appropriate package, then decipher the documentation to import an unusual file.
-\pkg{iNZight} provides a simple \menu{Import Data} window from which users need only select a file to import: by default the software detects the file type from the filename extension and reads the file if the format is supported.
-If a dataset is available publicly on the internet, users can also provide a URL from which \pkg{iNZight} will import the data instead.
+Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example, \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
+Fortunately, there are thousands of \proglang{R} packages on \gls{cran}.
+Some of these packages are dedicated to importing the common (and indeed many uncommon) file formats.
+Usually, \proglang{R} users need to recognise or look up the file extension, find an appropriate package, then decipher the documentation to import an unfamiliar file.
+\pkg{iNZight} provides a simple \menu{Import Data} window from which users need only select a file to import.
+By default, the software detects the file type from the filename extension and reads the file if the format is supported.
+Where a dataset is available publicly on the internet, users may instead provide a URL from which \pkg{iNZight} can import the data instead.
 
 
-Currently, \pkg{iNZight} supports files in \gls{csv}, tab-delimited text, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
-If the file is readable by \pkg{iNZight}, a preview is displayed for the user to check before proceeding with the import, as demonstrated in \cref{fig:load_data} which shows the \menu{Import Data} window for a \gls{csv} file.
-The \menu{Import Data} window has an \menu{Advanced Options} section, expanded in \cref{fig:load_data},
-for \gls{csv} and delimited-text files where users can override the default delimiter---for example in European countries where the semi-colon (;) is used (the comma is reserved as the decimal separator), or to choose between different encoding formats.
-The preview is updated when these options are changed, so users can use trial-and-error if they are not sure what the necessary inputs are.
-This is particularly useful for encoding, which is difficult to find out manually.
-
-Lastly, the data preview allows users to override the default variable types.
-This is particularly useful when importing a dataset with coded factors (e.g., values $1,2,3$ instead of \mbox{``A'', ``B'', ``C''}).
-At the time of writing, \pkg{iNZight} supports numeric, categorical, and date-time formats---with more on the way.
+At the time of writing, \pkg{iNZight} (version 4.2) supports files in \gls{csv}, tab-delimited text, \proglang{Excel}, \proglang{SAS}, \proglang{Stata}, \proglang{SPSS}, \proglang{R}-data, and JSON formats.
+If the file is readable by \pkg{iNZight}, a preview is displayed to check before proceeding with the import.
+\Cref{fig:load_data} shows the \menu{Import Data} window for a \gls{csv} file.
+The \menu{Import Data} window has an \menu{Advanced Options} section for \gls{csv} and delimited-text files, expanded in \cref{fig:load_data}.
+Here, users can override the default delimiter or choose between different encoding formats.
+For example, it is common in European countries to see the semi-colon (;) used as the delimiter, so this option allows users to read files coded this way.
+The preview is updated when these options are changed, so users can use trial-and-error if they are unsure what the necessary inputs are.
+This feature is handy for guessing encoding, which can be tricky to work out manually.
+The data preview also allows users to override the default variable types, which is beneficial when importing a dataset with coded factors. For example, values $1,2,3$ instead of \mbox{``A'', ``B'', ``C''}, users can override the variable type from `numeric' to `categorical' and relabel the levels after import.
 
 \pkg{iNZight} also supports copying and pasting data from a spreadsheet to make things even easier for beginners.
+Data can be copied from \proglang{Excel} or a similar program or directly from a webpage if the formatting is OK.
+Users then open the \menu{Paste data from} window, which has a text box for pasting the data.
+As before, a preview displays the result for quick confirmation before confirming the import.
 
 
-\subsection{Creating graphs}\label{sec:creating-graphs}
+\subsection{Visualising data with graphics}\label{sec:creating-graphs}
 
-Graphics provide the core of \pkg{iNZight}'s user experience; indeed, the very first prototype of \pkg{iNZight} was simply a drag-and-drop of variables onto slots to create a graph---everything else came later.
+Since the initial prototype using drag-and-drop to select variables and create graphs, graphics have been at the core of \pkg{iNZight}'s user experience.
 Behind the scenes, \pkg{iNZight} uses variable types (numeric, categorical, or date-time) to determine the appropriate graph.
 For example, a single numeric variable from a small-to-moderate sized dataset is visualised (by default) with a dot plot, while a single categorical variable defaults to a bar chart.
-While this may seem obvious to experienced statisticians, beginners cannot be expected to immediately grasp the concept of a ``numeric'' variable, and why a dot plot is used instead of a bar chart.
+While this may seem obvious to experienced statisticians, it takes time for beginners to grasp the concept of a ``numeric'' variable and why a dot plot is used instead of a bar chart.
 By removing this step, teaching and learning can focus on questions such as \emph{``Why does this variable produce this graph?''} and \emph{``What is it telling us?''}.
-This, together with the ability to scroll quickly through a set of alternative applicable graphs,
-also means experienced users can very quickly look at a variety of variables and graphs without needing to account for different data types.
+This automation, together with the ability to scroll quickly through a set of applicable alternative graphs, also means experienced users can very quickly look at various variables and graphs without needing to account for different data types.
 
 
 \begin{figure}[t]
@@ -62,21 +63,26 @@ also means experienced users can very quickly look at a variety of variables and
 \end{figure}
 
 
-The control panel (\textbf{B} in \cref{fig:inzight_main}) lets users choose up to four variables: the first of these (\emph{Variable 1}) specifies the \emph{Primary Variable of Interest} (or \emph{Outcome Variable}).
+The control panel (\textbf{B} in \cref{fig:inzight_main}) lets users choose up to four variables:
+the first of these (\emph{Variable 1}) specifies the \emph{Primary Variable of Interest} (or \emph{Outcome Variable}).
 The remaining three variable boxes are for exploring relationships between those variables and the first.
-For example, `height' might be the primary variable, so selecting it will produce a \emph{dot plot} of height.
-If a second variable chosen is categorical, for example `ethnicity', then by default we are shown a dot plot of height for each ethnicity, stacked vertically.
-If \emph{Variable 2} is \emph{numeric}, such as `age', we see a graph of height versus age: \emph{Variable 1} (height) becomes the $y$-variable in the scatter plot.
-The last two variable slots are subset variables that quickly and easily facet the plot (seen in \cref{fig:plot_modifcation}), allowing users to explore more complex relationships and interactions.
+For example, `height' might be the primary variable, so selecting it will produce a dot plot of height.
+Now a second variable can be chosen. Suppose this second variable is categorical, for example, `ethnicity'.
+In that case, the software will draw a set of dot plots of height, one for each ethnicity, stacked vertically.
+However, if \emph{Variable 2} is \emph{numeric}, such as `age', we are shown a graph of height versus age:
+\emph{Variable 1} (height) becomes the $y$-variable in the scatter plot.
+The final two variable slots are subset variables that quickly and easily facet the plot (seen in \cref{fig:plot_modifcation}), allowing users to explore more complex relationships and interactions.
 Any numeric variables used for either of the subsetting variables are automatically cut into four class intervals with approximately equal numbers of observations in each.
 
-For a deeper exploration of variable relationships, there is an entire panel dedicated to plot modifications: \menu{Add to Plot}.
-This is accessed either from the \menu{Plot} menu, or from the button in the \menu{Plot Toolbar} (boxed in red in \cref{fig:plot_modifcation}).
-Users can choose from a selection of alternative plot types based on the variable(s) selected, as well as choose a colour variable, sizing variable, plot symbols, trend lines, change axis labels and limits, and much more.
-The possible choices are presented in an interactive format such that the graph updates whenever the user changes input values, allowing them to explore ``\emph{What happens if \ldots}'', and ``\emph{What does this do?}''.
-This way, beginners can learn more about what the software can do while they explore the data:
-they are not limited by a lack of knowledge or coding skill, while researchers can quickly generate visualisations before starting their analysis.
-\Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and (log) GDP, region (colour), population (point size), and year (subsetting/faceting) using the \emph{Gapminder} dataset.\footnote{https://www.gapminder.org/}
+
+The \menu{Add to Plot} module is dedicated to plotting modifications for a deeper exploration of variable relationships and is accessed from either the \menu{Plot} menu or the button in the \menu{Plot Toolbar} (boxed in red in \cref{fig:plot_modifcation}).
+Here, users can choose from a selection of alternative plot types based on the selected variable(s).
+Other modifications include specifying a colour or sizing variable, adjusting plot symbols, adding trend lines, modifying axis labels and limits, and much more.
+The possible choices are presented in an interactive format such that the graph updates whenever the user changes input values, allowing them to explore ``\emph{What happens if \ldots}'' and ``\emph{What does this do?}''.
+This way, beginners can learn more about what the software can do while exploring the data and are not limited by a lack of knowledge or coding skill.
+Meanwhile, researchers can quickly generate visualisations before starting their analysis.
+\Cref{fig:plot_modifcation} shows a graph produced by \pkg{iNZight} exploring the relationship between infant mortality and (log) GDP using the \emph{Gapminder} dataset.\footnote{https://www.gapminder.org/}
+Here, plot modifications are used to show region (colour), population (point size), and year (subsetting/faceting).
 
 
 \subsection{Summaries and inference}\label{sec:summaries-and-inference}
