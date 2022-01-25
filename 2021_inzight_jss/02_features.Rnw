@@ -85,22 +85,24 @@ Meanwhile, researchers can quickly generate visualisations before starting their
 Here, plot modifications are used to show region (colour), population (point size), and year (subsetting/faceting).
 
 
-\subsection{Summaries and inference}\label{sec:summaries-and-inference}
+\subsection{Numerical summaries and inferences}\label{sec:summaries-and-inference}
 
-To supplement the graphical display, \pkg{iNZight} provides two textual output modes: \emph{summary} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons, respectively, below the control panel.
+\pkg{iNZight} provides two textual output modes to supplement the graphical display: \emph{summary} and \emph{inference}, accessed from the \menu{Get Summary} and \menu{Get Inference} buttons, respectively, below the control panel.
 As previously noted, the underlying metaphor for both is, \emph{``Give me the types of information analysts generally want to see in a situation like this''}.
-Summary information includes basic statistics about variable(s) in the graph:
-dot plots are summarised by means, standard deviations, and quantiles;
-bar chart summaries display a table of counts and percentages;
+The summary information includes basic statistics about the variable(s) in the graph:
+dot plots are summarized by means, standard deviations, and quantiles;
+bar chart summaries display tables of counts and percentages;
 scatter plots provide the formula for any fitted trend lines, along with the correlation between the variables.
 If subset variables are present, then summaries for each subset are provided.
 
 
-The inference information includes estimates, confidence intervals, and any applicable $p$-values for quantities such as means, proportions, and their differences.
+Inference information includes estimates, confidence intervals, and any applicable $p$-values for quantities such as means, proportions, and their differences.
 For performing hypothesis testing,
-\pkg{iNZight} displays a set of tests applicable to the chosen variable(s), as shown in \cref{fig:inzight_inference}
-(the full list of tests currently available in \pkg{iNZight}'s basic mode are given in \cref{tab:hypothesis-tests}).
-Inference information is either calculated using Normal theory or Bootstrap methods \citep[using the \pkg{boot} package,][]{boot}, as chosen by the user, with work on-going to add Bayesian inference methods.
+\pkg{iNZight} displays a set of tests applicable to the chosen variable(s), as shown in \cref{fig:inzight_inference}.
+\Cref{tab:hypothesis-tests} gives a complete list of available tests in \pkg{iNZight}'s basic mode (as of version 4.2).
+Users may choose between Normal theory of Bootstrap methods \citep[using the \pkg{boot} package,][]{boot} to calculate inference information.
+We also have plans of adding Bayesian inference methods in future.
+
 
 \begin{figure}[tp]
     \centering
@@ -146,17 +148,20 @@ kable(tab,
 \subsection{Data wrangling}\label{sec:data-wrangling}
 
 Researchers typically start a new analysis by creating a set of exploratory graphs, as described in \cref{sec:creating-graphs}.
-However, it is often not possible to get the desired graphs from the raw data, as it may not be in the correct format.
-Often, data transformations are required before any useful analysis can begin (for example converting numeric codes to categorical variables) or to explore from a different perspective.
-\pkg{iNZight} contains two \emph{data manipulation} menus: \menu{Data} and \menu{Variables}, for manipulating the full dataset and individual columns (variables), respectively.
+However, it is often not possible to get the desired graphs from the raw data if it is not formatted correctly.
+Data transformations may be required before any worthwhile analysis can begin (for example, converting numeric codes to categorical variables) or to explore from a different perspective.
+\pkg{iNZight} contains two \emph{data manipulation} menus: \menu{Data} and \menu{Variables}, for manipulating the whole dataset or individual columns (variables), respectively.
 
-In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describe many data manipulation methods including \emph{filtering}, \emph{aggregation}, and \emph{reshaping}.
+In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describe many data manipulation methods, including \emph{filtering}, \emph{aggregation}, and \emph{reshaping}.
 They demonstrate the \pkg{tidyverse} \citep{tidyverse} code for these actions, which \pkg{iNZight} uses behind-the-scenes to implement users' chosen actions.
-\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods, enabling users to quickly and easily do things like filtering by value, converting from \emph{wide} to \emph{long} form, or joining two datasets together.
-In most cases, the interface evolves from top-to-bottom as the user first chooses, for example, the variable to be worked on, with subsequent inputs tailored to previous choices, thus guiding users through the procedure.
+\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods.
+These interfaces enable users to quickly and easily do things like filtering by value, converting from \emph{wide-} to \emph{long}-form, or joining two datasets together.
+In most cases, the interface evolves from top to bottom as the user inputs information.
+For example, most processes begin by asking the user to select a variable with which to work.
+Subsequent inputs are then tailored to previous choices, thus guiding users through the procedure (as per \gls{dp} 4).
 At the bottom of many data manipulation windows is a preview of the data after transformation, as demonstrated in \cref{fig:data_mod_preview},
 once again allowing users to play with inputs to get the desired output.
-A full list of available methods is provided in \cref{app:data-methods}.
+\Cref{app:data-methods} contains a complete list of available methods.
 
 \begin{figure}[tp]
     \centering
@@ -165,27 +170,31 @@ A full list of available methods is provided in \cref{app:data-methods}.
 \end{figure}
 
 The \menu{Variable} menu gives users access to a range of variable transformation and modification actions.
-For example, numeric variables can be converted to categorical (a common example is \code{Year}), or categorical variable levels can be renamed, reordered, or combined.
-Users can also create new variables based on others in the dataset, and rename or delete existing variables.
-\pkg{iNZight} creates a \emph{new} variable for each action---for example, converting \code{Year} to categorical yields a new variable named \code{Year\_cat} by default---which makes the experience more transparent and more exploration-friendly.
+For example, users can convert numeric variables into categorical ones or modify the levels of a categorical variable by renaming, reordering, or combining them.
+Users can also create new variables based on others in the dataset and rename or delete existing variables.
+In all cases, \pkg{iNZight} creates a \emph{new} variable for each action.
+For example, converting \code{Year} to categorical yields a new variable named \code{Year\_cat} by default.
+This behaviour makes the experience more transparent and exploration-friendly.
 \Cref{app:variable-methods} gives a list of available variable manipulation methods.
 
 
 \subsection{Additional facilities for special data types}\label{sec:special-data}
 
-Many data sets that beginners are exposed to are in `tidy' format \citep[chapter~12]{Wickham_2017}, such that rows are individual records and columns variables.
-There are, of course, several types of data that are an important component of statistical analysis, or are commonly encountered by those new to the field.
-These types of data often require specialist graphics or handling---often both using specialist software or \proglang{R} packages.
+Beginners are often exposed to data sets that are in `tidy' format \citep[chapter~12]{Wickham_2017}, such that rows represent individual records and columns contain variables.
+There are, of course, several types of data that are a vital component of statistical analysis or are commonly encountered by those new to the field.
+Such datasets require specialist graphics or handling, often using specialist software or \proglang{R} packages.
 Here we provide several examples of alternative data types that \pkg{iNZight} can handle.
 
 
 \subsubsection{Complex survey designs}\label{sec:surveys}
 
-One of the more important data types demographers and researchers using official statistics encounter is data from complex surveys, which requires information about the survey's structure to provide valid graphs, summaries, and inferences.
-\pkg{iNZight} handles survey designs behind the scenes, requiring the user to specify the structure either manually (\cref{fig:inzight_survey_spec}) or by importing a special \emph{survey design} file.
-Data producers can distribute the design file with their datasets to ensure that users conduct valid analyses of their data.
-Once specified to \pkg{iNZight}, the user can forget about the survey design and use \pkg{iNZight} as normal: survey weights and other design information is incorporated correctly into graphs, summaries, and data manipulation functions using the \proglang{R} packages \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} behind the scenes.
-The \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design is included in \pkg{iNZight}'s code history.
+One of the essential data types demographers and researchers who use official statistics encounter is data from complex surveys, which require information about the survey's structure to provide valid graphs, summaries, and inferences.
+\pkg{iNZight} handles survey designs behind the scenes, requiring the user to specify the structure manually (\cref{fig:inzight_survey_spec}) or import a \emph{survey design specification} file.
+Data producers can distribute the design file with their datasets to ensure that users conduct accurate data analyses.
+Once specified to \pkg{iNZight}, the user can forget about the survey design and use \pkg{iNZight} as usual.
+Survey weights and other design information is incorporated correctly into graphs, summaries, and data manipulation functions using the \proglang{R} packages \pkg{survey} \citep{survey} and \pkg{srvyr} \citep{srvyr} behind the scenes.
+\pkg{iNZight}'s code history automatically includes the \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design.
+
 
 \begin{figure}[tp]
     \centering
@@ -194,18 +203,20 @@ The \proglang{R} code (\cref{sec:code-writing}) for specifying the survey design
 \end{figure}
 
 \pkg{iNZight} handles stratified as well as one- and two-stage cluster surveys.
-Additionally, \pkg{iNZight} supports \emph{replicate weight designs} in which survey design information is replaced by a set of replicate weights that allow surveys to be analysed correctly without exposing confidential or private information contained within the design variables (for example, clusters).
+Additionally, \pkg{iNZight} supports \emph{replicate weight designs} where a set of replicate weights replaces design information such as clustering and stratification variables.
+These replicate weights allow surveys to be analysed correctly without exposing confidential or private information within the design variables (for example, clusters).
 Instead, sets of ``replicate weights'' are provided, a mechanism that still permits valid variance estimation \citep{Lumley_2010}.
 \pkg{iNZight} can also calibrate surveys with population data from other sources to reduce the variances of estimates.
-Once again, this information is specified once, either by the user or a survey design file, and is subsequently used throughout the rest of the analysis.
+Once again, this information is specified once (possibly using a design specification file) and used throughout the analysis.
 
-The types of graphs available differ for survey data, as they now represent a picture of the \emph{population}, and not simply a sample.
+
+The types of graphs available differ for survey data, as they now represent a picture of the \emph{population}, not simply a sample.
 For a single numeric variable, a \emph{histogram} is displayed by default instead of a dot plot.
-For two numeric variables, a \emph{bubble plot} is used, which is a scatter plot with points sized by the weights of respective observations;
-alternatively, this can be displayed as a \emph{hex-bin} plot, which can be particularly effective when there are large numbers of observations.
+A \emph{bubble plot} is used for two numeric variables, which is a scatter plot with points sized by the weights of respective observations.
+Alternatively, a \emph{hex-bin} plot can be used to visualize the relationship between two numeric variables and is particularly effective when there are large numbers of observations; indeed, it is the default in such situations.
 Bar plots are still used by default for categorical variables in surveys.
-Summaries display the same information as before (\cref{sec:summaries-and-inference}), but provide estimates and standard errors of the population values, as shown in \cref{fig:inzight_survey_summary}.
-Similarly, inferences and hypothesis tests are performed for the population, and thus include additional uncertainties from the survey design by using the survey equivalents from the \pkg{survey} package.
+Summaries display the same information as before (\cref{sec:summaries-and-inference}) but provide estimates and standard errors of the population values, as shown in \cref{fig:inzight_survey_summary}.
+Similarly, inferences and hypothesis tests are performed for the population and thus include additional uncertainties from the survey design by using the appropriate methods from the \pkg{survey} package.
 
 
 \begin{figure}[tp]
@@ -218,18 +229,24 @@ Similarly, inferences and hypothesis tests are performed for the population, and
 
 \subsubsection{Time series}\label{sec:time-series}
 
-Another important data type is \emph{time series} in which the variable of interest is observed changing over time.
-Time information can be specified to \pkg{iNZight} in its dedicated \emph{Time Series} module, either in a specially formatted column in the data, or manually by the user within the module itself.
-Currently \pkg{iNZight} only supports time series with equally spaced observations and non-missing values.
+Another standard data type is \emph{time series}, in which the variable of interest is observed changing over time.
+Time series data can be explored with the dedicated \emph{Time Series} module in \pkg{iNZight}.
+Time information can be specified either in a specially formatted variable or manually by the user.
+At the time of writing, \pkg{iNZight} only supports time series with equally spaced observations and non-missing values.
+However, uneven observations can be aggregated from the \menu{Variable} menu to prepare the data for the time series module.
 
-\pkg{iNZight}'s time series module provides capabilities for users to graph one or more time series on a graph to see how values change over time, and automatically overlays a smoother on each.
-Additionally, the series can be decomposed into trend, seasonal, and residual components (using \acrlong{stl}).
-Animations are available to help with understanding how the various components combine to form the final series, and a Holt-Winters' forecast can be obtained by choosing the \emph{Forecast} plot type \citep{Holt_2004,Winters_1960}.
+
+\pkg{iNZight}'s time series module allows users to plot one or more time series on a graph to see or compare how values change over time.
+The software automatically overlays a smoother across each series.
+Additionally, the series can be decomposed into the trend, seasonal, and residual components using \acrlong{stl}.
+Optional animations help users understand how the various components combine to form the final series, and the \emph{Forecast} plot type provides a Holt-Winters' forecast \citep{Holt_2004,Winters_1960}.
+
 
 \Cref{fig:inzight_ts} shows the time series module with quarterly visitor arrivals data for several countries.
-The software automatically detects the \code{Time} column (``Date'') when loaded, and draws the displayed graph without any user interaction.
-Users have a choice between \emph{additive} and \emph{multiplicative} models, and a slider to control the smoothness of the LOESS smoother (in red).
-From the \menu{Select Variable} list, one or more variables to be displayed on the graph can be chosen, while the graph type is selected from the list on the right (`Plot Type Options').
+When loaded, the software automatically detects the \code{Time} column (``Date'') and draws the displayed graph without any user interaction.
+Users can choose between \emph{additive} and \emph{multiplicative} models and use the slider to control the smoothness of the LOESS curve (in red).
+Users choose one or more variables from the \menu{Select Variable} list to display on the graph, while graph type is selected from `Plot Type Options'.
+
 
 \begin{figure}[t!]
     \centering
@@ -239,16 +256,15 @@ From the \menu{Select Variable} list, one or more variables to be displayed on t
 
 \subsubsection{Maps}\label{sec:maps}
 
-Geographical data is particularly important for looking at regional effects, or the distribution of location-based events; however, it can be difficult to create appropriate graphs which often require sourcing maps or shape files.
-\pkg{iNZight} features a \emph{Maps} module for exploring two types of geographical data: point-based data, in which observations are associated with latitude and longitude locations (for example earthquakes); and regional maps for exploring data related to fixed regions (for example: countries, provinces, states).
+Geographical data is essential for looking at regional effects or the distribution of location-based events; however, it can be difficult to create appropriate graphs, often requiring maps or shapefiles.
+\pkg{iNZight} features a \emph{Maps} module for exploring two types of geographical data: point-based data, in which observations have latitude and longitude locations (for example, earthquakes), and regional maps for exploring data related to fixed regions (for example, countries, provinces, or states).
 The functionality within the maps module calls wrapper functions from the \pkg{iNZightMaps} package \citep{iNZightMaps}.
 
 
-For point-based observations, points are overlaid using the \pkg{ggmap} package \citep{ggmap}.
+Point-based observations use the \pkg{ggmap} package \citep{ggmap} to overlay a map with observed data.
 The maps module in \pkg{iNZight} lets users explore other variables in the dataset using the same techniques used for scatter plots:
-size, colour, transparency, and faceting, all using interface controls very similar to the base program.
-A demonstration of this module using New Zealand earthquake data is shown in \cref{fig:inzight_quakes},\footnote{Sourced from \url{https://www.geonet.org.nz/}}
-where points are coloured by depth, sized by magnitude, and faceted by whether or not they were felt.
+users adjust the size, colour, and transparency of points and specify faceting using an interface similar to the base program.
+A demonstration of this module using New Zealand earthquake data\footnote{Sourced from \url{https://www.geonet.org.nz/}} is shown in \cref{fig:inzight_quakes}, where points are coloured by depth, sized by magnitude, and faceted by whether or not they were felt.
 
 \begin{figure}[t]
     \centering
@@ -257,11 +273,12 @@ where points are coloured by depth, sized by magnitude, and faceted by whether o
 \end{figure}
 
 Regional data has the added complexity of requiring a definition of the boundaries of the areas contained in the data.
-For example, New Zealand can be divided into regional councils (Auckland, Otago, etc), which have physical boundaries that can be described by an external shape file.
-The Maps module in \pkg{iNZight} lets users choose the type of regions contained in the data, and proceeds to match labels between the dataset and map using several matching techniques:
+For example, New Zealand can be divided into regional councils (Auckland or Otago, for example), with physical boundaries that an external shapefile can describe.
+Another example is the boundaries of the states of the USA.
+The Maps module in \pkg{iNZight} lets users choose the type of regions contained in the data and proceeds to match labels between the dataset and map using several matching techniques:
 for example, countries may be coded using their conventional names, official names, or three-letter codes (``New Zealand'' versus ``NZ'' versus ``NZL'').
-Once the initial set-up is complete, users can choose variables to graph, which are then visualized on the map using colour, points, and other techniques.
-Often users are interested in regional trends over time, so \pkg{iNZight} automatically detects this and can animate maps over time or display trends as \emph{sparklines}.\footnote{Cite these sparklines? or an example??}
+Once the initial set-up is complete, users can choose variables to visualise on the map using colour, points, and other techniques.
+Users are often interested in regional trends over time, so \pkg{iNZight} can automatically detect longitudinal or time series data and animate maps over time or display trends as \emph{sparklines} \citep{Tufte_2001}.
 
 % \begin{figure}[p]
 %     \centering
@@ -272,40 +289,40 @@ Often users are interested in regional trends over time, so \pkg{iNZight} automa
 
 \subsubsection{Other data types and features}\label{sec:other-data-types}
 
-Besides these examples, \pkg{iNZight} has several other modules that allow more complex statistical methodology or support other special data types.
-\emph{Multiple Response} data arises from ``\emph{Choose all that apply}'' type survey questions, and need their own method of graphics to explore adequately.
-There is also a multivariate data add-on module that can perform and visualise multivariate statistical methods such as principal components analysis and non-metric multidimensional scaling.
-The model fitting module allows users to fit complex linear and generalised linear regression models to data (including complex survey designs).
-The regression model output is updated automatically as users add and remove explanatory variables, and a range of residual plots are available to explore and help users to quickly fit a model with any necessary transformations.
+Besides these examples, \pkg{iNZight} has several other modules that allow more complex statistical methodology or support other unique data types.
+\emph{Multiple Response} data arises from ``\emph{Choose all that apply}'' type survey questions and need their own graphics methods to explore adequately.
+The multivariate data add-on module lets users perform multivariate statistical methods and visualise the results, including principal components analysis and non-metric multidimensional scaling.
+Using the model fitting module, users can fix complex linear and generalised linear regression models to standard and survey data.
+In this module, regression output automatically updates as users add and remove explanatory variables.
+A range of residual plots is available to explore and help users quickly fit a model with any necessary transformations.
 
-Besides the examples listed above, \pkg{iNZight} has an add-on system (\cref{sec:addons}) that allows developers to extend the interface to suit various types of data or to perform specific analyses.
+Besides the examples listed above, \pkg{iNZight} has an add-on system (\cref{sec:addons}) that allows developers to extend the interface to suit various data types or perform specific analyses.
 Individual package developers or research groups can create modules that can be shared publicly or privately.
 
 
 
 \subsection[Code writing for getting started with R]{Code writing for getting started with \proglang{R}}\label{sec:code-writing}
 
-\footnote{Move/mention up front when R Commander / Deducer first introduced?}
 One feature prominent in the other \proglang{R} \glspl{gui} is the coding interface, which differs significantly from \pkg{iNZight}'s.
-\proglang{R} Commander provides a prominent ``script'' box into which code appears when using the command boxes, or users can enter their own code, and below this is an output terminal.
+\proglang{R} Commander provides a prominent ``script'' box into which code appears when using the command boxes, or users can enter custom code, and below this is an output terminal.
 In contrast, \pkg{Deducer} is added onto an existing \proglang{R} Console, providing menu-driven commands to run code in the console.
-Each of these \glspl{gui} require familiarity with \proglang{R} coding and an understanding of simple statistical terms and methods in order to navigate the menus.
-\pkg{iNZight}, however, is completely separate from the \proglang{R} console, providing an interface-only experience for beginners and users not interested in coding.
+Each of these \glspl{gui} requires familiarity with \proglang{R} coding and an understanding of simple statistical terms and methods to navigate the menus.
+In contrast, \pkg{iNZight} runs separately from the \proglang{R} console, providing an interface-only experience for beginners and users not interested in coding.
 Code generated by various actions behind the scenes is stored and available for users to review and run---with changes---in \proglang{R} manually.
 
-The \proglang{R} script contains a history of all actions executed by the user, from importing the data, applying transformations and manipulations, to any plots and summaries the user chose to save.
-This provides a record of what the user did which can be saved and run in \proglang{R} itself, with edits if desired.\footnote{Remove repetition.}
-This lets users explore a dataset with a \gls{gui} tool to quickly start an analysis that can be used as the basis of a reproducible workflow.
+The \proglang{R} script contains a history of all actions executed by the user, including importing the data, applying transformations and manipulations, and any plots and summaries the user chose to save.
+The script provides a record of what the user did and can be saved, edited, and run in \proglang{R}.
+This lets users explore a dataset with a \gls{gui} tool to quickly start an analysis and generate an \proglang{R} script template to use as the basis of a reproducible workflow.
 
-A more advanced feature is the \proglang{R} code box at the bottom of the interface (see \cref{fig:inzight_main}).
-This displays the code used to generate the current plot and, more importantly, can be edited by the user and run, but remains otherwise limited in functionality.
+A more advanced feature is the interactive \proglang{R} code box at the bottom of the interface (see \cref{fig:inzight_main}).
+It displays the code used to generate the current plot, and, more importantly, users can edit and run the code displayed.
 The interface detects changes in the code and applies those changes to the \gls{gui}, providing a seamless way for users to begin experimenting with code whilst retaining the familiarity of the \gls{gui}.
-Users can also store the code for the current plot, adding it to the \proglang{R} script.
+Users can also store the code for the current plot and add it to the \proglang{R} script.
 A similar code box is displayed in the \menu{Get Summary} and \menu{Get Inference} windows, with plans to implement this behaviour throughout \pkg{iNZight} in future.
 
 
-\pkg{iNZight} uses a \pkg{tidyverse} \citep{tidyverse} workflow, as this provides an introduction to \proglang{R} with a simpler, verb-like syntax for data wrangling, and is used in the \emph{\proglang{R} for Data Science} book \citep{Wickham_2017}.
+\pkg{iNZight} uses a \pkg{tidyverse} \citep{tidyverse} workflow, as this provides an introduction to \proglang{R} with a simpler, verb-like syntax for data wrangling as used in the \emph{\proglang{R} for Data Science} book \citep{Wickham_2017}.
 To demonstrate \pkg{iNZight}'s code-writing capabilities, \cref{app:code} contains the script generated during the tour presented in this section.
 
-The code writing features of \pkg{iNZight} are described in more detail in Section~3.2.2 of \cite{Burr_2021} together with the educational imperatives it facilitates.
-In addition, extremely high-level functions in the \pkg{iNZightPlots} package \citep{iNZightPlots} have been written to facilitate quite a few of the low-human-memory features of \pkg{iNZight}'s \gls{gui} environment in a coding environment \citep[see Sections~3 and 4 of][]{Burr_2021}.
+The code writing features of \pkg{iNZight} are described in more detail in Section~3.2.2 of \cite{Burr_2021}, together with the educational imperatives it facilitates.
+In addition, easy-to-use, high-level functions in the \pkg{iNZightPlots} package \citep{iNZightPlots} facilitate quite a few of the low-human-memory features of \pkg{iNZight}'s \gls{gui} environment in a coding environment \citep[see Sections~3 and 4 of][]{Burr_2021}.
