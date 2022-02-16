@@ -4,8 +4,26 @@
 
 \subsection{Dataset}\label{app:data-methods}
 
-Transform, mutate, etc.
-
+{\scriptsize
+\begin{tabular}{p{0.2\linewidth} p{0.4\linewidth} >{\tt}p{0.4\linewidth}}
+    \toprule
+    \textbf{Menu item} & \textbf{Description} & \multicolumn{1}{l}{\textbf{Example tidyverse code}} \\
+    \midrule
+    Filter & Filters dataset by levels of a categorical variable, value of a numeric variable, specific rows, or randomly. &
+    dplyr::filter(data, variable > x) \\
+    Sort by variable(s) & Sort dataset row (order) according to one or more variables. &
+    dplyr::arrange(data, variable) \\
+    Aggregate & Compute summaries of selected values grouped by one or more categorical variables. & dplyr::group\_by(data, cat\_var) \%>\% \linebreak dplyr::summarize(...) \\
+    Stack & Stack two or more columns into a single column with a new 'key' column. This is a simple version of reshaping from long to wide form. & tidyr::pivot\_longer(data, vars) \\
+    Reshape dataset & This provides a more advanced interface for converting between long and wide formats. & tidyr::pivot\_longer(data, vars) \linebreak tidyr::pivot\_wider(data, names\_from = key, values\_from = value) \\
+    Separate column & Split a column in two at a specified character. & tidyr::separate(data, var, c("a", "b")) \\
+    Unite columns & The reverse of 'split', allows two columns to be joined together with a separator to create a new variable. & tidyr::unite(data, "new\_var", c("a", "b")) \\
+    Reorder and select variables & Allows users to select a subset of variables, and order them. & dplyr::select(data, ...) \\
+    Join by column values & Perform inner/outer joins of two datasets. & dplyr::inner\_join(data1, data2) \\
+    Append new rows & Allow joining of two related datasets (i.e., with the same column names), for example if you have separate files for different years of data. & dplyr::bind\_rows(data1, data2) \\
+    \bottomrule
+\end{tabular}
+}
 
 \subsection{Variables}\label{app:variable-methods}
 

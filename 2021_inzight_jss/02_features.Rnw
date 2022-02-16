@@ -8,8 +8,8 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.9\textwidth]{figure/inzight_main.png}
-    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) the active data set is displayed prominently; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
+    \includegraphics[width=0.9\textwidth]{figure/win/01_inzight_main.png}
+    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) data sets are displayed here once loaded \textbf{(question: load some data for this preview?)}; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
 \end{figure}
 
 
@@ -17,8 +17,8 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.6\textwidth]{figure/inzight_load_data.png}
-    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
+    \includegraphics[width=0.6\textwidth]{figure/win/02_import_data.png}
+    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data. \textbf{TODO: SHOW ADVANCED MENU}}
 \end{figure}
 
 Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example, \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
@@ -58,7 +58,7 @@ This automation, together with the ability to scroll quickly through a set of ap
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.9\textwidth]{figure/inzight_infant_mortality.png}
+    \includegraphics[width=0.9\textwidth]{figure/win/03_plot_modifications.png}
     \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
 \end{figure}
 
@@ -106,7 +106,7 @@ We also have plans of adding Bayesian inference methods in future.
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figure/inzight_inference.png}
+    \includegraphics[width=0.8\textwidth]{figure/win/04_get_inference.png}
     \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_inference} The \menu{Inference} window provides a selection of hypothesis tests for the chosen variables. In this case, these are \code{Infantmortality} (a numeric variable) and \code{Region} (categorical with six levels), so \pkg{iNZight} provides an ANOVA test.}
 \end{figure}
 
@@ -165,8 +165,8 @@ once again allowing users to play with inputs to get the desired output.
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.6\textwidth]{figure/inzight_data_mod.png}
-    \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variables, with the preview displayed in the bottom-right. The relevant column names are underlined in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
+    \includegraphics[width=0.6\textwidth]{figure/win/05_separate_cols.png}
+    \caption{\label{fig:data_mod_preview} Here, the user is separating a column to create two new variables, with the preview displayed in the bottom-right. The relevant columns are boxed in red. The preview uses the first few rows of the data, and updates in real-time, reacting to changes the user makes, allowing them to experiment easily.}
 \end{figure}
 
 The \menu{Variable} menu gives users access to a range of variable transformation and modification actions.
@@ -198,7 +198,7 @@ Survey weights and other design information is incorporated correctly into graph
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.6\textwidth]{figure/inzight_survey_spec.png}
+    \includegraphics[width=0.6\textwidth]{figure/win/06_survey_design.png}
     \caption{\label{fig:inzight_survey_spec} Users can specify survey design information manually by filling in the fields. These will then be used throughout the session thereafter where appropriate.}
 \end{figure}
 
@@ -221,7 +221,7 @@ Similarly, inferences and hypothesis tests are performed for the population and 
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figure/inzight_survey_summary.png}
+    \includegraphics[width=0.8\textwidth]{figure/win/07_survey_summary.png}
     \caption[The Inference window provides a selection of hypothesis tests for the chosen variables.]{\label{fig:inzight_survey_summary} The \menu{Summary} window provides simple summary statistics and, in the case of survey data, standard errors of these population estimates.}
 \end{figure}
 
@@ -250,8 +250,8 @@ Users choose one or more variables from the \menu{Select Variable} list to displ
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=0.9\textwidth]{figure/inzight_time_series.png}
-    \caption{\label{fig:inzight_ts} The time series module.}
+    \includegraphics[width=0.9\textwidth]{figure/win/08_time_series.png}
+    \caption{\label{fig:inzight_ts} The time series module. This data set contains a variable called 'Date' which is in the correct time format, so \pkg{iNZight} automatically plots the first variable, in this case 'Australia'.}
 \end{figure}
 
 \subsubsection{Maps}\label{sec:maps}

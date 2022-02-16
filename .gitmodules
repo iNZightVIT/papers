@@ -1,0 +1,3 @@
+[submodule "windows-screenshots"]
+	path = windows-screenshots
+	url = git@github.com:iNZightVIT/windows-screenshots

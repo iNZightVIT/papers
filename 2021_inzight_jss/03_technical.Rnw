@@ -18,7 +18,7 @@ this drives \pkg{iNZight}'s add-on system (\cref{sec:addons}).
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=0.9\textwidth]{figure/inzight_main_widgets.png}
+    \includegraphics[width=0.9\textwidth]{figure/win/10_inzight_classes.png}
     \caption[The reference class components of the iNZight interface.]{\label{fig:inzight_main_widgets} The reference class components of the \pkg{iNZight} interface, some of which are themselves made from several child objects.}
 \end{figure}
 
