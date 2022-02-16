@@ -9,7 +9,7 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/win/01_inzight_main.png}
-    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) data sets are displayed here once loaded \textbf{(question: load some data for this preview?)}; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
+    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) data sets are displayed here prominently, and users can use the controls to switch between data and variable views; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
 \end{figure}
 
 
@@ -18,7 +18,7 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/win/02_import_data.png}
-    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data. \textbf{TODO: SHOW ADVANCED MENU}}
+    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
 \end{figure}
 
 Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example, \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.

@@ -1,6 +1,6 @@
 \section{Code history}\label{app:code}
 
-The \proglang{R} code history generated during the demonstration in \cref{sec:features} is copied here.
+The \proglang{R} code history generated during the demonstration in \cref{sec:features} is copied here. Note that the gapminder data can be downloaded from \url{https://inzight.nz/data}.
 
 {\scriptsize
 <<codehistory, echo=FALSE, output="asis">>=
@@ -8,4 +8,3 @@ cat(readLines("figure/win/session_script.R"), sep = "\n")
 cat("\n")
 @
 }
-% \end{Code}
