@@ -2,9 +2,8 @@
 
 \pkg{iNZight}'s interface is built with \proglang{R} using the three support packages \pkg{gWidgets2}, \pkg{gWidgets2RGtk2}, and \pkg{RGtk2}.
 \pkg{gWidgets2} \citep{gWidgets2} provides a simple widget-based \gls{api} to build a cross-platform interface with \proglang{R}, with support for \pkg{Tcl/Tk} \citep{tcltk}, \pkg{Qt} \cite{qt}, and \pkg{GTK+ 2.0} \citep{gtk}.
-We chose GTK2, as it was the most feature-rich and---at the time---had the best cross-platform support (see \cref{sec:os-reqs}).
-The GTK2 binaries are accessed through \proglang{R} using the \pkg{RGtk2} package \citep{RGtk2}, with commands translated from \pkg{gWidgets2} using the \pkg{gWidgest2RGtk2} package \citep{gWidgets2RGtk2}.
-These packages provide a platform-independent \gls{api} for creating a \gls{gui} with \proglang{R}.
+We chose \pkg{GTK+ 2.0}, as it was the most feature-rich and---at the time---had the best cross-platform support (see \cref{sec:os-reqs}).
+The \pkg{GTK+ 2.0} binaries are accessed through \proglang{R} using the \pkg{RGtk2} package \citep{RGtk2}, with commands translated from \pkg{gWidgets2} using the \pkg{gWidgest2RGtk2} package \citep{gWidgets2RGtk2}.
 
 
 \subsection{Component design}\label{sec:design}
@@ -23,8 +22,9 @@ this drives \pkg{iNZight}'s add-on system (\cref{sec:addons}).
 \end{figure}
 
 In addition to the ``visible'' components, others exist behind the scenes.
-The main is the \class{iNZDocument} class, which stores the application's state, including the data set, variable selection, survey design information, and plot settings.
+The main one is the \class{iNZDocument} class, which stores the application's state, including the data set, variable selection, survey design information, and plot settings.
 The \class{iNZDataNameWidget} component visible in the top-left of \cref{fig:inzight_main_widgets} displays a list of documents, allowing the user to switch between them.
+This is invaluable when performing data transformations such as aggregation and reshaping, as each action creates a new document.
 
 
 The structure of each component is, in most cases, a set of attributes that the user can control, stored as \emph{properties}, along with \emph{methods} that the component can use to react to user input or perform actions.
@@ -99,7 +99,7 @@ print_code(data)
 @
 The \fct{iNZightTools::code} function can extract the \proglang{R} code attached to the resulting object.
 In the example above, \proglang{R} users can see that the \pkg{haven} package \citep{haven} was used to read this \proglang{Stata} file (\code{.dta}).
-Beginner \proglang{R} users need only learn the one function---\fct{smart\_read}---but can quickly examine and modify the underlying code returned by \fct{smart\_read}.
+Beginner \proglang{R} users need only learn the one function---\fct{smart\_read}---but can quickly examine and modify the underlying code returned.
 In this way, these users can read a wide variety of datasets and quickly adapt the provided code to fit unique situations by reading the documentation for the supplied function, rather than having to do the time-consuming job of searching for the correct package and starting from scratch.
 
 

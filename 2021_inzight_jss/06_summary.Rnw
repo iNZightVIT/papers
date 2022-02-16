@@ -1,5 +1,7 @@
 \section{Summary and future work}\label{sec:summary}
 
+TODO: less student, more national stats offices \dots
+
 Newcomers to statistics often need to learn how to code using \proglang{R} whilst simultaneously learning the basic skills for data exploration.
 In contrast, many researchers need quick, easy tools to get new projects started.
 By providing an easy-to-use \gls{gui}, \pkg{iNZight} lets users focus on exploring and analysing data.

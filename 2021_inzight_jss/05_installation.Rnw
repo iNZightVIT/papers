@@ -35,7 +35,7 @@ A large audience for \pkg{iNZight} is students new to statistics, who are unlike
 To improve the accessibility of \pkg{iNZight}, we deploy an installer that is effectively a self-extracting archive that includes a copy of \proglang{R} and the package library, so once installed, \pkg{iNZight} is ready to go.
 By default, \pkg{iNZight} is installed into the user's \code{Documents\textbackslash iNZightVIT} directory.
 
-In addition to the binaries and packages, the installer includes several Desktop shortcuts that to launch \proglang{R} in a specific directory.
+In addition to the binaries and packages, the installer includes several Desktop shortcuts that launch \proglang{R} in a specific directory.
 This directory contains a \code{.Rprofile} file that automatically loads the \pkg{iNZight} package and launches the interface.
 It also hides the \proglang{R} console, presenting users with just the \gls{gui}.
 \proglang{R} receives a command to terminate \proglang{R} once the user has finished using \pkg{iNZight} when started from this script.
@@ -58,7 +58,7 @@ More information is available at \url{https://inzight.nz/docker}.
 {Online shiny version \pkg{iNZight} \emph{Lite}}\label{sec:online}
 
 In recent years, many schools have adopted tablets or Chromebooks instead of laptops, neither of which can run \proglang{R} and, therefore, \pkg{iNZight}.
-To provide these students with equal opportunity, we developed an online version of \pkg{iNZight}called \pkg{iNZight} \emph{Lite} that uses \pkg{shiny} \citep{shiny} as the \gls{gui} framework instead of \pkg{GTK}.
+To provide these students with equal opportunity, we developed an online version of \pkg{iNZight} called \pkg{iNZight} \emph{Lite} that uses \pkg{shiny} \citep{shiny} as the \gls{gui} framework instead of \pkg{GTK}.
 
 Since most of the data logic occurs in separate packages, porting \pkg{iNZight} to the web was simply a case of coding the interface elements and passing user inputs to the wrapper functions.
 Further, the underlying code is the same between programs, so the \emph{output} is the same in both cases, making it easier for students and researchers to use one or the other.
@@ -73,7 +73,7 @@ For example, \url{https://lite.docker.stat.auckland.ac.nz/?url=https://inzight.n
 An example of this in action is available at \url{https://www.stat.auckland.ac.nz/~wild/data/Rdatasets/}.
 
 
-The \pkg{shiny} package is used within the container to create visual controls and perform reactivity events.
+The \pkg{shiny} package is used to create visual controls and perform reactivity events.
 A user's data is temporarily stored on the server and is only accessible from that session: it cannot be shared or accessed by other users.
 However, we still would not recommend users upload confidential or otherwise sensitive data; this would better be explored using either the desktop version or by running \pkg{iNZight} \emph{Lite} locally.
 Research groups could host a build of \emph{Lite} with access to private data.

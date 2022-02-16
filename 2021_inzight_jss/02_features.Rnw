@@ -9,7 +9,7 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/win/01_inzight_main.png}
-    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) data sets are displayed here prominently, and users can use the controls to switch between data and variable views; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (left); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
+    \caption[The iNZight GUI landing page.]{\label{fig:inzight_main} The \pkg{iNZight} \gls{gui} landing page presents users with a few controls. The labeled areas are: (A) data sets are displayed here prominently, and users can use the controls to switch between data and variable views; (B) variable control boxes provide users either drag-and-drop from (A), or select from dropdowns; (C) graphs are displayed in the graphics window; (D) plot controls, most importantly the plot configuration controls (right); (E) if enabled, code for the active plot is shown here and can be edited by the user.}
 \end{figure}
 
 
@@ -18,7 +18,7 @@ The simplest way to explore \pkg{iNZight}'s functionality and illustrate the con
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.6\textwidth]{figure/win/02_import_data.png}
-    \caption{\label{fig:load_data} Load Data window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
+    \caption{\label{fig:load_data} The ``Load Data'' window, showing the chosen file, the File Type (guessed from the extension), and a preview of the data.}
 \end{figure}
 
 Datasets come in a wide range of formats, some of which are traditionally software-dependent \citep[for example, \proglang{Excel}, ][stores files in Excel (.xlsx) format]{msexcel}.
@@ -38,12 +38,13 @@ Here, users can override the default delimiter or choose between different encod
 For example, it is common in European countries to see the semi-colon (;) used as the delimiter, so this option allows users to read files coded this way.
 The preview is updated when these options are changed, so users can use trial-and-error if they are unsure what the necessary inputs are.
 This feature is handy for guessing encoding, which can be tricky to work out manually.
-The data preview also allows users to override the default variable types, which is beneficial when importing a dataset with coded factors. For example, values $1,2,3$ instead of \mbox{``A'', ``B'', ``C''}, users can override the variable type from `numeric' to `categorical' and relabel the levels after import.
+The data preview also allows users to override the default variable types, which is beneficial when importing a dataset with coded factors.
+For example, for values $1,2,3$ instead of \mbox{``A'', ``B'', ``C''}, users can override the variable type from `numeric' to `categorical' and relabel the levels after import.
 
 \pkg{iNZight} also supports copying and pasting data from a spreadsheet to make things even easier for beginners.
-Data can be copied from \proglang{Excel} or a similar program or directly from a webpage if the formatting is OK.
+Data can be copied from \proglang{Excel} or a similar program or directly from a webpage if the formatting is appropriate.
 Users then open the \menu{Paste data from} window, which has a text box for pasting the data.
-As before, a preview displays the result for quick confirmation before confirming the import.
+As before, a preview displays the result for quick confirmation before proceeding with the import.
 
 
 \subsection{Visualising data with graphics}\label{sec:creating-graphs}
@@ -59,7 +60,7 @@ This automation, together with the ability to scroll quickly through a set of ap
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/win/03_plot_modifications.png}
-    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
+    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue. TODO: update figure to inlude Add to Plot panel}
 \end{figure}
 
 
@@ -75,7 +76,7 @@ The final two variable slots are subset variables that quickly and easily facet 
 Any numeric variables used for either of the subsetting variables are automatically cut into four class intervals with approximately equal numbers of observations in each.
 
 
-The \menu{Add to Plot} module is dedicated to plotting modifications for a deeper exploration of variable relationships and is accessed from either the \menu{Plot} menu or the button in the \menu{Plot Toolbar} (boxed in red in \cref{fig:plot_modifcation}).
+The \menu{Add to Plot} module is dedicated to plot modifications for a deeper exploration of variable relationships and is accessed from either the \menu{Plot} menu or the button in the \menu{Plot Toolbar} (boxed in red in \cref{fig:plot_modifcation}).
 Here, users can choose from a selection of alternative plot types based on the selected variable(s).
 Other modifications include specifying a colour or sizing variable, adjusting plot symbols, adding trend lines, modifying axis labels and limits, and much more.
 The possible choices are presented in an interactive format such that the graph updates whenever the user changes input values, allowing them to explore ``\emph{What happens if \ldots}'' and ``\emph{What does this do?}''.
@@ -100,7 +101,7 @@ Inference information includes estimates, confidence intervals, and any applicab
 For performing hypothesis testing,
 \pkg{iNZight} displays a set of tests applicable to the chosen variable(s), as shown in \cref{fig:inzight_inference}.
 \Cref{tab:hypothesis-tests} gives a complete list of available tests in \pkg{iNZight}'s basic mode (as of version 4.2).
-Users may choose between Normal theory of Bootstrap methods \citep[using the \pkg{boot} package,][]{boot} to calculate inference information.
+Users may choose between Normal theory or Bootstrap methods \citep[using the \pkg{boot} package,][]{boot} to calculate inference information.
 We also have plans of adding Bayesian inference methods in future.
 
 
@@ -125,7 +126,7 @@ tab <- cbind(
 kable(tab,
     "latex",
     booktabs = TRUE,
-    caption = 'iNZight hypothesis test options. ',
+    caption = 'iNZight hypothesis test options available for various variable type combinations. TODO: make long-form instead',
     label = 'hypothesis-tests',
     # align = "center",
     escape = FALSE) %>%
@@ -154,12 +155,12 @@ Data transformations may be required before any worthwhile analysis can begin (f
 
 In their book \emph{\proglang{R} for Data Science}, \citet{Wickham_2017} describe many data manipulation methods, including \emph{filtering}, \emph{aggregation}, and \emph{reshaping}.
 They demonstrate the \pkg{tidyverse} \citep{tidyverse} code for these actions, which \pkg{iNZight} uses behind-the-scenes to implement users' chosen actions.
-\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods.
-These interfaces enable users to quickly and easily do things like filtering by value, converting from \emph{wide-} to \emph{long}-form, or joining two datasets together.
+\pkg{iNZight} provides a \gls{gui} interface to these (often complex) methods,
+enabling users to quickly and easily do things like filter by value, convert from \emph{wide-} to \emph{long}-form, or join two datasets together.
 In most cases, the interface evolves from top to bottom as the user inputs information.
 For example, most processes begin by asking the user to select a variable with which to work.
-Subsequent inputs are then tailored to previous choices, thus guiding users through the procedure (as per \gls{dp} 4).
-At the bottom of many data manipulation windows is a preview of the data after transformation, as demonstrated in \cref{fig:data_mod_preview},
+Subsequent inputs are then tailored to previous choices, thus guiding users through the procedure (\gls{dp}~4).
+At the bottom of many data manipulation windows is a preview of the data after transformation, demonstrated in \cref{fig:data_mod_preview},
 once again allowing users to play with inputs to get the desired output.
 \Cref{app:data-methods} contains a complete list of available methods.
 
@@ -251,7 +252,7 @@ Users choose one or more variables from the \menu{Select Variable} list to displ
 \begin{figure}[t!]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/win/08_time_series.png}
-    \caption{\label{fig:inzight_ts} The time series module. This data set contains a variable called 'Date' which is in the correct time format, so \pkg{iNZight} automatically plots the first variable, in this case 'Australia'.}
+    \caption{\label{fig:inzight_ts} The time series module. This data set contains a variable called `Date' which is in the correct time format, so \pkg{iNZight} automatically plots the first variable, in this case `Australia'.}
 \end{figure}
 
 \subsubsection{Maps}\label{sec:maps}

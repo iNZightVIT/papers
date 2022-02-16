@@ -14,6 +14,8 @@
 \usepackage{setspace}
 \doublespacing
 
+\pretolerance=10000
+
 \usepackage{upquote}
 \usepackage{array}
 \usepackage{booktabs}
