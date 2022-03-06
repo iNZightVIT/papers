@@ -12,13 +12,13 @@ subdirectory.
 
 <td>
 
-<img src='figure/2021_inzight_jss.png' width='100'>
+<img src='figure/2022_inzight_jss.png' width='100'>
 
 </td>
 
 <td>
 
-<strong><a href='2021_inzight_jss/index.pdf'>‘iNZight’: A Graphical User
+<strong><a href='2022_inzight_jss/index.pdf'>‘iNZight’: A Graphical User
 Interface for Democratising Data with R</a></strong><br>Tom Elliott,
 Chris Wild, Daniel Barnett, Andrew Sporle
 
