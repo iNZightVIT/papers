@@ -69,7 +69,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 %% - \Plainkeywords{} without LaTeX markup (if necessary)
 %% - Should be comma-separated and in sentence case.
 \Keywords{GUI, statistical software, statistical education, \proglang{R}, democratisation}
-\Plainkeywords{GUI, statistical software, statistical education, R, democratisation}
+\Plainkeywords{GUI, statistical software, democratisation, statistical education, data science education, R}
 
 %% - \Address{} of at least one author
 %% - May contain multiple affiliations for each author
@@ -99,11 +99,12 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 \glsresetall
 
 \SweaveInput{01_intro.Rnw}
-\SweaveInput{02_features.Rnw}
-\SweaveInput{03_technical.Rnw}
-\SweaveInput{04_addons.Rnw}
-\SweaveInput{05_installation.Rnw}
-\SweaveInput{06_summary.Rnw}
+\SweaveInput{02_design.Rnw}
+\SweaveInput{03_features.Rnw}
+\SweaveInput{04_technical.Rnw}
+\SweaveInput{05_addons.Rnw}
+\SweaveInput{06_installation.Rnw}
+\SweaveInput{07_summary.Rnw}
 
 
 \section*{Acknowledgments}

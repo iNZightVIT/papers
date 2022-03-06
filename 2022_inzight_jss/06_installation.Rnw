@@ -32,7 +32,7 @@ iris$Species
 \subsection{Windows installer}\label{sec:windows}
 
 A large audience for \pkg{iNZight} is students new to statistics, who are unlikely to have the computer skills required by other \proglang{R} \glspl{gui} to install and run the software (including \proglang{R}).
-To improve the accessibility of \pkg{iNZight}, we deploy an installer that is effectively a self-extracting archive that includes a copy of \proglang{R} and the package library, so once installed, \pkg{iNZight} is ready to go.
+To improve the accessibility of \pkg{iNZight}, we deploy an installer that is effectively a self-extracting archive that includes a copy of \proglang{R}, the package library, and GTK, so once installed, \pkg{iNZight} is ready to go.
 By default, \pkg{iNZight} is installed into the user's \code{Documents\textbackslash iNZightVIT} directory.
 
 In addition to the binaries and packages, the installer includes several Desktop shortcuts that launch \proglang{R} in a specific directory.
@@ -58,7 +58,7 @@ More information is available at \url{https://inzight.nz/docker}.
 {Online shiny version \pkg{iNZight} \emph{Lite}}\label{sec:online}
 
 In recent years, many schools have adopted tablets or Chromebooks instead of laptops, neither of which can run \proglang{R} and, therefore, \pkg{iNZight}.
-To provide these students with equal opportunity, we developed an online version of \pkg{iNZight} called \pkg{iNZight} \emph{Lite} that uses \pkg{shiny} \citep{shiny} as the \gls{gui} framework instead of \pkg{GTK}.
+To cater for such devices, we developed an online version of \pkg{iNZight} called \pkg{iNZight} \emph{Lite} that uses \pkg{shiny} \citep{shiny} as the \gls{gui} framework instead of \pkg{GTK}.
 
 Since most of the data logic occurs in separate packages, porting \pkg{iNZight} to the web was simply a case of coding the interface elements and passing user inputs to the wrapper functions.
 Further, the underlying code is the same between programs, so the \emph{output} is the same in both cases, making it easier for students and researchers to use one or the other.

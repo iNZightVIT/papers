@@ -104,8 +104,8 @@ In this way, these users can read a wide variety of datasets and quickly adapt t
 
 
 While the \gls{gui} packages provide the structure of the visual \gls{gui}, it is the collection of \proglang{R} packages developed alongside \pkg{iNZight} that power the program.
-The main reason for creating separate packages was to seprate interface and data logic.
-Additionally, it allows parallel development of a separate Shiny \citep{shiny} interface (\cref{sec:online}) using the same wrapper functions.
+The main reason for creating separate packages was to separate interface and data logic.
+Additionally, it allows parallel development of our Shiny \citep{shiny} version (\cref{sec:online}) using the same wrapper functions.
 \Cref{tab:inzight_pkgs} lists the packages associated with the \pkg{iNZight} project.
 Most of these packages have simple high-level interfaces that connect to the \gls{gui} but can also be used by beginner \proglang{R} users on their own \citep[Sections~3 and 4]{Burr_2021}.
 
