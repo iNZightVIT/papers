@@ -26,6 +26,7 @@
 \def\lstfloatautorefname{Listing} % needed for hyperref/auroref
 
 \usepackage{framed}
+\usepackage{longtable}
 
 %% new custom commands
 \newcommand{\class}[1]{`\code{#1}'}
@@ -128,6 +129,7 @@ authors_long <- paste(apply(authors_long, 1, paste, collapse = " \\\\And "), col
 
 \begin{appendix}
 \SweaveInput{appendix_02.Rnw}
+\vfill\pagebreak
 \SweaveInput{appendix_01.Rnw}
 \end{appendix}
 

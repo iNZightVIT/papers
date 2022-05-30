@@ -25,6 +25,61 @@
 \end{tabular}
 }
 
+\vfill\pagebreak
 \subsection{Variables}\label{app:variable-methods}
 
-Create, rename, change, etc.
+Capabilities to modify, create, and delete existing variables in a dataset.
+
+{\scriptsize
+\begin{longtable}{p{0.2\linewidth} p{0.4\linewidth} >{\tt}p{0.4\linewidth}}
+    \toprule
+    \textbf{Menu item} & \textbf{Description} & \multicolumn{1}{l}{\textbf{Example tidyverse code}} \\
+    \midrule
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\emph{Continued \ldots}} \\
+    \bottomrule
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    Convert to categorical$^\star$ & Convert a numeric variable into a categorical one. &
+    dplyr::mutate(data, x\_cat = as.factor(x)) \\
+    \multicolumn{3}{l}{\textbf{Categorical Variables}} \\
+    Reorder levels & Reorder the levels in a factor/categorical variables. &
+    dplyr::mutate(data, x\_reord = factor(x, levels = c(...))) \\
+    Collapse levels & Collapse multiple levels into one. &
+    dplyr::mutate(data, x\_coll = forcats::fct\_collapse(x, ...)) \\
+    Rename levels & Rename levels of a categorical variable &
+    dplyr::mutate(data, x\_rename = forcats::fct\_recode(x, ...)) \\
+    Combine categorical variables & Create a new categorical variable that is the combination (or cross) of two or more variables. &
+    dplyr::mutate(data, x\_y = forcats::fct\_cross(x, y)) \\
+    \multicolumn{3}{l}{\textbf{Numeric Variables}} \\
+    Transform & Apply one of several common transformations (e.g., log, square-root) to a numeric variabel. &
+    dplyr::mutate(log\_x = log(x)) \\
+    Standardise & Standardise a numeric variable to have mean 0 and standard deviation 1. &
+    dplyr::mutate(std\_x = scale(x)[, 1]) \\
+    Form class intervals & Convert a numeric variable into a categorical one by creating class intervals of the form $[a, b), [b, c)$, etc. &
+    dplyr::mutate(x\_f = cut(x, ...)) \\
+    Rank numeric variables & Create a new variable indicating the rank (order) of values in the chosen variable(s) from lowest to highest. &
+    dplyr::mutate(x\_rank = dplyr::min\_rank(x)) \\
+    Convert to categorical (multiple) &
+    Same as $^\star$ but allows users to convert multiple variables at once. & \\
+    \multicolumn{3}{l}{\textbf{Dates and Times}} \\
+    Convert to & Convert a variable into a date/time &
+    dplyr::mutate(x\_dt = lubridate::parse\_date\_time(x, ...)) \\
+    Extract from & Extract a specific part of a date/time variable (e.g., just the month, or year) &
+    dplyr::mutate(x\_dt\_month = lubridate::month(x\_dt)) \\
+    Aggregate to & Aggregate data into wider intervals by taking the mean/median/min/max/sum of values in each period (e.g., convert between total visitors per month to per quarter). &
+    dplyr::mutate(data, quarter = lubridate::quarter(x)) %>%
+    dplyr::group\_by(quarter) %>%
+    dplyr::summarise(...) \\ \\
+    Rename variables & Rename variables in the dataset &
+    dplyr::rename(data, ...) \\
+    Create new variables & Allows creation of (arbitrary) new variables, e.g., by taking the different or ratio of existing ones. &
+    dplyr::mutate(data, bmi = weight / height\^2) \\
+    Missing to categorical & For numeric variables, a new variable categorical variable is created with values 'Missing' and 'Not missing'. For categorical variables, NAs are converted to a new level 'Missing'. &
+    dplyr::mutate(data, x\_miss = forcats::fct\_explicit\_na(x, na\_level = "missing")) \\
+    Delete variables & Allows deletion of variables &
+    dplyr::select(data, -x, -y) \\
+\end{longtable}
+}
