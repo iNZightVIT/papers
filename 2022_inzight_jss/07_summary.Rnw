@@ -24,7 +24,13 @@ In so doing, we are democratising critical methods and skills, making them avail
 
 \subsection{Future Work}\label{sec:future-work}
 
-This needs work. Leaving for later.
+\begin{itemize}
+\item further developing iNZight for surveys, particularly social research, and extending to native handling of multi-part variables (e.g., those from multiple response questions)
+\item redevelopment of the time series module to make use of recent advances in packages such as 'tsibble', 'feasts', and 'fable', which will allow extension of the module to a wider range of time series data
+\item connecting to data bases, and specifically allowing on-the-fly queries---particularly useful for joins (e.g., in large linked datasets) where trying to have all datasets/variables in memory would be unfeasible
+\item using 'specification' files for surveys and collections of datasets so complex data structures can be described to the software in a simple way, allowing users to one-click load surveys/linked or longitudinal data sets (for example) and use the software as usual.
+\item
+\end{itemize}
 
 Many new features and functionalities are planned for \pkg{iNZight}.
 The foremost is interacting with more complex datasets, particularly those saved within a database.

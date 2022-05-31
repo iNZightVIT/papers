@@ -112,37 +112,29 @@ We also have plans of adding Bayesian inference methods in future.
 \end{figure}
 
 
-<<hypothesis_tests,results=tex,echo=FALSE>>=
-library(magrittr)
-library(kableExtra)
-tab <- cbind(
-    c('numeric', 'categorical', ''),
-    c('', '2 levels', '2+ levels'),
-    c('t-test$^1$', 'single proportion', '$\\chi^2$-test$^2$'),
-    c('--', 't-test$^3$', 'ANOVA'),
-    c('t-test$^3$', '$\\chi^2$-test$^{4,5}$', '$\\chi^2$-test$^4$'),
-    c('ANOVA', '$\\chi^2$-test$^{4,5}$', '$\\chi^2$-test$^4$')
-)
-kable(tab,
-    "latex",
-    booktabs = TRUE,
-    caption = 'iNZight hypothesis test options available for various variable type combinations. TODO: make long-form instead',
-    label = 'hypothesis-tests',
-    # align = "center",
-    escape = FALSE) %>%
-    add_header_above(c('', '', 'NULL', 'numeric', '2 level cat', '2+ level cat')) %>%
-    add_header_above(c("Variable 1" = 2L, "Variable 2" = 4L)) %>%
-    add_footnote(
-        c(
-            'One-sample',
-            'Equal proportions',
-            'Two-sample',
-            'Equal distributions/independence',
-            'Additionally includes epidemiological output such as odds and risk ratios.'
-        ),
-        'number', threeparttable = TRUE) %>%
-    kable_styling(position = "center", full_width = FALSE)
-@
+\begin{table}
+    \scriptsize
+    \onehalfspacing
+    \caption{\label{tab:hypothesis-tests}iNZight hypothesis test options available for various variable type combinations.}
+    \centering
+    \begin{tabular}[t]{llll}
+    \toprule
+    \textbf{Variable 1} & \textbf{Variable 2} & \textbf{Test} \\
+    \hline
+    Numeric & (none) & One sample t-test \\
+     & Numeric & Linear regression \\
+     & Categorical (2 levels) & Two sample t-test / ANOVA \\
+     & Categorical (3+ levels) & ANOVA \\[1em]
+    \multicolumn{3}{l}{Categorical} \\
+    \hspace{5px} \emph{Two levels} & (none) & Single proportion \\
+     & Numeric & Two-sample t-test / ANOVA \\
+     & Categorical & Chi-square test for equal distributions \\
+    \hspace{5px} \emph{Three or more levels} & (none) & Chi-square test fir equal proptions \\
+     & Numeric & ANOVA \\
+     & Categorical & Chi-square test for equal distributions \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 
 
