@@ -60,7 +60,7 @@ This automation, together with the ability to scroll quickly through a set of ap
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{figure/win/03_plot_modifications.png}
-    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue. TODO: update figure to inlude Add to Plot panel}
+    \caption[Demonstration of plot modifications available from iNZight's Add to Plot menu.]{\label{fig:plot_modifcation} Demonstration of plot modifications available from \pkg{iNZight}'s \menu{Add to Plot} menu. The \menu{Add to Plot} button, highlighted in red, opens a panel giving user control over colours, size, shape, labels, and much more. This can also be accessed from the plot menu, boxed in blue.}
 \end{figure}
 
 

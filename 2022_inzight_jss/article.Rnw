@@ -12,9 +12,9 @@
 \input{../glossary.tex}
 
 \usepackage{setspace}
-\doublespacing
+% \doublespacing
 
-\pretolerance=10000
+% \pretolerance=10000
 
 \usepackage{upquote}
 \usepackage{array}
