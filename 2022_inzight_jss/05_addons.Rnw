@@ -1,6 +1,6 @@
 \section{The add-on system}\label{sec:addons}
 
-The main \pkg{iNZight} program will have all most users need to explore, visualise, and perform simple analyses on their data.
+The main \pkg{iNZight} program will have everything most users need to explore, visualise, and perform simple analyses on their data.
 Some users, however, may require access to special analyses not built into the base program.
 Rather than requiring each new datatype or method to be manually coded into \pkg{iNZight} by the developers, we crafted an \emph{Add-on} system allowing anyone to create \pkg{iNZight} modules that can connect to new or existing \proglang{R} packages available on \gls{cran} or elsewhere.
 
@@ -19,8 +19,8 @@ opening up possibilities for teachers, research groups, or even \proglang{R} pac
 \Cref{fig:inzight_demest} demonstrates a prototype of an upcoming Bayesian demographic modelling module based on the work by \cite{Zhang_2019}, used by demographers to do small-area estimation.
 In the example, we have estimated life expectancies from death count data, which is traditionally a complicated process involving non-linear transformations of estimated mortality rates.
 Bayesian methods, however, are easy, although they often involve much coding to implement.
-The \pkg{iNZight} small area estimation module \cite{Elliott_Bryant_2021} provides a simple interface to several \proglang{R} packages that implement Bayesian demographic estimation: \pkg{dembase} \citep{dembase}, \pkg{demest} \citep{demest}, and \pkg{demlife} \citep{demlife}.
-However, these packages are currently under development, so a full version of the \pkg{iNZight} module will be released once they are complete.
+The \pkg{iNZight} small area estimation module \citep{Elliott_Bryant_2021} provides a simple interface to several \proglang{R} packages that implement Bayesian demographic estimation: \pkg{dembase} \citep{dembase}, \pkg{demest} \citep{demest}, and \pkg{demlife} \citep{demlife}.
+However, these packages are currently under development, a full version of the module will be released once they are complete.
 
 \begin{figure}[tp]
     \centering

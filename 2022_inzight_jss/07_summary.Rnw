@@ -29,7 +29,7 @@ In so doing, we are democratising critical methods and skills, making them avail
 \item redevelopment of the time series module to make use of recent advances in packages such as 'tsibble', 'feasts', and 'fable', which will allow extension of the module to a wider range of time series data
 \item connecting to data bases, and specifically allowing on-the-fly queries---particularly useful for joins (e.g., in large linked datasets) where trying to have all datasets/variables in memory would be unfeasible
 \item using 'specification' files for surveys and collections of datasets so complex data structures can be described to the software in a simple way, allowing users to one-click load surveys/linked or longitudinal data sets (for example) and use the software as usual.
-\item
+\item We also have plans of adding Bayesian inference methods in future.
 \end{itemize}
 
 Many new features and functionalities are planned for \pkg{iNZight}.

@@ -1,7 +1,7 @@
 \section{Installation and availability}\label{sec:installation}
 
-\pkg{iNZight} can be installed in \proglang{R} from our package repository available at \url{https://r.docker.stat.auckland.ac.nz}, which hosts the most up-to-date versions of our packages.
-Most of these are now on \gls{cran}, and work continues to prepare and submit the remainder.
+\pkg{iNZight} can be installed in \proglang{R} from our package repository available at \url{https://r.docker.stat.auckland.ac.nz}, which hosts the most up-to-date versions of our packages and some recently removed from \gls{cran} due to complications with \pkg{GTK}.
+Our non-\gls{gui} packages are available on \gls{cran}.
 Since \pkg{iNZight} is a \gls{gui}, additional system dependencies need to be installed, which vary between operating systems, as discussed below.
 
 
@@ -9,6 +9,7 @@ Since \pkg{iNZight} is a \gls{gui}, additional system dependencies need to be in
 
 The GTK windowing system is a cross-platform project with Windows, macOS, and Linux libraries.
 However, the install process varies between operating systems in both steps and complexity.
+
 On Windows, the necessary files are available as binaries and can be installed \emph{after} installing \pkg{iNZight}: the \pkg{RGtk2} package will prompt the user to download and install these binaries the first time the package is loaded.
 
 On macOS, users must install XQuartz and the GTK+ framework before manually compiling \pkg{RGtk2} themselves, as the binaries are no longer available from \gls{cran}.
@@ -22,7 +23,7 @@ $ apt-get install xorg-dev libgtk2.0-dev
 \end{verbatim}
 Users of other operating systems should use the search functionality of their package manager to find the requisite libraries or compile them themselves.
 Several other system dependencies need installing for some features of \pkg{iNZight}. For the latest list, check \url{inzight.nz/install}.
-Linux users can install \pkg{iNZight} by running the Windows installer (\cref{sec:windows}) under Wine.\footnote{\url{https://www.winehq.org/}}
+Alternatively, Linux users can install \pkg{iNZight} by running the Windows installer (\cref{sec:windows}) under Wine.\footnote{\url{https://www.winehq.org/}}
 
 
 <<eval=FALSE,echo=FALSE>>=
@@ -32,7 +33,8 @@ iris$Species
 \subsection{Windows installer}\label{sec:windows}
 
 A large audience for \pkg{iNZight} is students new to statistics, who are unlikely to have the computer skills required by other \proglang{R} \glspl{gui} to install and run the software (including \proglang{R}).
-To improve the accessibility of \pkg{iNZight}, we deploy an installer that is effectively a self-extracting archive that includes a copy of \proglang{R}, the package library, and GTK, so once installed, \pkg{iNZight} is ready to go.
+To improve the accessibility of \pkg{iNZight}, we deploy an installer that is effectively a self-extracting archive that includes a copy of \proglang{R}, the package library, and GTK.
+Once installed, \pkg{iNZight} is ready to go.
 By default, \pkg{iNZight} is installed into the user's \code{Documents\textbackslash iNZightVIT} directory.
 
 In addition to the binaries and packages, the installer includes several Desktop shortcuts that launch \proglang{R} in a specific directory.
@@ -42,7 +44,7 @@ It also hides the \proglang{R} console, presenting users with just the \gls{gui}
 
 The \pkg{iNZight} installer also includes an \emph{Update} script to allow easy updating of the \proglang{R} packages.
 Novice users can update to the latest version without using \proglang{R} or downloading the latest installer.
-Additionally, we include an Uninstaller that removes \pkg{iNZight} from the user's system by deleting the folder and any shortcuts.
+We also include an Uninstaller to remove \pkg{iNZight} from the user's system.
 
 
 \subsection{Docker image}\label{sec:docker}

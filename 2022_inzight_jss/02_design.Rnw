@@ -12,9 +12,9 @@ Indigenous nations and communities, such as those associated with the Global Ind
 Indigenous nations and governance groups not only face resource and skill constraints, but indigenous data sovereignty and governance require maintaining control over indigenous data resources.
 Users can access \pkg{iNZight}'s data analysis and graphical functionality for free without the need to upload the data beyond their data environment---possession and control over the data are maintained.
 
-The situation is very similar for subject-matter researchers in areas where projects have potential societal value but a lack of funds or access to technical skills.
-The unmet data science needs of those lacking in money and data education can be every bit as real and important as those who have more.
-There will never be enough altruistic, skilled volunteers to meet these needs.
+The situation is very similar for subject-matter researchers in areas where projects have potential societal value but lack the funds or technical skills to pursue them.
+The unmet data science needs of those who do not have access to money and data education can be every bit as real and important as those who do.
+Furthermore, there will never be enough altruistic, skilled volunteers to meet these needs.
 Therefore, it is vital to enable more people to do more for themselves in statistically robust ways.
 While the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some level, some critical elements have been overlooked that \pkg{iNZight} can now address.
 
@@ -84,7 +84,7 @@ Initially, the code-writing functionality was developed as a way for students to
 Users use \pkg{iNZight} as usual but can obtain the \proglang{R} code used to perform the analysis they have just done.
 This way, \proglang{R} learners can begin editing and running \proglang{R} code themselves without starting from a blank script.
 This same feature also makes \pkg{iNZight} a powerful research development tool.
-Researchers can quickly explore a dataset and then generate an \proglang{R} script to form the basis of a robust, reproducible workflow in a research setting.
+Researchers can quickly explore a dataset while simultaneously generating an \proglang{R} script to form the basis of a robust, reproducible workflow.
 
 
 \pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitate and encourage rapid data exploration.
