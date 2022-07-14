@@ -1,27 +1,27 @@
 \section{Summary}\label{sec:summary}
 
 % paragraph about the importance of the democratisation of data in today's society
-Having easy, free access to data analysis and visualisation software is essential for democratisation in today's society.
-The main barriers to access are programming and a detailed, memory-intense understanding of procedures and techniques.
-\pkg{iNZight} has been designed to overcome as many barriers as possible, thereby bringing data access to a broad audience from researchers, community organisations, students, and indigenous groups.
+Having easy, free access to data analysis and visualisation software is essential for the democratisation of data in today's society.
+The main barriers to access are programming and a detailed, memory-intense understanding of statistical procedures and techniques.
+\pkg{iNZight} has been designed to overcome as many barriers as possible and bring data access to an audience that includes researchers, students, community organisations, and indigenous groups.
 
 
 % paragraph about iNZight's role in research / government / community organisations
-Researchers, government analysts, and community organisations often have data but lack funds and internal skills to analyse it.
-Free, open-source tools such as \pkg{iNZight} allow these groups to gain basic insights for free, and indigenous groups can do so without giving up control of their data.
-Generalists, too, can make use of the simple, memory-friendly interface as none of their often valuable time is lost spend relearning software they used months or even years ago.
-For researchers, \pkg{iNZight}'s code writing capabilities mean that not only can they tweak the script to suit their needs, but their results are reproducible, an important feature of modern data analysis.
+Community organisations and indigenous groups often have data but lack the funds and technical skills to analyse it.
+Free, open-source tools such as \pkg{iNZight} allow these groups to gain basic insights for free, and can do so without giving up control of their data.
+Generalists, too, can make use of the simple, memory-friendly interface as none of their often valuable time is lost spent relearning software they used months or even years ago.
+For researchers, \pkg{iNZight}'s code writing capabilities mean that not only can they tweak the script to suit their needs, but their results are automatically reproducible, an important feature of modern data analysis.
 
 % paragraph about iNZight's role in education
 With the growing demand for and availability of data, students are increasingly exposed to it during all parts of their education.
 In the same way that \pkg{iNZight} empowers researchers to gain insights without coding, students can learn statistical concepts without being held back by coding and technical deficits.
 Having \pkg{iNZight} involved in New Zealand's education programmes from Year 13 to postgraduate study means future researchers and community workers have a skill they can quickly relearn as needed.
-This is particularly useful for indigenous groups and small Pacific nations who often struggle to attract or retain highly skilled individuals.
+Being designed for students also makes it easy and affordable for indigenous groups and small Pacific nations to train and upskill their workforce.
 
 % summary paragraph, leading in to Future Work
-The \pkg{iNZight} project aims to provide a free tool for anyone to learn and use whenever the situation arises---be it in education, their job, or just because they want to explore a dataset to satisfy their curiosity.
-We have come a long way in meeting this aim, with recent pushes into social statistics fields with our new, build-in handling of data from complex surveys.
-However, there are still many problems and fields we are yet to address, and many features we can and will improve on as time and funding allow.
+The \pkg{iNZight} project aims to provide a free tool for anyone to use whenever the situation arises---be it in education, their job, or just to satisfy their curiosity about a subject.
+We have come a long way in meeting this aim, with recent pushes into social statistics fields with built-in handling of complex survey data.
+However, there are still many problems and fields we are yet to address, and many features we can and will improve as time and funding allow.
 
 
 \subsection{Ongoing and future work}\label{sec:future-work}
@@ -29,19 +29,20 @@ However, there are still many problems and fields we are yet to address, and man
 Given our small team and intermittent funding, we are slowly making progress on new and re-developed functionalities. At the time of writing, many of these are underway in various stages of development.
 
 The main focus continues to be greater support for survey-style data, in particular social surveys which often have multi-part questions, or those which respondents can give more than one answer.
-The next release of \pkg{iNZight} will include functionality to handle these \emph{multiple response} questions natively (instead of relying on the dedicated module), which means all of the other features---such as plot modifcations, labelling, and numerical summaries---will be available.
-Related to this is work involving combining multiple ``linked'' datasets, and gain the abilty to explore longitudinal relationships in related variables (e.g., a measured value over time).
-To do this, we will extend out specification file handling to allow linked data to be stored nd loaded as single object, further reducing the steps required for analysis to begin.
+The next release of \pkg{iNZight} will include functionality to handle these \emph{multiple response} questions natively (instead of relying on the dedicated module), which means features such as plot modifcations, labelling, and numerical summaries will be available.
+We are also adding support for loading multiple ``linked'' datasets with special emphasis on exploring longitudinal relationships (e.g., changes in a measured value over time).
+To do this, we are extending our specification file handling to allow linked data to be stored and loaded as single object, further reducing the steps required for analysis to begin.
 
 Another in-progress feature is the capability to connect to a database and extract data as required.
 Obviously, this is a major undertaking and will require much refactoring of many of the interval helper functions \pkg{iNZight} relies on.
 Once ready, however, users will be able to connect to local or remote databases and explore the data contained within in the same intuitive, easy-to-use fashion they are used to.
+This will pair nicely with the handling of linked data.
 
-We are currently also redesigning the time series module to make use of recent advances in packages such as \pkg{tsibble} and friends \citep{tsibble}.
+We have started redesigning the time series module to make use of recent advances in packages such as \pkg{tsibble} and friends \citep{tsibble}.
 This will allow a much broader range of time series data to be imported into and analysed with \pkg{iNZight}, and include new visualisations and forecasting methods.
 
 Other planned work includes addition of Bayesian inference methods to accompany the existing Normal theory and bootstrap sampling.
 
-Finally, we realise that a key part of democratisation is ensuring all types of users have equal access.
-Currently, while we do offer the Shiny-based online version of \pkg{iNZight}, this is not a feature-rich as the desktop version, so many of our users---particularly those with Apple computers---are disadvantaged.
+Finally, we realise that a key part of democratisation is ensuring equal access.
+Currently, while we do offer the Shiny-based online version of \pkg{iNZight}, this is not as feature-rich as the desktop version, so many of our users---particularly those with Apple computers---are disadvantaged.
 To solve this, we are actively exploring options for a new, fully cross-platform and modern interface, which will undoubtedly require the use of web technologies.
