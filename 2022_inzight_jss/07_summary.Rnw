@@ -1,19 +1,18 @@
 \section{Summary}\label{sec:summary}
 
 % paragraph about the importance of the democratisation of data in today's society
-Having easy, free access to data analysis and visualisation software is essential for the democratisation of data in today's society.
-The main barriers to access are programming and a detailed, memory-intense understanding of statistical procedures and techniques.
-\pkg{iNZight} has been designed to overcome as many barriers as possible and bring data access to an audience that includes researchers, students, community organisations, and indigenous groups.
+Having easy, free access to data analysis and visualisation software is essential for the democratisation of data that would otherwise only be accessible to those with the skills, time, and money to access it.
+By removing the prerequisites of programming and a clear, upfront understanding of statistical processes, \pkg{iNZight} has opened data to an new audience of researchers, students, community organisations, and indigenous groups.
 
 
 % paragraph about iNZight's role in research / government / community organisations
 Community organisations and indigenous groups often have data but lack the funds and technical skills to analyse it.
 Free, open-source tools such as \pkg{iNZight} allow these groups to gain basic insights for free, and can do so without giving up control of their data.
 Generalists, too, can make use of the simple, memory-friendly interface as none of their often valuable time is lost spent relearning software they used months or even years ago.
-For researchers, \pkg{iNZight}'s code writing capabilities mean that not only can they tweak the script to suit their needs, but their results are automatically reproducible, an important feature of modern data analysis.
+For all users, \pkg{iNZight}'s code writing capabilities mean that not only can they tweak the script to suit their needs, but their results are automatically reproducible, an important feature of modern data analysis.
 
 % paragraph about iNZight's role in education
-With the growing demand for and availability of data, students are increasingly exposed to it during all parts of their education.
+With the growing demand for and availability of data, students are increasingly exposed to it throughout their education.
 In the same way that \pkg{iNZight} empowers researchers to gain insights without coding, students can learn statistical concepts without being held back by coding and technical deficits.
 Having \pkg{iNZight} involved in New Zealand's education programmes from Year 13 to postgraduate study means future researchers and community workers have a skill they can quickly relearn as needed.
 Being designed for students also makes it easy and affordable for indigenous groups and small Pacific nations to train and upskill their workforce.
@@ -30,8 +29,7 @@ Given our small team and intermittent funding, we are slowly making progress on 
 
 The main focus continues to be greater support for survey-style data, in particular social surveys which often have multi-part questions, or those which respondents can give more than one answer.
 The next release of \pkg{iNZight} will include functionality to handle these \emph{multiple response} questions natively (instead of relying on the dedicated module), which means features such as plot modifcations, labelling, and numerical summaries will be available.
-We are also adding support for loading multiple ``linked'' datasets with special emphasis on exploring longitudinal relationships (e.g., changes in a measured value over time).
-To do this, we are extending our specification file handling to allow linked data to be stored and loaded as single object, further reducing the steps required for analysis to begin.
+We are also adding support for loading multiple ``linked'' datasets with special emphasis on exploring longitudinal relationships (e.g., changes in a measured value over time), with special emphasis on supporting ``one-click'' import formats so users can get up and running fast.
 
 Another in-progress feature is the capability to connect to a database and extract data as required.
 Obviously, this is a major undertaking and will require much refactoring of many of the interval helper functions \pkg{iNZight} relies on.
