@@ -1,15 +1,15 @@
 \section[Design principles for iNZight]{Design principles for \pkg{iNZight}}\label{sec:design-principles}
 
 \begin{itemize}
-\item This section needs a new name?
+\item Does this section need a new name?
 \item Broken into several pieces:
     \begin{enumerate}
     \item describing the niche for iNZight
     \item our approach/design principles to fulfil this niche - with a focus on developing/introducing terminology
     \item *NEW* comparison with other GUIs (some simple demonstrations)
-    \item *NEW* early evidence of our success? adoptment across NZ universities, research groups, government groups, overseas (Alberto Cairo, \'{E}ric Mauvi\`{e}re)
+    \item *NEW* early evidence of our success? adoption across NZ universities, research groups, government groups, overseas (Alberto Cairo, \'{E}ric Mauvi\`{e}re)
     \end{enumerate}
-\item any other parts can be moved to intro or later sections - care needed to reduce overlap between sections 2.2 and 3
+\item any other parts can be moved to the intro or later sections - care is needed to reduce overlap between sections 2.2 and 3
 \end{itemize}
 
 
@@ -17,7 +17,7 @@ Democratisation aims to improve the accessibility of data for a broader audience
 These barriers often come down to the availability of time, funding, and the required skills.
 As we have noted in \cite{Wild_2021}, co-author Sporle is involved with statistical and health agencies in several small Pacific nations, who are often overwhelmed by the information needs of their own countries and the reporting demands of key international agencies such as the United Nations.
 The national statistics offices in these countries face the triple burden of distance, small workforces, and insufficient funding.
-They find it challenging to recruit and retain people with good data science skills, and often cannot afford external expertise.
+They find it challenging to recruit and retain people with good data science skills and often cannot afford external expertise.
 
 
 Accessibility issues reach beyond national statistics offices.
@@ -26,7 +26,7 @@ Indigenous nations and governance groups not only face resource and skill constr
 Users can access \pkg{iNZight}'s data analysis and graphical functionality for free without the need to upload the data beyond their data environment---possession and control over the data are maintained.
 
 The situation is very similar for subject-matter researchers in areas where projects have potential societal value but lack the funds or technical skills to pursue them.
-The unmet data science needs of those who do not have access to money and data education can be every bit as real and important as those who do.
+The unmet data science needs of those who do not have access to money and data education can be equally as important as those who do.
 Furthermore, there will never be enough altruistic, skilled volunteers to meet these needs.
 Therefore, it is vital to enable more people to do more for themselves in statistically robust ways.
 While the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some level, some critical elements have been overlooked that \pkg{iNZight} can now address.
@@ -35,12 +35,12 @@ While the \proglang{R} \glspl{gui} mentioned in \cref{sec:intro} do this at some
 For groups like those described above, generalists need to be empowered to do things that currently only specialists can do.
 Typically, these generalists are already busy---and thus time-poor---and have very little data-related education.
 Addressing the lack-of-knowledge problem with up-front education runs straight into the lack-of-time problem.
-Additionally, generalists do various tasks and work in specific processes infrequently.
+Additionally, generalists do various tasks and work on specific processes infrequently.
 Therefore, working around the rapid fading of memories---such as how to do things and what they mean---is also a significant factor, bringing us to the ``problem of names''.
 With programming and most of the existing data analysis \glspl{gui}, users cannot do anything until they know what they want to do and remember its name.
-This problem is a significant barrier to getting started and results in significant time-losses getting back up to speed after a period of inactivity and a subsequent loss of familiarity.
+This problem is a significant barrier to getting started and results in significant time losses getting back up to speed after a period of inactivity and a subsequent loss of familiarity.
 Students taking service courses in statistics and data science, particularly those majoring in other subjects, are not immune to the problem either.
-The long time delays experienced before applying almost anything they learn in class makes ease of refamiliarisation critical.
+The long time delays experienced before applying almost anything they learn in class make ease of refamiliarisation critical.
 
 
 \subsection{Our design principles for meeting these needs}\label{sec:our-design-principles}
@@ -52,15 +52,15 @@ The \pkg{iNZight} project is addressing these problems through some simple \glsp
 \item require as little user input as possible through automation and defaults;
 \item use context to display relevant options based on user choices to reduce dependence on up-front knowledge;
 \item guide users through complicated procedures by asking for one piece of information at a time;
-\item display alternative options only when applicable to the data type or task.
+\item display alternative options only when applied to the data type or task.
 \end{enumerate}
 
 
-\subsubsection{Lowering the barrier for entry}
+\subsubsection{Lowering the barrier to entry}
 
 The basic mode of \pkg{iNZight} provides visualizations and analyses for rectangular data where variables are in columns and observations in rows.
 The ``variable-first'' design lets users drive the software by choosing variables rather than procedures.
-Users assign roles to variables with immediate responses determined by variable-type and defaults (variable-types currently recognized are: categorical, numeric, and date-time).
+Users assign roles to variables with immediate responses determined by the variable's type and defaults (variable types currently recognized are: categorical, numeric, and date-time).
 The underlying metaphor is, \emph{``Tell me about \ldots''}, so tell me about a variable---or a relationship between two variables---either alone or subsetted/facetted by other variables.
 Here, \emph{``Tell me about \ldots''} is actually \emph{``Show and tell me about \ldots''} and refers to instant graphics delivery whenever users interact with the interface since we believe graphics are the most accessible, information-rich artefacts for broad audiences.
 Additionally, people are less likely to do silly things after looking at their data first.
@@ -68,7 +68,7 @@ Additionally, people are less likely to do silly things after looking at their d
 
 Users can obtain numeric information (the ``tell'' in ``Show and tell'') by explicitly asking for it by clicking \menu{Get Summary} or \menu{Get Inference}.
 The underlying metaphor for both is, \emph{``Give me the types of information analysts generally want to see in a situation like this''}.
-\menu{Get Inference} gives users an analysis of variance, chi-square test, regression panel, or other available test based on the variable(s) selected.
+\menu{Get Inference} gives users an analysis of variance, chi-square test, regression panel, or other available tests based on the variable(s) selected.
 Confidence intervals and \emph{p}-values accompany inferential output wherever appropriate for the tests performed.
 As per \gls{dp}~3, users do not have to know or remember what to ask for or how to ask for it.
 This behaviour demonstrates one of many barriers knocked down by \pkg{iNZight}---entry for beginners and re-entry for users returning after a period of non-use.
@@ -80,7 +80,7 @@ The ability to identify situations where a variable-type default may need overri
 
 In the basic mode described above, we have automated everything using defaults and delivering immediate results.
 However, the use of defaults begs the question, \emph{``How else can I look at this?''}.
-As an example, a plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph-types in the Financial Times Visual Vocabulary,\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
+As an example, a plot-type selection box allows scrolling (with a mouse wheel or arrow key) through plots from all the applicable graph types in the Financial Times Visual Vocabulary,\footnote{\url{http://www.vizwiz.com/2018/07/visual-vocabulary.html}} with some additions.
 Use of defaults also begs, \emph{``How else can I do this?''} (what other methods exist), for example, by making suitable alternatives available (through dropdowns or other controls) in place of the defaults provided.
 Inferences, for example, can be based on normal theory or bootstrapping, and a switch can turn on epidemiological versions of outputs when appropriate (for example, odds and risk ratios).
 Options for plot enhancements are extensive, including:
@@ -98,7 +98,7 @@ Options for plot enhancements are extensive, including:
 
 Another feature of \pkg{iNZight} is its code-writing functionality, which it shares with other \glspl{gui}, but less prominently.
 Most users will not need to see any \proglang{R} code, but for those who do, all actions within \pkg{iNZight} run \proglang{R} code, which gets saved in an \proglang{R} script.
-In several places, live-code is displayed in an editable box for interactive use (more details in \cref{sec:code-writing}).
+In several places, live code is displayed in an editable box for interactive use (more details in \cref{sec:code-writing}).
 Initially, the code-writing functionality was developed as a way for students to become familiar with \proglang{R} code after already developing basic data visualisation, exploration, and analysis skills.
 Users use \pkg{iNZight} as usual but can obtain the \proglang{R} code used to perform the analysis they have just done.
 This way, \proglang{R} learners can begin editing and running \proglang{R} code themselves without starting from a blank script.
@@ -108,38 +108,46 @@ Researchers can quickly explore a dataset while simultaneously generating an \pr
 
 \subsection[Comparison with other R GUIs]{Comparison with other \proglang{R} \glspl{gui}}
 
-\begin{enumerate}
-\item here we compare several basic tasks in RKWard, Deducer, and R Commander with iNZight
-\item only comparing *free*, open-source software as paid software immediately excludes a large proportion of our target audience. Some design ideas may have been inspired by e.g., Tableau, but were implemented in our own way and adapted to the tools/audience
-\item RKWard
+\begin{itemize}
+\item here, we compare several basic tasks in RKWard, Deducer, and R Commander with iNZight
+\item only comparing *free*, open-source software since paid software immediately excludes a large proportion of our target audience. Some design ideas may have been inspired by e.g., Tableau, but were implemented in our own way and adapted to the tools/audience
     \begin{enumerate}
-        \item a complex IDE, standalone - written in C, with an R `backend' (runs its own R process)
-        \item no intelligent inputs - e.g., request a bar chart, will let you choose a numeric variable from the select box and produce an error
-        \item
-    \end{enumerate}
-\item R Commander
-    \begin{enumerate}
-        \item a simple IDE for running an R script, with menus to access specific procedures, runs in/on top of a running R process, requires manual installation (as an R package)
-        \item intelligent select boxes - e.g., request a bar chart, will only let you choose categorical variables
-        \item importing data is heinous - users must specify the structure of their data (test? Stata? etc), and then provide arguments (e.g., select comma delimited for csv) before choosing the file
-        \item very wide scope, lots of functionality but requires users to know what they want/what they're doing
-        \item no/limited ability to explore alternatives (e.g., dot plot vs histogram?) without manually creating each one separately
-    \end{enumerate}
-\item Deducer
-    \begin{enumerate}
-        \item not IDE provided, though developers recommend JGR (a GUI written in Java)
-        \item requires users to install Java themselves, then install Deducer as an R package
-        \item Like R Commander, uses menu items to generate code to run specific procedures
+    \item RKWard
+        \begin{enumerate}
+            \item a complex IDE, standalone - written in C, with an R `backend' (runs its own R process)
+            \item no intelligent inputs - e.g., request a bar chart, will let you choose a numeric variable from the select box and produce an error
+            \item
+        \end{enumerate}
+    \item R Commander
+        \begin{enumerate}
+            \item a simple IDE for running an R script, with menus to access specific procedures, runs in/on top of a running R process, requires manual installation (as an R package)
+            \item intelligent select boxes - e.g., request a bar chart, will only let you choose categorical variables
+            \item importing data is heinous - users must specify the structure of their data (test? Stata? etc), and then provide arguments (e.g., select comma delimited for csv) before choosing the file
+            \item very wide scope, lots of functionality but requires users to know what they want/what they're doing
+            \item no/limited ability to explore alternatives (e.g., dot plot vs histogram?) without manually creating each one separately
+        \end{enumerate}
+    \item Deducer
+        \begin{enumerate}
+            \item not IDE provided, though developers recommend JGR (a GUI written in Java)
+            \item requires users to install Java themselves, then install Deducer as an R package
+            \item Like R Commander, uses menu items to generate code to run specific procedures
+        \end{enumerate}
+
     \end{enumerate}
 
-\end{enumerate}
+\item key differences are the expected user behaviour---(1) and (2) are generally focussed on GUI-assisted scripts, though (1) has less 'script' focus and more 'report' focus; (3) is focussed on GUI-assisted interactive R session, data analysis *without* extra things like script/report generation.
+\item \pkg{iNZight}, on the other hand, focuses the user on exploration---there are no generic lists of tests/plots/procedures to perform, just the variables themselves. The code is written in the background, not front-and-foremost.
+\item the three other GUIs are geared at users *who know what they're doing* from a data analysis point of view, just perhaps don't have the coding expertise
+\item iNZight is focussed at those without a clear/up-to-date memory of data analysis - they might know what a t-test is, but now remember it's name/when to use it - iNZight takes those two requirements away, and serves up a t-test in the appropriate setting
+
+\end{itemize}
 
 
 \subsection[Early evidence of iNZight's success]{Early evidence of \pkg{iNZight}'s success}
 
 \begin{enumerate}
 \item discuss uptake in several places
-\item provide some testimonials?
+\item Shoud/can we provide some testimonials?
 \item approach by e.g., GUiNZ, integration in Stats NZ Datalab
 \end{enumerate}
 
