@@ -155,3 +155,7 @@ Researchers can quickly explore a dataset while simultaneously generating an \pr
 \pkg{iNZight}'s high-level, variable-driven requests accompanied by instant results facilitate and encourage rapid data exploration.
 By significantly reducing the barriers to access, data analysis becomes a skill available to a more diverse range of individuals and organisations.
 In doing so, \pkg{iNZight} is facilitating the democratisation of data, a precious resource in our modern digital world.
+
+\citet[see STATS101]{UoA_2022} and \citet{VUW_2022}.
+
+\citep{Mauviere_2022}.
